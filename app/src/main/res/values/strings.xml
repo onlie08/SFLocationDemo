@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">顺丰定位Demo</string>
+    <string name="location_failed_with_errorcode" >定位失败，错误码：%1$d</string >
+</resources>
