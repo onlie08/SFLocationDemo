@@ -86,7 +86,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.code.gson:gson:2.2.4'
     implementation(name: 'mapsdk-standard-release', ext: 'aar')
-    implementation(name: 'location-standard-release', ext: 'aar')
-//    implementation(name: 'mapsdk-wuhan-release', ext: 'aar')
-//    implementation(name: 'location-wuhan-release', ext: 'aar')
+//    implementation(name: 'location-standard-release', ext: 'aar')
+    //    implementation(name: 'mapsdk-wuhan-release', ext: 'aar')
+    //    implementation(name: 'location-wuhan-release', ext: 'aar')
+    implementation project(':library')
 }

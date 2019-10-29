@@ -28,6 +28,7 @@ import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
 import com.sfmap.api.location.SfMapLocationListener;
+import com.sfmap.api.location.client.util.Utils;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -58,7 +59,6 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
-    private String gpsLogPath;
 
     private BroadcastReceiver locationRequestReceiver = new BroadcastReceiver() {
         @Override
@@ -100,8 +100,6 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         tv_cell_info = findViewById(R.id.tv_cell_info);
         tv_wifi_count = findViewById(R.id.tv_wifi_count);
         tv_gps_count = findViewById(R.id.tv_gps_count);
-        gpsLogPath = Environment
-                .getExternalStorageDirectory().getAbsolutePath() + "/sflocation/" + getTimeStampFormat("yyyy-MM-dd") +"_"+"_GpsLog.txt";
     }
 
     private void requestPermission() {
@@ -176,7 +174,6 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         if (mListener != null && location != null) {
             if (location.isSuccessful() && location.getLatitude() > 0) {
                 String loca = "Provider:"+location.getProvider()+" Longitude:"+location.getLongitude()+" Latitude:"+location.getLatitude()+ " Time:"+getGpsLoaalTime(location.getTime())+ " Altitude:"+location.getAltitude()+ " adcode:"+location.getmAdcode()+ " Satellites:"+location.getmSatellites() +"\n";
-                saveGpsInfo(gpsLogPath,loca);
                 mListener.onLocationChanged(location);
                 LatLng position = new LatLng(location.getLatitude(), location.getLongitude());
                 float r = location.getAccuracy();
@@ -317,40 +314,11 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         }
     };
 
-    private void saveGpsInfo(String path,String infos){
-        File file = new File(path);
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        RandomAccessFile raf = null;
-        try {
-            raf = new RandomAccessFile(file, "rw");
-            raf.seek(file.length());
-            raf.write(infos.getBytes());
-            raf.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public String getTimeStampFormat(String format) {
-        Date dt = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
-        return sdf.format(dt);
-    }
-
     private String getGpsLoaalTime(long gpsTime){
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTimeInMillis(gpsTime);
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String datestring = df.format(calendar.getTime());
-
         return datestring;
     }
 }
