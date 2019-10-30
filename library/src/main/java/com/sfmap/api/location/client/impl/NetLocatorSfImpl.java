@@ -124,6 +124,7 @@ public class NetLocatorSfImpl implements NetLocator {
     @Override
     public void stopLocation() {
         mLocating = false;
+        mLastSuccessResponseBean = null;
         mUiHandler.removeMessages(MSG_LOOP_NETWORK_LOCATION);
         if(mNetworkDataManager != null) {
             mNetworkDataManager.removeOnDataAvailableCallback(mOnDataAvailableCallback);
@@ -214,7 +215,7 @@ public class NetLocatorSfImpl implements NetLocator {
                     Utils.saveGpsInfo("返回结果-解密后："+ responseBody);
                     result = mGson.fromJson(responseBody, ResponseBean.class);
                 } else {
-                    Utils.saveGpsInfo("返回结果-解密后：报了个错");
+                    Utils.saveGpsInfo("返回结果-报错");
                     result = translateErrorResult(lbsApiResult, netLocator);
                 }
             } catch (Exception e) {
@@ -232,10 +233,11 @@ public class NetLocatorSfImpl implements NetLocator {
         @NonNull
         private ResponseBean translateErrorResult(LbsApiResult lbsApiResult, NetLocatorSfImpl netLocator) {
             ResponseBean result = new ResponseBean();
-            Utils.saveGpsInfo("返回结果-translateErrorResult：报了个错");
+
             if(lbsApiResult != null && lbsApiResult.getResult() != null) {
                 LbsApiResultData apiResultData = lbsApiResult.getResult();
                 String errMsgEncrypted = apiResultData.getMsg();
+                Utils.saveGpsInfo("返回结果-报错：translateErrorResult："+errMsgEncrypted);
                 if(!TextUtils.isEmpty(errMsgEncrypted)) {
                     String errMsgDecrypted;
                     try {

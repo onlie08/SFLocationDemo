@@ -38,7 +38,7 @@ import static com.sfmap.api.location.client.util.Utils.getGpsLoaalTime;
 class SfMapLocationClientImpl {
     private static final String TAG = "SfMapLocationClientImpl";
     private static final String AK_META_KEY = "com.sfmap.apikey";
-    private static final long DEFAULT_GPS_MIN_DISTANCE = 0;
+    private static final long DEFAULT_GPS_MIN_DISTANCE = 1;
 
     private static volatile SfMapLocationClientImpl sSfMapLocationClientImpl;
     private final Application mApplication;

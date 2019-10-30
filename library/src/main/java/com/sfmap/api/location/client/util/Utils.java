@@ -529,30 +529,63 @@ public class Utils {
         }
     }
 
-    public static void saveGpsInfo(String infos){
-        infos = getGpsLoaalTime(System.currentTimeMillis()) + ": " +infos + "\n";
+    public static void saveNmea(String infos){
+        try {
+            infos = getGpsLoaalTime(System.currentTimeMillis()) + ": " +infos + "\n";
 
-        String gpsLogPath = Environment
-                .getExternalStorageDirectory().getAbsolutePath() + "/sflocation/" + getTimeStampFormat("yyyy-MM-dd") +"_"+"_GpsLog.txt";
-        File file = new File(gpsLogPath);
-        if (!file.exists()) {
+            String gpsLogPath = Environment
+                    .getExternalStorageDirectory().getAbsolutePath() + "/sflocation/" + getTimeStampFormat("yyyy-MM-dd") +"_"+"_NmeaLog.txt";
+            File file = new File(gpsLogPath);
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            RandomAccessFile raf = null;
             try {
-                file.createNewFile();
-            } catch (IOException e) {
+                raf = new RandomAccessFile(file, "rw");
+                raf.seek(file.length());
+
+                raf.write(infos.getBytes());
+                raf.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch (IOException e) {
                 e.printStackTrace();
             }
+        }catch (Exception e){
         }
-        RandomAccessFile raf = null;
-        try {
-            raf = new RandomAccessFile(file, "rw");
-            raf.seek(file.length());
+    }
 
-            raf.write(infos.getBytes());
-            raf.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
+    public static void saveGpsInfo(String infos){
+        try {
+            infos = getGpsLoaalTime(System.currentTimeMillis()) + ": " +infos + "\n";
+
+            String gpsLogPath = Environment
+                    .getExternalStorageDirectory().getAbsolutePath() + "/sflocation/" + getTimeStampFormat("yyyy-MM-dd") +"_"+"_GpsLog.txt";
+            File file = new File(gpsLogPath);
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            RandomAccessFile raf = null;
+            try {
+                raf = new RandomAccessFile(file, "rw");
+                raf.seek(file.length());
+
+                raf.write(infos.getBytes());
+                raf.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }catch (Exception e){
         }
     }
 
