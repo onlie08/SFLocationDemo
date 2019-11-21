@@ -96,6 +96,11 @@ public class NetLocatorSystemImpl implements NetLocator, LocationListener {
     }
 
     @Override
+    public void setTraceEnable(boolean traceEnable) {
+
+    }
+
+    @Override
     public void onLocationChanged(Location location) {
         if(mNetLocationListener != null) {
             mNetLocationListener.onNetLocationChanged(new SfMapLocation(location));

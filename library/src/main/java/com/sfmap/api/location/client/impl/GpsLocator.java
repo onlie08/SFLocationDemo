@@ -32,6 +32,7 @@ public class GpsLocator implements LocationListener, GpsStatus.Listener {
     private volatile boolean mGpsLocationStart;
     private GpsLocationListener mGpsLocationListener;
     private boolean onceLocation;
+    private boolean traceEnable;
     private boolean mGpsOutOfService;
 
     public void destroy() {
@@ -85,6 +86,10 @@ public class GpsLocator implements LocationListener, GpsStatus.Listener {
         this.onceLocation = onceLocation;
     }
 
+    public void setTraceEnable(boolean traceEnable) {
+        this.traceEnable = traceEnable;
+    }
+
     public interface GpsLocationListener {
         void onGpsLocationChanged(Location location);
         void onGpsOutOfService();
@@ -133,8 +138,9 @@ public class GpsLocator implements LocationListener, GpsStatus.Listener {
                     mLocationManager.addNmeaListener(new GpsStatus.NmeaListener() {
                         @Override
                         public void onNmeaReceived(long timestamp, String nmea) {
-                            Log.i(TAG,"timestamp:"+timestamp+ "转换后：" + Utils.getGpsLoaalTime(timestamp) + "\nnmea:\n"+nmea);
-                            Utils.saveNmea(nmea);
+                            if(traceEnable){
+                                Utils.saveNmea(nmea);
+                            }
                         }
                     });
 

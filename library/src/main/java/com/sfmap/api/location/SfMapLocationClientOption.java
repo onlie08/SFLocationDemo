@@ -12,6 +12,7 @@ public class SfMapLocationClientOption {
     private boolean mNeedAddress;
     private boolean mIsLocationCacheEnabled = true;
     private boolean mUseGcj02 = true;
+    private boolean mTraceEnable = false;
 
     /**
      * 定位模式，目前支持三种定位模式
@@ -136,6 +137,17 @@ public class SfMapLocationClientOption {
         return mUseGcj02;
     }
 
+    /**
+     * 是否保存日志到本地
+     * @return
+     */
+    public boolean isTraceEnable() {
+        return mTraceEnable;
+    }
+
+    public void setTraceEnable(boolean traceEnable) {
+        this.mTraceEnable = traceEnable;
+    }
 
     /**
      * 是否使用缓存定位数据，默认true;

@@ -531,7 +531,7 @@ public class Utils {
 
     public static void saveNmea(String infos){
         try {
-            infos = getGpsLoaalTime(System.currentTimeMillis()) + ": " +infos + "\n";
+            infos = getGpsLoaalTime(System.currentTimeMillis()) + ": " +infos ;
 
             String gpsLogPath = Environment
                     .getExternalStorageDirectory().getAbsolutePath() + "/sflocation/" + getTimeStampFormat("yyyy-MM-dd") +"_"+"_NmeaLog.txt";

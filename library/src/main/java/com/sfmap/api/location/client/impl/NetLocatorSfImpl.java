@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -68,7 +69,9 @@ public class NetLocatorSfImpl implements NetLocator {
     private String mApiKey;
     private boolean mNeedAddress;
     private boolean mUseGcj02;
+    private boolean mTraceEnable;
     private RequestBean requestBean;
+    private volatile long mLastNetworkRequestTime;
 
     @Override
     public void startLocation(long intervalMs) {
@@ -157,11 +160,16 @@ public class NetLocatorSfImpl implements NetLocator {
     }
 
     @Override
+    public void setTraceEnable(boolean traceEnable) {
+        mTraceEnable = traceEnable;
+    }
+
+    @Override
     public void setNetLocationListener(NetLocationListener listener) {
         mNetLocationListener  = listener;
     }
 
-    private static class LocationLoader extends AsyncTask<String, Void, ResponseBean> {
+    private class LocationLoader extends AsyncTask<String, Void, ResponseBean> {
         private final Gson mGson = new Gson();
         private final WeakReference<NetLocatorSfImpl> mNetLocatorRef;
 
@@ -174,7 +182,7 @@ public class NetLocatorSfImpl implements NetLocator {
 
             NetLocatorSfImpl netLocator = mNetLocatorRef.get();
             if(netLocator == null || strings == null || strings.length != 1) {
-                Utils.saveGpsInfo("返回结果-结果为空");
+                saveGpsInfo("返回结果-结果为空");
                 return null;
             }
 
@@ -189,14 +197,14 @@ public class NetLocatorSfImpl implements NetLocator {
 
 //            String jsonResult = isNetworkConnected ? Utils.get(requestUrl, null, "UTF-8") : null;
             String jsonResult = Utils.get(requestUrl, null, "UTF-8") ;
-            Utils.saveGpsInfo("返回结果-解密前：isNetworkConnected:"+isNetworkConnected + jsonResult);
+            saveGpsInfo("返回结果-解密前：isNetworkConnected:"+isNetworkConnected + jsonResult);
             if(TextUtils.isEmpty(jsonResult)) {
                 if(netLocator.mLastSuccessResponseBean == null) {
-                    Utils.saveGpsInfo("返回结果null-ERROR_CODE_FAILURE_CONNECTION");
+                    saveGpsInfo("返回结果null-ERROR_CODE_FAILURE_CONNECTION");
                     result = new ResponseBean();
                     result.setErrCode(String.valueOf(SfMapLocation.ERROR_CODE_FAILURE_CONNECTION));
                 } else {
-                    Utils.saveGpsInfo("返回结果null-返回上次定位结果");
+                    saveGpsInfo("返回结果null-返回上次定位结果");
                     result = netLocator.mLastSuccessResponseBean;
                 }
                 return result;
@@ -212,10 +220,10 @@ public class NetLocatorSfImpl implements NetLocator {
                             lbsApiResult.getResult().getMsg(),
                             "UTF-8"
                     );
-                    Utils.saveGpsInfo("返回结果-解密后："+ responseBody);
+                    saveGpsInfo("返回结果-解密后："+ responseBody);
                     result = mGson.fromJson(responseBody, ResponseBean.class);
                 } else {
-                    Utils.saveGpsInfo("返回结果-报错");
+                    saveGpsInfo("返回结果-报错");
                     result = translateErrorResult(lbsApiResult, netLocator);
                 }
             } catch (Exception e) {
@@ -237,11 +245,11 @@ public class NetLocatorSfImpl implements NetLocator {
             if(lbsApiResult != null && lbsApiResult.getResult() != null) {
                 LbsApiResultData apiResultData = lbsApiResult.getResult();
                 String errMsgEncrypted = apiResultData.getMsg();
-                Utils.saveGpsInfo("返回结果-报错：translateErrorResult："+errMsgEncrypted);
                 if(!TextUtils.isEmpty(errMsgEncrypted)) {
                     String errMsgDecrypted;
                     try {
                         errMsgDecrypted = new DesUtil().decrypt(errMsgEncrypted, "UTF-8");
+                        saveGpsInfo("返回结果-报错：translateErrorResult："+errMsgDecrypted);
                         if(errMsgDecrypted == null) {
                             errMsgDecrypted = errMsgEncrypted;
                         }
@@ -292,9 +300,9 @@ public class NetLocatorSfImpl implements NetLocator {
     private void updateLocationResponse(ResponseBean responseBean) {
         if(responseBean != null ) {
             if(responseBean.isSuccess()) {
-                mLastSuccessResponseBean = responseBean;
+                updateSuccessResponse(responseBean);
             } else if(mLastSuccessResponseBean == null || !mLastSuccessResponseBean.isSuccess()) {
-                mLastSuccessResponseBean = responseBean;
+                updateSuccessResponse(responseBean);
             }
 
             //一次性定位不会有周期性的定位回调，定位结果OK了之后直接返回给用户
@@ -304,6 +312,10 @@ public class NetLocatorSfImpl implements NetLocator {
         }
 
 
+    }
+
+    private void updateSuccessResponse(ResponseBean responseBean) {
+        mLastSuccessResponseBean = responseBean;
     }
 
     private void notifyLocationError(int errorCode) {
@@ -333,14 +345,25 @@ public class NetLocatorSfImpl implements NetLocator {
             new NetworkDataManager.OnDataAvailableCallback() {
                 @Override
                 public void onDataAvailable() {
-                    requestBean = mNetworkDataManager.getRequestData();
-                    sendLocationNetworkRequest();
+                    long currentUpTime = SystemClock.uptimeMillis();
+
+                    boolean okToHandle = currentUpTime - mLastNetworkRequestTime > (mIntervalMs/2);
+                    if(okToHandle) {
+                        requestBean = mNetworkDataManager.getRequestData();
+                        Log.v(TAG, "sendLocationNetworkRequest()");
+                        sendLocationNetworkRequest();
+                    } else {
+                        if(BuildConfig.DEBUG) {
+                            Log.v(TAG, "Do not handle network data changed.");
+                        }
+                    }
                 }
             };
 
     private void sendLocationNetworkRequest() {
         String fullUrl = composeLocationRequestUrl();
         if(!TextUtils.isEmpty(fullUrl)) {
+            mLastNetworkRequestTime = SystemClock.uptimeMillis();
             new LocationLoader(NetLocatorSfImpl.this).execute(fullUrl);
         } else {
             if(mLastSuccessResponseBean != null) {
@@ -381,7 +404,7 @@ public class NetLocatorSfImpl implements NetLocator {
         Gson gson = new Gson();
         String requestString = gson.toJson(requestBean);
         String log = "请求参数-网络：requestString:"+requestString;
-        Utils.saveGpsInfo(log);
+        saveGpsInfo(log);
         String encryptData = new DesUtil().encrypt(requestString);
         if(isLocationRequestLogEnabled()) {
             Log.v(TAG, "Network location request is --> \n" + requestString);
@@ -431,5 +454,11 @@ public class NetLocatorSfImpl implements NetLocator {
 
     private void initNetWorkDataManager(Context context) {
         mNetworkDataManager = NetworkDataManager.singleton(context);
+    }
+
+    public void saveGpsInfo(String info){
+        if(mTraceEnable){
+            Utils.saveGpsInfo(info);
+        }
     }
 }

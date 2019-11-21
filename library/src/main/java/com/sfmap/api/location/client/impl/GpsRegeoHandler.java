@@ -36,6 +36,7 @@ public class GpsRegeoHandler {
     private static final String TAG = "GpsRegeoHandler";
     private ResultCallback mResultCallback;
     private String mApiKey;
+    private boolean traceEnable;
     private Context mContext;
     private final  Gson mGson = new Gson();
     public void setResultCallback(ResultCallback resultCallback) {
@@ -57,6 +58,10 @@ public class GpsRegeoHandler {
 
     public void setApiKey(String mApiKey) {
         this.mApiKey = mApiKey;
+    }
+
+    public void setTraceEnable(Boolean traceEnable) {
+        this.traceEnable = traceEnable;
     }
 
     public Context getContext() {
@@ -90,8 +95,10 @@ public class GpsRegeoHandler {
                 regeoRequest.appCerSha1 = getCertificateSHA1();
 
                 String jsonRequest = mGson.toJson(regeoRequest);
-                String log = "请求参数-GPS：jsonRequest:"+jsonRequest;
-                Utils.saveGpsInfo(log);
+                if(traceEnable){
+                    String log = "请求参数-GPS：jsonRequest:"+jsonRequest;
+                    Utils.saveGpsInfo(log);
+                }
                 String encryptParams = new DesUtil().encrypt(jsonRequest);
                 String urlBase = BuildConfig.LOCATION_BACKEND_HOST + BuildConfig.REGEO_API_PATH;
                 String url = urlBase + "?param=" + encryptParams+"&ak=" + mApiKey;

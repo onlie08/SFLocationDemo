@@ -161,6 +161,7 @@ class SfMapLocationClientImpl {
                 if(needAddress()) {
                     mGpsRegeoHandler.setContext(mApplication);
                     mGpsRegeoHandler.setApiKey(mApiKey);
+                    mGpsRegeoHandler.setTraceEnable(mLocationOption.isTraceEnable());
                     regeoLocation(location);
                 } else {
                     SfMapLocation sfMapLocation = new SfMapLocation(location);
@@ -297,6 +298,7 @@ class SfMapLocationClientImpl {
 
     private void startGpsLocator() {
         mGpsLocator.setIsOnce(mLocationOption.isOnceLocation());
+        mGpsLocator.setTraceEnable(mLocationOption.isTraceEnable());
         mGpsLocator.startLocation(mLocationOption.getInterval(), DEFAULT_GPS_MIN_DISTANCE);
     }
 
@@ -396,8 +398,10 @@ class SfMapLocationClientImpl {
         OfflineCache.singleton(mApplication).saveCache(location);
         for(SfMapLocationClient client : clients) {
             try {
-                String gps = "返回结果-最终：Provider:"+location.getProvider()+" Longitude:"+location.getLongitude()+" Latitude:"+location.getLatitude()+ " Time:"+ getGpsLoaalTime(location.getTime())+ " Altitude:"+location.getAltitude()+ " adcode:"+location.getmAdcode()+ " Satellites:"+location.getmSatellites() + "\n";
-                Utils.saveGpsInfo(gps);
+                if(mLocationOption.isTraceEnable()){
+                    String gps = "返回结果-最终：Provider:"+location.getProvider()+" Longitude:"+location.getLongitude()+" Latitude:"+location.getLatitude()+ " Time:"+ getGpsLoaalTime(location.getTime())+ " Altitude:"+location.getAltitude()+ " adcode:"+location.getmAdcode()+ " Satellites:"+location.getmSatellites() + "\n";
+                    Utils.saveGpsInfo(gps);
+                }
                 client.onLocationChanged(location);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -416,6 +420,7 @@ class SfMapLocationClientImpl {
         mNetLocator.setIsOnce(mLocationOption.isOnceLocation());
         mNetLocator.setNeedAddress(mLocationOption.isNeedAddress());
         mNetLocator.setUseGcj02(mLocationOption.isUseGcj02());
+        mNetLocator.setTraceEnable(mLocationOption.isTraceEnable());
         mNetLocator.startLocation(mLocationOption.getInterval());
     }
 }
