@@ -24,6 +24,7 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            assets.srcDirs = ['assets']
         }
     }
     signingConfigs {
@@ -40,26 +41,6 @@ android {
             storePassword 'sf123456'
         }
     }
-
-    flavorDimensions "city"
-    productFlavors {
-        nanning {
-
-        }
-
-        wuhan {
-
-        }
-
-        nanjing {
-
-        }
-
-        standard  {
-
-        }
-    }
-
 
     buildTypes {
         release {
@@ -85,10 +66,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.code.gson:gson:2.2.4'
-    implementation(name: 'mapsdk-standard-release', ext: 'aar')
-//    implementation(name: 'library-standard-release', ext: 'aar')
-//    implementation(name: 'location-standard-release', ext: 'aar')
-    //    implementation(name: 'mapsdk-wuhan-release', ext: 'aar')
-    //    implementation(name: 'location-wuhan-release', ext: 'aar')
-    implementation project(':library')
+    implementation(name: 'sfmap-locsdk-V1.0-20200701', ext: 'aar')
+    implementation(name: 'sfmap-mapsdk-V1.0-20191127', ext: 'aar')
 }

@@ -1,0 +1,9 @@
+################url配置##########################
+##地图数据和样式服务地址-生产
+sf_map_url=https://gis.sf-express.com/mms/ds
+##网络定位服务地址
+net_location_url=https://gis.sf-express.com/nloc/locationapi
+##Gps定位服务地址
+gps_location_url=https://gis.sf-express.com/nloc/gpsapi
+###################测试服务#############################
+

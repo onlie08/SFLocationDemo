@@ -2,23 +2,29 @@ package com.sfmap.api.location.demo;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Process;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,7 +87,11 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         initMapSetting();
         initLocation();
         registerReceiver(locationRequestReceiver, new IntentFilter(SfMapLocationClient.ACTION_NAME_NETWORK_LOCATION_REQUEST));
-
+        try {
+            LogcatFileManager.getInstance().start(Environment
+                    .getExternalStorageDirectory().getAbsolutePath() + "/sflocation");
+        }catch (Exception e){
+        }
     }
 
     private void initView() {
@@ -131,8 +141,8 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         this.mMap.setTrafficEnabled(false);
         this.mMap.setLocationSource(this);
         this.mMap.setMyLocationEnabled(true);
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(11));
-        mMap.setMapCenter(new LatLng(30.573123, 114.299945));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(11));//115.844441,
+        mMap.setMapCenter(new LatLng(30.523451, 114.328784));//114.328784,30.523451
 //        mMap.setMinZoomLevel(10);
     }
 
@@ -179,7 +189,7 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
                     }
                     isFirstFocus = true;
                 }
-                tv_time.setText(getTime() + " (" + location.getProvider() + ")");
+                tv_time.setText(getGpsLoaalTime(location.getTime()) + " (" + location.getProvider() + ")");
                 tv_lat.setText(location.getLatitude() + "");
                 tv_lon.setText(location.getLongitude() + "");
                 tv_address.setText(location.getAddress());
@@ -206,11 +216,12 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
             SfMapLocationClientOption locationOption = new SfMapLocationClientOption();
 
             //设置定位间隔 或者设置单词定位
-            locationOption.setInterval(1500);
+            locationOption.setInterval(1000);
             locationOption.setOnceLocation(false);
+//            locationOption.setTraceEnable(true);
 
-            locationOption.setLocationMode(SfMapLocationClientOption.SfMapLocationMode.High_Accuracy);
-
+            locationOption.setLocationMode(SfMapLocationClientOption.SfMapLocationMode.Battery_Saving);
+            locationOption.setUseGjc02(true);
             locationOption.setNeedAddress(true);
 
             //设置参数
@@ -255,7 +266,7 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         }
         locationManager.addGpsStatusListener(statusListener);
         //1000位最小的时间间隔，1为最小位移变化；也就是说每隔1000ms会回调一次位置信息
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1500, 1, new LocationListener() {
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
 
@@ -314,4 +325,5 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         String datestring = df.format(calendar.getTime());
         return datestring;
     }
+
 }
