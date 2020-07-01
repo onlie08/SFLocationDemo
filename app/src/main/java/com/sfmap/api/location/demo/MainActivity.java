@@ -184,7 +184,8 @@ public class MainActivity extends AppCompatActivity implements SfMapLocationList
 
             locationOption.setLocationMode(SfMapLocationClientOption.SfMapLocationMode.High_Accuracy);
 
-            locationOption.setNeedAddress(true);
+            locationOption.setNeedAddress(true);//设置true会返回逆地理编码的详细地址信息
+            locationOption.setUseGjc02(true);//设置坐标系，true：国测局02（火星坐标） false：wgs84 （注：公安内网里地图为wgs84时，此处要设置为false）
 
             //设置参数
             mSfMapLocationClient.setLocationOption(locationOption);
