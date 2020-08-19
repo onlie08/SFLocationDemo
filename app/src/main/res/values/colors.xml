@@ -1,8 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="mainColor">#4db1fc</color>
+
+    <color name="mainColorDrak">#1890ff</color>
+    <color name="mainColorLight">#4f94f7</color>
+    <color name="mainColorLightLight">#5529b6f6</color>
+    <color name="mainColorMiddle">#991890ff</color>
+
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="red">#FF0000</color>
+    <color name="red_ff3333">#FF0000</color>
+    <color name="red_ff5722">#ff5722</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="mainColorTransparent">#991890ff</color>
+    <color name="color_7b">#7b7b7b</color>
+    <color name="dddddd">#dddddd</color>
+    <color name="bbb">#bbbbbb</color>
+    <color name="dialog_selected_e9e9e9">#e9e9e9</color>
+    <color name="gray_1">#e5e5e5</color>
+    <color name="orange">#f19149</color>
+    <color name="purple">#d879ff</color>
+    <color name="eeb041">#faad14</color>
+
+    <color name="ccc">#cccccc</color>
+    <color name="color666">#666666</color>
+    <color name="color999">#999999</color>
+
+    <color name="progress_bar_background">#94ffeb</color>
+
+    <color name="tab_nomal_color">#b3b3b3</color>
+
+    <color name="f98444">#F98444</color>-->
+    <color name="QuickAction_press">#94ffeb</color>
+    <color name="color424242">#424242</color>
+    <color name="linkBg">#f7f7f7</color>
+    <color name="color_98e0f1">#443ecc7a</color>
+
+    <color name="dcdcdc">#dcdcdc</color>
+    <color name="b3">#b3b3b3</color>
+    <color name="semitransparent">#b3b3b3</color>
+
+    <color name="game_detail_tab_tv_seleted">#0a82b5</color>
+    <color name="f2">#f2f2f2</color>
+    <color name="f5">#f5f5f5</color>
+    <color name="color_1a">#1a1a1a</color>
+    <color name="color_111">#111111</color>
+    <color name="d4ecfe">#d4ecfe</color>
+    <color name="eee">#eeeeee</color>
+
+
+    <color name="transparent">#00000000</color>
+    <color name="translucent_1affffff">#1affffff</color>
+    <color name="login_bt_pressed">@color/mainColorDrak</color>
+    <color name="login_bt_nomal">@color/mainColor</color>
+    <color name="register_bt_nomal">@color/mainColor</color>
+
+    <color name="status_ok">#45b97c</color>
+    <color name="all_claasify_item_2">#2e995b</color>
+
+    <color name="transparent_light1">#01000000</color>
+    <color name="transparent_light2">#05000000</color>
+    <color name="transparent_light5">#50000000</color>
+    <color name="transparent_light">#40000000</color>
+    <color name="transparent_medium">#55000000</color>
+    <color name="transparent_medium_2">#99000000</color>
+
+    <color name="transparent_more">#ee000000</color>
+    <color name="color_hint">#a5a5a5</color>
+    <color name="color_hint_dark">#a6a6a6</color>
+    <color name="red_logout">#ff6666</color>
+    <color name="color_nomal_4ea7ff">#4ea7ff</color>
+    <color name="color_nomal_a1cefa">#a1cefa</color>
+    <color name="color_pressed_297acc">#297acc</color>
+    <color name="time_nomal_text_color">#999</color>
+    <color name="font_18b9fe">#18b9fe</color>
+    <color name="color_18b9fe">#18b9fe</color>
+    <color name="green">#2e995b</color>
+    <color name="font_808080">#808080</color>
+    <color name="font_4ac7fc">#4ac7fc</color>
+    <color name="d9d9d9">#d9d9d9</color>
+    <color name="color_0e6caf">#0e6caf</color>
+    <color name="a5a5a5">#a6a6a6</color>
+    <color name="color_4cc7fc">#4cc7fc</color>
+    <color name="color_189dd6">#189dd6</color>
+    <color name="color_808080">#808080</color>
+    <color name="color_80ffffff">#80ffffff</color>
+    <color name="e5e5e5">#e5e5e5</color>
+    <color name="dfdfdf">#dfdfdf</color>
+    <color name="f6f6f6">#f6f6f6</color>
+    <color name="color212121">#212121</color>
+    <color name="e6e6e6">#e6e6e6</color>
+    <color name="color_95dfff">#95dfff</color>
+    <color name="color_000000">#000000</color>
+    <color name="f92b2b">#f92b2b</color>
+    <color name="color_warning">#fab52a</color>
+    <color name="fab52a">#fab52a</color>
+    <color name="f7f7f7">#f7f7f7</color>
+    <color name="aaaaaa">#aaaaaa</color>
+    <color name="ee6868">#ee6868</color>
+    <color name="bfbfbf">#bfbfbf</color>
+
+    <color name="feed_bg">#d3d6db</color>
+    <color name="feed_item_bg">#ffffff</color>
+    <color name="c2c3c8">#c2c3c8</color>
+    <color name="link">#0a80d1</color>
+    <color name="timestamp">#808080</color>
+    <color name="subtitle">#d3d3d3</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="fa9c52">#fa9c52</color>
+    <color name="unfinished">#fa9c52</color>
+
+    <color name="edf2ef">#edf2ef</color>
+    <color name="aab3ad">#aab3ad</color>
+    <color name="b8ccc0">#b8ccc0</color>
+    <color name="f0f0f0">#f0f0f0</color>
+    <color name="color_card_list_color">#d3d6db</color>
+
+    <color name="bg">#F5F5F5</color>
+    <color name="divider_color">#f0f0f0</color>
+    <color name="divider_color_dark">#e5e5e5</color>
+    <color name="warnig_yellow">#f9C744</color>
+
+    <color name="e15a57">#e15a57</color>
+    <color name="fbeeed">#fbeeed</color>
+
+    <color name="pb_plan_color">@color/dddddd</color>
+    <color name="pb_real_color">@color/mainColor</color>
+
+    <color name="status_waiting">#666</color>
+    <color name="status_auditing">#4db1fc</color>
+    <color name="status_rejuct">#f98444</color>
+    <color name="status_passed">#45b97c</color>
+    <color name="status_back">#666</color>
+    <color name="status_deleted">#666</color>
+
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
 
     <color name="location_accuracy_circle_color">#557DE7D0</color>
 </resources>

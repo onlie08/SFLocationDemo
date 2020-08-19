@@ -1,20 +1,16 @@
 package com.sfmap.api.location.demo;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,8 +19,6 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,16 +34,16 @@ import com.sfmap.api.maps.model.LatLng;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
-public class SFLocationActivity extends AppCompatActivity implements SfMapLocationListener, LocationSource {
+public class SFLocationActivity extends AppCompatActivity {
     private final String TAG = SFLocationActivity.class.getSimpleName();
     private MapView mMapView;
     private MapController mMap;
     private SfMapLocationClient mSfMapLocationClient;
     private TextView tv_time, tv_lat, tv_lon, tv_address, tv_accuracy, tv_cell_info, tv_wifi_count, tv_gps_count;
-    private OnLocationChangedListener mListener;
+    private LocationSource.OnLocationChangedListener mLocationChangedListener;
+    private SFLocationActivity context;
     private boolean isFirstFocus = false;
     private static String[] PERMISSIONS_REQUEST = {
             Manifest.permission.READ_PHONE_STATE,
@@ -59,25 +53,14 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
 
-    private BroadcastReceiver locationRequestReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (SfMapLocationClient.ACTION_NAME_NETWORK_LOCATION_REQUEST.equals(intent.getAction())) {
-                String requestString = intent.getStringExtra("cellIds");
-                int wifiApCount = intent.getIntExtra("wifiApCount", 0);
-                tv_cell_info.setText(requestString.trim());
-                tv_wifi_count.setText(String.format(Locale.CHINA, "扫描到%d个WiFi AP", wifiApCount));
-            }
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
+        context = this;
         requestPermission();
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_location);
 
         mMapView = findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
@@ -90,7 +73,7 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         try {
             LogcatFileManager.getInstance().start(Environment
                     .getExternalStorageDirectory().getAbsolutePath() + "/sflocation");
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 
@@ -103,44 +86,98 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         tv_cell_info = findViewById(R.id.tv_cell_info);
         tv_wifi_count = findViewById(R.id.tv_wifi_count);
         tv_gps_count = findViewById(R.id.tv_gps_count);
+
     }
 
     private void requestPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (this.checkPermission(Manifest.permission.READ_PHONE_STATE, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED || this.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED || this.checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED) {
+                    != PackageManager.PERMISSION_GRANTED ||
+                    this.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid())
+                            != PackageManager.PERMISSION_GRANTED ||
+                    this.checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Process.myPid(), Process.myUid())
+                            != PackageManager.PERMISSION_GRANTED) {
                 this.requestPermissions(PERMISSIONS_REQUEST, 1);
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == 1) {
-            for (int i = 0; i < permissions.length; i++) {
-                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                } else {
-                    Toast.makeText(this, "软件退出，运行权限被禁止", Toast.LENGTH_SHORT).show();
-                    System.exit(0);
-                }
-            }
-            if (mSfMapLocationClient != null) {
-                mSfMapLocationClient.startLocation();
             }
         }
     }
 
     private void initMapSetting() {
         mMap = mMapView.getMap();
-        this.mMap.getUiSettings().setZoomControlsEnabled(false);
-        this.mMap.getUiSettings().setCompassEnabled(false);
-        this.mMap.setTrafficEnabled(false);
-        this.mMap.setLocationSource(this);
-        this.mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(false);
+        mMap.getUiSettings().setCompassEnabled(false);
+        mMap.setTrafficEnabled(false);
+        mMap.setLocationSource(new LocationSource() {
+            @Override
+            public void activate(OnLocationChangedListener onLocationChangedListener) {
+                mLocationChangedListener = onLocationChangedListener;
+                if (mSfMapLocationClient == null) {
+                    mSfMapLocationClient = new SfMapLocationClient(context.getApplicationContext());
+                    // 设置定位监听
+                    //初始化定位参数
+                    SfMapLocationClientOption locationOption = new SfMapLocationClientOption();
+
+                    //设置定位间隔 或者设置单次定位
+                    locationOption.setInterval(1000);
+                    locationOption.setOnceLocation(false);
+//            locationOption.setTraceEnable(true);
+
+                    locationOption.setLocationMode(SfMapLocationClientOption.SfMapLocationMode.Battery_Saving);
+                    locationOption.setUseGjc02(true);
+                    locationOption.setNeedAddress(true);
+
+                    //设置参数
+                    mSfMapLocationClient.setLocationOption(locationOption);
+                    mSfMapLocationClient.setLocationListener(new SfMapLocationListener() {
+                        @Override
+                        public void onLocationChanged(SfMapLocation location) {
+                            tv_time.setText("");
+                            tv_lat.setText("");
+                            tv_lon.setText("");
+                            tv_address.setText("");
+                            tv_accuracy.setText("");
+                            Log.i(TAG, location.toString());
+                            if (mLocationChangedListener != null && location != null) {
+                                if (location.isSuccessful() && location.getLatitude() > 0) {
+                                    String loca = "Provider:" + location.getProvider() + " Longitude:" + location.getLongitude() + " Latitude:" + location.getLatitude() +
+                                            " Time:" + getGpsLoaalTime(location.getTime()) + " Altitude:" + location.getAltitude() + " adcode:" + location.getmAdcode() + " Satellites:" + location.getmSatellites() + "\n";
+
+                                    mLocationChangedListener.onLocationChanged(location);
+                                    LatLng position = new LatLng(location.getLatitude(), location.getLongitude());
+                                    float r = location.getAccuracy();
+                                    if (!isFirstFocus) {
+                                        mMap.moveCamera(CameraUpdateFactory.changeLatLng(position));
+                                        if (r > 200) {
+                                            mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
+                                        } else {
+                                            mMap.moveCamera(CameraUpdateFactory.zoomTo(18));
+                                        }
+                                        isFirstFocus = true;
+                                    }
+                                    tv_time.setText(getGpsLoaalTime(location.getTime()) + " (" + location.getProvider() + ")");
+                                    tv_lat.setText(location.getLatitude() + "");
+                                    tv_lon.setText(location.getLongitude() + "");
+                                    tv_address.setText(location.getAddress());
+                                    tv_accuracy.setText(location.getAccuracy() + "米");
+                                } else {
+                                    Toast.makeText(getApplicationContext(), R.string.location_failed_with_errorcode + location.getErrorCode(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }
+                    });
+                    mSfMapLocationClient.startLocation();
+                }
+            }
+
+            @Override
+            public void deactivate() {
+                mLocationChangedListener = null;
+                if (mSfMapLocationClient != null) {
+                    mSfMapLocationClient.stopLocation();
+                }
+            }
+        });
+        mMap.setMyLocationEnabled(true);
         mMap.moveCamera(CameraUpdateFactory.zoomTo(11));//115.844441,
         mMap.setMapCenter(new LatLng(30.523451, 114.328784));//114.328784,30.523451
 //        mMap.setMinZoomLevel(10);
@@ -166,78 +203,6 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         mMapView.onPause();
     }
 
-    @Override
-    public void onLocationChanged(SfMapLocation location) {
-        tv_time.setText("");
-        tv_lat.setText("");
-        tv_lon.setText("");
-        tv_address.setText("");
-        tv_accuracy.setText("");
-        Log.i(TAG, location.toString());
-        if (mListener != null && location != null) {
-            if (location.isSuccessful() && location.getLatitude() > 0) {
-                String loca = "Provider:"+location.getProvider()+" Longitude:"+location.getLongitude()+" Latitude:"+location.getLatitude()+ " Time:"+getGpsLoaalTime(location.getTime())+ " Altitude:"+location.getAltitude()+ " adcode:"+location.getmAdcode()+ " Satellites:"+location.getmSatellites() +"\n";
-                mListener.onLocationChanged(location);
-                LatLng position = new LatLng(location.getLatitude(), location.getLongitude());
-                float r = location.getAccuracy();
-                if (!isFirstFocus) {
-                    mMap.moveCamera(CameraUpdateFactory.changeLatLng(position));
-                    if (r > 200) {
-                        mMap.moveCamera(CameraUpdateFactory.zoomTo(17));
-                    } else {
-                        mMap.moveCamera(CameraUpdateFactory.zoomTo(18));
-                    }
-                    isFirstFocus = true;
-                }
-                tv_time.setText(getGpsLoaalTime(location.getTime()) + " (" + location.getProvider() + ")");
-                tv_lat.setText(location.getLatitude() + "");
-                tv_lon.setText(location.getLongitude() + "");
-                tv_address.setText(location.getAddress());
-                tv_accuracy.setText(location.getAccuracy() + "米");
-            } else {
-                Toast.makeText(getApplicationContext(), R.string.location_failed_with_errorcode + location.getErrorCode(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    private String getTime() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");// HH:mm:ss
-        Date date = new Date(System.currentTimeMillis());
-        return simpleDateFormat.format(date);
-    }
-
-    @Override
-    public void activate(OnLocationChangedListener onLocationChangedListener) {
-        mListener = onLocationChangedListener;
-        if (mSfMapLocationClient == null) {
-            mSfMapLocationClient = new SfMapLocationClient(this.getApplicationContext());
-            // 设置定位监听
-            //初始化定位参数
-            SfMapLocationClientOption locationOption = new SfMapLocationClientOption();
-
-            //设置定位间隔 或者设置单词定位
-            locationOption.setInterval(1000);
-            locationOption.setOnceLocation(false);
-//            locationOption.setTraceEnable(true);
-
-            locationOption.setLocationMode(SfMapLocationClientOption.SfMapLocationMode.Battery_Saving);
-            locationOption.setUseGjc02(true);
-            locationOption.setNeedAddress(true);
-
-            //设置参数
-            mSfMapLocationClient.setLocationOption(locationOption);
-            mSfMapLocationClient.setLocationListener(this);
-            mSfMapLocationClient.startLocation();
-        }
-    }
-
-    @Override
-    public void deactivate() {
-        mListener = null;
-        if (mSfMapLocationClient != null) {
-            mSfMapLocationClient.stopLocation();
-        }
-    }
 
     //位置管理器
     private LocationManager locationManager;
@@ -255,8 +220,7 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         }
         //添加卫星状态改变监听
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
+            // TODO:是否需要   ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
@@ -266,27 +230,28 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
         }
         locationManager.addGpsStatusListener(statusListener);
         //1000位最小的时间间隔，1为最小位移变化；也就是说每隔1000ms会回调一次位置信息
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
+                new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
 
-            }
+                    }
 
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
 
-            }
+                    }
 
-            @Override
-            public void onProviderEnabled(String provider) {
+                    @Override
+                    public void onProviderEnabled(String provider) {
 
-            }
+                    }
 
-            @Override
-            public void onProviderDisabled(String provider) {
+                    @Override
+                    public void onProviderDisabled(String provider) {
 
-            }
-        });
+                    }
+                });
     }
 
     /**
@@ -296,7 +261,9 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
 
     private final GpsStatus.Listener statusListener = new GpsStatus.Listener() {
         public void onGpsStatusChanged(int event) { // GPS状态变化时的回调，如卫星数
-            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -314,16 +281,48 @@ public class SFLocationActivity extends AppCompatActivity implements SfMapLocati
                     availableCount++;
                 }
             }
-            tv_gps_count.setText(availableCount+"颗");
+            tv_gps_count.setText(availableCount + "颗");
         }
     };
 
-    private String getGpsLoaalTime(long gpsTime){
+    private BroadcastReceiver locationRequestReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (SfMapLocationClient.ACTION_NAME_NETWORK_LOCATION_REQUEST.equals(intent.getAction())) {
+                String requestString = intent.getStringExtra("cellIds");
+                int wifiApCount = intent.getIntExtra("wifiApCount", 0);
+
+                tv_cell_info.setText(requestString.trim());
+                tv_wifi_count.setText(String.format(Locale.CHINA, "扫描到%d个WiFi AP", wifiApCount));
+            }
+        }
+    };
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+            for (int i = 0; i < permissions.length; i++) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                } else {
+                    Toast.makeText(this, "软件退出，运行权限被禁止", Toast.LENGTH_SHORT).show();
+                    System.exit(0);
+                }
+            }
+            if (mSfMapLocationClient != null) {
+                mSfMapLocationClient.startLocation();
+            }
+        }
+    }
+
+    private String getGpsLoaalTime(long gpsTime) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(gpsTime);
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String datestring = df.format(calendar.getTime());
         return datestring;
     }
+
 
 }

@@ -1,11 +1,479 @@
 <resources>
+        <!-- Base application theme. -->
+        <style name="AppTheme" parent="Base.Theme.AppCompat.Light">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">@color/mainColor</item>
+            <item name="android:popupMenuStyle">@style/MyPopupMenu</item>
+            <!--自定义AlertDialog-->
+            <item name="alertDialogTheme">@style/DialogSelfColor</item>
+        </style>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+        <style name="DialogSelfColor" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+            <!--修改AlertDialog按钮的颜色-->
+            <item name="colorAccent">@color/mainColor</item>
+        </style>
+
+        <style name="theme_appcompat" parent="Base.Theme.AppCompat.Light">
+            <item name="android:windowNoTitle">true</item>
+            <item name="android:windowBackground">@null</item>
+        </style>
+
+        <style name="theme_appcompat_laucher" parent="Base.Theme.AppCompat.Light">
+            <item name="android:windowNoTitle">true</item>
+            <item name="android:windowFullscreen">true</item>
+            <!--<item name="android:windowBackground">@drawable/ic_welcome_bg</item>-->
+
+        </style>
+
+        <style name="theme_appcompat_fullscreen" parent="Base.Theme.AppCompat">
+            <item name="android:windowFullscreen">true</item>
+            <item name="android:windowNoTitle">true</item>
+            <item name="windowActionBar">false</item>
+        </style>
+
+        <style name="fullscreen_theme_dialog" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+            <!-- 是否有边框 -->
+            <item name="android:windowFrame">@null</item>
+            <!--是否在悬浮Activity之上  -->
+            <item name="android:windowIsFloating">true</item>
+            <!--标题  -->
+            <item name="android:windowNoTitle">true</item>
+            <!--阴影  -->
+            <item name="android:windowIsTranslucent">true</item><!--半透明-->
+            <!-- 点外边可以消失  -->
+            <item name="android:windowCloseOnTouchOutside">false</item>
+        </style>
+
+
+        <style name="dialog_appcompat_theme" parent="@style/Theme.AppCompat.Light.Dialog.Alert"></style>
+
+        <style name="dialog_appcompat_theme_fullscreen" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
+            <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+            <item name="android:windowIsTranslucent">true</item><!--半透明-->
+            <item name="android:windowActionBar">true</item>
+        </style>
+
+        <style name="dialog_fullscreen" parent="android:Theme.Holo.Light">
+            <item name="android:windowBackground">@color/transparent_medium_2</item><!--背景透明-->
+            <item name="android:windowIsTranslucent">true</item><!--半透明-->
+            <item name="android:windowFullscreen">true</item>
+        </style>
+
+        <!-- 图片dialog动画-->
+        <style name="enter_center_anim" parent="@android:style/Animation.Dialog">
+            <item name="android:windowEnterAnimation">@anim/anim_enter_from_center</item>
+            <item name="android:windowExitAnimation">@anim/anim_exit_to_center</item>
+        </style>
+
+        <style name="dialog_fullscree_animation" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
+            <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+            <item name="android:windowIsTranslucent">true</item><!--半透明-->
+            <item name="android:windowAnimationStyle">@style/enter_center_anim</item>
+        </style>
+
+        <style name="pic_act_fullscree_animation" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
+            <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+            <item name="android:windowIsTranslucent">true</item><!--半透明-->
+            <item name="android:windowAnimationStyle">@style/enter_center_anim</item>
+        </style>
+        <!--首页dialog动画-->
+        <style name="dialog_top_to_bottom_bg_white" parent="@android:style/Theme.Holo.Light.Dialog">
+            <item name="android:windowNoTitle">true</item>
+
+            <!-- 背景透明 -->
+            <item name="android:windowBackground">@color/white</item><!--dilog全屏-->
+            <item name="android:windowContentOverlay">@null</item>
+            <item name="android:windowFrame">@null</item>
+            <item name="android:colorBackground">@color/white</item>
+            <item name="android:windowCloseOnTouchOutside">true</item>
+            <!-- Dialog进入及退出动画 -->
+            <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
+        </style>
+
+        <style name="dialog_top_to_bottom" parent="@android:style/Theme.Holo.Light.Dialog">
+            <item name="android:windowNoTitle">true</item>
+
+            <!-- 背景透明 -->
+            <item name="android:windowBackground">@color/transparent_light2</item><!--dilog全屏-->
+            <item name="android:windowContentOverlay">@null</item>
+
+            <!-- 边框 -->
+            <item name="android:windowFrame">@null</item>
+            <!-- 半透明 -->
+            <item name="android:colorBackground">@color/transparent_light2</item>
+            <item name="android:windowCloseOnTouchOutside">true</item>
+            <!-- Dialog进入及退出动画 -->
+            <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
+        </style>
+        <!-- ActionSheet进出动画 -->
+        <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
+            <item name="android:windowEnterAnimation">@anim/top_in</item>
+            <item name="android:windowExitAnimation">@anim/top_out</item>
+        </style>
+
+        <!--主界面未绑定对话框-->
+        <style name="Dialog_From_Bottom_Style" parent="@android:style/Theme.Holo.Dialog.MinWidth">
+            <item name="android:windowNoTitle">true</item>
+            <!-- 背景透明 -->
+            <item name="android:windowBackground">@color/transparent_light1</item><!--dilog全屏-->
+            <item name="android:windowContentOverlay">@null</item>
+            <!-- 边框 -->
+            <item name="android:windowFrame">@null</item>
+            <!-- 半透明 -->
+            <item name="android:colorBackground">@color/transparent_light1</item>
+            <item name="android:windowCloseOnTouchOutside">true</item>
+            <!-- Dialog进入及退出动画 -->
+            <!--      <item name="android:windowAnimationStyle">@style/Animation_Bottom</item>-->
+        </style>
+
+        <!--右进-->
+        <style name="Dialog_right_left" parent="@android:style/Theme.Holo.Dialog.MinWidth">
+            <item name="android:windowNoTitle">true</item>
+            <item name="android:windowBackground">@color/transparent_light2</item>
+            <item name="android:windowContentOverlay">@null</item>
+            <item name="android:windowFrame">@null</item>
+            <item name="android:colorBackground">@color/transparent_light2</item>
+            <item name="android:windowCloseOnTouchOutside">true</item>
+            <item name="android:windowAnimationStyle">@style/activity_right_in_style
+            </item> <!-- 进入/退出动画 -->
+        </style>
+
+        <style name="Dialog_add_card" parent="@android:style/Theme.Holo.Light.Dialog">
+            <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->
+            <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+            <item name="android:windowSoftInputMode">stateAlwaysVisible</item><!--显示软件盘-->
+        </style>
+        <!-- 底部退出动画 -->
+        <style name="Animation_Bottom" parent="@android:style/Animation.Dialog">
+            <item name="android:windowEnterAnimation">@anim/anim_bottomdialog_in</item>
+            <item name="android:windowExitAnimation">@anim/anim_bottomdialog_out</item>
+        </style>
+
+        <style name="activity_right_in_style" parent="@android:style/Animation">
+            <item name="android:windowEnterAnimation">@anim/slide_in_anim</item>
+            <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+        </style>
+
+        <style name="me_fragment_0_title_text_style">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="me_top_item_switch_style">
+            <!-- Active switch 打开时的拇指按钮的颜色 轨迹颜色默认为30%这个颜色 -->
+            <item name="colorControlActivated">@color/mainColor</item>
+            <!-- Inactive thumb color switch关闭时的拇指按钮的颜色 -->
+            <!--  <item name="colorSwitchThumbNormal">@color/colorHomeTitle</item>
+              &lt;!&ndash; Inactive track color(30% transparency) switch关闭时的轨迹的颜色  30%这个颜色 &ndash;&gt;
+              <item name="android:colorForeground">@color/colorPhoneBind</item>-->
+        </style>
+        <!--进度条 -->
+<!--        <style name="numb_pb_style_proj_plan">
+            <item name="progress_max">100</item>
+            <item name="progress_current">80</item>
+            <item name="progress_text_visibility">invisible</item>
+
+            <item name="progress_unreached_color">@color/eee</item>
+
+            <item name="progress_reached_color">@color/mainColor</item>
+            <item name="progress_text_color">@color/mainColor</item>
+        </style>-->
+
+        <!--广告-->
+        <style name="FullscreenTheme" parent="AppTheme">
+            <item name="android:windowActionBarOverlay">true</item>
+            <item name="android:windowBackground">@null</item>
+            <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+            <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+        </style>
+
+        <declare-styleable name="CountDownView">
+            <attr name="background_color" format="color" />
+            <attr name="border_width" format="dimension" />
+            <attr name="border_color" format="color" />
+            <attr name="text" format="string" />
+            <attr name="text_size" format="dimension" />
+            <attr name="text_color" format="color" />
+        </declare-styleable>
+
+
+        <style name="px24_999">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/color999</item>
+        </style>
+
+        <style name="main_tab_919191">
+            <item name="android:textSize">@dimen/main_bottom_tab_tv_size</item>
+            <item name="android:textColor">@color/color999</item>
+        </style>
+
+        <style name="px24_212121_bold">
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="px28_666">
+            <item name="android:textSize">@dimen/dm028</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="px28_mainColor">
+            <item name="android:textSize">@dimen/dm028</item>
+            <item name="android:textColor">@color/mainColor</item>
+        </style>
+
+        <style name="px28_mainColor_bold">
+            <item name="android:textSize">@dimen/dm028</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/mainColor</item>
+        </style>
+
+        <style name="px28_666_bold">
+            <item name="android:textSize">@dimen/dm028</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="px28_212121_bold">
+            <item name="android:textSize">@dimen/dm028</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="px26_666_bold">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="px24_666_bold">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="titlesize_212121">
+            <item name="android:textSize">@dimen/title_size</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+
+        <style name="titlesize_212121_bold">
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">@dimen/title_size</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="titlesize_666">
+            <item name="android:textSize">@dimen/title_size</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="px20_999">
+            <item name="android:textSize">@dimen/dm020</item>
+            <item name="android:textColor">@color/color999</item>
+        </style>
+
+        <style name="px24_0079bf">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/status_waiting</item>
+        </style>
+
+        <style name="style_px24_cccccc">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/ccc</item>
+        </style>
+
+        <style name="px26_212121">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="seletor_tab">
+            <item name="android:textSize">@dimen/title_size</item>
+            <item name="android:background">@drawable/selector_tab_bg</item>
+            <item name="android:textColor">@color/color212121</item>
+            <!--@color/color_seletor_main_color_21  颜色也变-->
+            <item name="android:button">@null</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:paddingLeft">@dimen/dm005</item>
+            <item name="android:paddingRight">@dimen/dm005</item>
+            <item name="android:height">@dimen/app_title_height</item>
+            <item name="android:gravity">center</item>
+            <item name="android:layout_marginLeft">@dimen/dm030</item>
+            <item name="android:layout_marginRight">@dimen/dm030</item>
+        </style>
+
+
+        <style name="px26_212121_bold">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/color212121</item>
+            <item name="android:textStyle">bold</item>
+
+        </style>
+
+        <style name="px24_1a1a1a">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/color_1a</item>
+        </style>
+
+        <style name="px26_mainColor">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/mainColor</item>
+        </style>
+
+        <style name="px24_666">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="px24_212121">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="px30_212121">
+            <item name="android:textSize">@dimen/dm030</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="px30_mainColor">
+            <item name="android:textSize">@dimen/dm030</item>
+            <item name="android:textColor">@color/mainColor</item>
+        </style>
+
+        <style name="px30_212121_bold">
+            <item name="android:textSize">@dimen/dm030</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="px22_666">
+            <item name="android:textSize">@dimen/dm022</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="px22_white">
+            <item name="android:textSize">@dimen/dm022</item>
+            <item name="android:textColor">@color/white</item>
+        </style>
+        <style name="px24_white">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/white</item>
+        </style>
+        <style name="px26_white">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/white</item>
+        </style>
+
+        <style name="px26_666">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/color666</item>
+        </style>
+
+        <style name="px26_999">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/color999</item>
+        </style>
+
+        <style name="px20_a5a5a5">
+            <item name="android:textSize">@dimen/dm020</item>
+            <item name="android:textColor">@color/a5a5a5</item>
+        </style>
+
+        <style name="px26_a5a5a5">
+            <item name="android:textSize">@dimen/dm026</item>
+            <item name="android:textColor">@color/a5a5a5</item>
+        </style>
+
+        <style name="px22_a5a5a5">
+            <item name="android:textSize">@dimen/dm022</item>
+            <item name="android:textColor">@color/a5a5a5</item>
+        </style>
+
+        <style name="px24_a5a5a5">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/a5a5a5</item>
+        </style>
+
+        <style name="px24_ff5722">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/red_ff5722</item>
+        </style>
+
+        <style name="px24_mainColor">
+            <item name="android:textSize">@dimen/dm024</item>
+            <item name="android:textColor">@color/mainColor</item>
+        </style>
+
+        <style name="style_18px_808080">
+            <item name="android:textSize">@dimen/dm018</item>
+            <item name="android:textColor">@color/color_808080</item>
+        </style>
+
+        <style name="MyPopupMenu">
+            <item name="android:popupBackground">@android:drawable/dialog_holo_light_frame</item>
+        </style>
+
+        <style name="px22_999">
+            <item name="android:textSize">@dimen/dm022</item>
+            <item name="android:textColor">@color/color999</item>
+
+        </style>
+
+        <style name="px28_212121">
+            <item name="android:textSize">@dimen/dm028</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="px28_999">
+            <item name="android:textSize">@dimen/dm028</item>
+            <item name="android:textColor">@color/color999</item>
+        </style>
+
+        <style name="px22_212121">
+            <item name="android:textSize">@dimen/dm022</item>
+            <item name="android:textColor">@color/color212121</item>
+        </style>
+
+        <style name="mainColor666CheckBox" parent="Theme.AppCompat.Light">
+            <item name="colorControlNormal">@color/color666</item>
+            <item name="colorControlActivated">@color/mainColor</item>
+
+        </style>
+
+        <style name="mainColor999CheckBox" parent="Theme.AppCompat.Light">
+            <item name="colorControlNormal">@color/color999</item>
+            <item name="colorControlActivated">@color/mainColor</item>
+
+        </style>
+
+        <!--带输入框-->
+        <style name="inputDialog" parent="@android:style/Theme.Holo.Light.Dialog">
+            <item name="android:windowFrame">@android:color/transparent</item><!-- 边框 -->
+            <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->
+            <item name="android:windowIsTranslucent">false</item><!-- 半透明 -->
+            <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+            <item name="android:windowBackground">@android:color/transparent</item><!-- 自己想要的背景 -->
+            <item name="android:backgroundDimEnabled">true</item><!-- 模糊 -->
+            <item name="android:windowSoftInputMode">stateAlwaysVisible</item><!--显示软件盘-->
+        </style>
+
+
+        <!--带边框的TextView-->
+        <declare-styleable name="BorderLabelTextView">
+            <!--边框的宽度，默认为1dp-->
+            <attr name="strokeWidth" format="dimension" />
+            <!--圆角半径，默认为2dp-->
+            <attr name="cornerRadius" format="dimension" />
+            <!--边框颜色，默认是没有边框即颜色为Color.TRANSPARENT-->
+            <attr name="strokeColor" format="color" />
+            <!--边框是否跟随文字颜色，默认是true-->
+            <attr name="followTextColor" format="boolean" />
+            <!--实心或空心，默认空心-->
+            <attr name="isSolid" format="boolean" />
+        </declare-styleable>
+
 
 </resources>
