@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.sfmap.api.location.demo">
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- 这个权限用于进行网络定位 -->
@@ -21,23 +23,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/theme_appcompat"
+        tools:replace="icon,label,theme,allowBackup">
 
-        <uses-library android:name="org.apache.http.legacy" android:required="true"/>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="true" />
         <!-- sfmap api key -->
         <meta-data
-        android:name="com.sfmap.apikey"
-        android:value="${demoLocationAk}" />
+            android:name="com.sfmap.apikey"
+            android:value="${demoLocationAk}" />
 
-        <activity android:name=".SFLocationActivity">
+        <activity android:name=".view.SFLocationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.RequestInfoActivity" />
 
-        <activity android:name=".BaseActivity" />
     </application>
 
 </manifest>

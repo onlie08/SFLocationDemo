@@ -1,4 +1,4 @@
-package com.sfmap.api.location.demo;
+package com.sfmap.api.location.demo.utils;
 
 import android.content.Context;
 import android.os.Environment;

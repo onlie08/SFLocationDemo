@@ -1,4 +1,4 @@
-package com.sfmap.api.location.demo;
+package com.sfmap.api.location.demo.view;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -19,6 +19,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,9 @@ import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
 import com.sfmap.api.location.SfMapLocationListener;
+import com.sfmap.api.location.demo.R;
+import com.sfmap.api.location.demo.controllor.BaseFgActivity;
+import com.sfmap.api.location.demo.utils.LogcatFileManager;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -36,7 +41,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class SFLocationActivity extends AppCompatActivity {
+public class SFLocationActivity extends BaseFgActivity {
     private final String TAG = SFLocationActivity.class.getSimpleName();
     private MapView mMapView;
     private MapController mMap;
@@ -60,7 +65,10 @@ public class SFLocationActivity extends AppCompatActivity {
         context = this;
         requestPermission();
 
+
         setContentView(R.layout.activity_location);
+        initStatusBar();
+        initTitleBackBt("顺丰定位");
 
         mMapView = findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
@@ -87,6 +95,12 @@ public class SFLocationActivity extends AppCompatActivity {
         tv_wifi_count = findViewById(R.id.tv_wifi_count);
         tv_gps_count = findViewById(R.id.tv_gps_count);
 
+        getTitleRightBt(getString(R.string.location)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, RequestInfoActivity.class));
+            }
+        });
     }
 
     private void requestPermission() {
