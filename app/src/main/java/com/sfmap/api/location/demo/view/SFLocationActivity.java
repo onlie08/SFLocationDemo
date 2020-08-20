@@ -2,6 +2,7 @@ package com.sfmap.api.location.demo.view;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -18,6 +19,7 @@ import android.os.Process;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -37,9 +39,11 @@ import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
 import com.sfmap.api.maps.MapView;
 import com.sfmap.api.maps.model.LatLng;
-import com.sfmap.api.maps.model.Text;
 
-import java.text.Format;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -100,7 +104,7 @@ public class SFLocationActivity extends BaseFgActivity {
         tv_gps_count = findViewById(R.id.tv_gps_count);
 
         infoTv = findViewById(R.id.info_tv);
-
+        infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
         getTitleRightBt(getString(R.string.location)).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -347,6 +351,33 @@ public class SFLocationActivity extends BaseFgActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    String msgTotal;
+    int i = 0;
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMsgEvent(String msgStr) {
+        i++;
+        if (i > 100) {
+            i = 0;
+            msgTotal = msgStr;
+        }
+        msgTotal = msgTotal +"\n"+ msgStr;
+        infoTv.setText(msgTotal);
+
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == CodeConst.REQUEST_CODE_CONFIG_SET &&
@@ -355,8 +386,7 @@ public class SFLocationActivity extends BaseFgActivity {
             String apiKey = intent.getStringExtra(KeyConst.apiKey);
             String pkgName = intent.getStringExtra(KeyConst.pkgName);
 
-            Log.d("配置信息", String.format("Sha1: %1$s\nAk: %2$s\nPkgName: %3$s",sha1 , apiKey, pkgName));
-
+            Log.d("配置信息", String.format("Sha1: %1$s\nAk: %2$s\nPkgName: %3$s", sha1, apiKey, pkgName));
             if (mSfMapLocationClient != null) {
                 mSfMapLocationClient.startLocation();
             }

@@ -32,6 +32,8 @@ import com.sfmap.api.location.client.util.NetLocator;
 import com.sfmap.api.location.client.util.NetworkDataManager;
 import com.sfmap.api.location.client.util.Utils;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -196,6 +198,7 @@ public class NetLocatorSfImpl implements NetLocator {
 //            String jsonResult = isNetworkConnected ? Utils.get(requestUrl, null, "UTF-8") : null;
             String jsonResult = Utils.get(requestUrl, null, "UTF-8");
             Log.d(TAG, "requestUrl:" + requestUrl + "\njsonResult:" + jsonResult);
+            postEventBusLocData("[返回结果-解密前]\n" + requestUrl);
             saveGpsInfo("返回结果-解密前：isNetworkConnected:" + isNetworkConnected + jsonResult);
             if (TextUtils.isEmpty(jsonResult)) {
                 if (netLocator.mLastSuccessResponseBean == null) {
@@ -206,6 +209,7 @@ public class NetLocatorSfImpl implements NetLocator {
                     saveGpsInfo("返回结果null-返回上次定位结果");
                     result = netLocator.mLastSuccessResponseBean;
                 }
+                postEventBusLocData("[返回结果]:null,错误码: " + result.getErrCode());
                 return result;
             }
 
@@ -221,9 +225,11 @@ public class NetLocatorSfImpl implements NetLocator {
                     );
                     saveGpsInfo("返回结果-解密后：" + responseBody);
                     result = mGson.fromJson(responseBody, ResponseBean.class);
+                    postEventBusLocData("[返回结果-解密后]\n"+responseBody );
                 } else {
                     saveGpsInfo("返回结果-报错");
                     result = translateErrorResult(lbsApiResult, netLocator);
+                    postEventBusLocData("[返回结果]\n报错,错误码: "+result.getErrCode() );
                 }
             } catch (Exception e) {
                 result = new ResponseBean();
@@ -248,6 +254,7 @@ public class NetLocatorSfImpl implements NetLocator {
                     try {
                         errMsgDecrypted = new DesUtil().decrypt(errMsgEncrypted, "UTF-8");
                         saveGpsInfo("返回结果-报错：translateErrorResult：" + errMsgDecrypted);
+                        postEventBusLocData("[返回结果]\n报错：translateErrorResult：" + apiResultData.getErr());
                         if (errMsgDecrypted == null) {
                             errMsgDecrypted = errMsgEncrypted;
                         }
@@ -349,6 +356,7 @@ public class NetLocatorSfImpl implements NetLocator {
                     boolean okToHandle = currentUpTime - mLastNetworkRequestTime >= (mIntervalMs / 2);
                     if (okToHandle) {
                         requestBean = mNetworkDataManager.getRequestData();
+                        //todo 添加参数
                         sendLocationNetworkRequest();
                     } else {
                         if (BuildConfig.DEBUG) {
@@ -398,6 +406,8 @@ public class NetLocatorSfImpl implements NetLocator {
         requestBean.setNeedAddress(mNeedAddress);
         requestBean.setUseGcj02(mUseGcj02);
         String url = AppInfo.getNetLocationUrl(mApplication);
+
+
 //        String url = BuildConfig.LOCATION_BACKEND_HOST + BuildConfig.LOCATION_API_PATH;
         Gson gson = new Gson();
         String requestString = gson.toJson(requestBean);
@@ -411,7 +421,11 @@ public class NetLocatorSfImpl implements NetLocator {
             Log.v(TAG, "Network location request is --> \n" + requestString);
             sendRequestBroadcast(requestBean, gson);
         }
-        return url + "?param=" + encryptData + "&type=2&ak=" + mApiKey;
+        String fullUrl = url + "?param=" + encryptData + "&type=2&ak=" + mApiKey;
+        postEventBusLocData(String.format("\n[请求参数] \nUrl: %1$s" +
+                        "\nSha1: %2$s\nAK: %3$s\n包名: %4$s\n",
+                url,requestBean.getAppCerSha1(),mApiKey,requestBean.getAppPackageName()));
+        return fullUrl;
     }
 
     private boolean isLocationRequestLogEnabled() {
@@ -448,10 +462,13 @@ public class NetLocatorSfImpl implements NetLocator {
     }
 
     public void saveGpsInfo(String info) {
-        //TODO  打印正常结果(异常的前面把错误码打印出来)
-        Log.d("返回数据", "返回数据:" + info);
         if (mTraceEnable) {
             Utils.saveGpsInfo(info);
         }
+    }
+
+    public void postEventBusLocData(String info) {
+        Log.d("返回数据", "返回数据:" + info);
+        EventBus.getDefault().post(info);
     }
 }

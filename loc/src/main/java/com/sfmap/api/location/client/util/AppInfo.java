@@ -181,6 +181,7 @@ public class AppInfo {
         return msg;
     }
 
+    //todo
     public static String getPackageName(Context context){
         if ((packageName != null) && (!"".equals(packageName))) {
             return packageName;
@@ -189,6 +190,7 @@ public class AppInfo {
         return packageName;
     }
 
+    //todo
     public static String getSHA1(Context context){
         try{
             if ((sha1 != null) && (!sha1.isEmpty())) {
