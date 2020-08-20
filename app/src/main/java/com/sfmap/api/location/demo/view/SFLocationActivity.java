@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
@@ -369,12 +370,16 @@ public class SFLocationActivity extends BaseFgActivity {
     }
 
     private String msgTotal;
+    private String msgTotalTag;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMsgEvent(String msgStr) {
-        msgTotal = msgTotal + "\n" + msgStr;
         if (msgStr.contains("请求参数")) {
+            msgTotalTag = msgTotal;
             msgTotal = msgStr;
+        } else {
+            msgTotal = msgTotal + "\n" + msgStr;
+
         }
     }
 
@@ -400,18 +405,13 @@ public class SFLocationActivity extends BaseFgActivity {
     public void onInfoShowClick(View view) {
         View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
         TextView infoTv = layout.findViewById(R.id.info_tv);
-        infoTv.setText(msgTotal);
+        infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
+        infoTv.setTextIsSelectable(true);
+        infoTv.setText(msgTotalTag);
         new MaterialDialog.Builder(context)
                 .positiveText(R.string.sure)
                 .positiveColorRes(R.color.mainColor)
-                .negativeColorRes(R.color.mainColor).title("定位信息")
-                .customView(layout, false).
-                onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        View customView = dialog.getCustomView();
-
-                    }
-                }).show();
+                .negativeColorRes(R.color.mainColor).title("日志信息").titleGravity(GravityEnum.CENTER)
+                .customView(layout, false).show();
     }
 }
