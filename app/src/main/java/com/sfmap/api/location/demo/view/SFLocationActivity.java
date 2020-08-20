@@ -37,7 +37,9 @@ import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
 import com.sfmap.api.maps.MapView;
 import com.sfmap.api.maps.model.LatLng;
+import com.sfmap.api.maps.model.Text;
 
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -47,7 +49,8 @@ public class SFLocationActivity extends BaseFgActivity {
     private MapView mMapView;
     private MapController mMap;
     private SfMapLocationClient mSfMapLocationClient;
-    private TextView tv_time, tv_lat, tv_lon, tv_address, tv_accuracy, tv_cell_info, tv_wifi_count, tv_gps_count;
+    private TextView tv_time, tv_lat, tv_lon, tv_address, tv_accuracy,
+            tv_cell_info, tv_wifi_count, tv_gps_count, infoTv;
     private LocationSource.OnLocationChangedListener mLocationChangedListener;
     private SFLocationActivity context;
     private boolean isFirstFocus = false;
@@ -95,6 +98,8 @@ public class SFLocationActivity extends BaseFgActivity {
         tv_cell_info = findViewById(R.id.tv_cell_info);
         tv_wifi_count = findViewById(R.id.tv_wifi_count);
         tv_gps_count = findViewById(R.id.tv_gps_count);
+
+        infoTv = findViewById(R.id.info_tv);
 
         getTitleRightBt(getString(R.string.location)).setOnClickListener(new View.OnClickListener() {
 
@@ -349,6 +354,15 @@ public class SFLocationActivity extends BaseFgActivity {
             String sha1 = intent.getStringExtra(KeyConst.sha1);
             String apiKey = intent.getStringExtra(KeyConst.apiKey);
             String pkgName = intent.getStringExtra(KeyConst.pkgName);
+
+            Log.d("配置信息", String.format("Sha1: %1$s\nAk: %2$s\nPkgName: %3$s",sha1 , apiKey, pkgName));
+
+            if (mSfMapLocationClient != null) {
+                mSfMapLocationClient.startLocation();
+            }
+
+
+
         }
     }
 }

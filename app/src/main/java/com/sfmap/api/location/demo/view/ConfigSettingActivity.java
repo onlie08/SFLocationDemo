@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.location.demo.R;
+import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.controllor.BaseFgActivity;
 import com.sfmap.api.location.demo.utils.ToastUtil;
@@ -56,7 +57,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
         intent.putExtra(KeyConst.sha1, sha1);
         intent.putExtra(KeyConst.apiKey, apiKey);
         intent.putExtra(KeyConst.pkgName, pkgName);
-        setResult(RESULT_OK, intent);
+        setResult(CodeConst.RESULT_CODE_CONFIG_SET, intent);
         finish();
 
     }
