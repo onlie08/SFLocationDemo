@@ -94,7 +94,8 @@ public class SFLocationActivity extends BaseFgActivity {
 
         initMapSetting();
         initLocation();
-        registerReceiver(locationRequestReceiver, new IntentFilter(SfMapLocationClient.ACTION_NAME_NETWORK_LOCATION_REQUEST));
+        registerReceiver(locationRequestReceiver,
+                new IntentFilter(SfMapLocationClient.ACTION_NAME_NETWORK_LOCATION_REQUEST));
         try {
             LogcatFileManager.getInstance().start(Environment
                     .getExternalStorageDirectory().getAbsolutePath() + "/sflocation");

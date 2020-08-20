@@ -225,7 +225,7 @@ public class NetLocatorSfImpl implements NetLocator {
                     );
                     saveGpsInfo("返回结果-解密后：" + responseBody);
                     result = mGson.fromJson(responseBody, ResponseBean.class);
-                    postEventBusLocData("[返回结果-解密后]\n"+responseBody );
+                    postEventBusLocData("\n[返回结果-解密后]\n"+responseBody );
                 } else {
                     saveGpsInfo("返回结果-报错");
                     result = translateErrorResult(lbsApiResult, netLocator);
