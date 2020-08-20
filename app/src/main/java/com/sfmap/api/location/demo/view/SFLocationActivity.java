@@ -362,7 +362,6 @@ public class SFLocationActivity extends BaseFgActivity {
             }
 
 
-
         }
     }
 }

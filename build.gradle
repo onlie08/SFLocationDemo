@@ -16,9 +16,14 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
         jcenter()
-        
+        //添加镜像源 ->: Unable to resolve dependency for ‘:app@debug/compileClasspath
+        maven {
+            url "https://maven.aliyun.com/repository/google"
+        }
+        maven {
+            url "https://maven.aliyun.com/repository/jcenter"
+        }
     }
 }
 
