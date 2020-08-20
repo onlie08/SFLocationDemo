@@ -15,20 +15,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/dm050"
-        android:paddingRight="@dimen/dm050">
+        android:paddingLeft="@dimen/main_margin_left_x"
+        android:paddingRight="@dimen/main_margin_left_x">
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_sha1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dm030"
+            android:layout_marginTop="@dimen/dm060"
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
             android:hint="请输入Sha1"
-            android:maxLength="22"
-            android:paddingLeft="@dimen/dm020"
+            android:paddingLeft="@dimen/dm015"
             android:singleLine="true"
             android:text=""
             android:textColor="@color/color_000000"
@@ -45,15 +44,13 @@
             app:met_underlineColor="@color/color_000000" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/et_kg_name"
+            android:id="@+id/et_ak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
-            android:hint="请输入包名"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:paddingLeft="@dimen/dm020"
+            android:hint="请输入AK值"
+            android:paddingLeft="@dimen/dm015"
             android:singleLine="true"
             android:text=""
             android:textColor="@color/color_000000"
@@ -70,15 +67,13 @@
             app:met_underlineColor="@color/color_000000" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/et_sk"
+            android:id="@+id/et_pkg_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
-            android:hint="请输入AK值"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:paddingLeft="@dimen/dm020"
+            android:hint="请输入包名"
+            android:paddingLeft="@dimen/dm015"
             android:singleLine="true"
             android:text=""
             android:textColor="@color/color_000000"
@@ -93,6 +88,7 @@
             app:met_primaryColor="@color/mainColor"
             app:met_singleLineEllipsis="true"
             app:met_underlineColor="@color/color_000000" />
+
     </LinearLayout>
 
 
@@ -100,26 +96,14 @@
         android:id="@+id/submit_bt"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dm073"
-        android:layout_marginLeft="@dimen/dm150"
-        android:layout_marginTop="@dimen/main_margin_left_x"
-        android:layout_marginRight="@dimen/dm150"
+        android:layout_marginLeft="@dimen/dm100"
+        android:layout_marginTop="@dimen/dm060"
+        android:layout_marginRight="@dimen/dm100"
         android:background="@drawable/selector_login_bt"
         android:onClick="onSubmitClick"
-        android:layout_marginBottom="@dimen/dm050"
-        android:text="@string/submit"
+        android:layout_marginBottom="@dimen/dm080"
+        android:text="@string/sure"
         android:textColor="@color/white"
         android:textSize="@dimen/dm028" />
-
-    <include layout="@layout/layout_line_height_f5" />"
-
-    <TextView
-        android:id="@+id/info_tv"
-        style="@style/px26_212121"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/dm050"
-        android:paddingLeft="@dimen/dm050"
-        android:text="@string/data" />
 
 </LinearLayout>

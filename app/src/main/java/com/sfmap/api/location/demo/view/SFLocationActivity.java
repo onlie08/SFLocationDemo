@@ -16,11 +16,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Process;
 import android.provider.Settings;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +28,8 @@ import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
 import com.sfmap.api.location.SfMapLocationListener;
 import com.sfmap.api.location.demo.R;
+import com.sfmap.api.location.demo.constants.CodeConst;
+import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.controllor.BaseFgActivity;
 import com.sfmap.api.location.demo.utils.LogcatFileManager;
 import com.sfmap.api.maps.CameraUpdateFactory;
@@ -96,9 +97,11 @@ public class SFLocationActivity extends BaseFgActivity {
         tv_gps_count = findViewById(R.id.tv_gps_count);
 
         getTitleRightBt(getString(R.string.location)).setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, RequestInfoActivity.class));
+                context.startActivityForResult(new Intent(context, ConfigSettingActivity.class),
+                        CodeConst.REQUEST_CODE_CONFIG_SET);
             }
         });
     }
@@ -154,7 +157,7 @@ public class SFLocationActivity extends BaseFgActivity {
                             if (mLocationChangedListener != null && location != null) {
                                 if (location.isSuccessful() && location.getLatitude() > 0) {
                                     String loca = "Provider:" + location.getProvider() + " Longitude:" + location.getLongitude() + " Latitude:" + location.getLatitude() +
-                                            " Time:" + getGpsLoaalTime(location.getTime()) + " Altitude:" + location.getAltitude() + " adcode:" + location.getmAdcode() + " Satellites:" + location.getmSatellites() + "\n";
+                                            " Time:" + getGpsLocalTime(location.getTime()) + " Altitude:" + location.getAltitude() + " adcode:" + location.getmAdcode() + " Satellites:" + location.getmSatellites() + "\n";
 
                                     mLocationChangedListener.onLocationChanged(location);
                                     LatLng position = new LatLng(location.getLatitude(), location.getLongitude());
@@ -168,7 +171,7 @@ public class SFLocationActivity extends BaseFgActivity {
                                         }
                                         isFirstFocus = true;
                                     }
-                                    tv_time.setText(getGpsLoaalTime(location.getTime()) + " (" + location.getProvider() + ")");
+                                    tv_time.setText(getGpsLocalTime(location.getTime()) + " (" + location.getProvider() + ")");
                                     tv_lat.setText(location.getLatitude() + "");
                                     tv_lon.setText(location.getLongitude() + "");
                                     tv_address.setText(location.getAddress());
@@ -330,7 +333,7 @@ public class SFLocationActivity extends BaseFgActivity {
         }
     }
 
-    private String getGpsLoaalTime(long gpsTime) {
+    private String getGpsLocalTime(long gpsTime) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(gpsTime);
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -338,5 +341,14 @@ public class SFLocationActivity extends BaseFgActivity {
         return datestring;
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == CodeConst.REQUEST_CODE_CONFIG_SET &&
+                resultCode == CodeConst.RESULT_CODE_CONFIG_SET) {
+            String sha1 = intent.getStringExtra(KeyConst.sha1);
+            String apiKey = intent.getStringExtra(KeyConst.apiKey);
+            String pkgName = intent.getStringExtra(KeyConst.pkgName);
+        }
+    }
 }
