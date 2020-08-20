@@ -29,6 +29,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
@@ -395,13 +397,12 @@ public class SFLocationActivity extends BaseFgActivity {
         }
     }
 
-   /* public void onInfoShowClick(View view) {
+    public void onInfoShowClick(View view) {
         View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
         TextView infoTv = layout.findViewById(R.id.info_tv);
         infoTv.setText(msgTotal);
         new MaterialDialog.Builder(context)
                 .positiveText(R.string.sure)
-                .negativeText(R.string.cancel)
                 .positiveColorRes(R.color.mainColor)
                 .negativeColorRes(R.color.mainColor).title("定位信息")
                 .customView(layout, false).
@@ -412,5 +413,5 @@ public class SFLocationActivity extends BaseFgActivity {
 
                     }
                 }).show();
-    }*/
+    }
 }

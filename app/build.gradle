@@ -70,4 +70,10 @@ dependencies {
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+
+    implementation 'com.afollestad.material-dialogs:core:0.9.1.0'
+    //解决 导入core0.9后 v13.view.DragAndDropPermissionsCompat问题
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
 }
