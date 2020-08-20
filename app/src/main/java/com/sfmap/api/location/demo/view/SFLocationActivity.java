@@ -17,11 +17,15 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Process;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +50,9 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class SFLocationActivity extends BaseFgActivity {
     private final String TAG = SFLocationActivity.class.getSimpleName();
@@ -54,7 +60,7 @@ public class SFLocationActivity extends BaseFgActivity {
     private MapController mMap;
     private SfMapLocationClient mSfMapLocationClient;
     private TextView tv_time, tv_lat, tv_lon, tv_address, tv_accuracy,
-            tv_cell_info, tv_wifi_count, tv_gps_count, infoTv;
+            tv_cell_info, tv_wifi_count, tv_gps_count;
     private LocationSource.OnLocationChangedListener mLocationChangedListener;
     private SFLocationActivity context;
     private boolean isFirstFocus = false;
@@ -103,8 +109,6 @@ public class SFLocationActivity extends BaseFgActivity {
         tv_wifi_count = findViewById(R.id.tv_wifi_count);
         tv_gps_count = findViewById(R.id.tv_gps_count);
 
-        infoTv = findViewById(R.id.info_tv);
-        infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
         getTitleRightBt(getString(R.string.location)).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -362,20 +366,16 @@ public class SFLocationActivity extends BaseFgActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    String msgTotal;
-    int i = 0;
+    private String msgTotal;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMsgEvent(String msgStr) {
-        i++;
-        if (i > 100) {
-            i = 0;
+        msgTotal = msgTotal + "\n" + msgStr;
+        if (msgStr.contains("请求参数")) {
             msgTotal = msgStr;
         }
-        msgTotal = msgTotal +"\n"+ msgStr;
-        infoTv.setText(msgTotal);
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
@@ -394,4 +394,23 @@ public class SFLocationActivity extends BaseFgActivity {
 
         }
     }
+
+   /* public void onInfoShowClick(View view) {
+        View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
+        TextView infoTv = layout.findViewById(R.id.info_tv);
+        infoTv.setText(msgTotal);
+        new MaterialDialog.Builder(context)
+                .positiveText(R.string.sure)
+                .negativeText(R.string.cancel)
+                .positiveColorRes(R.color.mainColor)
+                .negativeColorRes(R.color.mainColor).title("定位信息")
+                .customView(layout, false).
+                onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        View customView = dialog.getCustomView();
+
+                    }
+                }).show();
+    }*/
 }
