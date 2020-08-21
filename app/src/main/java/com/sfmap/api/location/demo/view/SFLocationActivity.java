@@ -2,7 +2,6 @@ package com.sfmap.api.location.demo.view;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -15,10 +14,8 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.os.Process;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
@@ -26,21 +23,16 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
 import com.sfmap.api.location.SfMapLocationListener;
-import com.sfmap.api.location.client.bean.RequestBean;
-import com.sfmap.api.location.client.impl.NetLocatorSfImpl;
 import com.sfmap.api.location.client.util.AppInfo;
-import com.sfmap.api.location.client.util.NetworkDataManager;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
@@ -57,14 +49,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.security.Key;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
-
-import static com.sfmap.api.location.demo.constants.KeyConst.pkgName;
 
 public class SFLocationActivity extends BaseFgActivity {
     private final String TAG = SFLocationActivity.class.getSimpleName();
@@ -83,6 +70,8 @@ public class SFLocationActivity extends BaseFgActivity {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
+    private TextView infoTv;
+    private MaterialDialog.Builder infoShowDiloag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +118,7 @@ public class SFLocationActivity extends BaseFgActivity {
                         CodeConst.REQUEST_CODE_CONFIG_SET);
             }
         });
+        initShowInfoDialog();
     }
 
     private void requestPermission() {
@@ -403,7 +393,6 @@ public class SFLocationActivity extends BaseFgActivity {
             if (mSfMapLocationClient != null) {
                 resetConfigData(intent);
                 mSfMapLocationClient.startLocation();
-                    showInfoDialog();
             }
         }
     }
@@ -426,17 +415,25 @@ public class SFLocationActivity extends BaseFgActivity {
         showInfoDialog();
     }
 
-    private void showInfoDialog() {
+    private void initShowInfoDialog() {
         View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
-        final TextView infoTv = layout.findViewById(R.id.info_tv);
+        infoTv = layout.findViewById(R.id.info_tv);
         infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
         infoTv.setTextIsSelectable(true);
-        infoTv.setText(msgTotalTag);
-        new MaterialDialog.Builder(context)
+        infoShowDiloag = new MaterialDialog.Builder(context)
                 .positiveText(R.string.sure)
                 .positiveColorRes(R.color.mainColor)
-                .negativeColorRes(R.color.mainColor).title("日志信息").titleGravity(GravityEnum.CENTER)
-                .customView(layout, false).show();
+                .negativeColorRes(R.color.mainColor).title(getString(
+                        R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
+                .customView(layout, false);
+
+    }
+
+    private void showInfoDialog() {
+        if (infoShowDiloag != null) {
+            infoTv.setText(msgTotalTag);
+            infoShowDiloag.show();
+        }
 
     }
 

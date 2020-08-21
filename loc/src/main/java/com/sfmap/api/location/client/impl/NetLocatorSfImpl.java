@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.sfmap.api.location.BuildConfig;
 import com.sfmap.api.location.R;
 import com.sfmap.api.location.SfMapLocation;
@@ -33,6 +34,7 @@ import com.sfmap.api.location.client.util.NetworkDataManager;
 import com.sfmap.api.location.client.util.Utils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -236,7 +238,7 @@ public class NetLocatorSfImpl implements NetLocator {
 
                     result = translateErrorResult(lbsApiResult, netLocator);
                     postEventBusLocData("错误码: " + result.getErrCode());
-                    Log.d(TAG, "请求失败,错误码: "+ result.getErrCode());
+                    Log.d(TAG, "请求失败,错误码: " + result.getErrCode());
                 }
             } catch (Exception e) {
                 result = new ResponseBean();
@@ -260,12 +262,15 @@ public class NetLocatorSfImpl implements NetLocator {
                     String errMsgDecrypted;
                     try {
                         errMsgDecrypted = new DesUtil().decrypt(errMsgEncrypted, "UTF-8");
-                        saveGpsInfo("请求失败,原因：" + errMsgDecrypted);
-                        Log.d(TAG, "请求失败,原因: "+errMsgDecrypted);
-                        postEventBusLocData("请求失败：" + errMsgEncrypted);
                         if (errMsgDecrypted == null) {
                             errMsgDecrypted = errMsgEncrypted;
+                        } else {
+                            JSONObject obj = new JSONObject(errMsgDecrypted);
+                            errMsgDecrypted = obj.getString("message");
                         }
+
+                        saveGpsInfo("请求失败,原因：" + errMsgDecrypted);
+                        postEventBusLocData("请求失败：" + errMsgDecrypted);//错误码 10
                     } catch (Exception e) {
                         if (BuildConfig.DEBUG) {
                             Log.e(TAG, "Decrypt error message failed.");
@@ -413,7 +418,7 @@ public class NetLocatorSfImpl implements NetLocator {
             return null;
         }
         //用户修改参数后,重新赋值
-        Log.d(TAG, "用户ak:"+AppInfo.getSystemAk(mApplication));
+        Log.d(TAG, "用户ak:" + AppInfo.getSystemAk(mApplication));
         mApiKey = AppInfo.getSystemAk(mApplication);
         requestBean.setAppPackageName(AppInfo.getPackageName(mApplication));
         requestBean.setAppCerSha1(AppInfo.getSHA1(mApplication));
@@ -476,7 +481,7 @@ public class NetLocatorSfImpl implements NetLocator {
     }
 
     public void saveGpsInfo(String info) {
-        Log.d(TAG, "请求返回: "+ info);
+        Log.d(TAG, "请求返回: " + info);
         if (mTraceEnable) {
             Utils.saveGpsInfo(info);
         }
