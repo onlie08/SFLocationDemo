@@ -34,6 +34,7 @@ import com.sfmap.api.location.client.util.NetworkDataManager;
 import com.sfmap.api.location.client.util.Utils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
@@ -265,18 +266,18 @@ public class NetLocatorSfImpl implements NetLocator {
                         if (errMsgDecrypted == null) {
                             errMsgDecrypted = errMsgEncrypted;
                         } else {
-                            JSONObject obj = new JSONObject(errMsgDecrypted);
-                            errMsgDecrypted = obj.getString("message");
+                            errMsgDecrypted = new JSONObject(errMsgDecrypted).getString("message");
                         }
 
                         saveGpsInfo("请求失败,原因：" + errMsgDecrypted);
                         postEventBusLocData("请求失败：" + errMsgDecrypted);//错误码 10
                     } catch (Exception e) {
+                        //解密错误消息失败
                         if (BuildConfig.DEBUG) {
                             Log.e(TAG, "Decrypt error message failed.");
                             e.printStackTrace();
                         }
-                        //解密错误消息失败，直接用加密消息输出
+                        //直接输出加密消息
                         errMsgDecrypted = errMsgEncrypted;
                     }
                     if (!TextUtils.isEmpty(errMsgDecrypted)) {
