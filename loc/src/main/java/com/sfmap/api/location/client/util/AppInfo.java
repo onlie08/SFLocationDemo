@@ -38,7 +38,11 @@ public class AppInfo {
 
     //图咕系统配置的KEY
     private static String systemAk = "";
-    private static String systemAkDef = "ec85d3648154874552835438ac6a02b2";
+    private static String systemAkDef = "";
+
+    public static void setSystemAkDef(String systemAkDef) {
+        AppInfo.systemAkDef = systemAkDef;
+    }
 
     /**
      * 获取终端身份信息
@@ -181,7 +185,6 @@ public class AppInfo {
         return msg;
     }
 
-    //todo
     public static String getPackageName(Context context){
         if ((packageName != null) && (!"".equals(packageName))) {
             return packageName;
@@ -190,7 +193,14 @@ public class AppInfo {
         return packageName;
     }
 
-    //todo
+    public static void setPackageName(String packageName) {
+        AppInfo.packageName = packageName;
+    }
+
+    public static void setSha1(String sha1) {
+        AppInfo.sha1 = sha1;
+    }
+
     public static String getSHA1(Context context){
         try{
             if ((sha1 != null) && (!sha1.isEmpty())) {
@@ -275,5 +285,6 @@ public class AppInfo {
     public static String getSystemAk(Context context) {
         return getCustomOrDefaultURL(context, systemAk, systemAkDef, ConfigerHelper.SYSTEM_AK);
     }
+
 
 }

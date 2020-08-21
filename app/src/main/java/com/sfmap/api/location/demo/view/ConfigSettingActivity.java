@@ -44,6 +44,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
         String sha1 = sha1Et.getText().toString().trim();
         String apiKey = akEt.getText().toString().trim();
         String pkgName = pkgNameEt.getText().toString().trim();
+
         if (ToastUtil.showCannotEmpty(context, sha1, "sha1值")) {
             return;
         }
@@ -53,6 +54,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
         if (ToastUtil.showCannotEmpty(context, pkgName, "包名")) {
             return;
         }
+        //这三个值保存到本地SP
         Intent intent = new Intent();
         intent.putExtra(KeyConst.sha1, sha1);
         intent.putExtra(KeyConst.apiKey, apiKey);

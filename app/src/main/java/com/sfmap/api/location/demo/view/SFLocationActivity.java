@@ -15,6 +15,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.Process;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -36,11 +37,16 @@ import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
 import com.sfmap.api.location.SfMapLocationListener;
+import com.sfmap.api.location.client.bean.RequestBean;
+import com.sfmap.api.location.client.impl.NetLocatorSfImpl;
+import com.sfmap.api.location.client.util.AppInfo;
+import com.sfmap.api.location.client.util.NetworkDataManager;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.controllor.BaseFgActivity;
 import com.sfmap.api.location.demo.utils.LogcatFileManager;
+import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -51,11 +57,14 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.security.Key;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import static com.sfmap.api.location.demo.constants.KeyConst.pkgName;
 
 public class SFLocationActivity extends BaseFgActivity {
     private final String TAG = SFLocationActivity.class.getSimpleName();
@@ -81,8 +90,7 @@ public class SFLocationActivity extends BaseFgActivity {
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         context = this;
         requestPermission();
-
-
+        initSpConfig();//初始读取sp
         setContentView(R.layout.activity_location);
         initStatusBar();
         initTitleBackBt("顺丰定位");
@@ -165,6 +173,7 @@ public class SFLocationActivity extends BaseFgActivity {
                     mSfMapLocationClient.setLocationListener(new SfMapLocationListener() {
                         @Override
                         public void onLocationChanged(SfMapLocation location) {
+
                             tv_time.setText("");
                             tv_lat.setText("");
                             tv_lon.setText("");
@@ -173,6 +182,7 @@ public class SFLocationActivity extends BaseFgActivity {
                             Log.i(TAG, location.toString());
                             if (mLocationChangedListener != null && location != null) {
                                 if (location.isSuccessful() && location.getLatitude() > 0) {
+
                                     String loca = "Provider:" + location.getProvider() + " Longitude:" + location.getLongitude() + " Latitude:" + location.getLatitude() +
                                             " Time:" + getGpsLocalTime(location.getTime()) + " Altitude:" + location.getAltitude() + " adcode:" + location.getmAdcode() + " Satellites:" + location.getmSatellites() + "\n";
 
@@ -193,6 +203,7 @@ public class SFLocationActivity extends BaseFgActivity {
                                     tv_lon.setText(location.getLongitude() + "");
                                     tv_address.setText(location.getAddress());
                                     tv_accuracy.setText(location.getAccuracy() + "米");
+
                                 } else {
                                     Toast.makeText(getApplicationContext(), R.string.location_failed_with_errorcode + location.getErrorCode(), Toast.LENGTH_LONG).show();
                                 }
@@ -377,35 +388,47 @@ public class SFLocationActivity extends BaseFgActivity {
     public void onMsgEvent(String msgStr) {
         if (msgStr.contains("请求参数")) {
             msgTotalTag = msgTotal;
+
             msgTotal = msgStr;
         } else {
             msgTotal = msgTotal + "\n" + msgStr;
-
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == CodeConst.REQUEST_CODE_CONFIG_SET &&
                 resultCode == CodeConst.RESULT_CODE_CONFIG_SET) {
-            String sha1 = intent.getStringExtra(KeyConst.sha1);
-            String apiKey = intent.getStringExtra(KeyConst.apiKey);
-            String pkgName = intent.getStringExtra(KeyConst.pkgName);
-
-            Log.d("配置信息", String.format("Sha1: %1$s\nAk: %2$s\nPkgName: %3$s", sha1, apiKey, pkgName));
             if (mSfMapLocationClient != null) {
+                resetConfigData(intent);
                 mSfMapLocationClient.startLocation();
+                    showInfoDialog();
             }
-
-
         }
     }
 
+    private void resetConfigData(Intent intent) {
+
+        String sha1 = intent.getStringExtra(KeyConst.sha1);
+        String apiKey = intent.getStringExtra(KeyConst.apiKey);
+        String pkgName = intent.getStringExtra(KeyConst.pkgName);
+        AppInfo.setSha1(sha1);
+        AppInfo.setApiKey(apiKey);
+        AppInfo.setPackageName(pkgName);
+
+        SPUtils.put(context, KeyConst.SP_SHA1, sha1);
+        SPUtils.put(context, KeyConst.SP_AK, apiKey);
+        SPUtils.put(context, KeyConst.SP_PKG_NAME, pkgName);
+    }
+
     public void onInfoShowClick(View view) {
+        showInfoDialog();
+    }
+
+    private void showInfoDialog() {
         View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
-        TextView infoTv = layout.findViewById(R.id.info_tv);
+        final TextView infoTv = layout.findViewById(R.id.info_tv);
         infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
         infoTv.setTextIsSelectable(true);
         infoTv.setText(msgTotalTag);
@@ -414,5 +437,19 @@ public class SFLocationActivity extends BaseFgActivity {
                 .positiveColorRes(R.color.mainColor)
                 .negativeColorRes(R.color.mainColor).title("日志信息").titleGravity(GravityEnum.CENTER)
                 .customView(layout, false).show();
+
+    }
+
+    private void initSpConfig() {
+        String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");
+        String SP_SHA1 = (String) SPUtils.get(this, KeyConst.SP_SHA1, "");
+        String SP_PKG_NAME = (String) SPUtils.get(this, KeyConst.SP_PKG_NAME, "");
+
+        if (!TextUtils.isEmpty(SP_AK)) {
+            AppInfo.setApiKey(SP_AK);
+            AppInfo.setSha1(SP_SHA1);
+            AppInfo.setPackageName(SP_PKG_NAME);
+        }
+
     }
 }

@@ -67,12 +67,15 @@ public class NetLocatorSfImpl implements NetLocator {
     private boolean mOnceLocation;
     private volatile boolean mLocating;
     private ResponseBean mLastSuccessResponseBean;
-    private String mApiKey;
     private boolean mNeedAddress;
     private boolean mUseGcj02;
     private boolean mTraceEnable;
     private RequestBean requestBean;
     private volatile long mLastNetworkRequestTime;
+
+    private String mApiKey;
+    private String apkName;
+    private String sha1;
 
     @Override
     public void startLocation(long intervalMs) {
@@ -197,9 +200,8 @@ public class NetLocatorSfImpl implements NetLocator {
 
 //            String jsonResult = isNetworkConnected ? Utils.get(requestUrl, null, "UTF-8") : null;
             String jsonResult = Utils.get(requestUrl, null, "UTF-8");
-            Log.d(TAG, "requestUrl:" + requestUrl + "\njsonResult:" + jsonResult);
-            postEventBusLocData("[返回结果-解密前]\n" + requestUrl);
-            saveGpsInfo("返回结果-解密前：isNetworkConnected:" + isNetworkConnected + jsonResult);
+            postEventBusLocData("请求地址:\n" + requestUrl + "\n");
+            saveGpsInfo("请求地址:" + jsonResult);
             if (TextUtils.isEmpty(jsonResult)) {
                 if (netLocator.mLastSuccessResponseBean == null) {
                     saveGpsInfo("返回结果null-ERROR_CODE_FAILURE_CONNECTION");
@@ -209,12 +211,13 @@ public class NetLocatorSfImpl implements NetLocator {
                     saveGpsInfo("返回结果null-返回上次定位结果");
                     result = netLocator.mLastSuccessResponseBean;
                 }
-                postEventBusLocData("[返回结果]:null,错误码: " + result.getErrCode());
+                postEventBusLocData("请求地址为空!");
                 return result;
             }
 
             try {
                 LbsApiResult lbsApiResult = mGson.fromJson(jsonResult, LbsApiResult.class);
+                //请求成功
                 if (lbsApiResult != null &&
                         lbsApiResult.isSuccess() &&
                         lbsApiResult.getResult() != null &&
@@ -223,13 +226,17 @@ public class NetLocatorSfImpl implements NetLocator {
                             lbsApiResult.getResult().getMsg(),
                             "UTF-8"
                     );
-                    saveGpsInfo("返回结果-解密后：" + responseBody);
+                    saveGpsInfo("请求成功：" + responseBody);
+
                     result = mGson.fromJson(responseBody, ResponseBean.class);
-                    postEventBusLocData("\n[返回结果-解密后]\n"+responseBody );
+                    postEventBusLocData("请求成功:\n" + responseBody);
                 } else {
-                    saveGpsInfo("返回结果-报错");
+                    //请求失败
+                    saveGpsInfo("请求失败-报错");
+
                     result = translateErrorResult(lbsApiResult, netLocator);
-                    postEventBusLocData("[返回结果]\n报错,错误码: "+result.getErrCode() );
+                    postEventBusLocData("错误码: " + result.getErrCode());
+                    Log.d(TAG, "请求失败,错误码: "+ result.getErrCode());
                 }
             } catch (Exception e) {
                 result = new ResponseBean();
@@ -253,8 +260,9 @@ public class NetLocatorSfImpl implements NetLocator {
                     String errMsgDecrypted;
                     try {
                         errMsgDecrypted = new DesUtil().decrypt(errMsgEncrypted, "UTF-8");
-                        saveGpsInfo("返回结果-报错：translateErrorResult：" + errMsgDecrypted);
-                        postEventBusLocData("[返回结果]\n报错：translateErrorResult：" + apiResultData.getErr());
+                        saveGpsInfo("请求失败,原因：" + errMsgDecrypted);
+                        Log.d(TAG, "请求失败,原因: "+errMsgDecrypted);
+                        postEventBusLocData("请求失败：" + errMsgEncrypted);
                         if (errMsgDecrypted == null) {
                             errMsgDecrypted = errMsgEncrypted;
                         }
@@ -270,11 +278,11 @@ public class NetLocatorSfImpl implements NetLocator {
                         Log.e(TAG, errMsgDecrypted);
                     }
 
-                    Log.e(TAG, String.format("API Error package:%s, sha1:%s, ak:%s.",
+                    /*Log.e(TAG, String.format("API Error package:%s, sha1:%s, ak:%s.",
                             netLocator.mApplication.getPackageName(),
                             netLocator.mNetworkDataManager.getCertificateSHA1(),
                             netLocator.mApiKey
-                    ));
+                    ));*/
                 }
 
                 if (apiResultData.isAuthError()) {
@@ -356,7 +364,6 @@ public class NetLocatorSfImpl implements NetLocator {
                     boolean okToHandle = currentUpTime - mLastNetworkRequestTime >= (mIntervalMs / 2);
                     if (okToHandle) {
                         requestBean = mNetworkDataManager.getRequestData();
-                        //todo 添加参数
                         sendLocationNetworkRequest();
                     } else {
                         if (BuildConfig.DEBUG) {
@@ -395,18 +402,25 @@ public class NetLocatorSfImpl implements NetLocator {
         });
     }
 
+    //请求定位
     private String composeLocationRequestUrl() {
         if (requestBean == null) {
             return null;
         }
+
         if (!requestBean.isValid()) {
             notifyLocationError(SfMapLocation.ERROR_CODE_NOCGI_WIFIOFF);
             return null;
         }
+        //用户修改参数后,重新赋值
+        Log.d(TAG, "用户ak:"+AppInfo.getSystemAk(mApplication));
+        mApiKey = AppInfo.getSystemAk(mApplication);
+        requestBean.setAppPackageName(AppInfo.getPackageName(mApplication));
+        requestBean.setAppCerSha1(AppInfo.getSHA1(mApplication));
+
         requestBean.setNeedAddress(mNeedAddress);
         requestBean.setUseGcj02(mUseGcj02);
         String url = AppInfo.getNetLocationUrl(mApplication);
-
 
 //        String url = BuildConfig.LOCATION_BACKEND_HOST + BuildConfig.LOCATION_API_PATH;
         Gson gson = new Gson();
@@ -422,9 +436,9 @@ public class NetLocatorSfImpl implements NetLocator {
             sendRequestBroadcast(requestBean, gson);
         }
         String fullUrl = url + "?param=" + encryptData + "&type=2&ak=" + mApiKey;
-        postEventBusLocData(String.format("\n[请求参数] \nUrl: %1$s" +
+        postEventBusLocData(String.format("\n请求参数: \nUrl: %1$s" +
                         "\nSha1: %2$s\nAK: %3$s\n包名: %4$s\n",
-                url,requestBean.getAppCerSha1(),mApiKey,requestBean.getAppPackageName()));
+                url, requestBean.getAppCerSha1(), mApiKey, requestBean.getAppPackageName()));
         return fullUrl;
     }
 
@@ -462,13 +476,13 @@ public class NetLocatorSfImpl implements NetLocator {
     }
 
     public void saveGpsInfo(String info) {
+        Log.d(TAG, "请求返回: "+ info);
         if (mTraceEnable) {
             Utils.saveGpsInfo(info);
         }
     }
 
     public void postEventBusLocData(String info) {
-        Log.d("返回数据", "返回数据:" + info);
         EventBus.getDefault().post(info);
     }
 }

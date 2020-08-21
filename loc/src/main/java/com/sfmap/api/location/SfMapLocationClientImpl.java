@@ -18,6 +18,7 @@ import com.sfmap.api.location.client.impl.GpsLocator;
 import com.sfmap.api.location.client.impl.GpsRegeoHandler;
 import com.sfmap.api.location.client.impl.NetLocatorSfImpl;
 import com.sfmap.api.location.client.impl.NetLocatorSystemImpl;
+import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.location.client.util.CoordinateTransformUtil;
 import com.sfmap.api.location.client.util.NetLocationListener;
 import com.sfmap.api.location.client.util.NetLocator;
@@ -109,8 +110,10 @@ class SfMapLocationClientImpl {
 
     private SfMapLocationClientImpl(Context context) {
         PRNGFixes.apply();
+
         mApplication = (Application) context.getApplicationContext();
         mApiKey = getApiKey(context);
+        AppInfo.setSystemAkDef(mApiKey);
         //顺丰网络定位只支持中国大陆的数据，港澳台使用系统内置的网络定位
         if(Utils.isCnOperator(context)) {
             mNetLocator = new NetLocatorSfImpl(context);
@@ -239,7 +242,6 @@ class SfMapLocationClientImpl {
         }
         return null;
     }
-
 
     public void startLocation() {
 
