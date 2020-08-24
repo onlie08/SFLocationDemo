@@ -398,12 +398,14 @@ public class SFLocationActivity extends BaseFgActivity {
     }
 
     private void resetConfigData(Intent intent) {
-
         String api_url = intent.getStringExtra(KeyConst.api_url);
+        String urlPre = api_url.equals("gis.sf-express.com") ? "https://" : "http://";
+
         String sha1 = intent.getStringExtra(KeyConst.sha1);
         String apiKey = intent.getStringExtra(KeyConst.apiKey);
         String pkgName = intent.getStringExtra(KeyConst.pkgName);
-        AppInfo.setSpUrl(api_url);
+
+        AppInfo.setSpUrl(urlPre + api_url + "/nloc/locationapi");
         AppInfo.setSha1(sha1);
         AppInfo.setApiKey(apiKey);
         AppInfo.setPackageName(pkgName);

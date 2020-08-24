@@ -2,6 +2,7 @@ package com.sfmap.api.location.demo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import com.sfmap.api.location.demo.utils.ToastUtil;
 public class ConfigSettingActivity extends BaseFgActivity {
 
     private TextView infoTv;
-    private EditText urlEt,sha1Et, pkgNameEt, akEt;
+    private EditText urlEt, sha1Et, pkgNameEt, akEt;
     private ConfigSettingActivity context;
 
     @Override
@@ -36,7 +37,11 @@ public class ConfigSettingActivity extends BaseFgActivity {
         akEt = findViewById(R.id.et_ak);
         pkgNameEt = findViewById(R.id.et_pkg_name);
 
-        urlEt.setText(AppInfo.getNetLocationUrl(context));
+        String netLocationUrl = AppInfo.getNetLocationUrl(context);
+        int httpsIndex= netLocationUrl.indexOf("//")+2;
+        int sufIndex = netLocationUrl.indexOf("/nloc/");
+
+        urlEt.setText(netLocationUrl.substring(httpsIndex,sufIndex));
         sha1Et.setText(AppInfo.getSHA1(context));
         akEt.setText(AppInfo.getSystemAk(context));
         pkgNameEt.setText(AppInfo.getPackageName(context));
@@ -63,6 +68,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
         //这三个值保存到本地SP
         Intent intent = new Intent();
         intent.putExtra(KeyConst.api_url, url);
+
         intent.putExtra(KeyConst.sha1, sha1);
         intent.putExtra(KeyConst.apiKey, apiKey);
         intent.putExtra(KeyConst.pkgName, pkgName);
