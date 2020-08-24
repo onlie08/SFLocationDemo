@@ -405,7 +405,8 @@ public class SFLocationActivity extends BaseFgActivity {
         String apiKey = intent.getStringExtra(KeyConst.apiKey);
         String pkgName = intent.getStringExtra(KeyConst.pkgName);
 
-        AppInfo.setSpUrl(urlPre + api_url + "/nloc/locationapi");
+        api_url=urlPre + api_url + "/nloc/locationapi";
+        AppInfo.setSpUrl(api_url);
         AppInfo.setSha1(sha1);
         AppInfo.setApiKey(apiKey);
         AppInfo.setPackageName(pkgName);

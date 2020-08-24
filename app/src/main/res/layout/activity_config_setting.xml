@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dm005"
                 android:singleLine="true"
                 android:text=""
                 android:textColor="@color/color_000000"
@@ -41,7 +42,6 @@
                 app:met_floatingLabel="highlight"
                 app:met_floatingLabelPadding="@dimen/dm010"
                 app:met_floatingLabelText="IP地址:端口号"
-                android:paddingLeft="@dimen/dm005"
                 app:met_primaryColor="@color/mainColor"
                 app:met_singleLineEllipsis="true"
                 app:met_underlineColor="@color/color_000000" />
@@ -53,9 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            app:met_floatingLabel="highlight"
-            app:met_floatingLabelPadding="@dimen/dm006"
-            app:met_floatingLabelText="Sha1"
             android:paddingLeft="@dimen/dm005"
             android:singleLine="true"
             android:text=""
@@ -67,6 +64,9 @@
             app:met_baseColor="@color/color_000000"
             app:met_clearButton="true"
             app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="Sha1"
             app:met_primaryColor="@color/mainColor"
             app:met_singleLineEllipsis="true"
             app:met_underlineColor="@color/color_000000" />
@@ -76,8 +76,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            app:met_floatingLabel="highlight"
-            app:met_floatingLabelText="AK"
             android:paddingLeft="@dimen/dm005"
             android:singleLine="true"
             android:text=""
@@ -89,7 +87,9 @@
             app:met_baseColor="@color/color_000000"
             app:met_clearButton="true"
             app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
             app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="AK"
             app:met_primaryColor="@color/mainColor"
             app:met_singleLineEllipsis="true"
             app:met_underlineColor="@color/color_000000" />
@@ -99,8 +99,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            app:met_floatingLabel="highlight"
-            app:met_floatingLabelText="PkgName "
             android:paddingLeft="@dimen/dm005"
             android:singleLine="true"
             android:text=""
@@ -112,7 +110,9 @@
             app:met_baseColor="@color/color_000000"
             app:met_clearButton="true"
             app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
             app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="PkgName "
             app:met_primaryColor="@color/mainColor"
             app:met_singleLineEllipsis="true"
             app:met_underlineColor="@color/color_000000" />
@@ -120,7 +120,7 @@
     </LinearLayout>
 
 
-    <Button
+    <TextView
         android:id="@+id/submit_bt"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dm073"
@@ -129,9 +129,8 @@
         android:layout_marginRight="@dimen/dm100"
         android:layout_marginBottom="@dimen/dm080"
         android:background="@drawable/selector_login_bt"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:onClick="onSubmitClick"
+        android:gravity="center"
+        android:onClick="onSureClick"
         android:text="@string/sure"
         android:textColor="@color/white"
         android:textSize="@dimen/dm028" />

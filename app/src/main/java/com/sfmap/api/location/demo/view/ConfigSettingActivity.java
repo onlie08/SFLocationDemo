@@ -38,16 +38,23 @@ public class ConfigSettingActivity extends BaseFgActivity {
         pkgNameEt = findViewById(R.id.et_pkg_name);
 
         String netLocationUrl = AppInfo.getNetLocationUrl(context);
-        int httpsIndex= netLocationUrl.indexOf("//")+2;
+        int httpsIndex = netLocationUrl.indexOf("//")+2 ;
         int sufIndex = netLocationUrl.indexOf("/nloc/");
 
-        urlEt.setText(netLocationUrl.substring(httpsIndex,sufIndex));
+
+        if (httpsIndex<0||sufIndex<0) {
+            httpsIndex=0;
+            sufIndex=0;
+        }
+
+
+        urlEt.setText(netLocationUrl.substring(httpsIndex, sufIndex));
         sha1Et.setText(AppInfo.getSHA1(context));
         akEt.setText(AppInfo.getSystemAk(context));
         pkgNameEt.setText(AppInfo.getPackageName(context));
     }
 
-    public void onSubmitClick(View view) {
+    public void onSureClick(View view) {
         String url = urlEt.getText().toString().trim();
         String sha1 = sha1Et.getText().toString().trim();
         String apiKey = akEt.getText().toString().trim();
@@ -68,6 +75,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
         //这三个值保存到本地SP
         Intent intent = new Intent();
         intent.putExtra(KeyConst.api_url, url);
+
 
         intent.putExtra(KeyConst.sha1, sha1);
         intent.putExtra(KeyConst.apiKey, apiKey);
