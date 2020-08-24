@@ -18,7 +18,6 @@ import android.os.Process;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,13 +31,11 @@ import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
 import com.sfmap.api.location.SfMapLocationListener;
-import com.sfmap.api.location.client.util.AppInfo;
+import com.sfmap.api.location.demo.BaseFgActivity;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
-import com.sfmap.api.location.demo.controllor.BaseFgActivity;
 import com.sfmap.api.location.demo.utils.LogcatFileManager;
-import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -79,7 +76,6 @@ public class LocationActivity extends BaseFgActivity {
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         context = this;
         requestPermission();
-        initSpConfig();//初始读取sp
         setContentView(R.layout.activity_location);
         initStatusBar();
         initTitleBackBt(getIntent().getStringExtra(KeyConst.title));
@@ -115,7 +111,7 @@ public class LocationActivity extends BaseFgActivity {
             @Override
             public void onClick(View view) {
                 context.startActivityForResult(new Intent(context, ConfigSettingActivity.class),
-                        CodeConst.REQ_CODE_LOC_SET);
+                        CodeConst.REQ_CODE_LOC);
             }
         });
         initShowInfoDialog();
@@ -388,7 +384,7 @@ public class LocationActivity extends BaseFgActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == CodeConst.REQ_CODE_LOC_SET &&
+        if (requestCode == CodeConst.REQ_CODE_LOC &&
                 resultCode == CodeConst.RES_CODE_LOC) {
             if (mSfMapLocationClient != null) {
                 mSfMapLocationClient.startLocation();
@@ -423,18 +419,4 @@ public class LocationActivity extends BaseFgActivity {
 
     }
 
-    private void initSpConfig() {
-        String SP_URL = (String) SPUtils.get(this, KeyConst.SP_URL, "");
-        String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");
-        String SP_SHA1 = (String) SPUtils.get(this, KeyConst.SP_SHA1, "");
-        String SP_PKG_NAME = (String) SPUtils.get(this, KeyConst.SP_PKG_NAME, "");
-
-        if (!TextUtils.isEmpty(SP_AK)) {
-            AppInfo.setSpUrl(SP_URL);
-            AppInfo.setApiKey(SP_AK);
-            AppInfo.setSha1(SP_SHA1);
-            AppInfo.setPackageName(SP_PKG_NAME);
-        }
-
-    }
 }

@@ -1,4 +1,4 @@
-package com.sfmap.api.location.demo.controllor;
+package com.sfmap.api.location.demo;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -20,7 +20,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sfmap.api.location.demo.R;
+import com.sfmap.api.location.client.util.AppInfo;
+import com.sfmap.api.location.demo.constants.KeyConst;
+import com.sfmap.api.location.demo.controllor.ConnectionChangeReceiver;
+import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.location.demo.utils.StatusBarUtil;
 
 /**
@@ -43,6 +46,25 @@ public class BaseFgActivity extends FragmentActivity {
 
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         requestPermission();
+        initSPConfig();
+    }
+
+    protected void initSPConfig() {
+        String SP_URL = (String) SPUtils.get(this, KeyConst.SP_URL, "");
+        String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");
+        String SP_SHA1 = (String) SPUtils.get(this, KeyConst.SP_SHA1, "");
+        String SP_PKG_NAME = (String) SPUtils.get(this, KeyConst.SP_PKG_NAME, "");
+        String SP_LNG = (String )SPUtils.get(this, KeyConst.SP_LNG, "0.0");
+        String SP_LAT = (String) SPUtils.get(this, KeyConst.SP_LAT, "0.0");
+
+        if (!TextUtils.isEmpty(SP_AK)) {
+            AppInfo.setSpUrl(SP_URL);
+            AppInfo.setApiKey(SP_AK);
+            AppInfo.setSha1(SP_SHA1);
+            AppInfo.setPackageName(SP_PKG_NAME);
+            AppInfo.setLat(Double.valueOf(SP_LAT));
+            AppInfo.setLng(Double.valueOf(SP_LNG));
+        }
     }
 
     protected void initTitleBackBt(String title) {
@@ -65,10 +87,11 @@ public class BaseFgActivity extends FragmentActivity {
         ((TextView) findViewById(id)).setText(text);
 
     }
+
     protected Button getTitleRightBt(String rightText) {
         Button rightBt = (Button) findViewById(R.id.title_right_bt);
         rightBt.setText(rightText);
-        rightBt.setTextColor(ContextCompat.getColor(this,R.color.mainColor));
+        rightBt.setTextColor(ContextCompat.getColor(this, R.color.mainColor));
         rightBt.setVisibility(View.VISIBLE);
         return rightBt;
     }

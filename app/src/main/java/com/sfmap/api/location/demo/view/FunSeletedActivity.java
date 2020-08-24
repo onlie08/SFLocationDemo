@@ -8,12 +8,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.sfmap.api.location.demo.BaseFgActivity;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.KeyConst;
-import com.sfmap.api.location.demo.controllor.BaseFgActivity;
 import com.sfmap.api.location.demo.controllor.impl.OnMultiClickListener;
-
-import java.util.Map;
 
 public class FunSeletedActivity extends BaseFgActivity {
 

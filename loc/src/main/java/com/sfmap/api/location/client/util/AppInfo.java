@@ -43,8 +43,8 @@ public class AppInfo {
     //图咕系统配置的KEY
     private static String systemAk = "";
     private static String systemAkDef = "";
-    private static String lng = "";
-    private static String lat = "";
+    private static double lng ;
+    private static double lat;
 
     public static String getSpUrl() {
         return netLocationURL;
@@ -307,19 +307,19 @@ public class AppInfo {
         return getCustomOrDefaultURL(context, systemAk, systemAkDef, ConfigerHelper.SYSTEM_AK);
     }
 
-    public static String getLng() {
+    public static double getLng() {
         return lng;
     }
 
-    public static void setLng(String lng) {
+    public static void setLng(double lng) {
         AppInfo.lng = lng;
     }
 
-    public static String getLat() {
+    public static double getLat() {
         return lat;
     }
 
-    public static void setLat(String lat) {
+    public static void setLat(double lat) {
         AppInfo.lat = lat;
     }
 }
