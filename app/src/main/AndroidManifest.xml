@@ -42,7 +42,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ConfigSettingActivity" />
-        <activity android:name=".view.SFLocationActivity" />
+        <activity android:name=".view.LocationActivity" />
+        <activity android:name=".view.MapActivity" />
 
     </application>
 

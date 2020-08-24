@@ -2,7 +2,6 @@ package com.sfmap.api.location.demo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +12,8 @@ import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.controllor.BaseFgActivity;
 import com.sfmap.api.location.demo.controllor.impl.OnMultiClickListener;
+
+import java.util.Map;
 
 public class FunSeletedActivity extends BaseFgActivity {
 
@@ -28,10 +29,9 @@ public class FunSeletedActivity extends BaseFgActivity {
         setContentView(R.layout.activity_fun_seleted);
         initTitleBackBt(getString(R.string.appName));
         initView();
-
     }
 
-    Class classArr[] = {SFLocationActivity.class,SFLocationActivity.class,SFLocationActivity.class};
+    Class classArr[] = {LocationActivity.class, MapActivity.class, LocationActivity.class};
 
     private void initView() {
         String[] funTitleArr = getResources().getStringArray(R.array.fun_title_arr);

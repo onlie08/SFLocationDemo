@@ -10,4 +10,6 @@
     <string name="close">关闭</string>
     <string name="show_info">日志</string>
     <string name="info_show_dialog_title">日志信息</string>
+    <string name="lng">经度</string>
+    <string name="lat">纬度</string>
 </resources>

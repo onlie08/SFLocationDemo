@@ -18,35 +18,30 @@
         android:paddingLeft="@dimen/dm040"
         android:paddingRight="@dimen/dm040">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_url"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dm060">
+            android:layout_marginTop="@dimen/dm060"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm010"
+            app:met_floatingLabelText="IP地址:端口号"
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/et_url"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dm005"
-                android:singleLine="true"
-                android:text=""
-                android:textColor="@color/color_000000"
-                android:textColorHint="@color/a5a5a5"
-                android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
-                android:textSize="@dimen/dm028"
-                app:met_autoValidate="true"
-                app:met_baseColor="@color/color_000000"
-                app:met_clearButton="true"
-                app:met_errorColor="@color/mainColor"
-                app:met_floatingLabel="highlight"
-                app:met_floatingLabelPadding="@dimen/dm010"
-                app:met_floatingLabelText="IP地址:端口号"
-                app:met_primaryColor="@color/mainColor"
-                app:met_singleLineEllipsis="true"
-                app:met_underlineColor="@color/color_000000" />
-
-        </RelativeLayout>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_sha1"
@@ -119,6 +114,63 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dm040"
+        android:paddingRight="@dimen/dm040">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_lng"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="@string/lng"
+            android:hint="@string/lng"
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_lat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="@string/lat"
+            app:met_primaryColor="@color/mainColor"
+            android:hint="@string/lat"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/submit_bt"

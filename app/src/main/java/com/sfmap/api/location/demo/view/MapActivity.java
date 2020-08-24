@@ -11,22 +11,16 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Process;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
@@ -45,42 +39,23 @@ import com.sfmap.api.maps.MapController;
 import com.sfmap.api.maps.MapView;
 import com.sfmap.api.maps.model.LatLng;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
-public class SFLocationActivity extends BaseFgActivity {
-    private final String TAG = SFLocationActivity.class.getSimpleName();
+public class MapActivity extends BaseFgActivity {
+    private final String TAG = MapActivity.class.getSimpleName();
     private MapView mMapView;
     private MapController mMap;
     private SfMapLocationClient mSfMapLocationClient;
-    private TextView tv_time, tv_lat, tv_lon, tv_address, tv_accuracy,
-            tv_cell_info, tv_wifi_count, tv_gps_count;
     private LocationSource.OnLocationChangedListener mLocationChangedListener;
-    private SFLocationActivity context;
+    private MapActivity context;
     private boolean isFirstFocus = false;
-    private static String[] PERMISSIONS_REQUEST = {
-            Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-    };
     private TextView infoTv;
     private MaterialDialog.Builder infoShowDiloag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Android 6.0 之后版本需要动态申请定位权限和存储权限
         context = this;
-        requestPermission();
         initSpConfig();//初始读取sp
-        setContentView(R.layout.activity_location);
+        setContentView(R.layout.activity_map);
         initStatusBar();
         initTitleBackBt(getIntent().getStringExtra(KeyConst.title));
 
@@ -101,37 +76,15 @@ public class SFLocationActivity extends BaseFgActivity {
     }
 
     private void initView() {
-        tv_time = findViewById(R.id.tv_time);
-        tv_lat = findViewById(R.id.tv_lat);
-        tv_lon = findViewById(R.id.tv_lon);
-        tv_address = findViewById(R.id.tv_address);
-        tv_accuracy = findViewById(R.id.tv_accuracy);
-        tv_cell_info = findViewById(R.id.tv_cell_info);
-        tv_wifi_count = findViewById(R.id.tv_wifi_count);
-        tv_gps_count = findViewById(R.id.tv_gps_count);
-
         getTitleRightBt(getString(R.string.location)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                context.startActivityForResult(new Intent(context, ConfigSettingActivity.class),
-                        CodeConst.REQUEST_CODE_CONFIG_SET);
+                Intent i = new Intent(context,ConfigSettingActivity.class);
+                i.putExtra(KeyConst.type,CodeConst.REQ_CODE_MAP_SET);
+                context.startActivityForResult(i,CodeConst.REQ_CODE_LOC_SET);
             }
         });
-        initShowInfoDialog();
-    }
-
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (this.checkPermission(Manifest.permission.READ_PHONE_STATE, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED ||
-                    this.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid())
-                            != PackageManager.PERMISSION_GRANTED ||
-                    this.checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Process.myPid(), Process.myUid())
-                            != PackageManager.PERMISSION_GRANTED) {
-                this.requestPermissions(PERMISSIONS_REQUEST, 1);
-            }
-        }
     }
 
     private void initMapSetting() {
@@ -164,7 +117,7 @@ public class SFLocationActivity extends BaseFgActivity {
                         @Override
                         public void onLocationChanged(SfMapLocation location) {
 
-                            tv_time.setText("");
+                         /*   tv_time.setText("");
                             tv_lat.setText("");
                             tv_lon.setText("");
                             tv_address.setText("");
@@ -197,7 +150,7 @@ public class SFLocationActivity extends BaseFgActivity {
                                 } else {
                                     Toast.makeText(getApplicationContext(), R.string.location_failed_with_errorcode + location.getErrorCode(), Toast.LENGTH_LONG).show();
                                 }
-                            }
+                            }*/
                         }
                     });
                     mSfMapLocationClient.startLocation();
@@ -316,7 +269,7 @@ public class SFLocationActivity extends BaseFgActivity {
                     availableCount++;
                 }
             }
-            tv_gps_count.setText(availableCount + "颗");
+            //tv_gps_count.setText(availableCount + "颗");
         }
     };
 
@@ -327,69 +280,30 @@ public class SFLocationActivity extends BaseFgActivity {
                 String requestString = intent.getStringExtra("cellIds");
                 int wifiApCount = intent.getIntExtra("wifiApCount", 0);
 
-                tv_cell_info.setText(requestString.trim());
-                tv_wifi_count.setText(String.format(Locale.CHINA, "扫描到%d个WiFi AP", wifiApCount));
+                /*tv_cell_info.setText(requestString.trim());
+                tv_wifi_count.setText(String.format(Locale.CHINA, "扫描到%d个WiFi AP", wifiApCount));*/
             }
         }
     };
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == 1) {
-            for (int i = 0; i < permissions.length; i++) {
-                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                } else {
-                    Toast.makeText(this, "软件退出，运行权限被禁止", Toast.LENGTH_SHORT).show();
-                    System.exit(0);
-                }
-            }
-            if (mSfMapLocationClient != null) {
-                mSfMapLocationClient.startLocation();
-            }
-        }
-    }
-
-    private String getGpsLocalTime(long gpsTime) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(gpsTime);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String datestring = df.format(calendar.getTime());
-        return datestring;
-    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
     }
 
-    private String msgTotal;
-    private String msgTotalTag;
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMsgEvent(String msgStr) {
-        if (msgStr.contains("请求参数")) {
-            msgTotalTag = msgTotal;
-
-            msgTotal = msgStr;
-        } else {
-            msgTotal = msgTotal + "\n" + msgStr;
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == CodeConst.REQUEST_CODE_CONFIG_SET &&
-                resultCode == CodeConst.RESULT_CODE_CONFIG_SET) {
+        if (requestCode == CodeConst.REQ_CODE_MAP_SET &&
+                resultCode == CodeConst.RES_CODE_MAP) {
             if (mSfMapLocationClient != null) {
                 resetConfigData(intent);
                 mSfMapLocationClient.startLocation();
@@ -415,32 +329,6 @@ public class SFLocationActivity extends BaseFgActivity {
         SPUtils.put(context, KeyConst.SP_URL, api_url);
         SPUtils.put(context, KeyConst.SP_AK, apiKey);
         SPUtils.put(context, KeyConst.SP_PKG_NAME, pkgName);
-    }
-
-    public void onInfoShowClick(View view) {
-        showInfoDialog();
-    }
-
-    private void initShowInfoDialog() {
-        View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
-        infoTv = layout.findViewById(R.id.info_tv);
-        infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
-        infoTv.setTextIsSelectable(true);
-        infoShowDiloag = new MaterialDialog.Builder(context)
-                .positiveText(R.string.sure)
-                .positiveColorRes(R.color.mainColor)
-                .negativeColorRes(R.color.mainColor).title(getString(
-                        R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
-                .customView(layout, false);
-
-    }
-
-    private void showInfoDialog() {
-        if (infoShowDiloag != null) {
-            infoTv.setText(msgTotalTag);
-            infoShowDiloag.show();
-        }
-
     }
 
     private void initSpConfig() {
