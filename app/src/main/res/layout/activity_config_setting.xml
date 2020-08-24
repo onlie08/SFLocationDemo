@@ -18,12 +18,34 @@
         android:paddingLeft="@dimen/main_margin_left_x"
         android:paddingRight="@dimen/main_margin_left_x">
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dm060"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="请输入Api地址"
+            android:paddingLeft="@dimen/dm015"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabelPadding="@dimen/dm015"
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_sha1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dm060"
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
             android:hint="请输入Sha1"

@@ -12,4 +12,6 @@ public class KeyConst {
     public static final String SP_PKG_NAME = "SP_PKG_NAME";
     public static final String SP_SHA1 = "SP_SHA1";
     public static final String SP_AK = "SP_AK";
+    public static final String SP_URL = "SP_URL";
+    public static final String api_url = "api_url";
 }

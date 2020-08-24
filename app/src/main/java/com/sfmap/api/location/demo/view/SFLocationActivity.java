@@ -399,14 +399,17 @@ public class SFLocationActivity extends BaseFgActivity {
 
     private void resetConfigData(Intent intent) {
 
+        String api_url = intent.getStringExtra(KeyConst.api_url);
         String sha1 = intent.getStringExtra(KeyConst.sha1);
         String apiKey = intent.getStringExtra(KeyConst.apiKey);
         String pkgName = intent.getStringExtra(KeyConst.pkgName);
+        AppInfo.setSpUrl(api_url);
         AppInfo.setSha1(sha1);
         AppInfo.setApiKey(apiKey);
         AppInfo.setPackageName(pkgName);
 
         SPUtils.put(context, KeyConst.SP_SHA1, sha1);
+        SPUtils.put(context, KeyConst.SP_URL, api_url);
         SPUtils.put(context, KeyConst.SP_AK, apiKey);
         SPUtils.put(context, KeyConst.SP_PKG_NAME, pkgName);
     }
@@ -438,11 +441,13 @@ public class SFLocationActivity extends BaseFgActivity {
     }
 
     private void initSpConfig() {
+        String SP_URL = (String) SPUtils.get(this, KeyConst.SP_URL, "");
         String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");
         String SP_SHA1 = (String) SPUtils.get(this, KeyConst.SP_SHA1, "");
         String SP_PKG_NAME = (String) SPUtils.get(this, KeyConst.SP_PKG_NAME, "");
 
         if (!TextUtils.isEmpty(SP_AK)) {
+            AppInfo.setSpUrl(SP_URL);
             AppInfo.setApiKey(SP_AK);
             AppInfo.setSha1(SP_SHA1);
             AppInfo.setPackageName(SP_PKG_NAME);

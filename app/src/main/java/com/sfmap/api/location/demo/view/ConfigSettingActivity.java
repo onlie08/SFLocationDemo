@@ -16,7 +16,7 @@ import com.sfmap.api.location.demo.utils.ToastUtil;
 public class ConfigSettingActivity extends BaseFgActivity {
 
     private TextView infoTv;
-    private EditText sha1Et, pkgNameEt, akEt;
+    private EditText urlEt,sha1Et, pkgNameEt, akEt;
     private ConfigSettingActivity context;
 
     @Override
@@ -31,20 +31,26 @@ public class ConfigSettingActivity extends BaseFgActivity {
     }
 
     private void initView() {
+        urlEt = findViewById(R.id.et_url);
         sha1Et = findViewById(R.id.et_sha1);
         akEt = findViewById(R.id.et_ak);
         pkgNameEt = findViewById(R.id.et_pkg_name);
 
+        urlEt.setText(AppInfo.getNetLocationUrl(context));
         sha1Et.setText(AppInfo.getSHA1(context));
         akEt.setText(AppInfo.getSystemAk(context));
         pkgNameEt.setText(AppInfo.getPackageName(context));
     }
 
     public void onSubmitClick(View view) {
+        String url = urlEt.getText().toString().trim();
         String sha1 = sha1Et.getText().toString().trim();
         String apiKey = akEt.getText().toString().trim();
         String pkgName = pkgNameEt.getText().toString().trim();
 
+        if (ToastUtil.showCannotEmpty(context, url, "Api地址")) {
+            return;
+        }
         if (ToastUtil.showCannotEmpty(context, sha1, "sha1值")) {
             return;
         }
@@ -56,6 +62,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
         }
         //这三个值保存到本地SP
         Intent intent = new Intent();
+        intent.putExtra(KeyConst.api_url, url);
         intent.putExtra(KeyConst.sha1, sha1);
         intent.putExtra(KeyConst.apiKey, apiKey);
         intent.putExtra(KeyConst.pkgName, pkgName);

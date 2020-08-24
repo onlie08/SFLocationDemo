@@ -7,7 +7,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
 import android.util.Log;
+
+import org.w3c.dom.Text;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -18,6 +21,7 @@ import java.util.Locale;
 /**
  * AppInfo
  * 工具类 获取服务地址、获取包名、sha1、ak
+ *
  * @author
  * @version 1.0 2018.10.29<br>
  */
@@ -39,6 +43,14 @@ public class AppInfo {
     //图咕系统配置的KEY
     private static String systemAk = "";
     private static String systemAkDef = "";
+
+    public static String getSpUrl() {
+        return netLocationURL;
+    }
+
+    public static void setSpUrl(String spUrl) {
+        netLocationURL = spUrl;
+    }
 
     public static void setSystemAkDef(String systemAkDef) {
         AppInfo.systemAkDef = systemAkDef;
@@ -170,7 +182,7 @@ public class AppInfo {
         return false;
     }
 
-    public static String getMetaValue(Context context,String strMetaKey) {
+    public static String getMetaValue(Context context, String strMetaKey) {
         ApplicationInfo appInfo = null;
         String msg = null;
         try {
@@ -185,7 +197,7 @@ public class AppInfo {
         return msg;
     }
 
-    public static String getPackageName(Context context){
+    public static String getPackageName(Context context) {
         if ((packageName != null) && (!"".equals(packageName))) {
             return packageName;
         }
@@ -201,8 +213,8 @@ public class AppInfo {
         AppInfo.sha1 = sha1;
     }
 
-    public static String getSHA1(Context context){
-        try{
+    public static String getSHA1(Context context) {
+        try {
             if ((sha1 != null) && (!sha1.isEmpty())) {
                 return sha1;
             }
@@ -214,13 +226,13 @@ public class AppInfo {
             byte[] arrayOfByte2 = localMessageDigest.digest(arrayOfByte1);
             StringBuffer localStringBuffer = new StringBuffer();
 
-            for (int i = 0; i < arrayOfByte2.length; i++){
+            for (int i = 0; i < arrayOfByte2.length; i++) {
                 String str = Integer.toHexString(0xFF & arrayOfByte2[i]).toUpperCase(Locale.US);
                 if (str.length() == 1) {
                     localStringBuffer.append("0");
                 }
                 localStringBuffer.append(str);
-                if(i != arrayOfByte2.length-1){
+                if (i != arrayOfByte2.length - 1) {
                     //不是最后一个，就添加冒号
                     localStringBuffer.append(":");
                 }
@@ -228,8 +240,7 @@ public class AppInfo {
 
             sha1 = localStringBuffer.toString();
             return sha1;
-        }
-        catch (NameNotFoundException e) {
+        } catch (NameNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -238,13 +249,13 @@ public class AppInfo {
     }
 
     /*
-    * 获取服务地址方法 说明：优先采用app中设置的地址 获取不到用sdk中设置的地址
-    * @param context application上下文
-    * @param curValue app中sfmap_configer中的地址
-    * @param defaultValue sdk中默认的地址
-    * @param metaKey 获取app中地址用的标识
-    * @return 服务地址
-    */
+     * 获取服务地址方法 说明：优先采用app中设置的地址 获取不到用sdk中设置的地址
+     * @param context application上下文
+     * @param curValue app中sfmap_configer中的地址
+     * @param defaultValue sdk中默认的地址
+     * @param metaKey 获取app中地址用的标识
+     * @return 服务地址
+     */
     private static String getCustomOrDefaultURL(Context context, String curValue, String defaultValue, String metaKey) {
         try {
             if ((curValue == null) || (curValue.equals(""))) {
@@ -253,7 +264,7 @@ public class AppInfo {
                     curValue = defaultValue;
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             curValue = defaultValue;
         }
         return curValue;
@@ -265,7 +276,11 @@ public class AppInfo {
      * @return
      */
     public static String getNetLocationUrl(Context context) {
-        return getCustomOrDefaultURL(context, netLocationURL, netLocationDefURL, ConfigerHelper.NET_LOCATION_URL);
+        if (TextUtils.isEmpty(netLocationURL)) {
+            return getCustomOrDefaultURL(context, netLocationURL, netLocationDefURL, ConfigerHelper.NET_LOCATION_URL);
+        } else {
+            return netLocationURL;
+        }
     }
 
     /*
@@ -274,14 +289,18 @@ public class AppInfo {
      * @return
      */
     public static String getGpsLocationUrl(Context context) {
-        return getCustomOrDefaultURL(context, gpsLocationURL, gpsLocationDefURL, ConfigerHelper.GPS_LOCATION_URL);
+        if (TextUtils.isEmpty(netLocationURL)) {
+            return getCustomOrDefaultURL(context, netLocationURL, netLocationDefURL, ConfigerHelper.NET_LOCATION_URL);
+        } else {
+            return netLocationURL;
+        }
     }
 
     /*
-    * 图咕系统配置的KEY
-    * @param context
-    * @return
-    */
+     * 图咕系统配置的KEY
+     * @param context
+     * @return
+     */
     public static String getSystemAk(Context context) {
         return getCustomOrDefaultURL(context, systemAk, systemAkDef, ConfigerHelper.SYSTEM_AK);
     }
