@@ -82,7 +82,7 @@ public class SFLocationActivity extends BaseFgActivity {
         initSpConfig();//初始读取sp
         setContentView(R.layout.activity_location);
         initStatusBar();
-        initTitleBackBt("顺丰定位");
+        initTitleBackBt(getIntent().getStringExtra(KeyConst.title));
 
         mMapView = findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);

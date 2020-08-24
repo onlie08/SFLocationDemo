@@ -14,4 +14,5 @@ public class KeyConst {
     public static final String SP_AK = "SP_AK";
     public static final String SP_URL = "SP_URL";
     public static final String api_url = "api_url";
+    public static final String title="title";
 }

@@ -19,7 +19,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/appName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
@@ -34,7 +34,7 @@
             android:name="com.sfmap.apikey"
             android:value="${demoLocationAk}" />
 
-        <activity android:name=".view.SFLocationActivity">
+        <activity android:name=".view.FunSeletedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,6 +42,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ConfigSettingActivity" />
+        <activity android:name=".view.SFLocationActivity" />
 
     </application>
 
