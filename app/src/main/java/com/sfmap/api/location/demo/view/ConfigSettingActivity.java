@@ -66,8 +66,8 @@ public class ConfigSettingActivity extends BaseFgActivity {
             latEt.setVisibility(View.VISIBLE);
 
             //杭州西湖
-            latEt.setText("30.222719");
-           lngEt.setText("120.121288");
+            latEt.setText(AppInfo.getLat()+"");
+           lngEt.setText(AppInfo.getLng()+"");
             //故宫
             /*latEt.setText("39.917834");
             lngEt.setText("116.397036");*/
