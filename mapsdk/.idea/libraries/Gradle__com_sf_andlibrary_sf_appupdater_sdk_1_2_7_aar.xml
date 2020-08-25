@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.sf.andlibrary:sf-appupdater-sdk:1.2.7@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sf-appupdater-sdk-1.2.7.aar/721c977a3572e547673173e37e081041/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/sf-appupdater-sdk-1.2.7.aar/721c977a3572e547673173e37e081041/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sf.andlibrary/sf-appupdater-sdk/1.2.7/85606f17fbbe6026403078497d22ce552eb392cf/sf-appupdater-sdk-1.2.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

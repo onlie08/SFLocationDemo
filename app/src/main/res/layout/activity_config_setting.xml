@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_left_center" />
+
+    <include layout="@layout/layout_line_height_f5" />"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dm040"
+        android:paddingRight="@dimen/dm040">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dm060"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm010"
+            app:met_floatingLabelText="IP地址:端口号"
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_sha1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="Sha1"
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_ak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="AK"
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_pkg_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="PkgName "
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dm040"
+        android:paddingRight="@dimen/dm040">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_lng"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            android:inputType="numberDecimal"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="@string/lng"
+            android:hint="@string/lng"
+            app:met_primaryColor="@color/mainColor"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_lat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:paddingLeft="@dimen/dm005"
+            android:singleLine="true"
+            android:text=""
+            android:inputType="numberDecimal"
+            android:textColor="@color/color_000000"
+            android:textColorHint="@color/a5a5a5"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color"
+            android:textSize="@dimen/dm028"
+            app:met_autoValidate="true"
+            app:met_baseColor="@color/color_000000"
+            app:met_clearButton="true"
+            app:met_errorColor="@color/mainColor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelPadding="@dimen/dm006"
+            app:met_floatingLabelText="@string/lat"
+            app:met_primaryColor="@color/mainColor"
+            android:hint="@string/lat"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/color_000000" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/submit_bt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dm073"
+        android:layout_marginLeft="@dimen/dm100"
+        android:layout_marginTop="@dimen/dm060"
+        android:layout_marginRight="@dimen/dm100"
+        android:layout_marginBottom="@dimen/dm080"
+        android:background="@drawable/selector_login_bt"
+        android:gravity="center"
+        android:onClick="onSureClick"
+        android:text="@string/sure"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dm028" />
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- APP的Title高度 -->
+    <dimen name="app_title_height">@dimen/dm080</dimen>
+    <dimen name="tab_line_height">@dimen/dm004</dimen>
+    <dimen name="daily_item_tv_padding_top">@dimen/dm012</dimen>
+    <dimen name="item_height">@dimen/dm080</dimen>
+    <dimen name="item_et_max_width">@dimen/dm400</dimen>
+
+    <!-- ListView 中图片尺寸 -->
+    <dimen name="list_detail_image_size">65dp</dimen>
+    <dimen name="list_detail_image_size_80">80dp</dimen>
+    <dimen name="list_detail_image_size_100">100dp</dimen>
+    <dimen name="desc_edit_height">@dimen/dm150</dimen>
+    <!-- 轮播图片高度 -->
+    <dimen name="banner_image_height">214dp</dimen>
+    <dimen name="tab_height">@dimen/dm080</dimen>
+    <!-- 发现   轮播图片高度 -->
+    <dimen name="buttom_save_bt_width">@dimen/dm500</dimen>
+    <dimen name="buttom_save_bt_height">@dimen/dm070</dimen>
+    <!-- 侧滑菜单宽度 -->
+
+    <dimen name="sliding_menu_offset">@dimen/dm530</dimen>
+    <dimen name="item_key_width">@dimen/dm105</dimen>
+    <dimen name="item_key_width_4">@dimen/dm130</dimen>
+    <dimen name="item_key_width_device">@dimen/dm230</dimen>
+    <dimen name="sm_top_icon_height">@dimen/dm120</dimen>
+    <dimen name="desc_tv_line_spacing_extra">@dimen/dm020</dimen>
+
+    <dimen name="title_size">@dimen/dm030</dimen>
+    <dimen name="people_add_margin_left">@dimen/dm250</dimen>
+    <dimen name="device_add_margin_left">@dimen/dm200</dimen>
+    <dimen name="waring_detail_margin_left">@dimen/dm270</dimen>
+    <dimen name="map_title_size">@dimen/dm030</dimen>
+    <dimen name="title_back_bt_paddingLeft">20dp</dimen>
+    <dimen name="recommend_item_from_pic">@dimen/dm038</dimen>
+    <dimen name="recommend_item_game_pic_hight">@dimen/dm260</dimen>
+    <dimen name="card_detail_file_gv_item">@dimen/dm055</dimen>
+    <dimen name="process_pb_height">@dimen/dm025</dimen>
+
+    <dimen name="recommend_horizontal_view_height">@dimen/dm212</dimen>
+    <dimen name="device_item_margin_left">@dimen/dm250</dimen>
+    <dimen name="diolg_bottom_height">@dimen/dm080</dimen>
+    <dimen name="fragment_0_item_layout_height">@dimen/dm100</dimen>
+    <dimen name="fargment0_0_iv_width">@dimen/dm200</dimen>
+    <dimen name="work_icon_max_width">@dimen/dm125</dimen>
+    <dimen name="work_icon_margin_left">@dimen/dm018</dimen>
+    <dimen name="work_icon_margin_right">@dimen/dm010</dimen>
+    <dimen name="dp_subject_iv_width">@dimen/dm400</dimen>
+    <dimen name="dp_subject_iv_height">@dimen/dm180</dimen>
+    <dimen name="dp_subject_iv_corner">@dimen/dm016</dimen>
+    <dimen name="time_tag_width">@dimen/dm120</dimen>
+    <dimen name="download_progressbar_height">26dp</dimen>
+    <dimen name="download_progressbar_textsize">14dp</dimen>
+    <dimen name="title_left_bt_padding_left">@dimen/dm028</dimen>
+    <dimen name="classify_grid_item_height">48dp</dimen>
+    <dimen name="all_classify_grid_view_height">426dp</dimen>
+    <dimen name="title_back_bt_padding_left">@dimen/dm036</dimen>
+    <dimen name="title_back_bt_padding_right">@dimen/dm032</dimen>
+    <dimen name="popup_height">@dimen/dm080</dimen>
+    <dimen name="game_detail_feedback_bt_width">48dp</dimen>
+    <dimen name="game_detail_feedback_bt_height">26dp</dimen>
+    <dimen name="percent_progress_bar_height">@dimen/dm018</dimen>
+    <dimen name="percent_tag_tv_width">5dp</dimen>
+
+    <dimen name="percent_progress_bar_marginTop">@dimen/dm003</dimen>
+    <dimen name="font_sliding_menu_item">@dimen/dm032</dimen>
+    <dimen name="unlogin_dialog_width">@dimen/dm376</dimen>
+    <dimen name="stroke_line_width">@dimen/dm001</dimen>
+    <dimen name="main_margin_32px">@dimen/dm032</dimen>
+    <dimen name="main_margin_20px">@dimen/dm020</dimen>
+    <dimen name="main_margin_bottom_32px">@dimen/dm032</dimen>
+
+    <dimen name="login_bt_margin_left_right">@dimen/dm085</dimen>
+    <dimen name="reply_margin_left">@dimen/dm120</dimen>
+    <dimen name="me_item_line_margin_left">@dimen/dm100</dimen>
+    <dimen name="card_item_margin_left">@dimen/dm024</dimen>
+    <dimen name="list_card_corner">@dimen/dm008</dimen>
+    <dimen name="item_item_margin_left">@dimen/dm013</dimen>
+    <dimen name="item_item_margin_left_half">@dimen/dm006</dimen>
+    <dimen name="fragment_0_item_corners">@dimen/dm030</dimen>
+    <dimen name="main_bottom_tab_iv_size">@dimen/dm036</dimen>
+    <dimen name="main_bottom_tab_layout_padding_bottom">@dimen/dm006</dimen>
+    <dimen name="main_bottom_tab_layout_padding_top">@dimen/dm009</dimen>
+    <dimen name="main_bottom_tab_tv_size">@dimen/dm017</dimen>
+
+    <dimen name="process_item_height">@dimen/dm076</dimen>
+    <dimen name="filter_padding_top_bottom">@dimen/dm007</dimen>
+    <dimen name="filter_bt_width">@dimen/dm123</dimen>
+    <dimen name="filter_padding_left_right">@dimen/dm010</dimen>
+    <dimen name="next_padding_right">@dimen/dm020</dimen>
+    <dimen name="drawable_padding">@dimen/dm015</dimen>
+    <dimen name="login_margin_left">@dimen/dm100</dimen>
+    <dimen name="line_height">@dimen/dm012</dimen>
+    <dimen name="me_filter_rb_height">@dimen/dm064</dimen>
+    <dimen name="rb_radius">@dimen/dm004</dimen>
+    <dimen name="main_margin_left">@dimen/dm025</dimen>
+    <dimen name="main_margin_left_x">@dimen/dm030</dimen>
+    <dimen name="month_title_height">@dimen/dm100</dimen>
+    <dimen name="main_pb_size">@dimen/dm175</dimen>
+    <dimen name="item_margin_left">@dimen/dm020</dimen>
+    <dimen name="main_drawable_padding">@dimen/dm012</dimen>
+    <dimen name="main_bt_height">@dimen/dm080</dimen>
+</resources>

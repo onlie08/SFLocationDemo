@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fun_title_arr">
+        <item>定位验证</item>
+        <item>地图验证</item>
+        <item>导航验证</item>
+    </string-array>
+
+</resources>

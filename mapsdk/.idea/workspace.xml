@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f6e7aec6-6a9b-410d-b266-3924a819d86c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../app/assets/sfmap_configer.data" beforeDir="false" afterPath="$PROJECT_DIR$/../app/assets/sfmap_configer.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/srcmap/com/sfmap/map/fragment/MapInteractiveFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/srcmap/com/sfmap/map/fragment/MapInteractiveFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/srcnavi/com/sfmap/navi/fragment/NaviFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/srcnavi/com/sfmap/navi/fragment/NaviFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/srcroute/com/sfmap/route/RouteRequestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/srcroute/com/sfmap/route/RouteRequestManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../common/src/com/sfmap/library/http/NetworkImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../common/src/com/sfmap/library/http/NetworkImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../library/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/src/androidTest/java/com/sfmap/api/locaiton/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library/src/androidTest/java/com/sfmap/api/locaiton/SfMapLocationClientImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sfmap/mapcore/BaseMapLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sfmap/mapcore/BaseMapLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../navisdk/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../navisdk/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../navisdk/libs/armeabi/libnaviCore.so" beforeDir="false" afterPath="$PROJECT_DIR$/../navisdk/libs/armeabi/libnaviCore.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/FrameForTBT.java" beforeDir="false" afterPath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/FrameForTBT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/HttpUrlUtilDecode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/HttpUrlUtilDecode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/TBTControlDecode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/TBTControlDecode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/util/AppInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../navisdk/src/com/sfmap/tbt/util/AppInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../searchsdk/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../searchsdk/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../searchsdk/src/main/java/com/sfmap/api/services/core/ProtocalHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../searchsdk/src/main/java/com/sfmap/api/services/core/ProtocalHandler.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="2081207942">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../app/srcmap/com/sfmap/map/activity/MapFragmentActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>wmt</find>
+      <find>wms</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1172" />
+    <option name="height" value="726" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sfmap" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6e7aec6-6a9b-410d-b266-3924a819d86c" name="Default Changelist" comment="" />
+      <created>1593509153040</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593509153040</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Capture Tool" />
+      <window_info content_ui="combo" id="Project" visible="true" weight="0.32995737" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="DB Browser" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="DB Execution Console" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Build" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Gradle" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../app/srcmap/com/sfmap/map/activity/MapFragmentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

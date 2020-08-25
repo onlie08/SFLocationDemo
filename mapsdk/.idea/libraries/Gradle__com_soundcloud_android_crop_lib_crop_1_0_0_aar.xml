@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.soundcloud.android.crop:lib_crop:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/lib_crop-1.0.0.aar/76286ce5f4e2d66ba223cef99034f9e0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/lib_crop-1.0.0.aar/76286ce5f4e2d66ba223cef99034f9e0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.soundcloud.android.crop/lib_crop/1.0.0/4be961d0684a5d3ddba6361138264e8b00afab8c/lib_crop-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
