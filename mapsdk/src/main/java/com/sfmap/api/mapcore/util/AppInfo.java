@@ -13,13 +13,14 @@ import java.util.Locale;
 /*
  * 工具类 获取服务地址、获取包名、sha1、ak
  */
-public class AppInfo//bm
-{
+public class AppInfo {
     private static String TAG = "AppInfo";
     public static float currentZoom;
     private static String appName = "";
     private static String packageName = "";
     private static String appVersion = "";
+    private static double lng;
+    private static double lat;
     private static int appVersionCode = 0;
 
     public static int NormalVersion = 0;
@@ -44,11 +45,13 @@ public class AppInfo//bm
     //图咕系统配置的KEY
     private static String systemAk = "";
     private static String systemAkDef = "ec85d3648154874552835438ac6a02b2";
+    private static String metaApikey;
 
-    /**
-     * set方式注入context对象
-     * @param cn
-     */
+    public static void setSpUrl(String spUrl) {
+        sfMapURL = spUrl;
+        sfTmcURL = spUrl;
+    }
+
     public static void setContext(Context cn) {
         mContext = cn;
     }
@@ -56,11 +59,25 @@ public class AppInfo//bm
     public static String getPackageName() {
         return getPackageName(mContext);
     }
+
     public static String getSHA1() {
         return getSHA1(mContext);
     }
-    public static String getAppApiKey() {
-        return getAppApiKey(mContext);
+
+    public static double getLng() {
+        return lng;
+    }
+
+    public static void setLng(double lng) {
+        AppInfo.lng = lng;
+    }
+
+    public static double getLat() {
+        return lat;
+    }
+
+    public static void setLat(double lat) {
+        AppInfo.lat = lat;
     }
 
     public static String getAppKey(Context context) {
@@ -72,13 +89,15 @@ public class AppInfo//bm
         return "";
     }
 
-    public static String getAppApiKey(Context context) {
-        String key = Util.getMetaValue(context, Util.CONFIG_API_KEY);
-        if (TextUtils.isEmpty(key)) {
-            android.util.Log.e(TAG, "获取key失败");
-            return "";
+    public static void setAppMetaApikey(String metaApikey) {
+        AppInfo.metaApikey = metaApikey;
+    }
+
+    public static String getAppMetaApikey(Context context) {
+        if (TextUtils.isEmpty(AppInfo.metaApikey)) {
+            AppInfo.metaApikey= Util.getMetaValue(context, Util.CONFIG_API_KEY);
         }
-        return key;
+        return  AppInfo.metaApikey;
     }
 
     public static String getApplicationName(Context context) {
@@ -146,6 +165,14 @@ public class AppInfo//bm
             BasicLogHandler.a(localThrowable, "AppInfo", "getApplicationVersion");
         }
         return appVersionCode;
+    }
+
+    public static void setPackageName(String packageName) {
+        AppInfo.packageName = packageName;
+    }
+
+    public static void setSha1(String sha1) {
+        AppInfo.sha1 = sha1;
     }
 
     public static String getSHA1(Context context) {
@@ -241,7 +268,7 @@ public class AppInfo//bm
      */
     private static String getCustomOrDefaultURL(Context context, String curValue, String defaultValue, String metaKey) {
         try {
-            if ((curValue == null) || (curValue.equals(""))) {
+            if (TextUtils.isEmpty(curValue)) {
                 curValue = ConfigerHelper.getInstance(context).getKeyValue(metaKey);
                 if (curValue == null || curValue.equals("")) {
                     curValue = defaultValue;
@@ -259,9 +286,9 @@ public class AppInfo//bm
      * @return
      */
     public static String getSfMapURL(Context context) {
-        if(getAppVersion(context) == OrderVersion){
+        if (getAppVersion(context) == OrderVersion) {
             return getCustomOrDefaultURL(context, sfMapURL, sfMapDefURL, ConfigerHelper.SF_MAP_URL_TC);
-        }else {
+        } else {
             return getCustomOrDefaultURL(context, sfMapURL, sfMapDefURL, ConfigerHelper.SF_MAP_URL);
         }
     }
@@ -285,6 +312,15 @@ public class AppInfo//bm
     }
 
     /*
+     * 内部定制版地图数据和样式服务地址
+     * @param context
+     * @return
+     */
+    public static String getOrderMapURL(Context context) {
+        return getCustomOrDefaultURL(context, "", "", ConfigerHelper.SF_ORKER_MAP_URL);
+    }
+
+    /*
      * 图咕系统配置的KEY
      * @param context
      * @return
@@ -299,16 +335,7 @@ public class AppInfo//bm
      * @return
      */
     public static int getAppVersion(Context context) {
-        return getPackageName(context).equals("com.sfmap.map.internal") ? OrderVersion:NormalVersion;
-    }
-
-    /*
-     * 内部定制版地图数据和样式服务地址
-     * @param context
-     * @return
-     */
-    public static String getOrderMapURL(Context context) {
-        return getCustomOrDefaultURL(context, "", "", ConfigerHelper.SF_ORKER_MAP_URL);
+        return getPackageName(context).equals("com.sfmap.map.internal") ? OrderVersion : NormalVersion;
     }
 
 }

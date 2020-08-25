@@ -113,7 +113,7 @@ class SfMapLocationClientImpl {
 
         mApplication = (Application) context.getApplicationContext();
         mApiKey = getApiKey(context);
-        AppInfo.setSystemAkDef(mApiKey);
+        AppInfo.setApiKey(mApiKey);
         //顺丰网络定位只支持中国大陆的数据，港澳台使用系统内置的网络定位
         if(Utils.isCnOperator(context)) {
             mNetLocator = new NetLocatorSfImpl(context);

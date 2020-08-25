@@ -193,8 +193,6 @@ public abstract class BaseMapLoader {
     }
 
     public void doRequest() {
-
-
         if ((this.mCanceled) || (this.isFinished)) {
             return;
         }
@@ -206,29 +204,28 @@ public abstract class BaseMapLoader {
         if (!MapsInitializer.getNetWorkEnable()) {
             return;
         }
-
         String address = null;
-
         InputStream localInputStream = null;
-
         String param = null;
+
         address = getMapAddress();
 
         if (address == null) {
             return;
         }
+
         param = getGridParma();
-        String [] par = param.split("&");
-        String [] type = par[1].split("type=");
-        String [] mesh = par[2].split("mesh=");
+        String[] par = param.split("&");
+        String[] type = par[1].split("type=");
+        String[] mesh = par[2].split("mesh=");
         if (TextUtils.isEmpty(param)) {
             return;
         }
-
         this.inRequest = true;
         try {
             String url = "";
             try {
+
                 if (datasource == DATA_SOURCE_TYPE_DATA_VEC_TMC) {
                     String meshes = "";
                     for (int i = 0; i < mapTiles.size(); ++i) {
@@ -237,23 +234,25 @@ public abstract class BaseMapLoader {
                         }
                         meshes += mapTiles.get(i).getGridName();
                     }
-                    TmcBean tmcBean =  new TmcBean();
-                    tmcBean.setMesh(meshes);
+                    TmcBean tmcBean = new TmcBean();
                     String packageName = AppInfo.getPackageName(mapCore.getContext());
                     String Sha1 = AppInfo.getSHA1(mapCore.getContext());
+                    String ak = AppInfo.getAppMetaApikey(mapCore.getContext());
+
+                    tmcBean.setMesh(meshes);
                     tmcBean.setAppPackageName(packageName);
                     tmcBean.setAppCerSha1(Sha1);
-                    String ak = AppInfo.getAppApiKey(mapCore.getContext());
 
 //                    tmcBean.setAppPackageName("com.sfmap.api.mobile.demo");
 //                    tmcBean.setAppCerSha1("D7:F2:9D:15:B8:7D:17:14:3C:B8:EB:96:EB:DA:52:D5:D9:C0:46:63");
 //                    String ak ="1cb63da24a7d4e48bb827dd4eb64c25e";
                     String params = new DesUtil().encrypt(tmcBean.toString());
 //                    url = AppInfo.getSfTmcURL(mapCore.getContext()) + "?param="+ params +"&ak="+ak;
-                    url = AppInfo.getSfTmcURL(mapCore.getContext()) +"?mesh=" + meshes;
-                    Log.d("doRequest","tmc url:" + url);
-                }else {
-                    MobileBean mobileBean =  new MobileBean();
+                    url = AppInfo.getSfTmcURL(mapCore.getContext()) + "?mesh=" + meshes;
+                    Log.d("doRequest", "实时交通请求地址url:" + url);
+                    Log.d("doRequest", "实时交通packageName:" + packageName);
+                } else {
+                    MobileBean mobileBean = new MobileBean();
                     mobileBean.setT("VMMV4");
                     mobileBean.setType(type[1]);
                     mobileBean.setMesh(mesh[1]);
@@ -261,17 +260,16 @@ public abstract class BaseMapLoader {
                     String Sha1 = AppInfo.getSHA1(mapCore.getContext());
                     mobileBean.setAppPackageName(packageName);
                     mobileBean.setAppCerSha1(Sha1);
-                    String ak = AppInfo.getAppApiKey(mapCore.getContext());
+                    String ak = AppInfo.getAppMetaApikey(mapCore.getContext());
 
 //                    mobileBean.setAppPackageName("com.ch.cs_collectiontool");
 //                    mobileBean.setAppCerSha1("D7:F2:9D:15:B8:7D:17:14:3C:B8:EB:96:EB:DA:52:D5:D9:C0:46:63");
 //                    String ak ="e2bcef63bcda45f1a66346b34465f64e";
-
-                    Log.i(TAG,"packageName:" + packageName + " Sha1:" + Sha1 + " ak:" + ak);
                     String para = mobileBean.toString();
                     String param1 = DesUtil.getInstance().encrypt(para);
-                    url = AppInfo.getSfMapURL(mapCore.getContext()) +"?" + "param="+ param1 +"&ak="+ak;
-                    Log.i(TAG,"debug-url:"+url);
+                    url = AppInfo.getSfMapURL(mapCore.getContext()) + "?" + "param=" + param1 + "&ak=" + ak;
+                    Log.d("doRequest", "地图数据服务,地址url:" + url.substring(0,50));
+                    Log.d("doRequest", "packageName:" + packageName + " \nSha1:" + Sha1 + " \nak:" + ak);
                     //内部高精版地图数据请求
 //                    if("1".equals(AppInfo.getNormalOrOrder(mapCore.getContext()))){
 //                        url = getURL(AppInfo.getOrderMapURL(mapCore.getContext()) + "?", "", param);
@@ -350,10 +348,10 @@ public abstract class BaseMapLoader {
         }
     }
 
-    private void disConnectHttpConnection(){
-        if (this.httpURLConnection != null ) {
+    private void disConnectHttpConnection() {
+        if (this.httpURLConnection != null) {
             this.httpURLConnection.disconnect();
-            this.httpURLConnection=null;
+            this.httpURLConnection = null;
         }
     }
 

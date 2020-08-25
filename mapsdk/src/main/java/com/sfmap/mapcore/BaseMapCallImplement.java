@@ -1,5 +1,7 @@
 package com.sfmap.mapcore;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import javax.microedition.khronos.opengles.GL10;

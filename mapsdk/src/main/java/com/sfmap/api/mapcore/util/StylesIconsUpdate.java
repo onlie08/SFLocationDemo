@@ -72,7 +72,7 @@ public class StylesIconsUpdate extends Thread {
         sb.append("param=");
         sb.append(Util.encryptPara(mb.toString()));
         sb.append("&ak=");
-        sb.append(AppInfo.getAppApiKey(mContext));
+        sb.append(AppInfo.getAppMetaApikey(mContext));
         tURL = sb.toString();
 
         //内部高精版样式请求

@@ -6,18 +6,8 @@ import java.io.Serializable;
 
 public class TmcBean implements Serializable {
     private static final long serialVersionUID = 13454353651432432L;
-
-    //多个以分号分开
     private String mesh;
-
-    /**
-     * 包名
-     */
     private String appPackageName;
-
-    /**
-     * sha1
-     */
     private String appCerSha1;
 
     public String getMesh() {

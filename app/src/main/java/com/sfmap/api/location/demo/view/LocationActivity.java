@@ -18,6 +18,7 @@ import android.os.Process;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,11 +32,13 @@ import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
 import com.sfmap.api.location.SfMapLocationListener;
+import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.location.demo.BaseFgActivity;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.LogcatFileManager;
+import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -76,6 +79,7 @@ public class LocationActivity extends BaseFgActivity {
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         context = this;
         requestPermission();
+        initSPConfig();
         setContentView(R.layout.activity_location);
         initStatusBar();
         initTitleBackBt(getIntent().getStringExtra(KeyConst.title));
@@ -386,6 +390,7 @@ public class LocationActivity extends BaseFgActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == CodeConst.REQ_CODE_LOC &&
                 resultCode == CodeConst.RES_CODE_LOC) {
+            initSPConfig();
             if (mSfMapLocationClient != null) {
                 mSfMapLocationClient.startLocation();
             }
@@ -416,7 +421,25 @@ public class LocationActivity extends BaseFgActivity {
             infoTv.setText(msgTotalTag);
             infoShowDiloag.show();
         }
+    }
 
+    protected void initSPConfig( ) {
+        SPUtils.setSPFileName(SPUtils.FILE_NAME_LOC);
+        String SP_URL = (String) SPUtils.get(this, KeyConst.SP_URL, "");
+        String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");
+        String SP_SHA1 = (String) SPUtils.get(this, KeyConst.SP_SHA1, "");
+        String SP_PKG_NAME = (String) SPUtils.get(this, KeyConst.SP_PKG_NAME, "");
+        String SP_LNG = (String) SPUtils.get(this, KeyConst.SP_LNG, "0.0");
+        String SP_LAT = (String) SPUtils.get(this, KeyConst.SP_LAT, "0.0");
+
+        if (!TextUtils.isEmpty(SP_AK)) {
+            AppInfo.setSpUrl(SP_URL);
+            AppInfo.setApiKey(SP_AK);
+            AppInfo.setSha1(SP_SHA1);
+            AppInfo.setPackageName(SP_PKG_NAME);
+            AppInfo.setLat(Double.valueOf(SP_LAT));
+            AppInfo.setLng(Double.valueOf(SP_LNG));
+        }
     }
 
 }

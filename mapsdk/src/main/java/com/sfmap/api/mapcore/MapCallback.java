@@ -28,13 +28,12 @@ import java.util.ArrayList;
 
 import javax.microedition.khronos.opengles.GL10;
 
-class MapCallback//a
-        extends BaseMapCallImplement {
+class MapCallback extends BaseMapCallImplement {
     private MapDelegateImp mapDelegate;
 
     @Override
     public String getUserGridURL(String mesh) {
-        if(mapDelegate!=null){
+        if (mapDelegate != null) {
             String url = mapDelegate.getUserGridURL(mesh);
             return url;
         }
@@ -43,40 +42,44 @@ class MapCallback//a
 
     @Override
     public String getMapSvrAddress() {
-        return AppInfo.getSfMapURL(mapDelegate.getContext())+"?";
+        return AppInfo.getSfMapURL(mapDelegate.getContext()) + "?";
     }
 
     public MapCallback(MapDelegateImp mapView) {
         this.mapDelegate = mapView;
 
     }
+
     @Override
     public void OnMapSurfaceCreate(GL10 gl10, MapCore paramMapCore) {
         super.OnMapSurfaceCreate(paramMapCore);
     }
+
     @Override
     public void OnMapSurfaceRenderer(GL10 gl10, MapCore mapCore, int paramInt) {
         super.OnMapSurfaceRenderer(gl10, mapCore, paramInt);
         if (paramInt == mapDelegate.drawCustomRenderTime) {
-            try{
+            try {
                 this.mapDelegate.baseOverlayLayer.onDrawGL(gl10, true, this.mapDelegate
                         .getMapTextZIndex());
                 if (this.mapDelegate.customRenderer != null) {
                     this.mapDelegate.customRenderer.onDrawFrame(gl10);
                 }
-                for(CustomRenderer reader:this.mapDelegate.rendererList){
+                for (CustomRenderer reader : this.mapDelegate.rendererList) {
                     reader.onDrawFrame(gl10);
                 }
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
     }
 
     private float presslastZoom = -1.0F; //g
+
     @Override
     public void OnMapSufaceChanged(GL10 paramGL10, MapCore mapCore, int paramInt1, int paramInt2) {
     }
+
     @Override
     public void OnMapProcessEvent(MapCore paramMapCore) {
         float cz = 0.0F;
@@ -94,22 +97,22 @@ class MapCallback//a
                     } else {
                         paramMapCore.setParameter(2010, 0, 0, 0, 0);
                     }
-                }else if(mapMessage.id == MapMessageDecode.CELLZONESSET){
-                    if(mapMessage.getEnabled()){
+                } else if (mapMessage.id == MapMessageDecode.CELLZONESSET) {
+                    if (mapMessage.getEnabled()) {
                         paramMapCore.setParameter(8004, 1, 0, 0, 0);
-                    }else {
+                    } else {
                         paramMapCore.setParameter(8004, 0, 0, 0, 0);
                     }
-                }else if(mapMessage.id == MapMessageDecode.EXPRESSNUM){
-                    if(mapMessage.getEnabled()){
+                } else if (mapMessage.id == MapMessageDecode.EXPRESSNUM) {
+                    if (mapMessage.getEnabled()) {
                         paramMapCore.setParameter(8005, 1, 0, 0, 0);
-                    }else {
+                    } else {
                         paramMapCore.setParameter(8005, 0, 0, 0, 0);
                     }
-                }else if(mapMessage.id == MapMessageDecode.SFAOI){
-                    if(mapMessage.getEnabled()){
+                } else if (mapMessage.id == MapMessageDecode.SFAOI) {
+                    if (mapMessage.getEnabled()) {
                         paramMapCore.setParameter(8006, 1, 0, 0, 0);
-                    }else {
+                    } else {
                         paramMapCore.setParameter(8006, 0, 0, 0, 0);
                     }
                 }
@@ -196,8 +199,9 @@ class MapCallback//a
                 if (this.mapDelegate.getUiSettings().isScaleControlsEnabled()) {
                     this.mapDelegate.invalidateScaleState();
                 }
-                MapController.OnMapLevelChangeListener mapLevelChangeListener=this.mapDelegate.getOnMapLevelChangeListener();
-                if(mapLevelChangeListener!=null)mapLevelChangeListener.onMapLevelChanged(this.lastZoom);
+                MapController.OnMapLevelChangeListener mapLevelChangeListener = this.mapDelegate.getOnMapLevelChangeListener();
+                if (mapLevelChangeListener != null)
+                    mapLevelChangeListener.onMapLevelChanged(this.lastZoom);
             }
         } catch (RemoteException localRemoteException2) {
             SDKLogHandler.exception(localRemoteException2, "MapCallback", "runMessage cameraChange");
@@ -288,7 +292,7 @@ class MapCallback//a
             throws RemoteException {
         MapCore mapCore = this.mapDelegate.getMapCore();
         MapProjection proj = this.mapDelegate.getMapProjection();
-        MapController.OnMapLevelChangeListener levelChangeListener=this.mapDelegate.getOnMapLevelChangeListener();
+        MapController.OnMapLevelChangeListener levelChangeListener = this.mapDelegate.getOnMapLevelChangeListener();
         cameraUpdateFactoryDelegate.zoom = this.mapDelegate.checkZoomLevel(cameraUpdateFactoryDelegate.zoom);
         Object localObject;
         float f1;

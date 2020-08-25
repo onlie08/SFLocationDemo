@@ -15,8 +15,13 @@ public class SPUtils {
     /**
      * sp 文件名
      */
-    public static final String FILE_NAME = "SFLocDemo.config";
+    public static String FILE_NAME_LOC="file_name_loc.config";
+    public static String FILE_NAME_MAP="file_name_map.config";
+    public static String FILE_NAME;
 
+    public static void setSPFileName(String fileName) {
+        FILE_NAME = fileName;
+    }
 
     public static void put(Context context, String key, Object object){
 

@@ -835,7 +835,7 @@ public class Util {
 
     public static String getMetaValue(Context context,String strMetaKey) {
         ApplicationInfo appInfo = null;
-        String msg = null;
+        String msg = "";
         try {
             appInfo = context
                     .getPackageManager()

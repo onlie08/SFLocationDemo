@@ -23,7 +23,7 @@ public class ConfigerHelper {
     HashMap<String, String> mConfStrList;
 
     public static final String SF_MAP_URL = "sf_map_url";                   //生产地图数据和样式服务地址
-    public static final String SF_MAP_URL_TC = "sf_map_url_tc";                   //腾讯云地图数据和样式服务地址
+    public static final String SF_MAP_URL_TC = "sf_map_url_tc";             //腾讯云地图数据和样式服务地址
     public static final String SF_TMC_URL = "sf_tmc_url";                   //地图实时交通服务地址
     public static final String SF_AUTH_URL = "sf_auth_url";                 //地图鉴权
     public static final String SYSTEM_AK = "system_ak";                     //图咕系统配置的KEY

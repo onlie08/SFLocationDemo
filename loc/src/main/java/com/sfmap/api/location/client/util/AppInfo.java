@@ -43,7 +43,7 @@ public class AppInfo {
     //图咕系统配置的KEY
     private static String systemAk = "";
     private static String systemAkDef = "";
-    private static double lng ;
+    private static double lng;
     private static double lat;
 
     public static String getSpUrl() {
@@ -54,8 +54,8 @@ public class AppInfo {
         netLocationURL = spUrl;
     }
 
-    public static void setSystemAkDef(String systemAkDef) {
-        AppInfo.systemAkDef = systemAkDef;
+    public static void setApiKey(String systemAk) {
+        AppInfo.systemAk = systemAk;
     }
 
     /**
@@ -97,10 +97,6 @@ public class AppInfo {
 
         }
         return scode;
-    }
-
-    public static void setApiKey(String systemAk) {
-        AppInfo.systemAk = systemAk;
     }
 
     public static boolean IsEmptyOrNullString(String s) {
@@ -260,7 +256,7 @@ public class AppInfo {
      */
     private static String getCustomOrDefaultURL(Context context, String curValue, String defaultValue, String metaKey) {
         try {
-            if ((curValue == null) || (curValue.equals(""))) {
+            if (TextUtils.isEmpty(curValue)) {
                 curValue = ConfigerHelper.getInstance(context).getKeyValue(metaKey);
                 if (curValue == null || curValue.equals("")) {
                     curValue = defaultValue;
@@ -291,11 +287,7 @@ public class AppInfo {
      * @return
      */
     public static String getGpsLocationUrl(Context context) {
-        if (TextUtils.isEmpty(netLocationURL)) {
-            return getCustomOrDefaultURL(context, netLocationURL, netLocationDefURL, ConfigerHelper.NET_LOCATION_URL);
-        } else {
-            return netLocationURL;
-        }
+        return getCustomOrDefaultURL(context, netLocationURL, netLocationDefURL, ConfigerHelper.NET_LOCATION_URL);
     }
 
     /*
