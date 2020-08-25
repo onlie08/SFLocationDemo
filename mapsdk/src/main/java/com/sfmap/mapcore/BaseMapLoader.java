@@ -20,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.zip.GZIPInputStream;
 
 import javax.crypto.BadPaddingException;
@@ -145,10 +146,13 @@ public abstract class BaseMapLoader {
         return false;
     }
 
-    public void OnException(int paramInt) {
-        privteTestTime("", " network error:" + paramInt);
+    public void OnException(int errCode) {
+        //todo 请求失败    -->   地址错误:404
+        Log.d("MAP请求1", "请求失败,错误码:"+ errCode );
 
-        LogManager.writeLog(LogManager.productInfo, hashCode() + "MapLoader Exception happened error code: " + paramInt, 115);
+
+        privteTestTime("", " network error:" + errCode);
+        LogManager.writeLog(LogManager.productInfo, hashCode() + "MapLoader Exception happened error code: " + errCode, 115);
         this.isFinished = true;
         if ((this.datasource != 6) && (this.datasource != 4) && (this.datasource != 1)) {
             if (!this.mCanceled) {
@@ -275,7 +279,7 @@ public abstract class BaseMapLoader {
                     String sfMapURL = AppInfo.getSfMapURL(mapCore.getContext());
                     url = sfMapURL + "?" + "param=" + param1 + "&ak=" + ak;
                     eventBusContent = String.format(
-                            "Url: %1$s\nAK: %2$s\n包名: %3$s\nSha1: %4$s\n当前中心点坐标:%5$s,%6$s" +
+                            "Url: %1$s\nAK: %2$s\n包名: %3$s\nSha1: %4$s\n当前中心点坐标: %5$s,%6$s" +
                                     "\n\n请求地址:\n%7$s"
                             , sfMapURL, ak, packageName, Sha1, AppInfo.getLat() + "", AppInfo.getLng() + "", url);
                     //内部高精版地图数据请求
@@ -315,6 +319,7 @@ public abstract class BaseMapLoader {
                     int j = -1;
                     while ((j = localInputStream.read(arrayOfByte)) > -1) {
                         //todo 失败: 就是一个json  成功:数据应该是数组
+                        Log.d("MAP请求----------", "" + Arrays.toString(arrayOfByte));
 //                        if (i != 0) {
 //                            privteTestTime("recievedFirstByte:", "");
 //                            i = 0;
@@ -324,6 +329,7 @@ public abstract class BaseMapLoader {
                         }
                         onConnectionRecieveData(arrayOfByte, j);
                     }
+                    Log.d("MAP请求----------", "" + Arrays.toString(arrayOfByte));
                     if (isNeedProcessReturn()) {
                         return;
                     }
@@ -333,7 +339,7 @@ public abstract class BaseMapLoader {
                     }
                     processRecivedDataByType();
                 } else {
-                    OnException(1002);
+                    OnException(this.httpURLConnection.getResponseCode());
                 }
             } else {
                 OnException(1002);
