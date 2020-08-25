@@ -19,8 +19,8 @@ public class AppInfo {
     private static String appName = "";
     private static String packageName = "";
     private static String appVersion = "";
-    private static double lng;
-    private static double lat;
+    private static double lng = 116.397036;
+    private static double lat = 39.917834;
     private static int appVersionCode = 0;
 
     public static int NormalVersion = 0;
@@ -95,9 +95,9 @@ public class AppInfo {
 
     public static String getAppMetaApikey(Context context) {
         if (TextUtils.isEmpty(AppInfo.metaApikey)) {
-            AppInfo.metaApikey= Util.getMetaValue(context, Util.CONFIG_API_KEY);
+            AppInfo.metaApikey = Util.getMetaValue(context, Util.CONFIG_API_KEY);
         }
-        return  AppInfo.metaApikey;
+        return AppInfo.metaApikey;
     }
 
     public static String getApplicationName(Context context) {

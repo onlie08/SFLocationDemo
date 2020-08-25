@@ -46,7 +46,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':mapsdk')
     api 'com.google.code.gson:gson:2.8.5'
     api 'com.android.support:appcompat-v7:28.0.0'
-    api 'org.greenrobot:eventbus:3.2.0'
 }

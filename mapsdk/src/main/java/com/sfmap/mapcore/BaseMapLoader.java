@@ -10,6 +10,8 @@ import com.sfmap.api.maps.MapsInitializer;
 import com.sfmap.api.maps.model.MobileBean;
 import com.sfmap.api.maps.model.TmcBean;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -225,7 +227,7 @@ public abstract class BaseMapLoader {
         try {
             String url = "";
             try {
-
+                String eventBusContent = "";
                 if (datasource == DATA_SOURCE_TYPE_DATA_VEC_TMC) {
                     String meshes = "";
                     for (int i = 0; i < mapTiles.size(); ++i) {
@@ -247,10 +249,13 @@ public abstract class BaseMapLoader {
 //                    tmcBean.setAppCerSha1("D7:F2:9D:15:B8:7D:17:14:3C:B8:EB:96:EB:DA:52:D5:D9:C0:46:63");
 //                    String ak ="1cb63da24a7d4e48bb827dd4eb64c25e";
                     String params = new DesUtil().encrypt(tmcBean.toString());
-//                    url = AppInfo.getSfTmcURL(mapCore.getContext()) + "?param="+ params +"&ak="+ak;
-                    url = AppInfo.getSfTmcURL(mapCore.getContext()) + "?mesh=" + meshes;
-                    Log.d("doRequest", "实时交通请求地址url:" + url);
-                    Log.d("doRequest", "实时交通packageName:" + packageName);
+                    String sfTmcURL = AppInfo.getSfTmcURL(mapCore.getContext());
+                    url = sfTmcURL + "?mesh=" + meshes;
+
+                    eventBusContent = String.format(
+                            "Url: %1$s\nAK: %2$s\n包名: %3$s\nSha1: %4$s\n当前中心点坐标: %5$s,%6$s" +
+                                    "\n\n请求地址:\n%7$s"
+                            , sfTmcURL, ak, packageName, Sha1, AppInfo.getLat() + "", AppInfo.getLng() + "", url);
                 } else {
                     MobileBean mobileBean = new MobileBean();
                     mobileBean.setT("VMMV4");
@@ -267,14 +272,19 @@ public abstract class BaseMapLoader {
 //                    String ak ="e2bcef63bcda45f1a66346b34465f64e";
                     String para = mobileBean.toString();
                     String param1 = DesUtil.getInstance().encrypt(para);
-                    url = AppInfo.getSfMapURL(mapCore.getContext()) + "?" + "param=" + param1 + "&ak=" + ak;
-                    Log.d("doRequest", "地图数据服务,地址url:" + url.substring(0,50));
-                    Log.d("doRequest", "packageName:" + packageName + " \nSha1:" + Sha1 + " \nak:" + ak);
+                    String sfMapURL = AppInfo.getSfMapURL(mapCore.getContext());
+                    url = sfMapURL + "?" + "param=" + param1 + "&ak=" + ak;
+                    eventBusContent = String.format(
+                            "Url: %1$s\nAK: %2$s\n包名: %3$s\nSha1: %4$s\n当前中心点坐标:%5$s,%6$s" +
+                                    "\n\n请求地址:\n%7$s"
+                            , sfMapURL, ak, packageName, Sha1, AppInfo.getLat() + "", AppInfo.getLng() + "", url);
                     //内部高精版地图数据请求
 //                    if("1".equals(AppInfo.getNormalOrOrder(mapCore.getContext()))){
 //                        url = getURL(AppInfo.getOrderMapURL(mapCore.getContext()) + "?", "", param);
 //                    }
                 }
+
+                postMapMsgEventBus("请求参数:\n" + eventBusContent);
             } catch (IllegalBlockSizeException e) {
                 e.printStackTrace();
             } catch (BadPaddingException e) {
@@ -304,6 +314,7 @@ public abstract class BaseMapLoader {
                     byte[] arrayOfByte = new byte[512];
                     int j = -1;
                     while ((j = localInputStream.read(arrayOfByte)) > -1) {
+                        //todo 失败: 就是一个json  成功:数据应该是数组
 //                        if (i != 0) {
 //                            privteTestTime("recievedFirstByte:", "");
 //                            i = 0;
@@ -346,6 +357,11 @@ public abstract class BaseMapLoader {
             }
             disConnectHttpConnection();
         }
+    }
+
+    private void postMapMsgEventBus(String eventBusContent) {
+        Log.d("MAP请求", "" + eventBusContent);
+        EventBus.getDefault().post(eventBusContent);
     }
 
     private void disConnectHttpConnection() {

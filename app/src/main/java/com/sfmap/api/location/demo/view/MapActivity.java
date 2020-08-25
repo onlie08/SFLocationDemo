@@ -18,6 +18,7 @@ import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.SPUtils;
+import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.MapController;
 import com.sfmap.api.maps.MapView;
 import com.sfmap.api.maps.model.LatLng;
@@ -66,11 +67,10 @@ public class MapActivity extends BaseFgActivity {
         mMap.getUiSettings().setZoomControlsEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.setTrafficEnabled(false);
-        // mMap.moveCamera(CameraUpdateFactory.zoomTo(11));
-
         double lng = AppInfo.getLng();
         double lat = AppInfo.getLat();
         mMap.setMapCenter(new LatLng(lat, lng));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(10));
     }
 
     @Override
@@ -90,19 +90,6 @@ public class MapActivity extends BaseFgActivity {
         super.onPause();
         mMapView.onPause();
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
@@ -135,16 +122,25 @@ public class MapActivity extends BaseFgActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
     private String msgTotal;
     private String msgTotalTag;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMsgEvent(String msgStr) {
+    public void postMapMsgEventBus(String msgStr) {
         if (msgStr.contains("请求参数")) {
-            msgTotalTag = msgTotal;
-            msgTotal = msgStr;
-        } else {
-            msgTotal = msgTotal + "\n" + msgStr;
+            msgTotalTag = msgStr;
         }
     }
 
@@ -158,8 +154,8 @@ public class MapActivity extends BaseFgActivity {
         String SP_LNG = (String) SPUtils.get(this, KeyConst.SP_LNG, "0.0");
         String SP_LAT = (String) SPUtils.get(this, KeyConst.SP_LAT, "0.0");
 
-        Log.d(TAG, "数据复制:"+SP_AK);
-        Log.d(TAG, "数据复制:"+SP_LNG);
+        Log.d(TAG, "数据复制:" + SP_AK);
+        Log.d(TAG, "数据复制:" + SP_LNG);
         if (!TextUtils.isEmpty(SP_AK)) {
             AppInfo.setSpUrl(SP_URL);
             AppInfo.setAppMetaApikey(SP_AK);
