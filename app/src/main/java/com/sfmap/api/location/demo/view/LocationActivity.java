@@ -378,7 +378,6 @@ public class LocationActivity extends BaseFgActivity {
     public void onMsgEvent(String msgStr) {
         if (msgStr.contains("请求参数")) {
             msgTotalTag = msgTotal;
-
             msgTotal = msgStr;
         } else {
             msgTotal = msgTotal + "\n" + msgStr;

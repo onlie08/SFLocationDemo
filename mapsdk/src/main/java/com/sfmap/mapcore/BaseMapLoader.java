@@ -11,11 +11,14 @@ import com.sfmap.api.maps.model.MobileBean;
 import com.sfmap.api.maps.model.TmcBean;
 
 import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
@@ -147,8 +150,14 @@ public abstract class BaseMapLoader {
     }
 
     public void OnException(int errCode) {
-        //todo 请求失败    -->   地址错误:404
-        Log.d("MAP请求1", "请求失败,错误码:"+ errCode );
+        Log.d("MAP验证", "OnException请求失败,错误码:" + errCode);
+        String failStr="\n请求失败";
+        if (errCode==404) {
+            failStr=failStr+ ": IP地址错误";
+        }
+        failStr=failStr+"\n错误码: " + errCode;
+
+        postMapMsgEventBus(failStr);
 
 
         privteTestTime("", " network error:" + errCode);
@@ -211,7 +220,7 @@ public abstract class BaseMapLoader {
             return;
         }
         String address = null;
-        InputStream localInputStream = null;
+        InputStream inputStream = null;
         String param = null;
 
         address = getMapAddress();
@@ -230,8 +239,8 @@ public abstract class BaseMapLoader {
         this.inRequest = true;
         try {
             String url = "";
+            String eventBusContent = "";
             try {
-                String eventBusContent = "";
                 if (datasource == DATA_SOURCE_TYPE_DATA_VEC_TMC) {
                     String meshes = "";
                     for (int i = 0; i < mapTiles.size(); ++i) {
@@ -312,24 +321,31 @@ public abstract class BaseMapLoader {
             if (this.httpURLConnection != null) {
                 this.httpURLConnection.connect();
                 if (this.httpURLConnection.getResponseCode() == 200) {
-                    localInputStream = this.httpURLConnection.getInputStream();
+                    inputStream = this.httpURLConnection.getInputStream();
 
                     onConnectionOpened();
-                    byte[] arrayOfByte = new byte[512];
+                    byte[] byteArr = new byte[512];
                     int j = -1;
-                    while ((j = localInputStream.read(arrayOfByte)) > -1) {
-                        //todo 失败: 就是一个json  成功:数据应该是数组
-                        Log.d("MAP请求----------", "" + Arrays.toString(arrayOfByte));
-//                        if (i != 0) {
-//                            privteTestTime("recievedFirstByte:", "");
-//                            i = 0;
-//                        }
+                    while ((j = inputStream.read(byteArr)) > -1) {
+                        String result = new String(byteArr);//失败
+                        Log.d("MAP验证", "返回结果1:" + result);
+                        //Log.d("MAP验证", "返回结果:" + Arrays.toString(byteArr));//成功
+                       try {
+                            JSONObject obj = new JSONObject(result);
+                            JSONObject resultObj = obj.getJSONObject("result");
+                            String errCode = resultObj.getString("err");
+                            String msg = resultObj.getString("msg");
+                            String failStr="请求失败: "+msg+"\n错误码: " + errCode;
+                            Log.d("MAP验证", failStr);
+                            postMapMsgEventBus(failStr);
+                        } catch (JSONException e) {
+                           postMapMsgEventBus(AppInfo.load_success);
+                        }
                         if (this.mCanceled) {
                             break;
                         }
-                        onConnectionRecieveData(arrayOfByte, j);
+                        onConnectionRecieveData(byteArr, j);
                     }
-                    Log.d("MAP请求----------", "" + Arrays.toString(arrayOfByte));
                     if (isNeedProcessReturn()) {
                         return;
                     }
@@ -339,9 +355,11 @@ public abstract class BaseMapLoader {
                     }
                     processRecivedDataByType();
                 } else {
+                    Log.d("MAP验证", "请求失败: IP地址配置错误");//地址错误
                     OnException(this.httpURLConnection.getResponseCode());
                 }
             } else {
+                Log.d("MAP验证", "请求失败: 这里1");
                 OnException(1002);
             }
             return;
@@ -350,14 +368,16 @@ public abstract class BaseMapLoader {
         } catch (OutOfMemoryError localOutOfMemoryError) {
         } catch (IllegalStateException localIllegalStateException) {
         } catch (IOException localIOException6) {
+            Log.d("MAP验证", "请求失败: IP地址配置错误");
             OnException(1002);
         } catch (NullPointerException localNullPointerException) {
         } finally {
             onConnectionOver();
-            if ((localInputStream != null) && (!this.mCanceled)) {
+            if ((inputStream != null) && (!this.mCanceled)) {
                 try {
-                    localInputStream.close();
+                    inputStream.close();
                 } catch (IOException localIOException9) {
+                    Log.d("MAP验证", "请求失败: 这里3");
                     OnException(1002);
                 }
             }
@@ -366,8 +386,8 @@ public abstract class BaseMapLoader {
     }
 
     private void postMapMsgEventBus(String eventBusContent) {
-        Log.d("MAP请求", "" + eventBusContent);
-        EventBus.getDefault().post(eventBusContent);
+        //Log.d("MAP验证", "" + eventBusContent);
+        EventBus.getDefault().post("\n"+eventBusContent);
     }
 
     private void disConnectHttpConnection() {

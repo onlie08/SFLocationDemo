@@ -14,6 +14,7 @@ import java.util.Locale;
  * 工具类 获取服务地址、获取包名、sha1、ak
  */
 public class AppInfo {
+    public static String load_success = "请求成功!";
     private static String TAG = "AppInfo";
     public static float currentZoom;
     private static String appName = "";

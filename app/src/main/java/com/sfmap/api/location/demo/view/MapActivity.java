@@ -107,21 +107,6 @@ public class MapActivity extends BaseFgActivity {
         initShowInfoDialog();
     }
 
-    private void initShowInfoDialog() {
-        View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
-        TextView infoTv = layout.findViewById(R.id.info_tv);
-        infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
-        infoTv.setTextIsSelectable(true);
-        infoTv.setText(msgTotalTag);
-        new MaterialDialog.Builder(context)
-                .positiveText(R.string.sure)
-                .positiveColorRes(R.color.mainColor)
-                .negativeColorRes(R.color.mainColor).title(getString(
-                R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
-                .customView(layout, false).show();
-
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -134,14 +119,44 @@ public class MapActivity extends BaseFgActivity {
         EventBus.getDefault().unregister(this);
     }
 
+
     private String msgTotal;
-    private String msgTotalTag;
+    private String msgTotalShow;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void postMapMsgEventBus(String msgStr) {
         if (msgStr.contains("请求参数")) {
-            msgTotalTag = msgStr;
+            msgTotalShow = msgTotal;
+            msgTotal = msgStr;
+        } else {
+            if (!msgTotal.contains(msgStr)) {
+                msgTotal = msgTotal + "\n" + msgStr;
+            }
         }
+    }
+
+    /*    private String msgTotalShow="";
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void postMapMsgEventBus(String msgStr) {
+            Log.d("MAP验证", "接受msgTotalTag:"+msgTotalShow);
+            if (!msgTotalShow.contains(msgStr)) {
+            Log.d("MAP验证", "接受msgStr:"+msgStr);
+                msgTotalShow = msgTotalShow + msgStr;
+            }
+        }*/
+    private void initShowInfoDialog() {
+        View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
+        TextView infoTv = layout.findViewById(R.id.info_tv);
+        infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
+        infoTv.setTextIsSelectable(true);
+        infoTv.setText(msgTotalShow);
+        new MaterialDialog.Builder(context)
+                .positiveText(R.string.sure)
+                .positiveColorRes(R.color.mainColor)
+                .negativeColorRes(R.color.mainColor).title(getString(
+                R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
+                .customView(layout, false).show();
+
     }
 
     protected void initSPConfig() {

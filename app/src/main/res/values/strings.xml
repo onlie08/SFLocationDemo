@@ -12,4 +12,5 @@
     <string name="info_show_dialog_title">日志信息</string>
     <string name="lng">经度</string>
     <string name="lat">纬度</string>
+    <string name="load_success">请求成功</string>
 </resources>
