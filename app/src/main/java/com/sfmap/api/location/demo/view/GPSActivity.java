@@ -147,7 +147,6 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
         super.onStop();
     }
 
-
     BroadcastReceiver gpsReciever = new BroadcastReceiver() {
 
         @Override

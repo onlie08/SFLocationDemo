@@ -47,7 +47,7 @@ public class GpsService extends Service {
             return;
         }
         //Utils.enableGps(getApplicationContext(), true);
-        startGPS();
+
     }
 
     @Override
@@ -57,11 +57,11 @@ public class GpsService extends Service {
         super.onDestroy();
     }
 
-    CountDownTimer mCountDownTimer = new CountDownTimer(OUT_TIME, 5000) {
-
+    //定时获取GPS ,间隔1秒
+    CountDownTimer mCountDownTimer = new CountDownTimer(OUT_TIME, 1000) {
         @Override
         public void onTick(long arg0) {
-            logd("onTick from " + TAG);
+            startGPS();
         }
 
         @Override
@@ -88,7 +88,7 @@ public class GpsService extends Service {
         }
         locManager.requestLocationUpdates(provider, 500, 0, mLocationListener);
         locManager.addGpsStatusListener(gpsStatusListener);
-        Log.d(TAG, "获取GPS消息:" );
+        Log.d(TAG, "获取GPS消息:");
     }
 
     LocationListener mLocationListener = new LocationListener() {
@@ -121,50 +121,49 @@ public class GpsService extends Service {
     ArrayList<String> satelliteList = new ArrayList<String>();
     GpsStatus.Listener gpsStatusListener = new GpsStatus.Listener() {
 
-        public void onGpsStatusChanged(int arg0) {
-            switch (arg0) {
-                case GpsStatus.GPS_EVENT_STARTED:
-                    logd("GPS_EVENT_STARTED");
-                    mCountDownTimer.start();
-                    break;
-                case GpsStatus.GPS_EVENT_STOPPED:
-                    logd("GPS_EVENT_STOPPED");
-                    break;
+        public void onGpsStatusChanged(int event) {
+            switch (event) {
+                //第一次定位
                 case GpsStatus.GPS_EVENT_FIRST_FIX:
-                    logd("GPS_EVENT_FIRST_FIX");
+                    Log.i(TAG, "第一次定位");
                     break;
+                //卫星状态改变
                 case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
-                    logd("GPS_EVENT_SATELLITE_STATUS");
-                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                    Log.i(TAG, "卫星状态改变");
+                    if (ActivityCompat.checkSelfPermission(GpsService.this, Manifest.permission.ACCESS_FINE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
-                            (getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                            (GpsService.this, Manifest.permission.ACCESS_COARSE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED) {
                         //请求权限
 
                         return;
                     }
-                    mGpsStatus = locManager.getGpsStatus(null);
-                    mSatellites = mGpsStatus.getSatellites();
-                    Iterator<GpsSatellite> iterator = mSatellites.iterator();
+                    GpsStatus gpsStatus = locManager.getGpsStatus(null);
+                    //获取卫星颗数的默认最大值
+                    int maxSatellites = gpsStatus.getMaxSatellites();
+                    //创建一个迭代器保存所有卫星
+                    Iterator<GpsSatellite> iters = gpsStatus.getSatellites().iterator();
                     int count = 0;
                     satelliteList.clear();
-                    while (iterator.hasNext()) {
-                        GpsSatellite gpsSatel = (GpsSatellite) iterator.next();
-                        //Log.d(TAG, gpsSatel.getSnr() + ",数据进来," + gpsSatel.getPrn());
-                        //有作用的卫星
+                    while (iters.hasNext() && count <= maxSatellites) {
+                        GpsSatellite gpsSatel = iters.next();
                         if (gpsSatel.getSnr() > 5) {
                             satelliteList.add(count++, "Prn" + gpsSatel.getPrn() + " Snr:" + gpsSatel.getSnr());
-                            logd("Prn" + gpsSatel.getPrn() + " Snr:" + gpsSatel.getSnr());
                         }
+                        count++;
                     }
-
                     if (onAddGPSListener != null) {
                         onAddGPSListener.OnAddGPS(satelliteList);
                     }
-
-
+                    System.out.println("搜索到："+count+"颗卫星");
                     break;
-                default:
+                //定位启动
+                case GpsStatus.GPS_EVENT_STARTED:
+                    Log.i(TAG, "定位启动");
+                    break;
+                //定位结束
+                case GpsStatus.GPS_EVENT_STOPPED:
+                    Log.i(TAG, "定位结束");
                     break;
             }
 
