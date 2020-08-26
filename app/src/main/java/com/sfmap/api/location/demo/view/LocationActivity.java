@@ -269,22 +269,22 @@ public class LocationActivity extends BaseFgActivity {
                 new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
-
+                        Log.d(TAG, "获取定位" + location);
                     }
 
                     @Override
                     public void onStatusChanged(String provider, int status, Bundle extras) {
-
+                        Log.d(TAG, "获取定位1" + provider);
                     }
 
                     @Override
                     public void onProviderEnabled(String provider) {
-
+                        Log.d(TAG, "获取定位2" + provider);
                     }
 
                     @Override
                     public void onProviderDisabled(String provider) {
-
+                        Log.d(TAG, "获取定位3" + provider);
                     }
                 });
     }
@@ -422,7 +422,7 @@ public class LocationActivity extends BaseFgActivity {
         }
     }
 
-    protected void initSPConfig( ) {
+    protected void initSPConfig() {
         SPUtils.setSPFileName(SPUtils.FILE_NAME_LOC);
         String SP_URL = (String) SPUtils.get(this, KeyConst.SP_URL, "");
         String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");

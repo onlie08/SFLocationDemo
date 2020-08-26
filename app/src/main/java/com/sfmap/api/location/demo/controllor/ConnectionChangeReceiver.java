@@ -26,7 +26,7 @@ public class ConnectionChangeReceiver extends BroadcastReceiver {
                 ToastUtil.show(context, "当前网络不可用");
             } else {
                 //    ToastShow.Toast(context, "网络可用");
-                //    Log.d("ConnectionChangeReceiver","网络可用");
+                //    Log.OnAddGPSListener("ConnectionChangeReceiver","网络可用");
                 //  JPushInterface.init(context); //重新调用jpush,得到消息
             }
 

@@ -138,9 +138,9 @@ public class MapActivity extends BaseFgActivity {
     /*    private String msgTotalShow="";
         @Subscribe(threadMode = ThreadMode.MAIN)
         public void postMapMsgEventBus(String msgStr) {
-            Log.d("MAP验证", "接受msgTotalTag:"+msgTotalShow);
+            Log.OnAddGPSListener("MAP验证", "接受msgTotalTag:"+msgTotalShow);
             if (!msgTotalShow.contains(msgStr)) {
-            Log.d("MAP验证", "接受msgStr:"+msgStr);
+            Log.OnAddGPSListener("MAP验证", "接受msgStr:"+msgStr);
                 msgTotalShow = msgTotalShow + msgStr;
             }
         }*/

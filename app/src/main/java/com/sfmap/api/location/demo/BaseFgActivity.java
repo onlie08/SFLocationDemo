@@ -35,7 +35,7 @@ import com.sfmap.api.location.demo.utils.TextUtil;
 public class BaseFgActivity extends FragmentActivity {
 
     public ConnectionChangeReceiver myReceiver;
-    protected final String TAG = "777";
+    protected final String TAG = "sfmap7";
     protected TextView emptyTv;
 
     @Override

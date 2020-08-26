@@ -45,6 +45,22 @@
         <activity android:name=".view.LocationActivity" />
         <activity android:name=".view.MapActivity" />
         <activity android:name=".view.SearchActivity" />
+        <activity android:name=".view.GPSActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
+        <service android:name=".controllor.RealGPSGetService"></service>
+        <service android:name=".controllor.GpsService"></service>
+
+       <!-- <receiver android:name=".controllor.RestartServiceReceiver" >
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_TIME_TICK" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>-->
 
     </application>
 
