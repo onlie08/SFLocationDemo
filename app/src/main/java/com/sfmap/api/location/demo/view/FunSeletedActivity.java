@@ -29,7 +29,7 @@ public class FunSeletedActivity extends BaseFgActivity {
         initView();
     }
 
-    Class classArr[] = {LocationActivity.class, MapActivity.class, LocationActivity.class};
+    Class classArr[] = {LocationActivity.class, MapActivity.class, SearchActivity.class};
 
     private void initView() {
         String[] funTitleArr = getResources().getStringArray(R.array.fun_title_arr);

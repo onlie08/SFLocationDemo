@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true">
+
+    <com.sfmap.api.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </com.sfmap.api.maps.MapView>
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/layout_title_left_center"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_title_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_title"
+      >
+
+        <EditText
+            android:id="@+id/search_et"
+            style="@style/px26_212121"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dm030"
+            android:layout_marginRight="@dimen/dm030"
+            android:layout_marginTop="@dimen/dm010"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/shape_eee_7px"
+            android:drawableLeft="@drawable/ic_search_gray"
+            android:drawablePadding="@dimen/dm010"
+            android:gravity="center_vertical"
+            android:hint="搜索"
+            android:includeFontPadding="false"
+            android:paddingBottom="@dimen/dm013"
+            android:paddingLeft="@dimen/dm020"
+            android:paddingRight="@dimen/dm050"
+            android:layout_marginBottom="@dimen/dm015"
+            android:paddingTop="@dimen/dm013"
+            android:textColorHint="@color/color_hint"
+            android:textCursorDrawable="@drawable/shape_cursor_color_main_color" />
+
+        <TextView
+            android:id="@+id/search_delete_bt"
+            style="@style/px26_mainColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_delete_black_circle"
+            android:paddingBottom="@dimen/dm012"
+            android:paddingRight="@dimen/dm030"
+            android:paddingTop="@dimen/dm012"
+            android:text="@string/cancel"
+            android:visibility="gone" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/info_show_bt"
+        android:layout_width="@dimen/dm120"
+        android:layout_height="@dimen/dm060"
+        android:layout_marginRight="@dimen/dm040"
+        android:layout_marginBottom="@dimen/main_margin_left_x"
+        android:background="@drawable/selector_bt_5px"
+        android:onClick="onInfoShowClick"
+        android:text="@string/show_info"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dm024"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+</android.support.constraint.ConstraintLayout>
