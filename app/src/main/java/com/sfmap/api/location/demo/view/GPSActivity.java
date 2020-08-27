@@ -17,6 +17,7 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.TextView;
@@ -75,7 +76,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
     private GpsService gpsService;
     private ArrayList<String> satelliteList;
 
-    private String infoTag="";
+    private String infoTag = "";
     private String file_name_date = "/sf_gps_loc_info.txt";
     private String gpsFilePath;
 
@@ -98,7 +99,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
             //参数1：可以是File对象 也可以是文件路径;参数2：默认为False=>覆盖内容； true=>追加内容
             gpsFilePath = file.getCanonicalPath()
                     + file_name_date;
-           ToastUtil.show(context,"目录：" +gpsFilePath);
+            ToastUtil.show(context, "目录：" + gpsFilePath);
             out = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(gpsFilePath, true)));
             out.newLine();
@@ -190,18 +191,23 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
             appendFile(info);
         }
     }
+
     @Override
     public void onAddLocation(Location location) {
-        if (location != null) {
+        if (location != null && context != null) {
             String info = String.format("当前坐标(%1$s):\n %2$s,%3$s\n\n", TextUtil.getFormatTime(
                     location.getTime()), location.getLatitude() + "", location.getLongitude() + "");
-
             infoTag = info + infoTag;
+            int lineCount = infoTv.getLineCount();
+            if (lineCount > 100) {
+                infoTag = "";
+            }
             infoTv.setText(infoTag);
 
             checkWritePermission(info);
         }
     }
+
     @Override
     public void onAddGPS(ArrayList<String> gpsList) {
         Log.d(TAG, ",数据回调OnAddGPS");
@@ -310,7 +316,8 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
 
     private void initView() {
         infoTv = findViewById(R.id.info_show_tv);
-        infoTv.setText("经纬度,时间");
+        infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
+        infoTv.setText("正在获取GPS定位...");
     }
 
     private String msgTotal;

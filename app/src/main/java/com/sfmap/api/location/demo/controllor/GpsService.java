@@ -87,7 +87,7 @@ public class GpsService extends Service {
         }
         locManager.addGpsStatusListener(gpsStatusListener);
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                500, 1, mLocationListener);
+                1000, 1, mLocationListener);
         Log.d(TAG, "获取GPS消息:");
     }
 
