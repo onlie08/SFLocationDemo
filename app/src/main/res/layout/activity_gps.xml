@@ -22,6 +22,7 @@
     <TextView
         android:id="@+id/info_show_tv"
         style="@style/px26_212121"
+        android:scrollbars="vertical"
         android:padding="@dimen/main_margin_left_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

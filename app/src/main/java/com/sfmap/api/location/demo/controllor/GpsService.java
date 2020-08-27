@@ -5,7 +5,6 @@ package com.sfmap.api.location.demo.controllor;
  */
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import android.Manifest;
 import android.app.Service;
@@ -20,7 +19,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
-import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
@@ -95,11 +93,9 @@ public class GpsService extends Service {
 
     LocationListener mLocationListener = new LocationListener() {
         public void onLocationChanged(Location location) {
-            ToastUtil.show(getApplicationContext(),"获取定位GPS:"+location.getLatitude());
-            Log.d(TAG, "获取定位-----------:" + location.getLatitude());
             if (location != null) {
                 if (onAddLocationListener != null) {
-                    onAddLocationListener.OnAddLocation(location);
+                    onAddLocationListener.onAddLocation(location);
                 }
                 //pass();
 
@@ -237,7 +233,7 @@ public class GpsService extends Service {
 
 
     public interface OnAddLocationListener {
-        void OnAddLocation(Location location);
+        void onAddLocation(Location location);
     }
 
     private OnAddLocationListener onAddLocationListener;
@@ -252,7 +248,7 @@ public class GpsService extends Service {
 
 
     public interface OnAddGPSListener {
-        void OnAddGPS(ArrayList<String> gpslist);
+        void onAddGPS(ArrayList<String> gpslist);
     }
 
     private OnAddGPSListener onAddGPSListener;
