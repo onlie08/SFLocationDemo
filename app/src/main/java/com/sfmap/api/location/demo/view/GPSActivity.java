@@ -133,7 +133,6 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
      */
     private void appendFile(String content) {
         File file = new File(gpsFilePath);
-        ToastUtil.show(context, "目录：" + gpsFilePath);
         if (!file.exists()) {
             return;
         }

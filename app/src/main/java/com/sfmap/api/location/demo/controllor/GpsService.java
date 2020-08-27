@@ -89,11 +89,11 @@ public class GpsService extends Service {
     }
 
     LocationListener mLocationListener = new LocationListener() {
-        public void onLocationChanged(Location location) {
-            Log.d(TAG, "获取到数据:onLocationChanged");
-            if (location != null) {
+        public void onLocationChanged(Location loc) {
+            Log.d(TAG, "onLocationChanged:"+loc.getLatitude());
+            if (loc != null) {
                 if (onAddLocationListener != null) {
-                    onAddLocationListener.onAddLocation(location);
+                    onAddLocationListener.onAddLocation(loc);
                 }
                 //pass();
             }
@@ -151,6 +151,9 @@ public class GpsService extends Service {
                 //定位结束
                 case GpsStatus.GPS_EVENT_STOPPED:
                     Log.d(TAG, "定位结束");
+                    break;
+                default:
+                    Log.d(TAG, "定位停止:其他"+event);
                     break;
             }
 
