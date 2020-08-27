@@ -24,11 +24,9 @@ import android.util.Log;
 
 import android.os.Binder;
 
-import com.sfmap.api.location.demo.utils.ToastUtil;
-
 public class GpsService extends Service {
 
-    static String TAG = "sfmap7";
+    protected final String TAG = "我的定位Service";
 
     LocationManager locManager = null;
     final int OUT_TIME = 600 * 1000; // 10 mins, then service die
@@ -42,13 +40,13 @@ public class GpsService extends Service {
 
     @Override
     public void onCreate() {
-        Log.d(TAG, "开始");
+        Log.d(TAG, "Service:onCreate");
         startGPS();
     }
 
     @Override
     public void onDestroy() {
-        logd("onDestroy");
+        Log.d(TAG, "Service:onDestroy");
         finish(false);
         super.onDestroy();
     }
@@ -76,7 +74,6 @@ public class GpsService extends Service {
             return;
         }
         boolean isGpsEnabled = locManager.isProviderEnabled(GPS_LOCATION_NAME);
-        Log.d(TAG, "startGPS: " + isGpsEnabled);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
                 (this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -88,17 +85,17 @@ public class GpsService extends Service {
         locManager.addGpsStatusListener(gpsStatusListener);
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                 1000, 1, mLocationListener);
-        Log.d(TAG, "获取GPS消息:");
+
     }
 
     LocationListener mLocationListener = new LocationListener() {
         public void onLocationChanged(Location location) {
+            Log.d(TAG, "获取到数据:onLocationChanged");
             if (location != null) {
                 if (onAddLocationListener != null) {
                     onAddLocationListener.onAddLocation(location);
                 }
                 //pass();
-
             }
         }
 
@@ -124,11 +121,11 @@ public class GpsService extends Service {
             switch (event) {
                 //第一次定位
                 case GpsStatus.GPS_EVENT_FIRST_FIX:
-                    Log.i(TAG, "第一次定位");
+                    Log.d(TAG, "第一次定位:");
                     break;
                 //卫星状态改变
                 case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
-                    Log.i(TAG, "卫星状态改变");
+                    Log.d(TAG, "卫星状态改变:");
                     if (ActivityCompat.checkSelfPermission(GpsService.this, Manifest.permission.ACCESS_FINE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
                             (GpsService.this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -145,15 +142,15 @@ public class GpsService extends Service {
                             availableCount++;
                         }
                     }
-                   //availableCount + "颗";
+                    //availableCount + "颗";
                     break;
                 //定位启动
                 case GpsStatus.GPS_EVENT_STARTED:
-                    Log.i(TAG, "定位启动");
+                    Log.d(TAG, "定位启动:");
                     break;
                 //定位结束
                 case GpsStatus.GPS_EVENT_STOPPED:
-                    Log.i(TAG, "定位结束");
+                    Log.d(TAG, "定位结束");
                     break;
             }
 
@@ -232,13 +229,13 @@ public class GpsService extends Service {
     }
 
 
-    public interface OnAddLocationListener {
+    public interface addLocationListener {
         void onAddLocation(Location location);
     }
 
-    private OnAddLocationListener onAddLocationListener;
+    private addLocationListener onAddLocationListener;
 
-    public void registenerOnAddLocationListener(OnAddLocationListener aListener) {
+    public void setOnAddLocationListener(addLocationListener aListener) {
         this.onAddLocationListener = aListener;
     }
 
@@ -246,19 +243,17 @@ public class GpsService extends Service {
         this.onAddLocationListener = null;
     }
 
-
-    public interface OnAddGPSListener {
+    public interface addGPSListener {
         void onAddGPS(ArrayList<String> gpslist);
     }
 
-    private OnAddGPSListener onAddGPSListener;
+    private GpsService.addGPSListener addGPSListener;
 
-    public void
-    registenerOnAddGPSListener(OnAddGPSListener aListener) {
-        this.onAddGPSListener = aListener;
+    public void setAddGPSListener(GpsService.addGPSListener aListener) {
+        this.addGPSListener = aListener;
     }
 
     public void unregistenerOnAddGPSListener() {
-        this.onAddGPSListener = null;
+        this.addGPSListener = null;
     }
 }

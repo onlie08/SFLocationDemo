@@ -35,7 +35,7 @@ import com.sfmap.api.location.demo.utils.TextUtil;
 public class BaseFgActivity extends FragmentActivity {
 
     public ConnectionChangeReceiver myReceiver;
-    protected final String TAG = "sfmap7";
+    protected final String TAG = "777";
     protected TextView emptyTv;
 
     @Override
@@ -47,7 +47,6 @@ public class BaseFgActivity extends FragmentActivity {
 
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         requestPermission();
-
     }
 
 

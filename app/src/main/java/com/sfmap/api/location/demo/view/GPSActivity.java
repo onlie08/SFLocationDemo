@@ -43,8 +43,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocationListener,
-        GpsService.OnAddGPSListener {
+public class GPSActivity extends BaseFgActivity implements GpsService.addLocationListener,
+        GpsService.addGPSListener {
     private MapView mMapView;
     private MapController mMap;
     private GPSActivity context;
@@ -62,9 +62,8 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
             Log.d(TAG, "onServiceConnected: ");
             gpsService = ((GpsService.LocalBinder) service).getService();
             if (gpsService != null) {
-                gpsService.registenerOnAddLocationListener(context);
-                gpsService.registenerOnAddGPSListener(context);
-
+                gpsService.setOnAddLocationListener(context);
+                gpsService.setAddGPSListener(context);
             }
         }
 
@@ -270,25 +269,30 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
         bindService();
 
     }
-
+    protected final String TAG = "我的定位activity";
     private void bindService() {
         Intent intent = new Intent(this, GpsService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
-        // 标志位BIND_AUTO_CREATE :onCreate得到执行,onStartCommand不执行
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart: ");
-        //EventBus.getDefault().register(this);
+        bindService();
     }
 
     @Override
     protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         unbindService(connection); //this is a callback to the locationlisteneragent class to bind it to a service
         stopService(new Intent(this, GpsService.class));
-        super.onStop();
     }
 
     BroadcastReceiver gpsReciever = new BroadcastReceiver() {
