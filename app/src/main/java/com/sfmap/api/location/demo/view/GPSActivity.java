@@ -99,7 +99,6 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
             //参数1：可以是File对象 也可以是文件路径;参数2：默认为False=>覆盖内容； true=>追加内容
             gpsFilePath = file.getCanonicalPath()
                     + file_name_date;
-            ToastUtil.show(context, "目录：" + gpsFilePath);
             out = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(gpsFilePath, true)));
             out.newLine();
@@ -135,6 +134,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
      */
     private void appendFile(String content) {
         File file = new File(gpsFilePath);
+        ToastUtil.show(context, "目录：" + gpsFilePath);
         if (!file.exists()) {
             return;
         }
@@ -195,7 +195,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
     @Override
     public void onAddLocation(Location location) {
         if (location != null && context != null) {
-            String info = String.format("当前坐标(%1$s):\n %2$s,%3$s\n\n", TextUtil.getFormatTime(
+            String info = String.format("时间:%1$s\n坐标:%2$s,%3$s\n\n", TextUtil.getFormatTime(
                     location.getTime()), location.getLatitude() + "", location.getLongitude() + "");
             infoTag = info + infoTag;
             int lineCount = infoTv.getLineCount();
