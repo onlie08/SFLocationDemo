@@ -20,10 +20,13 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import android.os.Binder;
+
+import com.sfmap.api.location.demo.utils.ToastUtil;
 
 public class GpsService extends Service {
 
@@ -42,12 +45,7 @@ public class GpsService extends Service {
     @Override
     public void onCreate() {
         Log.d(TAG, "开始");
-        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (locManager == null) {
-            return;
-        }
-        //Utils.enableGps(getApplicationContext(), true);
-
+        startGPS();
     }
 
     @Override
@@ -61,7 +59,7 @@ public class GpsService extends Service {
     CountDownTimer mCountDownTimer = new CountDownTimer(OUT_TIME, 1000) {
         @Override
         public void onTick(long arg0) {
-            startGPS();
+
         }
 
         @Override
@@ -74,8 +72,11 @@ public class GpsService extends Service {
     private static final String GPS_LOCATION_NAME = android.location.LocationManager.GPS_PROVIDER;
 
     private void startGPS() {
-        String provider = android.location.LocationManager.GPS_PROVIDER;
         //判断是否开启GPS定位功能
+        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (locManager == null) {
+            return;
+        }
         boolean isGpsEnabled = locManager.isProviderEnabled(GPS_LOCATION_NAME);
         Log.d(TAG, "startGPS: " + isGpsEnabled);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -86,19 +87,21 @@ public class GpsService extends Service {
 
             return;
         }
-        locManager.requestLocationUpdates(provider, 500, 0, mLocationListener);
         locManager.addGpsStatusListener(gpsStatusListener);
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                500, 1, mLocationListener);
         Log.d(TAG, "获取GPS消息:");
     }
 
     LocationListener mLocationListener = new LocationListener() {
         public void onLocationChanged(Location location) {
-            Log.d(TAG, "获取GPS消息1:" + location);
+            ToastUtil.show(getApplicationContext(),"获取定位GPS:"+location.getLatitude());
+            Log.d(TAG, "获取定位-----------:" + location.getLatitude());
             if (location != null) {
                 if (onAddLocationListener != null) {
                     onAddLocationListener.OnAddLocation(location);
                 }
-                pass();
+                //pass();
 
             }
         }
@@ -138,24 +141,15 @@ public class GpsService extends Service {
 
                         return;
                     }
-                    GpsStatus gpsStatus = locManager.getGpsStatus(null);
-                    //获取卫星颗数的默认最大值
-                    int maxSatellites = gpsStatus.getMaxSatellites();
-                    //创建一个迭代器保存所有卫星
-                    Iterator<GpsSatellite> iters = gpsStatus.getSatellites().iterator();
-                    int count = 0;
-                    satelliteList.clear();
-                    while (iters.hasNext() && count <= maxSatellites) {
-                        GpsSatellite gpsSatel = iters.next();
-                        if (gpsSatel.getSnr() > 5) {
-                            satelliteList.add(count++, "Prn" + gpsSatel.getPrn() + " Snr:" + gpsSatel.getSnr());
+                    mGpsStatus = locManager.getGpsStatus(mGpsStatus);
+                    Iterable<GpsSatellite> satellites = mGpsStatus.getSatellites();
+                    int availableCount = 0;
+                    for (GpsSatellite satellite : satellites) {
+                        if (satellite.usedInFix()) {
+                            availableCount++;
                         }
-                        count++;
                     }
-                    if (onAddGPSListener != null) {
-                        onAddGPSListener.OnAddGPS(satelliteList);
-                    }
-                    System.out.println("搜索到："+count+"颗卫星");
+                   //availableCount + "颗";
                     break;
                 //定位启动
                 case GpsStatus.GPS_EVENT_STARTED:

@@ -39,6 +39,7 @@ import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.LogcatFileManager;
 import com.sfmap.api.location.demo.utils.SPUtils;
+import com.sfmap.api.location.demo.utils.TextUtil;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -49,8 +50,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Locale;
 
 public class LocationActivity extends BaseFgActivity {
@@ -173,8 +172,6 @@ public class LocationActivity extends BaseFgActivity {
                             if (mLocationChangedListener != null && location != null) {
                                 if (location.isSuccessful() && location.getLatitude() > 0) {
 
-                                    String loca = "Provider:" + location.getProvider() + " Longitude:" + location.getLongitude() + " Latitude:" + location.getLatitude() +
-                                            " Time:" + getGpsLocalTime(location.getTime()) + " Altitude:" + location.getAltitude() + " adcode:" + location.getmAdcode() + " Satellites:" + location.getmSatellites() + "\n";
 
                                     mLocationChangedListener.onLocationChanged(location);
                                     LatLng position = new LatLng(location.getLatitude(), location.getLongitude());
@@ -188,7 +185,7 @@ public class LocationActivity extends BaseFgActivity {
                                         }
                                         isFirstFocus = true;
                                     }
-                                    tv_time.setText(getGpsLocalTime(location.getTime()) + " (" + location.getProvider() + ")");
+                                    tv_time.setText(TextUtil.getFormatTime(location.getTime()) + " (" + location.getProvider() + ")");
                                     tv_lat.setText(location.getLatitude() + "");
                                     tv_lon.setText(location.getLongitude() + "");
                                     tv_address.setText(location.getAddress());
@@ -269,7 +266,7 @@ public class LocationActivity extends BaseFgActivity {
                 new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
-                        Log.d(TAG, "获取定位" + location);
+                        Log.d(TAG, "获取定位" + location.getLatitude());
                     }
 
                     @Override
@@ -349,14 +346,6 @@ public class LocationActivity extends BaseFgActivity {
                 mSfMapLocationClient.startLocation();
             }
         }
-    }
-
-    private String getGpsLocalTime(long gpsTime) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(gpsTime);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String datestring = df.format(calendar.getTime());
-        return datestring;
     }
 
     @Override
@@ -440,5 +429,20 @@ public class LocationActivity extends BaseFgActivity {
             AppInfo.setLng(Double.valueOf(SP_LNG));
         }
     }
+
+/*    private void checkGPSIsOpen(){
+        //获取当前的LocationManager对象
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        boolean isOpen = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (!isOpen){
+            //进入GPS的设置页面
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivityForResult(intent,0);
+        }
+        //开始定位
+        startLocation();
+    }*/
 
 }

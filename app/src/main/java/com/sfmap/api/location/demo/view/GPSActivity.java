@@ -20,6 +20,7 @@ import com.sfmap.api.location.demo.BaseFgActivity;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.controllor.GpsService;
+import com.sfmap.api.location.demo.utils.TextUtil;
 import com.sfmap.api.location.demo.utils.ToastUtil;
 import com.sfmap.api.maps.MapController;
 import com.sfmap.api.maps.MapView;
@@ -62,13 +63,16 @@ public class GPSActivity extends BaseFgActivity implements GpsService.OnAddLocat
     private GpsService gpsService;
     private ArrayList<String> satelliteList;
 
+    String infoTag;
+
     @Override
     public void OnAddLocation(Location location) {
-        Log.d(TAG, "获取GPS消息2:" + location);
-        Log.d(TAG, "时间：" + location.getTime());
-        Log.d(TAG, "经度：" + location.getLongitude());
-        Log.d(TAG, "纬度：" + location.getLatitude());
-        Log.d(TAG, "海拔：" + location.getAltitude());
+        String info = String.format("时间: %1$s\n当前坐标: %2$s,%3$s",
+                TextUtil.getFormatTime(location.getTime()), location.getLatitude() + "",
+                location.getLongitude() + "");
+        infoTag = infoTag + info;
+        Log.d(TAG, "获取定位======:" + infoTag);
+        infoTv.setText(infoTag);
     }
 
 
