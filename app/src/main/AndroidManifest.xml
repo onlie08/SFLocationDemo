@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
@@ -49,7 +50,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
         <service android:name=".controllor.RealGPSGetService"></service>
-        <service android:name=".controllor.GpsService"></service>
+        <service android:name=".controllor.FgGPSService"></service>
 
        <!-- <receiver android:name=".controllor.RestartServiceReceiver" >
             <intent-filter >

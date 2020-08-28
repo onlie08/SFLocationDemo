@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,19 +25,21 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import android.os.Binder;
-import android.widget.Toast;
 
-public class GpsService extends Service {
+import com.sfmap.api.location.demo.R;
+import com.sfmap.api.location.demo.constants.ConfConst;
+
+public class FgGPSService extends Service {
 
     protected final String TAG = "我的定位Service";
     LocationManager locManager = null;
     final int OUT_TIME = 6000 * 1000;
-    private GpsService context;
+    private FgGPSService context;
     private PowerManager.WakeLock wakeLock;
 
     @SuppressLint("InvalidWakeLockTag")
@@ -49,6 +50,50 @@ public class GpsService extends Service {
         startGPS();
         //mCountDownTimer.start();
         keepCPUAlive();
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            setForegroundService();
+        }
+    }
+
+    /**
+     * 通过通知启动服务
+     */
+    @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.O)
+    public void setForegroundService() {
+        Log.d(TAG, "服务:前台通知");
+        //设定的通知渠道名称
+        //设置通知的重要程度
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        //构建通知渠道
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, ConfConst.CHANNEL_NAME, importance);
+        //在创建的通知渠道上发送通知
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.ic_back) //设置通知图标
+                .setContentTitle(ConfConst.TITLE)//设置通知标题
+                .setContentText(ConfConst.CONTENT)//设置通知内容
+                .setAutoCancel(true) //用户触摸时，自动关闭
+                .setOngoing(true);//设置处于运行状态
+        //向系统注册通知渠道，注册后不能改变重要性以及其他通知行为
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.createNotificationChannel(channel);
+        //将服务置于启动状态 NOTIFICATION_ID指的是创建的通知的ID
+        startForeground(ConfConst.NOTIF_ID, builder.build());
+    }
+
+    @Override
+    public IBinder onBind(Intent arg0) {
+        Log.d(TAG, "进入onBind方法,返回GPSService给activity");
+        return new LocalBinder();
+    }
+
+    //Channel ID 必须保证唯一
+    private static final String CHANNEL_ID = "com.appname.notification.channel";
+
+    public final class LocalBinder extends Binder {
+        public FgGPSService getService() {
+            return FgGPSService.this;
+        }
     }
 
     @Override
@@ -90,12 +135,13 @@ public class GpsService extends Service {
             //请求权限
             return;
         }
+
         locManager.addGpsStatusListener(gpsStatusListener);
         //参数2，位置信息更新周期，单位毫秒
         //参数3，位置变化最小距离：当位置距离变化超过此值时，将更新位置信息
         //备注：参数3不为0，则以参数3为准；参数3为0，则通过时间来定时更新；两者为0，则随时刷新
-        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                200, 0, mLocationListener);
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, ConfConst.MIN_TIME_GPS,
+                0, mLocationListener);
 
     }
 
@@ -103,7 +149,7 @@ public class GpsService extends Service {
         public void onLocationChanged(Location loc) {
             Log.d(TAG, "onLocationChanged:" + loc.getLatitude());
             if (loc != null) {
-                if (onAddLocationListener != null) {
+               if (onAddLocationListener != null) {
                     onAddLocationListener.onAddLocation(loc);
                 }
                 //pass();
@@ -148,9 +194,9 @@ public class GpsService extends Service {
                 //卫星状态改变
                 case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
                     Log.d(TAG, "卫星状态改变:");
-                    if (ActivityCompat.checkSelfPermission(GpsService.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    if (ActivityCompat.checkSelfPermission(FgGPSService.this, Manifest.permission.ACCESS_FINE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
-                            (GpsService.this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                            (FgGPSService.this, Manifest.permission.ACCESS_COARSE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED) {
                         //请求权限
 
@@ -218,18 +264,6 @@ public class GpsService extends Service {
         //finish();  do thing for this service
     }
 
-    @Override
-    public IBinder onBind(Intent arg0) {
-        Log.d(TAG, "进入onBind方法,返回GPSService给activity");
-        return new LocalBinder();
-    }
-
-    public final class LocalBinder extends Binder {
-        public GpsService getService() {
-            return GpsService.this;
-        }
-    }
-
 
     public interface addLocationListener {
         void onAddLocation(Location location);
@@ -249,9 +283,9 @@ public class GpsService extends Service {
         void onAddGPS(ArrayList<String> gpslist);
     }
 
-    private GpsService.addGPSListener addGPSListener;
+    private FgGPSService.addGPSListener addGPSListener;
 
-    public void setAddGPSListener(GpsService.addGPSListener aListener) {
+    public void setAddGPSListener(FgGPSService.addGPSListener aListener) {
         this.addGPSListener = aListener;
     }
 
@@ -260,7 +294,7 @@ public class GpsService extends Service {
         //创建PowerManager对象
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         //保持cpu一直运行，不管屏幕是否黑屏
-        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "CPUKeepRunning");
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CPUKeepRunning");
 
         wakeLock.acquire();
 

@@ -1,9 +1,6 @@
 package com.sfmap.api.location.demo.view;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -19,7 +16,6 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.provider.Settings;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
@@ -30,7 +26,7 @@ import android.widget.TextView;
 import com.sfmap.api.location.demo.BaseFgActivity;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.KeyConst;
-import com.sfmap.api.location.demo.controllor.GpsService;
+import com.sfmap.api.location.demo.controllor.FgGPSService;
 import com.sfmap.api.location.demo.utils.TextUtil;
 import com.sfmap.api.location.demo.utils.ToastUtil;
 import com.sfmap.api.maps.MapController;
@@ -48,8 +44,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class GPSActivity extends BaseFgActivity implements GpsService.addLocationListener,
-        GpsService.addGPSListener {
+public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocationListener,
+        FgGPSService.addGPSListener {
     private MapView mMapView;
     private MapController mMap;
     private GPSActivity context;
@@ -65,7 +61,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "onServiceConnected: ");
-            gpsService = ((GpsService.LocalBinder) service).getService();
+            gpsService = ((FgGPSService.LocalBinder) service).getService();
             if (gpsService != null) {
                 gpsService.setOnAddLocationListener(context);
                 gpsService.setAddGPSListener(context);
@@ -74,10 +70,9 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            //toast("bind fail!");
         }
     };
-    private GpsService gpsService;
+    private FgGPSService gpsService;
     private ArrayList<String> satelliteList;
 
     private String infoTag = "";
@@ -129,7 +124,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
             size = new FileInputStream(file).available();
         } catch (Exception e) {
         }
-        return (int) size / 1048576;
+        return (int) size;
     }
 
     /**
@@ -140,13 +135,15 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
     private void appendFile(String content) {
         File file = new File(gpsFilePath);
         if (!file.exists()) {
+            createGpsInfoFile(content);
             return;
         }
-        int fileSize = getFileSize(file);
+        //int fileSize = getFileSize(file);
         FileWriter writer = null;
         try {
             //true是追加内容，false是覆盖
-            writer = new FileWriter(file, fileSize > 1 ? false : true);
+            writer = new FileWriter(file, true);
+            // writer = new FileWriter(file, fileSize > 1 ? false : true);
             writer.write("\r\n");//换行
             writer.write(content);
         } catch (IOException e) {
@@ -189,6 +186,8 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
                 }
             }
         }
+
+
         if (TextUtils.isEmpty(gpsFilePath)) {
             createGpsInfoFile(info);
         } else {
@@ -240,7 +239,9 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
 
 
 
-   /* *//**
+    /* */
+
+    /**
      * 使用JobScheduler进行保活
      *//*
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -251,7 +252,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
         }
         jobScheduler.cancelAll();
         JobInfo.Builder builder = new JobInfo.Builder(1024, new ComponentName(getPackageName(),
-                GpsService.class.getName()));
+                FgGPSService.class.getName()));
         //周期设置为了2s
         builder.setPeriodic(1000 * 10);
         builder.setPersisted(true);
@@ -297,9 +298,11 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
         bindService();
 
     }
+
     protected final String TAG = "我的定位activity";
+
     private void bindService() {
-        Intent intent = new Intent(this, GpsService.class);
+        Intent intent = new Intent(this, FgGPSService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
@@ -320,7 +323,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
     protected void onDestroy() {
         super.onDestroy();
         unbindService(connection); //this is a callback to the locationlisteneragent class to bind it to a service
-        stopService(new Intent(this, GpsService.class));
+        stopService(new Intent(this, FgGPSService.class));
     }
 
     BroadcastReceiver gpsReciever = new BroadcastReceiver() {
@@ -343,7 +346,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
     }
 
     private void startService() {
-        startService(new Intent(this, GpsService.class));
+        startService(new Intent(this, FgGPSService.class));
     }
 
     private void initView() {
