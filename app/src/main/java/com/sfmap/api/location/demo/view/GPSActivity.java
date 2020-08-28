@@ -1,6 +1,9 @@
 package com.sfmap.api.location.demo.view;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -14,7 +17,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
@@ -78,6 +83,7 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
     private String infoTag = "";
     private String file_name_date = "/sf_gps_loc_info.txt";
     private String gpsFilePath;
+    private PowerManager.WakeLock wakeLock;
 
     //保存文件到sd卡
     public void createGpsInfoFile(String content) {
@@ -232,6 +238,29 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
         bindService();
     }
 
+
+
+   /* *//**
+     * 使用JobScheduler进行保活
+     *//*
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void useJobServiceForKeepAlive() {
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        if (jobScheduler == null) {
+            return;
+        }
+        jobScheduler.cancelAll();
+        JobInfo.Builder builder = new JobInfo.Builder(1024, new ComponentName(getPackageName(),
+                GpsService.class.getName()));
+        //周期设置为了2s
+        builder.setPeriodic(1000 * 10);
+        builder.setPersisted(true);
+        builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
+        int schedule = jobScheduler.schedule(builder.build());
+        if (schedule <= 0) {
+
+        }
+    }*/
     private void checkGPS() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //判断GPS是否正常启动
@@ -277,14 +306,14 @@ public class GPSActivity extends BaseFgActivity implements GpsService.addLocatio
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart: ");
-        bindService();
+        Log.d(TAG, "界面进入onStart: ");
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG, "onStop: ");
+        Log.d(TAG, "界面进入onStop: ");
     }
 
     @Override

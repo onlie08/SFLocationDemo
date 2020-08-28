@@ -53,7 +53,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.Locale;
 
 public class LocationActivity extends BaseFgActivity {
-    private final String TAG = LocationActivity.class.getSimpleName();
+    private final String TAG = "地图定位";
     private MapView mMapView;
     private MapController mMap;
     private SfMapLocationClient mSfMapLocationClient;
@@ -237,12 +237,12 @@ public class LocationActivity extends BaseFgActivity {
 
 
     //位置管理器
-    private LocationManager locationManager;
+    private LocationManager locManager;
 
     private void initLocation() {
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //判断GPS是否正常启动
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             Toast.makeText(this, "请开启GPS导航", Toast.LENGTH_SHORT).show();
             //返回开启GPS导航设置界面
 
@@ -260,9 +260,9 @@ public class LocationActivity extends BaseFgActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        locationManager.addGpsStatusListener(statusListener);
+        locManager.addGpsStatusListener(statusListener);
         //1000位最小的时间间隔，1为最小位移变化；也就是说每隔1000ms会回调一次位置信息
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
                 new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
@@ -292,20 +292,13 @@ public class LocationActivity extends BaseFgActivity {
     private GpsStatus mGpsStatus;
 
     private final GpsStatus.Listener statusListener = new GpsStatus.Listener() {
-        public void onGpsStatusChanged(int event) { // GPS状态变化时的回调，如卫星数
+        public void onGpsStatusChanged(int event) {
             if (ActivityCompat.checkSelfPermission(getApplicationContext(),
                     Manifest.permission.ACCESS_FINE_LOCATION) !=
                     PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            mGpsStatus = locationManager.getGpsStatus(mGpsStatus);
+            mGpsStatus = locManager.getGpsStatus(mGpsStatus);
             Iterable<GpsSatellite> satellites = mGpsStatus.getSatellites();
             int availableCount = 0;
             for (GpsSatellite satellite : satellites) {
@@ -432,8 +425,8 @@ public class LocationActivity extends BaseFgActivity {
 
 /*    private void checkGPSIsOpen(){
         //获取当前的LocationManager对象
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        boolean isOpen = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        locManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        boolean isOpen = locManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         if (!isOpen){
             //进入GPS的设置页面
             Intent intent = new Intent();

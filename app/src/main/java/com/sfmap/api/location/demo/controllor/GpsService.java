@@ -7,7 +7,11 @@ package com.sfmap.api.location.demo.controllor;
 import java.util.ArrayList;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Service;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,46 +20,51 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
+import android.os.PowerManager;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import android.os.Binder;
+import android.widget.Toast;
 
 public class GpsService extends Service {
 
     protected final String TAG = "我的定位Service";
-
     LocationManager locManager = null;
-    final int OUT_TIME = 600 * 1000; // 10 mins, then service die
+    final int OUT_TIME = 6000 * 1000;
+    private GpsService context;
+    private PowerManager.WakeLock wakeLock;
 
-    int index = -1;
-
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
-        return super.onStartCommand(intent, flags, startId);
-    }
-
+    @SuppressLint("InvalidWakeLockTag")
     @Override
     public void onCreate() {
-        Log.d(TAG, "Service:onCreate");
+        context = this;
+        Log.d(TAG, "服务:onCreate");
         startGPS();
+        //mCountDownTimer.start();
+        keepCPUAlive();
     }
 
     @Override
     public void onDestroy() {
-        Log.d(TAG, "Service:onDestroy");
-        finish(false);
         super.onDestroy();
+        Log.d(TAG, "服务:onDestroy");
+        finish(false);
+        wakeLock.release();
     }
 
     //定时获取GPS ,间隔1秒
     CountDownTimer mCountDownTimer = new CountDownTimer(OUT_TIME, 1000) {
         @Override
         public void onTick(long arg0) {
-
+            Log.d(TAG, "--------服务在打印------");
+            startGPS();
         }
 
         @Override
@@ -79,18 +88,20 @@ public class GpsService extends Service {
                 (this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             //请求权限
-
             return;
         }
         locManager.addGpsStatusListener(gpsStatusListener);
+        //参数2，位置信息更新周期，单位毫秒
+        //参数3，位置变化最小距离：当位置距离变化超过此值时，将更新位置信息
+        //备注：参数3不为0，则以参数3为准；参数3为0，则通过时间来定时更新；两者为0，则随时刷新
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                1000, 1, mLocationListener);
+                200, 0, mLocationListener);
 
     }
 
-    LocationListener mLocationListener = new LocationListener() {
+    private LocationListener mLocationListener = new LocationListener() {
         public void onLocationChanged(Location loc) {
-            Log.d(TAG, "onLocationChanged:"+loc.getLatitude());
+            Log.d(TAG, "onLocationChanged:" + loc.getLatitude());
             if (loc != null) {
                 if (onAddLocationListener != null) {
                     onAddLocationListener.onAddLocation(loc);
@@ -100,23 +111,34 @@ public class GpsService extends Service {
         }
 
         public void onProviderDisabled(String provider) {
-
+            Log.d(TAG, "当前GPS:onProviderDisabled");
         }
 
         public void onProviderEnabled(String provider) {
-
+            // 当GPS LocationProvider可用时
+            Log.d(TAG, "当前GPS:onProviderEnabled");
         }
 
         public void onStatusChanged(String provider, int status, Bundle extras) {
+            switch (status) {
+                case LocationProvider.AVAILABLE:
+                    Log.d(TAG, "当前GPS为可用状态:");
+                    break;
+                case LocationProvider.OUT_OF_SERVICE:
+                    Log.d(TAG, "当前GPS不在服务内:");
 
+                    break;
+                case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                    Log.d(TAG, "当前GPS为暂停服务状态:");
+                    break;
+
+            }
         }
     };
 
     private GpsStatus mGpsStatus;
     private Iterable<GpsSatellite> mSatellites;
-    ArrayList<String> satelliteList = new ArrayList<String>();
     GpsStatus.Listener gpsStatusListener = new GpsStatus.Listener() {
-
         public void onGpsStatusChanged(int event) {
             switch (event) {
                 //第一次定位
@@ -153,22 +175,23 @@ public class GpsService extends Service {
                     Log.d(TAG, "定位结束");
                     break;
                 default:
-                    Log.d(TAG, "定位停止:其他"+event);
+                    Log.d(TAG, "定位停止:其他" + event);
                     break;
             }
 
         }
 
+
     };
 
     private void stopGPS() {
+        Log.d(TAG, "服务关闭GPS stopGPS: ");
         try {
             if (mLocationListener != null)
                 locManager.removeUpdates(mLocationListener);
             if (gpsStatusListener != null)
                 locManager.removeGpsStatusListener(gpsStatusListener);
         } catch (Exception e) {
-            loge(e);
         }
     }
 
@@ -186,7 +209,6 @@ public class GpsService extends Service {
     }
 
     void fail(Object msg) {
-        loge(msg);
         //result = false;
         // finish();   do thing for this service
     }
@@ -196,37 +218,14 @@ public class GpsService extends Service {
         //finish();  do thing for this service
     }
 
-    private void loge(Object e) {
-
-        if (e == null)
-            return;
-        Thread mThread = Thread.currentThread();
-        StackTraceElement[] mStackTrace = mThread.getStackTrace();
-        String mMethodName = mStackTrace[3].getMethodName();
-        e = "[" + mMethodName + "] " + e;
-        Log.e(TAG, e + "");
-    }
-
-    private void logd(Object s) {
-
-        Thread mThread = Thread.currentThread();
-        StackTraceElement[] mStackTrace = mThread.getStackTrace();
-        String mMethodName = mStackTrace[3].getMethodName();
-
-        s = "[" + mMethodName + "] " + s;
-        Log.d(TAG, s + "");
-    }
-
-    //bind return the inner bind object
     @Override
     public IBinder onBind(Intent arg0) {
-        logd("onBind");
+        Log.d(TAG, "进入onBind方法,返回GPSService给activity");
         return new LocalBinder();
     }
 
     public final class LocalBinder extends Binder {
         public GpsService getService() {
-            logd("LocalBinder getService");
             return GpsService.this;
         }
     }
@@ -256,7 +255,15 @@ public class GpsService extends Service {
         this.addGPSListener = aListener;
     }
 
-    public void unregistenerOnAddGPSListener() {
-        this.addGPSListener = null;
+    @SuppressLint("InvalidWakeLockTag")
+    private void keepCPUAlive() {
+        //创建PowerManager对象
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        //保持cpu一直运行，不管屏幕是否黑屏
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "CPUKeepRunning");
+
+        wakeLock.acquire();
+
+        //wakeLock.release();
     }
 }
