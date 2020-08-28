@@ -26,6 +26,7 @@ import com.sfmap.api.location.demo.controllor.ConnectionChangeReceiver;
 import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.location.demo.utils.StatusBarUtil;
 import com.sfmap.api.location.demo.utils.TextUtil;
+import com.sfmap.api.location.demo.utils.ToastUtil;
 
 /**
  * @author Dylan
@@ -35,7 +36,7 @@ import com.sfmap.api.location.demo.utils.TextUtil;
 public class BaseFgActivity extends FragmentActivity {
 
     public ConnectionChangeReceiver myReceiver;
-    protected final String TAG = "777";
+    protected final String TAG = "SF_MAP";
     protected TextView emptyTv;
 
     @Override
@@ -48,7 +49,6 @@ public class BaseFgActivity extends FragmentActivity {
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         requestPermission();
     }
-
 
 
     protected void initTitleBackBt(String title) {
@@ -152,8 +152,9 @@ public class BaseFgActivity extends FragmentActivity {
             for (int i = 0; i < permissions.length; i++) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                 } else {
-                    Toast.makeText(this, "软件退出，运行权限被禁止", Toast.LENGTH_SHORT).show();
-                    System.exit(0);
+                    ToastUtil.show(this,R.string.open_loc_permission);
+                    return;
+                    //System.exit(0);
                 }
             }
         }

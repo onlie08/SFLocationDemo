@@ -25,8 +25,9 @@ import android.widget.TextView;
 
 import com.sfmap.api.location.demo.BaseFgActivity;
 import com.sfmap.api.location.demo.R;
+import com.sfmap.api.location.demo.constants.ConfConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
-import com.sfmap.api.location.demo.controllor.FgGPSService;
+import com.sfmap.api.location.demo.controllor.GPS_FGService;
 import com.sfmap.api.location.demo.utils.TextUtil;
 import com.sfmap.api.location.demo.utils.ToastUtil;
 import com.sfmap.api.maps.MapController;
@@ -44,8 +45,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocationListener,
-        FgGPSService.addGPSListener {
+public class GPSActivity extends BaseFgActivity implements GPS_FGService.addLocationListener,
+        GPS_FGService.addGPSListener {
     private MapView mMapView;
     private MapController mMap;
     private GPSActivity context;
@@ -61,7 +62,7 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "onServiceConnected: ");
-            gpsService = ((FgGPSService.LocalBinder) service).getService();
+            gpsService = ((GPS_FGService.LocalBinder) service).getService();
             if (gpsService != null) {
                 gpsService.setOnAddLocationListener(context);
                 gpsService.setAddGPSListener(context);
@@ -72,11 +73,10 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
         public void onServiceDisconnected(ComponentName name) {
         }
     };
-    private FgGPSService gpsService;
+    private GPS_FGService gpsService;
     private ArrayList<String> satelliteList;
 
     private String infoTag = "";
-    private String file_name_date = "/sf_gps_loc_info.txt";
     private String gpsFilePath;
     private PowerManager.WakeLock wakeLock;
 
@@ -98,7 +98,7 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
             }
             //参数1：可以是File对象 也可以是文件路径;参数2：默认为False=>覆盖内容； true=>追加内容
             gpsFilePath = file.getCanonicalPath()
-                    + file_name_date;
+                    + ConfConst.file_name_date;
             out = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(gpsFilePath, true)));
             out.newLine();
@@ -213,9 +213,6 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
 
     @Override
     public void onAddGPS(ArrayList<String> gpsList) {
-        Log.d(TAG, ",数据回调OnAddGPS");
-        for (String info : gpsList) {
-        }
         satelliteList = gpsList;
 
     }
@@ -230,38 +227,11 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
 
         checkGPS();
 
-
         registerOnOffReceiver();
         initView();
         // startService();
         bindService();
     }
-
-
-
-    /* */
-
-    /**
-     * 使用JobScheduler进行保活
-     *//*
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void useJobServiceForKeepAlive() {
-        JobScheduler jobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        if (jobScheduler == null) {
-            return;
-        }
-        jobScheduler.cancelAll();
-        JobInfo.Builder builder = new JobInfo.Builder(1024, new ComponentName(getPackageName(),
-                FgGPSService.class.getName()));
-        //周期设置为了2s
-        builder.setPeriodic(1000 * 10);
-        builder.setPersisted(true);
-        builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
-        int schedule = jobScheduler.schedule(builder.build());
-        if (schedule <= 0) {
-
-        }
-    }*/
     private void checkGPS() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //判断GPS是否正常启动
@@ -274,35 +244,9 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 1) {
-            for (int i = 0; i < permissions.length; i++) {
-                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                } else {
-                    ToastUtil.show(context, "GPS功能未打开");
-                }
-            }
-            finish();
-        } else if (requestCode == 2) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.e(TAG, "获取到了权限");
-            } else {
-                // 没有获取到权限，做特殊处理
-                Log.e(TAG, "没有获取到权限");
-                ToastUtil.show(context, "手机存储权限开启");
-            }
-        }
-
-        bindService();
-
-    }
-
-    protected final String TAG = "我的定位activity";
 
     private void bindService() {
-        Intent intent = new Intent(this, FgGPSService.class);
+        Intent intent = new Intent(this, GPS_FGService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
@@ -323,7 +267,7 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
     protected void onDestroy() {
         super.onDestroy();
         unbindService(connection); //this is a callback to the locationlisteneragent class to bind it to a service
-        stopService(new Intent(this, FgGPSService.class));
+        stopService(new Intent(this, GPS_FGService.class));
     }
 
     BroadcastReceiver gpsReciever = new BroadcastReceiver() {
@@ -346,7 +290,7 @@ public class GPSActivity extends BaseFgActivity implements FgGPSService.addLocat
     }
 
     private void startService() {
-        startService(new Intent(this, FgGPSService.class));
+        startService(new Intent(this, GPS_FGService.class));
     }
 
     private void initView() {

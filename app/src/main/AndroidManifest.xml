@@ -50,7 +50,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
         <service android:name=".controllor.RealGPSGetService"></service>
-        <service android:name=".controllor.FgGPSService"></service>
+        <service android:name=".controllor.GPS_FGService"></service>
 
        <!-- <receiver android:name=".controllor.RestartServiceReceiver" >
             <intent-filter >

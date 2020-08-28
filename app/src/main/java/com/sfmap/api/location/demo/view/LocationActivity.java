@@ -40,6 +40,7 @@ import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.LogcatFileManager;
 import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.location.demo.utils.TextUtil;
+import com.sfmap.api.location.demo.utils.ToastUtil;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -77,7 +78,6 @@ public class LocationActivity extends BaseFgActivity {
         super.onCreate(savedInstanceState);
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         context = this;
-        requestPermission();
         initSPConfig();
         setContentView(R.layout.activity_location);
         initStatusBar();
@@ -120,18 +120,6 @@ public class LocationActivity extends BaseFgActivity {
         initShowInfoDialog();
     }
 
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (this.checkPermission(Manifest.permission.READ_PHONE_STATE, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED ||
-                    this.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid())
-                            != PackageManager.PERMISSION_GRANTED ||
-                    this.checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Process.myPid(), Process.myUid())
-                            != PackageManager.PERMISSION_GRANTED) {
-                this.requestPermissions(PERMISSIONS_REQUEST, 1);
-            }
-        }
-    }
 
     private void initMapSetting() {
         mMap = mMapView.getMap();
@@ -252,12 +240,6 @@ public class LocationActivity extends BaseFgActivity {
         }
         //添加卫星状态改变监听
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO:是否需要   ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         locManager.addGpsStatusListener(statusListener);
@@ -326,18 +308,17 @@ public class LocationActivity extends BaseFgActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
         if (requestCode == 1) {
             for (int i = 0; i < permissions.length; i++) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                 } else {
-                    Toast.makeText(this, "软件退出，运行权限被禁止", Toast.LENGTH_SHORT).show();
-                    System.exit(0);
+                    ToastUtil.show(context,R.string.open_loc_permission);
+                    return;
                 }
             }
-            if (mSfMapLocationClient != null) {
-                mSfMapLocationClient.startLocation();
-            }
+        }
+        if (mSfMapLocationClient != null) {
+            mSfMapLocationClient.startLocation();
         }
     }
 
