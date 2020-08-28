@@ -218,16 +218,14 @@ public class GPS_FGService extends Service {
                     Log.d(TAG, "定位停止:其他" + event);
                     break;
             }
-
         }
-
-
     };
 
     /*
      * 停止GPS定位功能
      */
     private void stopGPS() {
+        Log.d(TAG, "GPS定位关闭");
         try {
             if (mLocationListener != null)
                 locManager.removeUpdates(mLocationListener);
@@ -236,7 +234,6 @@ public class GPS_FGService extends Service {
         } catch (Exception e) {
         }
     }
-
 
     public interface addLocationListener {
         void onAddLocation(Location location);
