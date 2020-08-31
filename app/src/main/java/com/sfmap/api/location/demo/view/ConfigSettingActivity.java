@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.location.demo.BaseFgActivity;
 import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
@@ -16,6 +15,7 @@ import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.location.demo.utils.TextUtil;
 import com.sfmap.api.location.demo.utils.ToastUtil;
+import com.sfmap.api.mapcore.util.AppInfo;
 
 public class ConfigSettingActivity extends BaseFgActivity {
 
@@ -65,9 +65,9 @@ public class ConfigSettingActivity extends BaseFgActivity {
             //定位
             netLocationUrl = com.sfmap.api.location.client.util.AppInfo.getNetLocationUrl(context);
 
-            sha1Et.setText(AppInfo.getSHA1(context));
-            akEt.setText(AppInfo.getSystemAk(context));
-            pkgNameEt.setText(AppInfo.getPackageName(context));
+            sha1Et.setText(com.sfmap.api.location.client.util.AppInfo.getSHA1(context));
+            akEt.setText(com.sfmap.api.location.client.util.AppInfo.getSystemAk(context));
+            pkgNameEt.setText(com.sfmap.api.location.client.util.AppInfo.getPackageName(context));
         }
         int httpsIndex = netLocationUrl.indexOf("//") + 2;
         int sufIndex = netLocationUrl.indexOf(urlSuffix);

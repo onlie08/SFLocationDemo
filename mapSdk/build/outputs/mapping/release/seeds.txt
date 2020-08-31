@@ -1,0 +1,1632 @@
+com.sfmap.api.mapcore.CameraUpdateFactoryDelegate$Type: com.sfmap.api.mapcore.CameraUpdateFactoryDelegate$Type[] values()
+com.sfmap.api.mapcore.CameraUpdateFactoryDelegate$Type: com.sfmap.api.mapcore.CameraUpdateFactoryDelegate$Type valueOf(java.lang.String)
+com.sfmap.api.mapcore.ConfigableConstDecode$BuildType: com.sfmap.api.mapcore.ConfigableConstDecode$BuildType[] values()
+com.sfmap.api.mapcore.ConfigableConstDecode$BuildType: com.sfmap.api.mapcore.ConfigableConstDecode$BuildType valueOf(java.lang.String)
+com.sfmap.api.mapcore.GLTextureView
+com.sfmap.api.mapcore.GLTextureView: GLTextureView(android.content.Context,android.util.AttributeSet)
+com.sfmap.api.mapcore.GLTextureView: void setRenderer(android.opengl.GLSurfaceView$Renderer)
+com.sfmap.api.mapcore.GLTextureView: void setRenderMode(int)
+com.sfmap.api.mapcore.IResourceProxyDecode$bitmap: com.sfmap.api.mapcore.IResourceProxyDecode$bitmap[] values()
+com.sfmap.api.mapcore.IResourceProxyDecode$bitmap: com.sfmap.api.mapcore.IResourceProxyDecode$bitmap valueOf(java.lang.String)
+com.sfmap.api.mapcore.MapGLSurfaceView
+com.sfmap.api.mapcore.MapGLSurfaceView: MapGLSurfaceView(android.content.Context,android.util.AttributeSet)
+com.sfmap.api.mapcore.MapGLSurfaceView: com.sfmap.api.mapcore.IMapDelegate getMapDelegate()
+com.sfmap.api.mapcore.MapGLTextureView
+com.sfmap.api.mapcore.MapGLTextureView: MapGLTextureView(android.content.Context,android.util.AttributeSet)
+com.sfmap.api.mapcore.MapGLTextureView: com.sfmap.api.mapcore.IMapDelegate getMapDelegate()
+com.sfmap.api.mapcore.MapGLTextureView: void setZOrderOnTop(boolean)
+com.sfmap.api.mapcore.MapOverlayViewGroupDecode$LayoutParamsExt
+com.sfmap.api.mapcore.MapOverlayViewGroupDecode$LayoutParamsExt: MapOverlayViewGroupDecode$LayoutParamsExt(android.content.Context,android.util.AttributeSet)
+com.sfmap.api.mapcore.TileOverlayViewDecode: com.sfmap.api.mapcore.IMapDelegate getMap()
+com.sfmap.api.mapcore.util.AppInfo
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String load_success
+com.sfmap.api.mapcore.util.AppInfo: float currentZoom
+com.sfmap.api.mapcore.util.AppInfo: int NormalVersion
+com.sfmap.api.mapcore.util.AppInfo: int OrderVersion
+com.sfmap.api.mapcore.util.AppInfo: AppInfo()
+com.sfmap.api.mapcore.util.AppInfo: void setSpUrl(java.lang.String)
+com.sfmap.api.mapcore.util.AppInfo: void setContext(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getPackageName()
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getSHA1()
+com.sfmap.api.mapcore.util.AppInfo: double getLng()
+com.sfmap.api.mapcore.util.AppInfo: void setLng(double)
+com.sfmap.api.mapcore.util.AppInfo: double getLat()
+com.sfmap.api.mapcore.util.AppInfo: void setLat(double)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getAppKey(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: void setAppMetaApikey(java.lang.String)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getAppMetaApikey(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getApplicationName(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getPackageName(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getApplicationVersion(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: int getApplicationVersionCode(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: void setPackageName(java.lang.String)
+com.sfmap.api.mapcore.util.AppInfo: void setSha1(java.lang.String)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getSHA1(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getSHA1AndPackage(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getKey(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getSfMapURL(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getSfTmcURL(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getSfAuthURL(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getOrderMapURL(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: java.lang.String getSystemAk(android.content.Context)
+com.sfmap.api.mapcore.util.AppInfo: int getAppVersion(android.content.Context)
+com.sfmap.api.mapcore.util.AsyncTaskDecode$Status: com.sfmap.api.mapcore.util.AsyncTaskDecode$Status[] values()
+com.sfmap.api.mapcore.util.AsyncTaskDecode$Status: com.sfmap.api.mapcore.util.AsyncTaskDecode$Status valueOf(java.lang.String)
+com.sfmap.api.mapcore.util.CityObject
+com.sfmap.api.mapcore.util.IDownloadListener$ExceptionType: com.sfmap.api.mapcore.util.IDownloadListener$ExceptionType[] values()
+com.sfmap.api.mapcore.util.IDownloadListener$ExceptionType: com.sfmap.api.mapcore.util.IDownloadListener$ExceptionType valueOf(java.lang.String)
+com.sfmap.api.maps.CameraUpdate
+com.sfmap.api.maps.CameraUpdateFactory
+com.sfmap.api.maps.CameraUpdateFactory: CameraUpdateFactory()
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate zoomIn()
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate zoomOut()
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate scrollBy(float,float)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate zoomTo(float)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate zoomBy(float)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate zoomBy(float,android.graphics.Point)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate newCameraPosition(com.sfmap.api.maps.model.CameraPosition)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate newLatLng(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate newLatLngZoom(com.sfmap.api.maps.model.LatLng,float)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate newLatLngBounds(com.sfmap.api.maps.model.LatLngBounds,int)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate changeLatLng(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate changeBearing(float)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate changeBearingGeoCenter(float,com.sfmap.mapcore.IPoint)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate changeTilt(float)
+com.sfmap.api.maps.CameraUpdateFactory: com.sfmap.api.maps.CameraUpdate newLatLngBounds(com.sfmap.api.maps.model.LatLngBounds,int,int,int)
+com.sfmap.api.maps.CoordinateConverter$CoordType: com.sfmap.api.maps.CoordinateConverter$CoordType[] values()
+com.sfmap.api.maps.CoordinateConverter$CoordType: com.sfmap.api.maps.CoordinateConverter$CoordType valueOf(java.lang.String)
+com.sfmap.api.maps.CustomRenderer
+com.sfmap.api.maps.CustomRenderer: void onMapReferencechanged()
+com.sfmap.api.maps.DesUtil
+com.sfmap.api.maps.DesUtil: com.sfmap.api.maps.DesUtil getInstance()
+com.sfmap.api.maps.DesUtil: DesUtil()
+com.sfmap.api.maps.DesUtil: java.lang.String encrypt(java.lang.String)
+com.sfmap.api.maps.DesUtil: void encrypt(java.lang.StringBuilder)
+com.sfmap.api.maps.DesUtil: java.lang.String decrypt(java.lang.String,java.lang.String)
+com.sfmap.api.maps.DesUtil: java.lang.String getString(java.lang.String)
+com.sfmap.api.maps.ExtralBaseDraw: ExtralBaseDraw(com.sfmap.api.maps.MapView)
+com.sfmap.api.maps.ExtralBaseDraw: void drawBitmap(int,java.nio.FloatBuffer,java.nio.FloatBuffer)
+com.sfmap.api.maps.ExtralBaseDraw: int getTexsureId(javax.microedition.khronos.opengles.GL10,int)
+com.sfmap.api.maps.ExtralBaseDraw: int bindTexture(javax.microedition.khronos.opengles.GL10,int,android.graphics.Bitmap)
+com.sfmap.api.maps.ExtralDrawArc
+com.sfmap.api.maps.ExtralDrawArc: ExtralDrawArc(com.sfmap.api.maps.MapView)
+com.sfmap.api.maps.ExtralDrawArc: int[] calMapFPoint(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.ExtralDrawArc: void drawArc(javax.microedition.khronos.opengles.GL10,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,int[],int,int)
+com.sfmap.api.maps.ExtralDrawArc: int getTexsureId(javax.microedition.khronos.opengles.GL10,int)
+com.sfmap.api.maps.ExtralDrawArc: void drawBitmap(int,java.nio.FloatBuffer,java.nio.FloatBuffer)
+com.sfmap.api.maps.ExtralDrawBitmap
+com.sfmap.api.maps.ExtralDrawBitmap: ExtralDrawBitmap(com.sfmap.api.maps.MapView)
+com.sfmap.api.maps.ExtralDrawBitmap: int drawBitmap(javax.microedition.khronos.opengles.GL10,com.sfmap.api.maps.model.BitmapDescriptor,boolean,com.sfmap.api.maps.model.LatLng,int,java.nio.FloatBuffer,float,float,float)
+com.sfmap.api.maps.ExtralDrawBitmap: java.nio.FloatBuffer makeBitmapFloatBuffer(com.sfmap.api.maps.model.BitmapDescriptor)
+com.sfmap.api.maps.ExtralDrawBitmap: java.nio.FloatBuffer makeFloatBuffer(boolean,android.graphics.PointF,com.sfmap.api.maps.model.BitmapDescriptor,float,float,float)
+com.sfmap.api.maps.ExtralDrawBitmap: java.nio.FloatBuffer makeFloatBuffer(boolean,android.graphics.PointF,com.sfmap.api.maps.model.BitmapDescriptor,java.nio.FloatBuffer,float,float,float)
+com.sfmap.api.maps.ExtralDrawBitmap: boolean isInScreen(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.ExtralDrawBitmap: int getTexsureId(javax.microedition.khronos.opengles.GL10,int)
+com.sfmap.api.maps.ExtralDrawBitmap: void drawBitmap(int,java.nio.FloatBuffer,java.nio.FloatBuffer)
+com.sfmap.api.maps.ExtralDrawCircle
+com.sfmap.api.maps.ExtralDrawCircle: ExtralDrawCircle(com.sfmap.api.maps.MapView)
+com.sfmap.api.maps.ExtralDrawCircle: void drawCircle(javax.microedition.khronos.opengles.GL10,java.nio.FloatBuffer,com.sfmap.api.maps.model.LatLng,double,int,int,float)
+com.sfmap.api.maps.ExtralDrawCircle: java.nio.FloatBuffer calMapFPoint(com.sfmap.api.maps.model.LatLng,double)
+com.sfmap.api.maps.ExtralDrawCircle: int getTexsureId(javax.microedition.khronos.opengles.GL10,int)
+com.sfmap.api.maps.ExtralDrawCircle: void drawBitmap(int,java.nio.FloatBuffer,java.nio.FloatBuffer)
+com.sfmap.api.maps.ExtralDrawPolygon
+com.sfmap.api.maps.ExtralDrawPolygon: ExtralDrawPolygon(com.sfmap.api.maps.MapView)
+com.sfmap.api.maps.ExtralDrawPolygon: java.nio.FloatBuffer calMapFPoint(java.util.ArrayList)
+com.sfmap.api.maps.ExtralDrawPolygon: java.nio.FloatBuffer calRectPoint(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.ExtralDrawPolygon: void drawPolygon(javax.microedition.khronos.opengles.GL10,int,int,java.nio.FloatBuffer,float,int)
+com.sfmap.api.maps.ExtralDrawPolyline
+com.sfmap.api.maps.ExtralDrawPolyline: ExtralDrawPolyline(com.sfmap.api.maps.MapView)
+com.sfmap.api.maps.ExtralDrawPolyline: java.nio.FloatBuffer makeFloatBuffer(float[])
+com.sfmap.api.maps.ExtralDrawPolyline: void drawPolyline(javax.microedition.khronos.opengles.GL10,java.util.ArrayList,int[],int,int,boolean)
+com.sfmap.api.maps.ExtralDrawPolyline: int[] calMapFPoint(java.util.ArrayList)
+com.sfmap.api.maps.ExtralDrawPolyline: int getTexsureId(javax.microedition.khronos.opengles.GL10,int)
+com.sfmap.api.maps.ExtralDrawPolyline: void drawBitmap(int,java.nio.FloatBuffer,java.nio.FloatBuffer)
+com.sfmap.api.maps.ExtralDrawText
+com.sfmap.api.maps.ExtralDrawText: ExtralDrawText(com.sfmap.api.maps.MapView)
+com.sfmap.api.maps.ExtralDrawText: android.graphics.Bitmap createTextBitmap(java.lang.String,android.graphics.Paint,int)
+com.sfmap.api.maps.ExtralDrawText: int drawBitmap(javax.microedition.khronos.opengles.GL10,android.graphics.Bitmap,boolean,com.sfmap.api.maps.model.LatLng,int,java.nio.FloatBuffer,float,float,float)
+com.sfmap.api.maps.ExtralDrawText: java.nio.FloatBuffer getTextFloatBuffer()
+com.sfmap.api.maps.ExtralDrawText: int getTexsureId(javax.microedition.khronos.opengles.GL10,int)
+com.sfmap.api.maps.ExtralDrawText: void drawBitmap(int,java.nio.FloatBuffer,java.nio.FloatBuffer)
+com.sfmap.api.maps.LocationSource
+com.sfmap.api.maps.LocationSource: void activate(com.sfmap.api.maps.LocationSource$OnLocationChangedListener)
+com.sfmap.api.maps.LocationSource: void deactivate()
+com.sfmap.api.maps.LocationSource$OnLocationChangedListener
+com.sfmap.api.maps.LocationSource$OnLocationChangedListener: void onLocationChanged(android.location.Location)
+com.sfmap.api.maps.MapController
+com.sfmap.api.maps.MapController: int MAP_TYPE_NORMAL
+com.sfmap.api.maps.MapController: int MAP_TYPE_SATELLITE
+com.sfmap.api.maps.MapController: int MAP_TYPE_NIGHT
+com.sfmap.api.maps.MapController: int MAP_TYPE_NAVI
+com.sfmap.api.maps.MapController: int MAP_TYPE_STREETVIEW
+com.sfmap.api.maps.MapController: int LOCATION_TYPE_LOCATE
+com.sfmap.api.maps.MapController: int LOCATION_TYPE_MAP_FOLLOW
+com.sfmap.api.maps.MapController: int LOCATION_TYPE_MAP_ROTATE
+com.sfmap.api.maps.MapController: MapController(com.sfmap.api.mapcore.IMapDelegate)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.CameraPosition getCameraPosition()
+com.sfmap.api.maps.MapController: void setNeedToCenter(boolean)
+com.sfmap.api.maps.MapController: void setMapStyleFileByPath(java.lang.String,java.lang.String)
+com.sfmap.api.maps.MapController: void setMapStyleType(int)
+com.sfmap.api.maps.MapController: void setMaxZoomLevel(float)
+com.sfmap.api.maps.MapController: void setMinZoomLevel(float)
+com.sfmap.api.maps.MapController: void set2DMapRotateEnable(boolean)
+com.sfmap.api.maps.MapController: float getMaxZoomLevel()
+com.sfmap.api.maps.MapController: float getMinZoomLevel()
+com.sfmap.api.maps.MapController: void moveCamera(com.sfmap.api.maps.CameraUpdate)
+com.sfmap.api.maps.MapController: void animateCamera(com.sfmap.api.maps.CameraUpdate)
+com.sfmap.api.maps.MapController: void animateCamera(com.sfmap.api.maps.CameraUpdate,com.sfmap.api.maps.MapController$CancelableCallback)
+com.sfmap.api.maps.MapController: void animateCamera(com.sfmap.api.maps.CameraUpdate,long,com.sfmap.api.maps.MapController$CancelableCallback)
+com.sfmap.api.maps.MapController: void stopAnimation()
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.NavigateArrow addNavigateArrow(com.sfmap.api.maps.model.NavigateArrowOptions)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.Polyline addPolyline(com.sfmap.api.maps.model.PolylineOptions)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.Circle addCircle(com.sfmap.api.maps.model.CircleOptions)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.Arc addArc(com.sfmap.api.maps.model.ArcOptions)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.Polygon addPolygon(com.sfmap.api.maps.model.PolygonOptions)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.GroundOverlay addGroundOverlay(com.sfmap.api.maps.model.GroundOverlayOptions)
+com.sfmap.api.maps.MapController: boolean isPOIByPoint(android.graphics.Point)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.Marker addMarker(com.sfmap.api.maps.model.MarkerOptions)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.Text addText(com.sfmap.api.maps.model.TextOptions)
+com.sfmap.api.maps.MapController: java.util.ArrayList addMarkers(java.util.ArrayList,boolean)
+com.sfmap.api.maps.MapController: java.util.List getMapScreenMarkers()
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.TileOverlay addTileOverlay(com.sfmap.api.maps.model.TileOverlayOptions)
+com.sfmap.api.maps.MapController: void clear()
+com.sfmap.api.maps.MapController: void clear(boolean)
+com.sfmap.api.maps.MapController: int getMapType()
+com.sfmap.api.maps.MapController: void setMapType(int)
+com.sfmap.api.maps.MapController: boolean isTrafficEnabled()
+com.sfmap.api.maps.MapController: boolean isCellZonesEnabled()
+com.sfmap.api.maps.MapController: void setTrafficEnabled(boolean)
+com.sfmap.api.maps.MapController: void showMapText(boolean)
+com.sfmap.api.maps.MapController: void setMyTrafficStyle(com.sfmap.api.maps.model.MyTrafficStyle)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.model.MyTrafficStyle getMyTrafficStyle()
+com.sfmap.api.maps.MapController: boolean isMyLocationEnabled()
+com.sfmap.api.maps.MapController: void setMyLocationEnabled(boolean)
+com.sfmap.api.maps.MapController: android.location.Location getMyLocation()
+com.sfmap.api.maps.MapController: void setLocationSource(com.sfmap.api.maps.LocationSource)
+com.sfmap.api.maps.MapController: void setMyLocationStyle(com.sfmap.api.maps.model.MyLocationStyle)
+com.sfmap.api.maps.MapController: void setMyLocationType(int)
+com.sfmap.api.maps.MapController: void setCustomType()
+com.sfmap.api.maps.MapController: void unregisterSensorListener()
+com.sfmap.api.maps.MapController: void setMyLocationRotateAngle(float)
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.UiSettings getUiSettings()
+com.sfmap.api.maps.MapController: com.sfmap.api.maps.Projection getProjection()
+com.sfmap.api.maps.MapController: void setOnCameraChangeListener(com.sfmap.api.maps.MapController$OnCameraChangeListener)
+com.sfmap.api.maps.MapController: void setOnMapLevelChangeListener(com.sfmap.api.maps.MapController$OnMapLevelChangeListener)
+com.sfmap.api.maps.MapController: void setOnMapClickListener(com.sfmap.api.maps.MapController$OnMapClickListener)
+com.sfmap.api.maps.MapController: void setOnMapTouchListener(com.sfmap.api.maps.MapController$OnMapTouchListener)
+com.sfmap.api.maps.MapController: void setOnPOIClickListener(com.sfmap.api.maps.MapController$OnPOIClickListener)
+com.sfmap.api.maps.MapController: void setOnMyLocationChangeListener(com.sfmap.api.maps.MapController$OnMyLocationChangeListener)
+com.sfmap.api.maps.MapController: void setOnMapLongClickListener(com.sfmap.api.maps.MapController$OnMapLongClickListener)
+com.sfmap.api.maps.MapController: void setOnMarkerClickListener(com.sfmap.api.maps.MapController$OnMarkerClickListener)
+com.sfmap.api.maps.MapController: void setOnPolylineClickListener(com.sfmap.api.maps.MapController$OnPolylineClickListener)
+com.sfmap.api.maps.MapController: void setOnMarkerDragListener(com.sfmap.api.maps.MapController$OnMarkerDragListener)
+com.sfmap.api.maps.MapController: void setOnInfoWindowClickListener(com.sfmap.api.maps.MapController$OnInfoWindowClickListener)
+com.sfmap.api.maps.MapController: void setInfoWindowAdapter(com.sfmap.api.maps.MapController$InfoWindowAdapter)
+com.sfmap.api.maps.MapController: void setOnMapLoadedListener(com.sfmap.api.maps.MapController$OnMapLoadedListener)
+com.sfmap.api.maps.MapController: void getMapScreenShot(com.sfmap.api.maps.MapController$OnMapScreenShotListener)
+com.sfmap.api.maps.MapController: float getScalePerPixel()
+com.sfmap.api.maps.MapController: void runOnDrawFrame()
+com.sfmap.api.maps.MapController: void removecache()
+com.sfmap.api.maps.MapController: void removecache(com.sfmap.api.maps.MapController$OnCacheRemoveListener)
+com.sfmap.api.maps.MapController: void setCustomRenderer(com.sfmap.api.maps.CustomRenderer)
+com.sfmap.api.maps.MapController: void addCustomRenderer(com.sfmap.api.maps.CustomRenderer)
+com.sfmap.api.maps.MapController: void removeCustomRenderer(com.sfmap.api.maps.CustomRenderer)
+com.sfmap.api.maps.MapController: void clearCustomRenderer()
+com.sfmap.api.maps.MapController: void drawCustomRenderTime(int)
+com.sfmap.api.maps.MapController: void setPointToCenter(int,int)
+com.sfmap.api.maps.MapController: void setMapCenter(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.MapController: void setMapTextZIndex(int)
+com.sfmap.api.maps.MapController: void setLoadOfflineData(boolean)
+com.sfmap.api.maps.MapController: int getMapTextZIndex()
+com.sfmap.api.maps.MapController: void setViewPosition(int,int,int)
+com.sfmap.api.maps.MapController: void setViewBitmap(int,android.graphics.Bitmap[])
+com.sfmap.api.maps.MapController: void reloadMap()
+com.sfmap.api.maps.MapController: void setGridUrlListener(com.sfmap.api.maps.MapController$GridUrlListener)
+com.sfmap.api.maps.MapController: void setParameter(java.lang.String,boolean)
+com.sfmap.api.maps.MapController$CancelableCallback
+com.sfmap.api.maps.MapController$CancelableCallback: void onFinish()
+com.sfmap.api.maps.MapController$CancelableCallback: void onCancel()
+com.sfmap.api.maps.MapController$GridUrlListener
+com.sfmap.api.maps.MapController$GridUrlListener: java.lang.String getGridUrl(int,int,int)
+com.sfmap.api.maps.MapController$InfoWindowAdapter
+com.sfmap.api.maps.MapController$InfoWindowAdapter: android.view.View getInfoWindow(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.MapController$InfoWindowAdapter: android.view.View getInfoContents(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.MapController$OnCacheRemoveListener
+com.sfmap.api.maps.MapController$OnCacheRemoveListener: void onRemoveCacheFinish(boolean)
+com.sfmap.api.maps.MapController$OnCameraChangeListener
+com.sfmap.api.maps.MapController$OnCameraChangeListener: void onCameraChange(com.sfmap.api.maps.model.CameraPosition)
+com.sfmap.api.maps.MapController$OnCameraChangeListener: void onCameraChangeFinish(com.sfmap.api.maps.model.CameraPosition)
+com.sfmap.api.maps.MapController$OnInfoWindowClickListener
+com.sfmap.api.maps.MapController$OnInfoWindowClickListener: void onInfoWindowClick(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.MapController$OnMapClickListener
+com.sfmap.api.maps.MapController$OnMapClickListener: void onMapClick(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.MapController$OnMapLevelChangeListener
+com.sfmap.api.maps.MapController$OnMapLevelChangeListener: void onMapLevelChanged(float)
+com.sfmap.api.maps.MapController$OnMapLoadedListener
+com.sfmap.api.maps.MapController$OnMapLoadedListener: void onMapLoaded()
+com.sfmap.api.maps.MapController$OnMapLongClickListener
+com.sfmap.api.maps.MapController$OnMapLongClickListener: void onMapLongClick(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.MapController$OnMapScreenShotListener
+com.sfmap.api.maps.MapController$OnMapScreenShotListener: void onMapScreenShot(android.graphics.Bitmap)
+com.sfmap.api.maps.MapController$OnMapScreenShotListener: void onMapScreenShot(android.graphics.Bitmap,int)
+com.sfmap.api.maps.MapController$OnMapTouchListener
+com.sfmap.api.maps.MapController$OnMapTouchListener: void onTouch(android.view.MotionEvent)
+com.sfmap.api.maps.MapController$OnMarkerClickListener
+com.sfmap.api.maps.MapController$OnMarkerClickListener: boolean onMarkerClick(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.MapController$OnMarkerDragListener
+com.sfmap.api.maps.MapController$OnMarkerDragListener: void onMarkerDragStart(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.MapController$OnMarkerDragListener: void onMarkerDrag(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.MapController$OnMarkerDragListener: void onMarkerDragEnd(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.MapController$OnMyLocationChangeListener
+com.sfmap.api.maps.MapController$OnMyLocationChangeListener: void onMyLocationChange(android.location.Location)
+com.sfmap.api.maps.MapController$OnPOIClickListener
+com.sfmap.api.maps.MapController$OnPOIClickListener: void onPOIClick(com.sfmap.api.maps.model.Poi)
+com.sfmap.api.maps.MapController$OnPolylineClickListener
+com.sfmap.api.maps.MapController$OnPolylineClickListener: void onPolylineClick(com.sfmap.api.maps.model.Polyline)
+com.sfmap.api.maps.MapException
+com.sfmap.api.maps.MapException: java.lang.String ERROR_IO
+com.sfmap.api.maps.MapException: java.lang.String ERROR_SOCKET
+com.sfmap.api.maps.MapException: java.lang.String ERROR_SOCKE_TIME_OUT
+com.sfmap.api.maps.MapException: java.lang.String ERROR_INVALID_PARAMETER
+com.sfmap.api.maps.MapException: java.lang.String ERROR_NULL_PARAMETER
+com.sfmap.api.maps.MapException: java.lang.String ERROR_URL
+com.sfmap.api.maps.MapException: java.lang.String ERROR_UNKNOW_HOST
+com.sfmap.api.maps.MapException: java.lang.String ERROR_UNKNOW_SERVICE
+com.sfmap.api.maps.MapException: java.lang.String ERROR_PROTOCOL
+com.sfmap.api.maps.MapException: java.lang.String ERROR_CONNECTION
+com.sfmap.api.maps.MapException: java.lang.String ERROR_UNKNOWN
+com.sfmap.api.maps.MapException: java.lang.String ERROR_FAILURE_AUTH
+com.sfmap.api.maps.MapException: java.lang.String ERROR_NOT_ENOUGH_SPACE
+com.sfmap.api.maps.MapException: java.lang.String ERROR_NOT_AVAILABLE
+com.sfmap.api.maps.MapException: java.lang.String ERROR_ILLEGAL_VALUE
+com.sfmap.api.maps.MapException: java.lang.String ERROR_LOCAL_AUTH_FAILURE
+com.sfmap.api.maps.MapException: java.lang.String LMAP_NOT_SUPPORT
+com.sfmap.api.maps.MapException: java.lang.String ILLEGAL_LMAP_ARGUMENT
+com.sfmap.api.maps.MapException: MapException(java.lang.String)
+com.sfmap.api.maps.MapException: MapException()
+com.sfmap.api.maps.MapException: java.lang.String getErrorMessage()
+com.sfmap.api.maps.MapOptions
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptionsCreator CREATOR
+com.sfmap.api.maps.MapOptions: int LOGO_POSITION_BOTTOM_LEFT
+com.sfmap.api.maps.MapOptions: int LOGO_POSITION_BOTTOM_CENTER
+com.sfmap.api.maps.MapOptions: int LOGO_POSITION_BOTTOM_RIGHT
+com.sfmap.api.maps.MapOptions: int ZOOM_POSITION_RIGHT_CENTER
+com.sfmap.api.maps.MapOptions: int ZOOM_POSITION_RIGHT_BUTTOM
+com.sfmap.api.maps.MapOptions: int POSITION_COMPASS
+com.sfmap.api.maps.MapOptions: int POSITION_SCALE
+com.sfmap.api.maps.MapOptions: int POSITION_LOGO
+com.sfmap.api.maps.MapOptions: java.util.Map viewBitmapMap
+com.sfmap.api.maps.MapOptions: MapOptions()
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions logoPosition(int)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions zOrderOnTop(boolean)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions mapType(int)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions camera(com.sfmap.api.maps.model.CameraPosition)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions scaleControlsEnabled(boolean)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions zoomControlsEnabled(boolean)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions compassEnabled(boolean)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions scrollGesturesEnabled(boolean)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions zoomGesturesEnabled(boolean)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions tiltGesturesEnabled(boolean)
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.MapOptions rotateGesturesEnabled(boolean)
+com.sfmap.api.maps.MapOptions: int getLogoPosition()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getZOrderOnTop()
+com.sfmap.api.maps.MapOptions: int getMapType()
+com.sfmap.api.maps.MapOptions: com.sfmap.api.maps.model.CameraPosition getCamera()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getScaleControlsEnabled()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getZoomControlsEnabled()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getCompassEnabled()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getScrollGesturesEnabled()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getZoomGesturesEnabled()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getTiltGesturesEnabled()
+com.sfmap.api.maps.MapOptions: java.lang.Boolean getRotateGesturesEnabled()
+com.sfmap.api.maps.MapOptions: int describeContents()
+com.sfmap.api.maps.MapOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.MapOptionsCreator
+com.sfmap.api.maps.MapOptionsCreator: MapOptionsCreator()
+com.sfmap.api.maps.MapOptionsCreator: com.sfmap.api.maps.MapOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.MapOptionsCreator: com.sfmap.api.maps.MapOptions[] newArray(int)
+com.sfmap.api.maps.MapOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.MapOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.MapUtils
+com.sfmap.api.maps.MapUtils: MapUtils()
+com.sfmap.api.maps.MapUtils: float calculateLineDistance(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.MapUtils: float calculateArea(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.MapUtils: double calPolygonArea(java.util.ArrayList)
+com.sfmap.api.maps.MapUtils: double calculateAngle(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.MapUtils: double calculateAngle(double,double,double,double)
+com.sfmap.api.maps.MapUtils: void getLatestMapApp(android.content.Context)
+com.sfmap.api.maps.MapView
+com.sfmap.api.maps.MapView: MapView(android.content.Context)
+com.sfmap.api.maps.MapView: MapView(android.content.Context,android.util.AttributeSet)
+com.sfmap.api.maps.MapView: MapView(android.content.Context,android.util.AttributeSet,int)
+com.sfmap.api.maps.MapView: MapView(android.content.Context,com.sfmap.api.maps.MapOptions)
+com.sfmap.api.maps.MapView: com.sfmap.api.mapcore.IMapFragmentDelegate getMapFragmentDelegate()
+com.sfmap.api.maps.MapView: com.sfmap.api.maps.MapController getMap()
+com.sfmap.api.maps.MapView: void onCreate(android.os.Bundle)
+com.sfmap.api.maps.MapView: void onResume()
+com.sfmap.api.maps.MapView: void onPause()
+com.sfmap.api.maps.MapView: void onDestroy()
+com.sfmap.api.maps.MapView: void onLowMemory()
+com.sfmap.api.maps.MapView: void onSaveInstanceState(android.os.Bundle)
+com.sfmap.api.maps.MapView: void setVisibility(int)
+com.sfmap.api.maps.MapsInitializer
+com.sfmap.api.maps.MapsInitializer: int COOD_SYSTEM_900913
+com.sfmap.api.maps.MapsInitializer: int COOD_SYSTEM_4326
+com.sfmap.api.maps.MapsInitializer: java.lang.String sdcardDir
+com.sfmap.api.maps.MapsInitializer: MapsInitializer()
+com.sfmap.api.maps.MapsInitializer: void initialize(android.content.Context)
+com.sfmap.api.maps.MapsInitializer: int getCoodSystem()
+com.sfmap.api.maps.MapsInitializer: void setCoodSystem(int)
+com.sfmap.api.maps.MapsInitializer: void setNetWorkEnable(boolean)
+com.sfmap.api.maps.MapsInitializer: boolean getNetWorkEnable()
+com.sfmap.api.maps.MapsInitializer: void setApiKey(java.lang.String)
+com.sfmap.api.maps.MapsInitializer: java.lang.String getVersion()
+com.sfmap.api.maps.Projection
+com.sfmap.api.maps.Projection: com.sfmap.api.maps.model.LatLng fromScreenLocation(android.graphics.Point)
+com.sfmap.api.maps.Projection: android.graphics.Point toScreenLocation(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.Projection: android.graphics.PointF toOpenGLLocation(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.Projection: float toOpenGLWidth(int)
+com.sfmap.api.maps.Projection: com.sfmap.api.maps.model.VisibleRegion getVisibleRegion()
+com.sfmap.api.maps.Projection: com.sfmap.api.maps.model.TileProjection fromBoundsToTile(com.sfmap.api.maps.model.LatLngBounds,int,int)
+com.sfmap.api.maps.Projection: com.sfmap.api.maps.model.LatLngBounds getMapBounds(com.sfmap.api.maps.model.LatLng,float)
+com.sfmap.api.maps.SupportMapFragment
+com.sfmap.api.maps.SupportMapFragment: SupportMapFragment()
+com.sfmap.api.maps.SupportMapFragment: com.sfmap.api.maps.SupportMapFragment newInstance()
+com.sfmap.api.maps.SupportMapFragment: com.sfmap.api.maps.SupportMapFragment newInstance(com.sfmap.api.maps.MapOptions)
+com.sfmap.api.maps.SupportMapFragment: com.sfmap.api.mapcore.IMapFragmentDelegate getMapFragmentDelegate()
+com.sfmap.api.maps.SupportMapFragment: com.sfmap.api.maps.MapController getMap()
+com.sfmap.api.maps.SupportMapFragment: void onAttach(android.app.Activity)
+com.sfmap.api.maps.SupportMapFragment: void onInflate(android.app.Activity,android.util.AttributeSet,android.os.Bundle)
+com.sfmap.api.maps.SupportMapFragment: void onCreate(android.os.Bundle)
+com.sfmap.api.maps.SupportMapFragment: android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
+com.sfmap.api.maps.SupportMapFragment: void onResume()
+com.sfmap.api.maps.SupportMapFragment: void onPause()
+com.sfmap.api.maps.SupportMapFragment: void onDestroyView()
+com.sfmap.api.maps.SupportMapFragment: void onDestroy()
+com.sfmap.api.maps.SupportMapFragment: void onLowMemory()
+com.sfmap.api.maps.SupportMapFragment: void onSaveInstanceState(android.os.Bundle)
+com.sfmap.api.maps.SupportMapFragment: void setArguments(android.os.Bundle)
+com.sfmap.api.maps.SupportMapFragment: void setUserVisibleHint(boolean)
+com.sfmap.api.maps.TextureMapFragment
+com.sfmap.api.maps.TextureMapFragment: TextureMapFragment()
+com.sfmap.api.maps.TextureMapFragment: com.sfmap.api.maps.TextureMapFragment newInstance()
+com.sfmap.api.maps.TextureMapFragment: com.sfmap.api.maps.TextureMapFragment newInstance(com.sfmap.api.maps.MapOptions)
+com.sfmap.api.maps.TextureMapFragment: com.sfmap.api.mapcore.IMapFragmentDelegate getMapFragmentDelegate()
+com.sfmap.api.maps.TextureMapFragment: com.sfmap.api.maps.MapController getMap()
+com.sfmap.api.maps.TextureMapFragment: void onAttach(android.app.Activity)
+com.sfmap.api.maps.TextureMapFragment: void onInflate(android.app.Activity,android.util.AttributeSet,android.os.Bundle)
+com.sfmap.api.maps.TextureMapFragment: void onCreate(android.os.Bundle)
+com.sfmap.api.maps.TextureMapFragment: android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
+com.sfmap.api.maps.TextureMapFragment: void onResume()
+com.sfmap.api.maps.TextureMapFragment: void onPause()
+com.sfmap.api.maps.TextureMapFragment: void onDestroyView()
+com.sfmap.api.maps.TextureMapFragment: void onDestroy()
+com.sfmap.api.maps.TextureMapFragment: void onLowMemory()
+com.sfmap.api.maps.TextureMapFragment: void onSaveInstanceState(android.os.Bundle)
+com.sfmap.api.maps.TextureMapFragment: void setArguments(android.os.Bundle)
+com.sfmap.api.maps.TextureMapFragment: void setUserVisibleHint(boolean)
+com.sfmap.api.maps.TextureMapView
+com.sfmap.api.maps.TextureMapView: TextureMapView(android.content.Context)
+com.sfmap.api.maps.TextureMapView: TextureMapView(android.content.Context,android.util.AttributeSet)
+com.sfmap.api.maps.TextureMapView: TextureMapView(android.content.Context,android.util.AttributeSet,int)
+com.sfmap.api.maps.TextureMapView: TextureMapView(android.content.Context,com.sfmap.api.maps.MapOptions)
+com.sfmap.api.maps.TextureMapView: com.sfmap.api.mapcore.IMapFragmentDelegate getMapFragmentDelegate()
+com.sfmap.api.maps.TextureMapView: com.sfmap.api.maps.MapController getMap()
+com.sfmap.api.maps.TextureMapView: void onCreate(android.os.Bundle)
+com.sfmap.api.maps.TextureMapView: void onResume()
+com.sfmap.api.maps.TextureMapView: void onPause()
+com.sfmap.api.maps.TextureMapView: void onDestroy()
+com.sfmap.api.maps.TextureMapView: void onLowMemory()
+com.sfmap.api.maps.TextureMapView: void onSaveInstanceState(android.os.Bundle)
+com.sfmap.api.maps.TextureMapView: void setVisibility(int)
+com.sfmap.api.maps.TextureSupportMapFragment
+com.sfmap.api.maps.TextureSupportMapFragment: TextureSupportMapFragment()
+com.sfmap.api.maps.TextureSupportMapFragment: com.sfmap.api.maps.TextureSupportMapFragment newInstance()
+com.sfmap.api.maps.TextureSupportMapFragment: com.sfmap.api.maps.TextureSupportMapFragment newInstance(com.sfmap.api.maps.MapOptions)
+com.sfmap.api.maps.TextureSupportMapFragment: com.sfmap.api.mapcore.IMapFragmentDelegate getMapFragmentDelegate()
+com.sfmap.api.maps.TextureSupportMapFragment: com.sfmap.api.maps.MapController getMap()
+com.sfmap.api.maps.TextureSupportMapFragment: void onAttach(android.app.Activity)
+com.sfmap.api.maps.TextureSupportMapFragment: void onInflate(android.app.Activity,android.util.AttributeSet,android.os.Bundle)
+com.sfmap.api.maps.TextureSupportMapFragment: void onCreate(android.os.Bundle)
+com.sfmap.api.maps.TextureSupportMapFragment: android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
+com.sfmap.api.maps.TextureSupportMapFragment: void onResume()
+com.sfmap.api.maps.TextureSupportMapFragment: void onPause()
+com.sfmap.api.maps.TextureSupportMapFragment: void onDestroyView()
+com.sfmap.api.maps.TextureSupportMapFragment: void onDestroy()
+com.sfmap.api.maps.TextureSupportMapFragment: void onLowMemory()
+com.sfmap.api.maps.TextureSupportMapFragment: void onSaveInstanceState(android.os.Bundle)
+com.sfmap.api.maps.TextureSupportMapFragment: void setArguments(android.os.Bundle)
+com.sfmap.api.maps.TextureSupportMapFragment: void setUserVisibleHint(boolean)
+com.sfmap.api.maps.UiSettings
+com.sfmap.api.maps.UiSettings: void setScaleControlsEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setZoomControlsEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setCompassEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setMyLocationButtonEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setScrollGesturesEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setZoomGesturesEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setTiltGesturesEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setRotateGesturesEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setAllGesturesEnabled(boolean)
+com.sfmap.api.maps.UiSettings: void setLogoPosition(int)
+com.sfmap.api.maps.UiSettings: void setZoomPosition(int)
+com.sfmap.api.maps.UiSettings: int getZoomPosition()
+com.sfmap.api.maps.UiSettings: boolean isScaleControlsEnabled()
+com.sfmap.api.maps.UiSettings: boolean isZoomControlsEnabled()
+com.sfmap.api.maps.UiSettings: boolean isCompassEnabled()
+com.sfmap.api.maps.UiSettings: boolean isMyLocationButtonEnabled()
+com.sfmap.api.maps.UiSettings: boolean isScrollGesturesEnabled()
+com.sfmap.api.maps.UiSettings: boolean isZoomGesturesEnabled()
+com.sfmap.api.maps.UiSettings: boolean isTiltGesturesEnabled()
+com.sfmap.api.maps.UiSettings: boolean isRotateGesturesEnabled()
+com.sfmap.api.maps.UiSettings: int getLogoPosition()
+com.sfmap.api.maps.UiSettings: void setCompassViewPosition(int,int)
+com.sfmap.api.maps.cluster.Cluster
+com.sfmap.api.maps.cluster.Cluster: com.sfmap.api.maps.model.LatLng mLatLng
+com.sfmap.api.maps.cluster.Cluster: java.util.List mClusterItems
+com.sfmap.api.maps.cluster.Cluster: com.sfmap.api.maps.model.Marker mMarker
+com.sfmap.api.maps.cluster.Cluster: Cluster(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.cluster.Cluster: void addClusterItem(com.sfmap.api.maps.cluster.ClusterItem)
+com.sfmap.api.maps.cluster.Cluster: int getClusterCount()
+com.sfmap.api.maps.cluster.Cluster: com.sfmap.api.maps.model.LatLng getCenterLatLng()
+com.sfmap.api.maps.cluster.Cluster: void setMarker(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.cluster.Cluster: com.sfmap.api.maps.model.Marker getMarker()
+com.sfmap.api.maps.cluster.Cluster: java.util.List getClusterItems()
+com.sfmap.api.maps.cluster.ClusterClickListener
+com.sfmap.api.maps.cluster.ClusterClickListener: void onClick(com.sfmap.api.maps.model.Marker,java.util.List)
+com.sfmap.api.maps.cluster.ClusterItem
+com.sfmap.api.maps.cluster.ClusterItem: com.sfmap.api.maps.model.LatLng getPosition()
+com.sfmap.api.maps.cluster.ClusterOverlay
+com.sfmap.api.maps.cluster.ClusterOverlay: java.lang.String TAG
+com.sfmap.api.maps.cluster.ClusterOverlay: com.sfmap.api.maps.MapController mAMap
+com.sfmap.api.maps.cluster.ClusterOverlay: android.content.Context mContext
+com.sfmap.api.maps.cluster.ClusterOverlay: java.util.List mClusters
+com.sfmap.api.maps.cluster.ClusterOverlay: int mClusterSize
+com.sfmap.api.maps.cluster.ClusterOverlay: com.sfmap.api.maps.cluster.ClusterClickListener mClusterClickListener
+com.sfmap.api.maps.cluster.ClusterOverlay: com.sfmap.api.maps.cluster.ClusterRender mClusterRender
+com.sfmap.api.maps.cluster.ClusterOverlay: double mClusterDistance
+com.sfmap.api.maps.cluster.ClusterOverlay: float mPXInMeters
+com.sfmap.api.maps.cluster.ClusterOverlay: android.util.LruCache mLruCache
+com.sfmap.api.maps.cluster.ClusterOverlay: java.util.List mClusterItems
+com.sfmap.api.maps.cluster.ClusterOverlay: java.util.List mAddMarkers
+com.sfmap.api.maps.cluster.ClusterOverlay: android.os.HandlerThread mMarkerHandlerThread
+com.sfmap.api.maps.cluster.ClusterOverlay: android.os.HandlerThread mAssignClusterThread
+com.sfmap.api.maps.cluster.ClusterOverlay: android.os.Handler mMarkerHandler
+com.sfmap.api.maps.cluster.ClusterOverlay: android.os.Handler mSignClusterHandler
+com.sfmap.api.maps.cluster.ClusterOverlay: boolean mIsDestroyed
+com.sfmap.api.maps.cluster.ClusterOverlay: boolean mClusterVisibleOnly
+com.sfmap.api.maps.cluster.ClusterOverlay: boolean mCenterMapToClickedMarker
+com.sfmap.api.maps.cluster.ClusterOverlay: ClusterOverlay(com.sfmap.api.maps.MapController,int,android.content.Context)
+com.sfmap.api.maps.cluster.ClusterOverlay: ClusterOverlay(com.sfmap.api.maps.MapController,java.util.List,int,android.content.Context)
+com.sfmap.api.maps.cluster.ClusterOverlay: void setOnClusterClickListener(com.sfmap.api.maps.cluster.ClusterClickListener)
+com.sfmap.api.maps.cluster.ClusterOverlay: void addClusterItem(com.sfmap.api.maps.cluster.ClusterItem)
+com.sfmap.api.maps.cluster.ClusterOverlay: void updateClusterItems(java.util.List)
+com.sfmap.api.maps.cluster.ClusterOverlay: void setClusterVisibleOnly(boolean)
+com.sfmap.api.maps.cluster.ClusterOverlay: void setCenterMapToClickedMarker(boolean)
+com.sfmap.api.maps.cluster.ClusterOverlay: java.util.List getClusters()
+com.sfmap.api.maps.cluster.ClusterOverlay: void setClusterRenderer(com.sfmap.api.maps.cluster.ClusterRender)
+com.sfmap.api.maps.cluster.ClusterOverlay: void onDestroy()
+com.sfmap.api.maps.cluster.ClusterOverlay: void initThreadHandler()
+com.sfmap.api.maps.cluster.ClusterOverlay: void addClusterToMap(java.util.List)
+com.sfmap.api.maps.cluster.ClusterOverlay: void addSingleClusterToMap(com.sfmap.api.maps.cluster.Cluster)
+com.sfmap.api.maps.cluster.ClusterOverlay: void calculateClusters()
+com.sfmap.api.maps.cluster.ClusterOverlay: void updateClusters()
+com.sfmap.api.maps.cluster.ClusterOverlay: void assignClusters()
+com.sfmap.api.maps.cluster.ClusterOverlay: void calculateSingleCluster(com.sfmap.api.maps.cluster.ClusterItem)
+com.sfmap.api.maps.cluster.ClusterOverlay: com.sfmap.api.maps.cluster.Cluster getCluster(com.sfmap.api.maps.model.LatLng,java.util.List)
+com.sfmap.api.maps.cluster.ClusterOverlay: com.sfmap.api.maps.model.BitmapDescriptor getBitmapDes(int)
+com.sfmap.api.maps.cluster.ClusterOverlay: void updateCluster(com.sfmap.api.maps.cluster.Cluster)
+com.sfmap.api.maps.cluster.ClusterOverlay: void responseClusterClickEvent(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.cluster.ClusterOverlay: boolean access$000(com.sfmap.api.maps.cluster.ClusterOverlay)
+com.sfmap.api.maps.cluster.ClusterOverlay: void access$100(com.sfmap.api.maps.cluster.ClusterOverlay,java.util.List)
+com.sfmap.api.maps.cluster.ClusterOverlay: void access$200(com.sfmap.api.maps.cluster.ClusterOverlay,com.sfmap.api.maps.cluster.Cluster)
+com.sfmap.api.maps.cluster.ClusterOverlay: void access$300(com.sfmap.api.maps.cluster.ClusterOverlay,com.sfmap.api.maps.cluster.Cluster)
+com.sfmap.api.maps.cluster.ClusterOverlay: java.util.List access$400(com.sfmap.api.maps.cluster.ClusterOverlay)
+com.sfmap.api.maps.cluster.ClusterOverlay: android.util.LruCache access$500(com.sfmap.api.maps.cluster.ClusterOverlay)
+com.sfmap.api.maps.cluster.ClusterOverlay: android.os.HandlerThread access$600(com.sfmap.api.maps.cluster.ClusterOverlay)
+com.sfmap.api.maps.cluster.ClusterOverlay: void access$700(com.sfmap.api.maps.cluster.ClusterOverlay)
+com.sfmap.api.maps.cluster.ClusterOverlay: java.util.List access$800(com.sfmap.api.maps.cluster.ClusterOverlay)
+com.sfmap.api.maps.cluster.ClusterOverlay: void access$900(com.sfmap.api.maps.cluster.ClusterOverlay,com.sfmap.api.maps.cluster.ClusterItem)
+com.sfmap.api.maps.cluster.ClusterRender
+com.sfmap.api.maps.cluster.ClusterRender: com.sfmap.api.maps.model.MarkerOptions getClusterMarkerOptions(com.sfmap.api.maps.cluster.Cluster)
+com.sfmap.api.maps.model.Arc
+com.sfmap.api.maps.model.Arc: Arc(com.sfmap.api.mapcore.IArcDelegateDecode)
+com.sfmap.api.maps.model.Arc: void remove()
+com.sfmap.api.maps.model.Arc: java.lang.String getId()
+com.sfmap.api.maps.model.Arc: void setStrokeWidth(float)
+com.sfmap.api.maps.model.Arc: float getStrokeWidth()
+com.sfmap.api.maps.model.Arc: void setStrokeColor(int)
+com.sfmap.api.maps.model.Arc: int getStrokeColor()
+com.sfmap.api.maps.model.Arc: void setZIndex(float)
+com.sfmap.api.maps.model.Arc: float getZIndex()
+com.sfmap.api.maps.model.Arc: void setVisible(boolean)
+com.sfmap.api.maps.model.Arc: boolean isVisible()
+com.sfmap.api.maps.model.Arc: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.Arc: int hashCode()
+com.sfmap.api.maps.model.ArcOptions
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.ArcOptionsCreator CREATOR
+com.sfmap.api.maps.model.ArcOptions: ArcOptions()
+com.sfmap.api.maps.model.ArcOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.ArcOptions: int describeContents()
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.ArcOptions point(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.ArcOptions strokeWidth(float)
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.ArcOptions strokeColor(int)
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.ArcOptions zIndex(float)
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.ArcOptions visible(boolean)
+com.sfmap.api.maps.model.ArcOptions: float getStrokeWidth()
+com.sfmap.api.maps.model.ArcOptions: int getStrokeColor()
+com.sfmap.api.maps.model.ArcOptions: float getZIndex()
+com.sfmap.api.maps.model.ArcOptions: boolean isVisible()
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.LatLng getStart()
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.LatLng getPassed()
+com.sfmap.api.maps.model.ArcOptions: com.sfmap.api.maps.model.LatLng getEnd()
+com.sfmap.api.maps.model.ArcOptionsCreator
+com.sfmap.api.maps.model.ArcOptionsCreator: ArcOptionsCreator()
+com.sfmap.api.maps.model.ArcOptionsCreator: com.sfmap.api.maps.model.ArcOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.ArcOptionsCreator: com.sfmap.api.maps.model.ArcOptions[] newArray(int)
+com.sfmap.api.maps.model.ArcOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.ArcOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.BitmapDescriptor
+com.sfmap.api.maps.model.BitmapDescriptor: com.sfmap.api.maps.model.BitmapDescriptorCreator CREATOR
+com.sfmap.api.maps.model.BitmapDescriptor: com.sfmap.api.maps.model.BitmapDescriptor clone()
+com.sfmap.api.maps.model.BitmapDescriptor: android.graphics.Bitmap getBitmap()
+com.sfmap.api.maps.model.BitmapDescriptor: int getWidth()
+com.sfmap.api.maps.model.BitmapDescriptor: int getHeight()
+com.sfmap.api.maps.model.BitmapDescriptor: int describeContents()
+com.sfmap.api.maps.model.BitmapDescriptor: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.BitmapDescriptor: void recycle()
+com.sfmap.api.maps.model.BitmapDescriptor: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.BitmapDescriptor: java.lang.Object clone()
+com.sfmap.api.maps.model.BitmapDescriptorCreator
+com.sfmap.api.maps.model.BitmapDescriptorCreator: BitmapDescriptorCreator()
+com.sfmap.api.maps.model.BitmapDescriptorCreator: com.sfmap.api.maps.model.BitmapDescriptor createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.BitmapDescriptorCreator: com.sfmap.api.maps.model.BitmapDescriptor[] newArray(int)
+com.sfmap.api.maps.model.BitmapDescriptorCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.BitmapDescriptorCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.BitmapDescriptorFactory
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_RED
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_ORANGE
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_YELLOW
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_GREEN
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_CYAN
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_AZURE
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_BLUE
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_VIOLET
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_MAGENTA
+com.sfmap.api.maps.model.BitmapDescriptorFactory: int MARKER_COLOR_ROSE
+com.sfmap.api.maps.model.BitmapDescriptorFactory: BitmapDescriptorFactory()
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor fromResource(int)
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor fromView(android.view.View)
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor fromPath(java.lang.String)
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor fromAsset(java.lang.String)
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor fromFile(java.lang.String)
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor defaultMarker()
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor defaultMarker(int)
+com.sfmap.api.maps.model.BitmapDescriptorFactory: com.sfmap.api.maps.model.BitmapDescriptor fromBitmap(android.graphics.Bitmap)
+com.sfmap.api.maps.model.CameraPosition
+com.sfmap.api.maps.model.CameraPosition: com.sfmap.api.maps.model.CameraPositionCreator CREATOR
+com.sfmap.api.maps.model.CameraPosition: com.sfmap.api.maps.model.LatLng target
+com.sfmap.api.maps.model.CameraPosition: float zoom
+com.sfmap.api.maps.model.CameraPosition: float tilt
+com.sfmap.api.maps.model.CameraPosition: float bearing
+com.sfmap.api.maps.model.CameraPosition: boolean isAbroad
+com.sfmap.api.maps.model.CameraPosition: CameraPosition(com.sfmap.api.maps.model.LatLng,float,float,float)
+com.sfmap.api.maps.model.CameraPosition: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.CameraPosition: int describeContents()
+com.sfmap.api.maps.model.CameraPosition: int hashCode()
+com.sfmap.api.maps.model.CameraPosition: com.sfmap.api.maps.model.CameraPosition fromLatLngZoom(com.sfmap.api.maps.model.LatLng,float)
+com.sfmap.api.maps.model.CameraPosition: com.sfmap.api.maps.model.CameraPosition$Builder builder()
+com.sfmap.api.maps.model.CameraPosition: com.sfmap.api.maps.model.CameraPosition$Builder builder(com.sfmap.api.maps.model.CameraPosition)
+com.sfmap.api.maps.model.CameraPosition: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.CameraPosition: java.lang.String toString()
+com.sfmap.api.maps.model.CameraPosition$Builder
+com.sfmap.api.maps.model.CameraPosition$Builder: CameraPosition$Builder()
+com.sfmap.api.maps.model.CameraPosition$Builder: CameraPosition$Builder(com.sfmap.api.maps.model.CameraPosition)
+com.sfmap.api.maps.model.CameraPosition$Builder: com.sfmap.api.maps.model.CameraPosition$Builder target(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.CameraPosition$Builder: com.sfmap.api.maps.model.CameraPosition$Builder zoom(float)
+com.sfmap.api.maps.model.CameraPosition$Builder: com.sfmap.api.maps.model.CameraPosition$Builder tilt(float)
+com.sfmap.api.maps.model.CameraPosition$Builder: com.sfmap.api.maps.model.CameraPosition$Builder bearing(float)
+com.sfmap.api.maps.model.CameraPosition$Builder: com.sfmap.api.maps.model.CameraPosition build()
+com.sfmap.api.maps.model.CameraPositionCreator
+com.sfmap.api.maps.model.CameraPositionCreator: CameraPositionCreator()
+com.sfmap.api.maps.model.CameraPositionCreator: com.sfmap.api.maps.model.CameraPosition createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.CameraPositionCreator: com.sfmap.api.maps.model.CameraPosition[] newArray(int)
+com.sfmap.api.maps.model.CameraPositionCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.CameraPositionCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.Circle
+com.sfmap.api.maps.model.Circle: Circle(com.sfmap.api.mapcore.ICircleDelegate)
+com.sfmap.api.maps.model.Circle: void remove()
+com.sfmap.api.maps.model.Circle: java.lang.String getId()
+com.sfmap.api.maps.model.Circle: void setCenter(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.Circle: com.sfmap.api.maps.model.LatLng getCenter()
+com.sfmap.api.maps.model.Circle: void setRadius(double)
+com.sfmap.api.maps.model.Circle: double getRadius()
+com.sfmap.api.maps.model.Circle: void setStrokeWidth(float)
+com.sfmap.api.maps.model.Circle: float getStrokeWidth()
+com.sfmap.api.maps.model.Circle: void setStrokeColor(int)
+com.sfmap.api.maps.model.Circle: int getStrokeColor()
+com.sfmap.api.maps.model.Circle: void setFillColor(int)
+com.sfmap.api.maps.model.Circle: int getFillColor()
+com.sfmap.api.maps.model.Circle: void setZIndex(float)
+com.sfmap.api.maps.model.Circle: float getZIndex()
+com.sfmap.api.maps.model.Circle: void setVisible(boolean)
+com.sfmap.api.maps.model.Circle: boolean isVisible()
+com.sfmap.api.maps.model.Circle: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.Circle: int hashCode()
+com.sfmap.api.maps.model.Circle: boolean contains(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.CircleOptions
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptionsCreator CREATOR
+com.sfmap.api.maps.model.CircleOptions: CircleOptions()
+com.sfmap.api.maps.model.CircleOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.CircleOptions: int describeContents()
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptions center(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptions radius(double)
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptions strokeWidth(float)
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptions strokeColor(int)
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptions fillColor(int)
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptions zIndex(float)
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.CircleOptions visible(boolean)
+com.sfmap.api.maps.model.CircleOptions: com.sfmap.api.maps.model.LatLng getCenter()
+com.sfmap.api.maps.model.CircleOptions: double getRadius()
+com.sfmap.api.maps.model.CircleOptions: float getStrokeWidth()
+com.sfmap.api.maps.model.CircleOptions: int getStrokeColor()
+com.sfmap.api.maps.model.CircleOptions: int getFillColor()
+com.sfmap.api.maps.model.CircleOptions: float getZIndex()
+com.sfmap.api.maps.model.CircleOptions: boolean isVisible()
+com.sfmap.api.maps.model.CircleOptionsCreator
+com.sfmap.api.maps.model.CircleOptionsCreator: CircleOptionsCreator()
+com.sfmap.api.maps.model.CircleOptionsCreator: com.sfmap.api.maps.model.CircleOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.CircleOptionsCreator: com.sfmap.api.maps.model.CircleOptions[] newArray(int)
+com.sfmap.api.maps.model.CircleOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.CircleOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.Gradient
+com.sfmap.api.maps.model.Gradient: Gradient(int[],float[])
+com.sfmap.api.maps.model.Gradient: int[] generateColorMap(double)
+com.sfmap.api.maps.model.Gradient: boolean isAvailable()
+com.sfmap.api.maps.model.GroundOverlay
+com.sfmap.api.maps.model.GroundOverlay: GroundOverlay(com.sfmap.api.mapcore.IGroundOverlayDelegateDecode)
+com.sfmap.api.maps.model.GroundOverlay: void remove()
+com.sfmap.api.maps.model.GroundOverlay: java.lang.String getId()
+com.sfmap.api.maps.model.GroundOverlay: void setPosition(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.GroundOverlay: com.sfmap.api.maps.model.LatLng getPosition()
+com.sfmap.api.maps.model.GroundOverlay: void setDimensions(float)
+com.sfmap.api.maps.model.GroundOverlay: void setImage(com.sfmap.api.maps.model.BitmapDescriptor)
+com.sfmap.api.maps.model.GroundOverlay: void setDimensions(float,float)
+com.sfmap.api.maps.model.GroundOverlay: float getWidth()
+com.sfmap.api.maps.model.GroundOverlay: float getHeight()
+com.sfmap.api.maps.model.GroundOverlay: void setPositionFromBounds(com.sfmap.api.maps.model.LatLngBounds)
+com.sfmap.api.maps.model.GroundOverlay: com.sfmap.api.maps.model.LatLngBounds getBounds()
+com.sfmap.api.maps.model.GroundOverlay: void setBearing(float)
+com.sfmap.api.maps.model.GroundOverlay: float getBearing()
+com.sfmap.api.maps.model.GroundOverlay: void setZIndex(float)
+com.sfmap.api.maps.model.GroundOverlay: float getZIndex()
+com.sfmap.api.maps.model.GroundOverlay: void setVisible(boolean)
+com.sfmap.api.maps.model.GroundOverlay: boolean isVisible()
+com.sfmap.api.maps.model.GroundOverlay: void setTransparency(float)
+com.sfmap.api.maps.model.GroundOverlay: float getTransparency()
+com.sfmap.api.maps.model.GroundOverlay: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.GroundOverlay: int hashCode()
+com.sfmap.api.maps.model.GroundOverlayOptions
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptionsCreator CREATOR
+com.sfmap.api.maps.model.GroundOverlayOptions: float NO_DIMENSION
+com.sfmap.api.maps.model.GroundOverlayOptions: GroundOverlayOptions()
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions image(com.sfmap.api.maps.model.BitmapDescriptor)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions anchor(float,float)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions position(com.sfmap.api.maps.model.LatLng,float)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions position(com.sfmap.api.maps.model.LatLng,float,float)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions positionFromBounds(com.sfmap.api.maps.model.LatLngBounds)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions bearing(float)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions zIndex(float)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions visible(boolean)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.GroundOverlayOptions transparency(float)
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.BitmapDescriptor getImage()
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.LatLng getLocation()
+com.sfmap.api.maps.model.GroundOverlayOptions: float getWidth()
+com.sfmap.api.maps.model.GroundOverlayOptions: float getHeight()
+com.sfmap.api.maps.model.GroundOverlayOptions: com.sfmap.api.maps.model.LatLngBounds getBounds()
+com.sfmap.api.maps.model.GroundOverlayOptions: float getBearing()
+com.sfmap.api.maps.model.GroundOverlayOptions: float getZIndex()
+com.sfmap.api.maps.model.GroundOverlayOptions: float getTransparency()
+com.sfmap.api.maps.model.GroundOverlayOptions: float getAnchorU()
+com.sfmap.api.maps.model.GroundOverlayOptions: float getAnchorV()
+com.sfmap.api.maps.model.GroundOverlayOptions: boolean isVisible()
+com.sfmap.api.maps.model.GroundOverlayOptions: int describeContents()
+com.sfmap.api.maps.model.GroundOverlayOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.GroundOverlayOptionsCreator
+com.sfmap.api.maps.model.GroundOverlayOptionsCreator: int CONTENT_DESCRIPTION
+com.sfmap.api.maps.model.GroundOverlayOptionsCreator: GroundOverlayOptionsCreator()
+com.sfmap.api.maps.model.GroundOverlayOptionsCreator: com.sfmap.api.maps.model.GroundOverlayOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.GroundOverlayOptionsCreator: com.sfmap.api.maps.model.GroundOverlayOptions[] newArray(int)
+com.sfmap.api.maps.model.GroundOverlayOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.GroundOverlayOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.HeatmapTileProvider
+com.sfmap.api.maps.model.HeatmapTileProvider: int DEFAULT_RADIUS
+com.sfmap.api.maps.model.HeatmapTileProvider: double DEFAULT_OPACITY
+com.sfmap.api.maps.model.HeatmapTileProvider: com.sfmap.api.maps.model.Gradient DEFAULT_GRADIENT
+com.sfmap.api.maps.model.HeatmapTileProvider: com.sfmap.api.maps.model.Tile getTile(int,int,int)
+com.sfmap.api.maps.model.HeatmapTileProvider: void writeDatasToFile(java.lang.String,byte[])
+com.sfmap.api.maps.model.HeatmapTileProvider: int getTileHeight()
+com.sfmap.api.maps.model.HeatmapTileProvider: int getTileWidth()
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder: HeatmapTileProvider$Builder()
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder: com.sfmap.api.maps.model.HeatmapTileProvider$Builder data(java.util.Collection)
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder: com.sfmap.api.maps.model.HeatmapTileProvider$Builder weightedData(java.util.Collection)
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder: com.sfmap.api.maps.model.HeatmapTileProvider$Builder radius(int)
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder: com.sfmap.api.maps.model.HeatmapTileProvider$Builder gradient(com.sfmap.api.maps.model.Gradient)
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder: com.sfmap.api.maps.model.HeatmapTileProvider$Builder transparency(double)
+com.sfmap.api.maps.model.HeatmapTileProvider$Builder: com.sfmap.api.maps.model.HeatmapTileProvider build()
+com.sfmap.api.maps.model.LatLng
+com.sfmap.api.maps.model.LatLng: com.sfmap.api.maps.model.LatLngCreator CREATOR
+com.sfmap.api.maps.model.LatLng: double latitude
+com.sfmap.api.maps.model.LatLng: double longitude
+com.sfmap.api.maps.model.LatLng: LatLng(double,double)
+com.sfmap.api.maps.model.LatLng: LatLng(double,double,boolean)
+com.sfmap.api.maps.model.LatLng: com.sfmap.api.maps.model.LatLng clone()
+com.sfmap.api.maps.model.LatLng: int hashCode()
+com.sfmap.api.maps.model.LatLng: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.LatLng: java.lang.String toString()
+com.sfmap.api.maps.model.LatLng: int describeContents()
+com.sfmap.api.maps.model.LatLng: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.LatLng: java.lang.Object clone()
+com.sfmap.api.maps.model.LatLngBounds
+com.sfmap.api.maps.model.LatLngBounds: com.sfmap.api.maps.model.LatLngBoundsCreator CREATOR
+com.sfmap.api.maps.model.LatLngBounds: com.sfmap.api.maps.model.LatLng southwest
+com.sfmap.api.maps.model.LatLngBounds: com.sfmap.api.maps.model.LatLng northeast
+com.sfmap.api.maps.model.LatLngBounds: LatLngBounds(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.LatLngBounds: com.sfmap.api.maps.model.LatLngBounds$Builder builder()
+com.sfmap.api.maps.model.LatLngBounds: boolean contains(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.LatLngBounds: boolean contains(com.sfmap.api.maps.model.LatLngBounds)
+com.sfmap.api.maps.model.LatLngBounds: boolean intersects(com.sfmap.api.maps.model.LatLngBounds)
+com.sfmap.api.maps.model.LatLngBounds: com.sfmap.api.maps.model.LatLngBounds including(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.LatLngBounds: int hashCode()
+com.sfmap.api.maps.model.LatLngBounds: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.LatLngBounds: java.lang.String toString()
+com.sfmap.api.maps.model.LatLngBounds: int describeContents()
+com.sfmap.api.maps.model.LatLngBounds: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.LatLngBounds$Builder
+com.sfmap.api.maps.model.LatLngBounds$Builder: LatLngBounds$Builder()
+com.sfmap.api.maps.model.LatLngBounds$Builder: com.sfmap.api.maps.model.LatLngBounds$Builder include(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.LatLngBounds$Builder: com.sfmap.api.maps.model.LatLngBounds build()
+com.sfmap.api.maps.model.LatLngBoundsCreator
+com.sfmap.api.maps.model.LatLngBoundsCreator: int CONTENT_DESCRIPTION
+com.sfmap.api.maps.model.LatLngBoundsCreator: LatLngBoundsCreator()
+com.sfmap.api.maps.model.LatLngBoundsCreator: com.sfmap.api.maps.model.LatLngBounds createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.LatLngBoundsCreator: com.sfmap.api.maps.model.LatLngBounds[] newArray(int)
+com.sfmap.api.maps.model.LatLngBoundsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.LatLngBoundsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.LatLngCreator
+com.sfmap.api.maps.model.LatLngCreator: int CONTENT_DESCRIPTION
+com.sfmap.api.maps.model.LatLngCreator: LatLngCreator()
+com.sfmap.api.maps.model.LatLngCreator: com.sfmap.api.maps.model.LatLng createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.LatLngCreator: com.sfmap.api.maps.model.LatLng[] newArray(int)
+com.sfmap.api.maps.model.LatLngCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.LatLngCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.Marker
+com.sfmap.api.maps.model.Marker: Marker(com.sfmap.api.mapcore.IMarkerDelegate)
+com.sfmap.api.maps.model.Marker: void setPeriod(int)
+com.sfmap.api.maps.model.Marker: int getPeriod()
+com.sfmap.api.maps.model.Marker: void setIcons(java.util.ArrayList)
+com.sfmap.api.maps.model.Marker: java.util.ArrayList getIcons()
+com.sfmap.api.maps.model.Marker: void remove()
+com.sfmap.api.maps.model.Marker: void destroy()
+com.sfmap.api.maps.model.Marker: java.lang.String getId()
+com.sfmap.api.maps.model.Marker: void setPosition(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.Marker: com.sfmap.api.maps.model.LatLng getPosition()
+com.sfmap.api.maps.model.Marker: void setTitle(java.lang.String)
+com.sfmap.api.maps.model.Marker: java.lang.String getTitle()
+com.sfmap.api.maps.model.Marker: void setSnippet(java.lang.String)
+com.sfmap.api.maps.model.Marker: java.lang.String getSnippet()
+com.sfmap.api.maps.model.Marker: void setIcon(com.sfmap.api.maps.model.BitmapDescriptor)
+com.sfmap.api.maps.model.Marker: void setAnchor(float,float)
+com.sfmap.api.maps.model.Marker: void setDraggable(boolean)
+com.sfmap.api.maps.model.Marker: boolean isDraggable()
+com.sfmap.api.maps.model.Marker: void showInfoWindow()
+com.sfmap.api.maps.model.Marker: void hideInfoWindow()
+com.sfmap.api.maps.model.Marker: boolean isInfoWindowShown()
+com.sfmap.api.maps.model.Marker: void setVisible(boolean)
+com.sfmap.api.maps.model.Marker: boolean isVisible()
+com.sfmap.api.maps.model.Marker: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.Marker: int hashCode()
+com.sfmap.api.maps.model.Marker: void setObject(java.lang.Object)
+com.sfmap.api.maps.model.Marker: java.lang.Object getObject()
+com.sfmap.api.maps.model.Marker: void setRotateAngle(float)
+com.sfmap.api.maps.model.Marker: float getRotateAngle()
+com.sfmap.api.maps.model.Marker: void setToTop()
+com.sfmap.api.maps.model.Marker: void setGeoPoint(com.sfmap.mapcore.IPoint)
+com.sfmap.api.maps.model.Marker: com.sfmap.mapcore.IPoint getGeoPoint()
+com.sfmap.api.maps.model.Marker: void setFlat(boolean)
+com.sfmap.api.maps.model.Marker: boolean isFlat()
+com.sfmap.api.maps.model.Marker: void setPositionByPixels(int,int)
+com.sfmap.api.maps.model.Marker: void setZIndex(float)
+com.sfmap.api.maps.model.Marker: float getZIndex()
+com.sfmap.api.maps.model.MarkerOptions
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptionsCreator CREATOR
+com.sfmap.api.maps.model.MarkerOptions: MarkerOptions()
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions icons(java.util.ArrayList)
+com.sfmap.api.maps.model.MarkerOptions: java.util.ArrayList getIcons()
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions period(int)
+com.sfmap.api.maps.model.MarkerOptions: int getPeriod()
+com.sfmap.api.maps.model.MarkerOptions: boolean isPerspective()
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions perspective(boolean)
+com.sfmap.api.maps.model.MarkerOptions: boolean isAddByAnimation()
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions setAddByAnimation(boolean)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions position(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions setFlat(boolean)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions icon(com.sfmap.api.maps.model.BitmapDescriptor)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions anchor(float,float)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions setInfoWindowOffset(int,int)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions title(java.lang.String)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions snippet(java.lang.String)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions draggable(boolean)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions visible(boolean)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions setGps(boolean)
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.LatLng getPosition()
+com.sfmap.api.maps.model.MarkerOptions: java.lang.String getTitle()
+com.sfmap.api.maps.model.MarkerOptions: java.lang.String getSnippet()
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.BitmapDescriptor getIcon()
+com.sfmap.api.maps.model.MarkerOptions: float getAnchorU()
+com.sfmap.api.maps.model.MarkerOptions: int getInfoWindowOffsetX()
+com.sfmap.api.maps.model.MarkerOptions: int getInfoWindowOffsetY()
+com.sfmap.api.maps.model.MarkerOptions: float getAnchorV()
+com.sfmap.api.maps.model.MarkerOptions: boolean isDraggable()
+com.sfmap.api.maps.model.MarkerOptions: boolean isVisible()
+com.sfmap.api.maps.model.MarkerOptions: boolean isGps()
+com.sfmap.api.maps.model.MarkerOptions: boolean isFlat()
+com.sfmap.api.maps.model.MarkerOptions: com.sfmap.api.maps.model.MarkerOptions zIndex(float)
+com.sfmap.api.maps.model.MarkerOptions: float getZIndex()
+com.sfmap.api.maps.model.MarkerOptions: int describeContents()
+com.sfmap.api.maps.model.MarkerOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.MarkerOptionsCreator
+com.sfmap.api.maps.model.MarkerOptionsCreator: MarkerOptionsCreator()
+com.sfmap.api.maps.model.MarkerOptionsCreator: com.sfmap.api.maps.model.MarkerOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.MarkerOptionsCreator: com.sfmap.api.maps.model.MarkerOptions[] newArray(int)
+com.sfmap.api.maps.model.MarkerOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.MarkerOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.MyLocationStyle
+com.sfmap.api.maps.model.MyLocationStyle: MyLocationStyle()
+com.sfmap.api.maps.model.MyLocationStyle: com.sfmap.api.maps.model.MyLocationStyle myLocationIcon(com.sfmap.api.maps.model.BitmapDescriptor)
+com.sfmap.api.maps.model.MyLocationStyle: com.sfmap.api.maps.model.MyLocationStyle anchor(float,float)
+com.sfmap.api.maps.model.MyLocationStyle: com.sfmap.api.maps.model.MyLocationStyle radiusFillColor(int)
+com.sfmap.api.maps.model.MyLocationStyle: com.sfmap.api.maps.model.MyLocationStyle strokeColor(int)
+com.sfmap.api.maps.model.MyLocationStyle: com.sfmap.api.maps.model.MyLocationStyle strokeWidth(float)
+com.sfmap.api.maps.model.MyLocationStyle: com.sfmap.api.maps.model.BitmapDescriptor getMyLocationIcon()
+com.sfmap.api.maps.model.MyLocationStyle: float getAnchorU()
+com.sfmap.api.maps.model.MyLocationStyle: float getAnchorV()
+com.sfmap.api.maps.model.MyLocationStyle: int getRadiusFillColor()
+com.sfmap.api.maps.model.MyLocationStyle: int getStrokeColor()
+com.sfmap.api.maps.model.MyLocationStyle: float getStrokeWidth()
+com.sfmap.api.maps.model.MyLocationStyle: int describeContents()
+com.sfmap.api.maps.model.MyLocationStyle: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.MyLocationStyleCreator
+com.sfmap.api.maps.model.MyLocationStyleCreator: MyLocationStyleCreator()
+com.sfmap.api.maps.model.MyLocationStyleCreator: com.sfmap.api.maps.model.MyLocationStyle createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.MyLocationStyleCreator: com.sfmap.api.maps.model.MyLocationStyle[] newArray(int)
+com.sfmap.api.maps.model.MyLocationStyleCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.MyLocationStyleCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.MyTrafficStyle
+com.sfmap.api.maps.model.MyTrafficStyle: MyTrafficStyle()
+com.sfmap.api.maps.model.MyTrafficStyle: int getSmoothColor()
+com.sfmap.api.maps.model.MyTrafficStyle: void setSmoothColor(int)
+com.sfmap.api.maps.model.MyTrafficStyle: int getSlowColor()
+com.sfmap.api.maps.model.MyTrafficStyle: void setSlowColor(int)
+com.sfmap.api.maps.model.MyTrafficStyle: int getCongestedColor()
+com.sfmap.api.maps.model.MyTrafficStyle: void setCongestedColor(int)
+com.sfmap.api.maps.model.MyTrafficStyle: int getSeriousCongestedColor()
+com.sfmap.api.maps.model.MyTrafficStyle: void setSeriousCongestedColor(int)
+com.sfmap.api.maps.model.NavigateArrow
+com.sfmap.api.maps.model.NavigateArrow: NavigateArrow(com.sfmap.api.mapcore.INavigateArrowDelegateDecode)
+com.sfmap.api.maps.model.NavigateArrow: void remove()
+com.sfmap.api.maps.model.NavigateArrow: java.lang.String getId()
+com.sfmap.api.maps.model.NavigateArrow: void setSideColor(int)
+com.sfmap.api.maps.model.NavigateArrow: int getSideColor()
+com.sfmap.api.maps.model.NavigateArrow: void setPoints(java.util.List)
+com.sfmap.api.maps.model.NavigateArrow: java.util.List getPoints()
+com.sfmap.api.maps.model.NavigateArrow: void setWidth(float)
+com.sfmap.api.maps.model.NavigateArrow: float getWidth()
+com.sfmap.api.maps.model.NavigateArrow: void setTopColor(int)
+com.sfmap.api.maps.model.NavigateArrow: int getTopColor()
+com.sfmap.api.maps.model.NavigateArrow: void setZIndex(float)
+com.sfmap.api.maps.model.NavigateArrow: float getZIndex()
+com.sfmap.api.maps.model.NavigateArrow: void setVisible(boolean)
+com.sfmap.api.maps.model.NavigateArrow: boolean isVisible()
+com.sfmap.api.maps.model.NavigateArrow: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.NavigateArrow: int hashCode()
+com.sfmap.api.maps.model.NavigateArrowOptions
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptionsCreator CREATOR
+com.sfmap.api.maps.model.NavigateArrowOptions: NavigateArrowOptions()
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions add(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions add(com.sfmap.api.maps.model.LatLng[])
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions addAll(java.lang.Iterable)
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions width(float)
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions topColor(int)
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions sideColor(int)
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions zIndex(float)
+com.sfmap.api.maps.model.NavigateArrowOptions: com.sfmap.api.maps.model.NavigateArrowOptions visible(boolean)
+com.sfmap.api.maps.model.NavigateArrowOptions: java.util.List getPoints()
+com.sfmap.api.maps.model.NavigateArrowOptions: float getWidth()
+com.sfmap.api.maps.model.NavigateArrowOptions: int getTopColor()
+com.sfmap.api.maps.model.NavigateArrowOptions: int getSideColor()
+com.sfmap.api.maps.model.NavigateArrowOptions: float getZIndex()
+com.sfmap.api.maps.model.NavigateArrowOptions: boolean isVisible()
+com.sfmap.api.maps.model.NavigateArrowOptions: int describeContents()
+com.sfmap.api.maps.model.NavigateArrowOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.NavigateArrowOptionsCreator
+com.sfmap.api.maps.model.NavigateArrowOptionsCreator: NavigateArrowOptionsCreator()
+com.sfmap.api.maps.model.NavigateArrowOptionsCreator: com.sfmap.api.maps.model.NavigateArrowOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.NavigateArrowOptionsCreator: com.sfmap.api.maps.model.NavigateArrowOptions[] newArray(int)
+com.sfmap.api.maps.model.NavigateArrowOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.NavigateArrowOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.Poi
+com.sfmap.api.maps.model.Poi: com.sfmap.api.maps.model.PoiCreator CREATOR
+com.sfmap.api.maps.model.Poi: Poi(java.lang.String,com.sfmap.api.maps.model.LatLng,java.lang.String)
+com.sfmap.api.maps.model.Poi: java.lang.String getName()
+com.sfmap.api.maps.model.Poi: com.sfmap.api.maps.model.LatLng getCoordinate()
+com.sfmap.api.maps.model.Poi: java.lang.String getPoiId()
+com.sfmap.api.maps.model.Poi: int describeContents()
+com.sfmap.api.maps.model.Poi: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.Poi: java.lang.String toString()
+com.sfmap.api.maps.model.Poi: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.PoiCreator
+com.sfmap.api.maps.model.PoiCreator: PoiCreator()
+com.sfmap.api.maps.model.PoiCreator: com.sfmap.api.maps.model.Poi createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.PoiCreator: com.sfmap.api.maps.model.Poi[] newArray(int)
+com.sfmap.api.maps.model.PoiCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.PoiCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.Polygon
+com.sfmap.api.maps.model.Polygon: Polygon(com.sfmap.api.mapcore.IPolygonDelegate)
+com.sfmap.api.maps.model.Polygon: void remove()
+com.sfmap.api.maps.model.Polygon: java.lang.String getId()
+com.sfmap.api.maps.model.Polygon: void setPoints(java.util.List)
+com.sfmap.api.maps.model.Polygon: java.util.List getPoints()
+com.sfmap.api.maps.model.Polygon: void setStrokeWidth(float)
+com.sfmap.api.maps.model.Polygon: float getStrokeWidth()
+com.sfmap.api.maps.model.Polygon: void setStrokeColor(int)
+com.sfmap.api.maps.model.Polygon: int getStrokeColor()
+com.sfmap.api.maps.model.Polygon: void setFillColor(int)
+com.sfmap.api.maps.model.Polygon: int getFillColor()
+com.sfmap.api.maps.model.Polygon: void setZIndex(float)
+com.sfmap.api.maps.model.Polygon: float getZIndex()
+com.sfmap.api.maps.model.Polygon: void setVisible(boolean)
+com.sfmap.api.maps.model.Polygon: boolean isVisible()
+com.sfmap.api.maps.model.Polygon: boolean contains(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.Polygon: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.Polygon: int hashCode()
+com.sfmap.api.maps.model.PolygonOptions
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptionsCreator CREATOR
+com.sfmap.api.maps.model.PolygonOptions: PolygonOptions()
+com.sfmap.api.maps.model.PolygonOptions: int describeContents()
+com.sfmap.api.maps.model.PolygonOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions add(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions add(com.sfmap.api.maps.model.LatLng[])
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions addAll(java.lang.Iterable)
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions strokeWidth(float)
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions strokeColor(int)
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions fillColor(int)
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions zIndex(float)
+com.sfmap.api.maps.model.PolygonOptions: com.sfmap.api.maps.model.PolygonOptions visible(boolean)
+com.sfmap.api.maps.model.PolygonOptions: java.util.List getPoints()
+com.sfmap.api.maps.model.PolygonOptions: float getStrokeWidth()
+com.sfmap.api.maps.model.PolygonOptions: int getStrokeColor()
+com.sfmap.api.maps.model.PolygonOptions: int getFillColor()
+com.sfmap.api.maps.model.PolygonOptions: float getZIndex()
+com.sfmap.api.maps.model.PolygonOptions: boolean isVisible()
+com.sfmap.api.maps.model.PolygonOptionsCreator
+com.sfmap.api.maps.model.PolygonOptionsCreator: int CONTENT_DESCRIPTION
+com.sfmap.api.maps.model.PolygonOptionsCreator: PolygonOptionsCreator()
+com.sfmap.api.maps.model.PolygonOptionsCreator: com.sfmap.api.maps.model.PolygonOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.PolygonOptionsCreator: com.sfmap.api.maps.model.PolygonOptions[] newArray(int)
+com.sfmap.api.maps.model.PolygonOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.PolygonOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.Polyline
+com.sfmap.api.maps.model.Polyline: Polyline(com.sfmap.api.mapcore.IPolylineDelegateDecode)
+com.sfmap.api.maps.model.Polyline: void remove()
+com.sfmap.api.maps.model.Polyline: java.lang.String getId()
+com.sfmap.api.maps.model.Polyline: void addPoint(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.Polyline: void setPoints(java.util.List)
+com.sfmap.api.maps.model.Polyline: java.util.List getPoints()
+com.sfmap.api.maps.model.Polyline: void setGeodesic(boolean)
+com.sfmap.api.maps.model.Polyline: boolean isGeodesic()
+com.sfmap.api.maps.model.Polyline: void setDottedLine(boolean)
+com.sfmap.api.maps.model.Polyline: boolean isDottedLine()
+com.sfmap.api.maps.model.Polyline: void setWidth(float)
+com.sfmap.api.maps.model.Polyline: float getWidth()
+com.sfmap.api.maps.model.Polyline: void setColor(int)
+com.sfmap.api.maps.model.Polyline: int getColor()
+com.sfmap.api.maps.model.Polyline: void setZIndex(float)
+com.sfmap.api.maps.model.Polyline: float getZIndex()
+com.sfmap.api.maps.model.Polyline: void setVisible(boolean)
+com.sfmap.api.maps.model.Polyline: boolean isVisible()
+com.sfmap.api.maps.model.Polyline: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.Polyline: int hashCode()
+com.sfmap.api.maps.model.Polyline: com.sfmap.api.maps.model.LatLng getNearestLatLng(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.Polyline: void setTransparency(float)
+com.sfmap.api.maps.model.PolylineOptions
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptionsCreator CREATOR
+com.sfmap.api.maps.model.PolylineOptions: PolylineOptions()
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions setUseTexture(boolean)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions setCustomTexture(com.sfmap.api.maps.model.BitmapDescriptor)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.BitmapDescriptor getCustomTexture()
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions setCustomTextureList(java.util.List)
+com.sfmap.api.maps.model.PolylineOptions: java.util.List getCustomTextureList()
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions setCustomTextureIndex(java.util.List)
+com.sfmap.api.maps.model.PolylineOptions: java.util.List getCustomTextureIndex()
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions colorValues(java.util.List)
+com.sfmap.api.maps.model.PolylineOptions: java.util.List getColorValues()
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions useGradient(boolean)
+com.sfmap.api.maps.model.PolylineOptions: boolean isUseGradient()
+com.sfmap.api.maps.model.PolylineOptions: boolean isUseTexture()
+com.sfmap.api.maps.model.PolylineOptions: boolean isGeodesic()
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions add(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions add(com.sfmap.api.maps.model.LatLng[])
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions addAll(java.lang.Iterable)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions width(float)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions color(int)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions zIndex(float)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions visible(boolean)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions geodesic(boolean)
+com.sfmap.api.maps.model.PolylineOptions: com.sfmap.api.maps.model.PolylineOptions setDottedLine(boolean)
+com.sfmap.api.maps.model.PolylineOptions: boolean isDottedLine()
+com.sfmap.api.maps.model.PolylineOptions: java.util.List getPoints()
+com.sfmap.api.maps.model.PolylineOptions: float getWidth()
+com.sfmap.api.maps.model.PolylineOptions: int getColor()
+com.sfmap.api.maps.model.PolylineOptions: float getZIndex()
+com.sfmap.api.maps.model.PolylineOptions: boolean isVisible()
+com.sfmap.api.maps.model.PolylineOptions: int describeContents()
+com.sfmap.api.maps.model.PolylineOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.PolylineOptionsCreator
+com.sfmap.api.maps.model.PolylineOptionsCreator: PolylineOptionsCreator()
+com.sfmap.api.maps.model.PolylineOptionsCreator: com.sfmap.api.maps.model.PolylineOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.PolylineOptionsCreator: com.sfmap.api.maps.model.PolylineOptions[] newArray(int)
+com.sfmap.api.maps.model.PolylineOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.PolylineOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.RuntimeRemoteException
+com.sfmap.api.maps.model.RuntimeRemoteException: RuntimeRemoteException(android.os.RemoteException)
+com.sfmap.api.maps.model.Text
+com.sfmap.api.maps.model.Text: int ALIGN_LEFT
+com.sfmap.api.maps.model.Text: int ALIGN_RIGHT
+com.sfmap.api.maps.model.Text: int ALIGN_CENTER_HORIZONTAL
+com.sfmap.api.maps.model.Text: int ALIGN_TOP
+com.sfmap.api.maps.model.Text: int ALIGN_BOTTOM
+com.sfmap.api.maps.model.Text: int ALIGN_CENTER_VERTICAL
+com.sfmap.api.maps.model.Text: Text(com.sfmap.api.mapcore.ITextDelegate)
+com.sfmap.api.maps.model.Text: void remove()
+com.sfmap.api.maps.model.Text: void destroy()
+com.sfmap.api.maps.model.Text: java.lang.String getId()
+com.sfmap.api.maps.model.Text: void setPosition(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.Text: com.sfmap.api.maps.model.LatLng getPosition()
+com.sfmap.api.maps.model.Text: void setText(java.lang.String)
+com.sfmap.api.maps.model.Text: java.lang.String getText()
+com.sfmap.api.maps.model.Text: void setBackgroundColor(int)
+com.sfmap.api.maps.model.Text: int getBackgroundColor()
+com.sfmap.api.maps.model.Text: void setFontColor(int)
+com.sfmap.api.maps.model.Text: int getFontColor()
+com.sfmap.api.maps.model.Text: void setFontSize(int)
+com.sfmap.api.maps.model.Text: int getFontSize()
+com.sfmap.api.maps.model.Text: void setTypeface(android.graphics.Typeface)
+com.sfmap.api.maps.model.Text: android.graphics.Typeface getTypeface()
+com.sfmap.api.maps.model.Text: void setAlign(int,int)
+com.sfmap.api.maps.model.Text: int getAlignX()
+com.sfmap.api.maps.model.Text: int getAlignY()
+com.sfmap.api.maps.model.Text: void setVisible(boolean)
+com.sfmap.api.maps.model.Text: boolean isVisible()
+com.sfmap.api.maps.model.Text: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.Text: int hashCode()
+com.sfmap.api.maps.model.Text: void setObject(java.lang.Object)
+com.sfmap.api.maps.model.Text: java.lang.Object getObject()
+com.sfmap.api.maps.model.Text: void setRotate(float)
+com.sfmap.api.maps.model.Text: float getRotate()
+com.sfmap.api.maps.model.Text: void setZIndex(float)
+com.sfmap.api.maps.model.Text: float getZIndex()
+com.sfmap.api.maps.model.TextOptions
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptionsCreator CREATOR
+com.sfmap.api.maps.model.TextOptions: TextOptions()
+com.sfmap.api.maps.model.TextOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.TextOptions: int describeContents()
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions position(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions text(java.lang.String)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions typeface(android.graphics.Typeface)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions visible(boolean)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions zIndex(float)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions rotate(float)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions align(int,int)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions backgroundColor(int)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions setObject(java.lang.Object)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions fontColor(int)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.TextOptions fontSize(int)
+com.sfmap.api.maps.model.TextOptions: com.sfmap.api.maps.model.LatLng getPosition()
+com.sfmap.api.maps.model.TextOptions: java.lang.String getText()
+com.sfmap.api.maps.model.TextOptions: android.graphics.Typeface getTypeface()
+com.sfmap.api.maps.model.TextOptions: float getRotate()
+com.sfmap.api.maps.model.TextOptions: int getAlignX()
+com.sfmap.api.maps.model.TextOptions: int getAlignY()
+com.sfmap.api.maps.model.TextOptions: int getBackgroundColor()
+com.sfmap.api.maps.model.TextOptions: int getFontColor()
+com.sfmap.api.maps.model.TextOptions: java.lang.Object getObject()
+com.sfmap.api.maps.model.TextOptions: int getFontSize()
+com.sfmap.api.maps.model.TextOptions: float getZIndex()
+com.sfmap.api.maps.model.TextOptions: boolean isVisible()
+com.sfmap.api.maps.model.TextOptionsCreator
+com.sfmap.api.maps.model.TextOptionsCreator: TextOptionsCreator()
+com.sfmap.api.maps.model.TextOptionsCreator: com.sfmap.api.maps.model.TextOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.TextOptionsCreator: com.sfmap.api.maps.model.TextOptions[] newArray(int)
+com.sfmap.api.maps.model.TextOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.TextOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.Tile
+com.sfmap.api.maps.model.Tile: android.os.Parcelable$Creator CREATOR
+com.sfmap.api.maps.model.Tile: int width
+com.sfmap.api.maps.model.Tile: int height
+com.sfmap.api.maps.model.Tile: byte[] data
+com.sfmap.api.maps.model.Tile: Tile(int,int,byte[])
+com.sfmap.api.maps.model.Tile: int describeContents()
+com.sfmap.api.maps.model.Tile: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.TileOverlay
+com.sfmap.api.maps.model.TileOverlay: TileOverlay(com.sfmap.api.mapcore.ITileOverlayDelegate)
+com.sfmap.api.maps.model.TileOverlay: void remove()
+com.sfmap.api.maps.model.TileOverlay: void clearTileCache()
+com.sfmap.api.maps.model.TileOverlay: java.lang.String getId()
+com.sfmap.api.maps.model.TileOverlay: void setZIndex(float)
+com.sfmap.api.maps.model.TileOverlay: float getZIndex()
+com.sfmap.api.maps.model.TileOverlay: void setVisible(boolean)
+com.sfmap.api.maps.model.TileOverlay: boolean isVisible()
+com.sfmap.api.maps.model.TileOverlay: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.TileOverlay: int hashCode()
+com.sfmap.api.maps.model.TileOverlayOptions
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptionsCreator CREATOR
+com.sfmap.api.maps.model.TileOverlayOptions: TileOverlayOptions()
+com.sfmap.api.maps.model.TileOverlayOptions: int describeContents()
+com.sfmap.api.maps.model.TileOverlayOptions: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions tileProvider(com.sfmap.api.maps.model.TileProvider)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions zIndex(float)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions visible(boolean)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions memCacheSize(int)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions diskCacheSize(int)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions diskCacheDir(java.lang.String)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions memoryCacheEnabled(boolean)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileOverlayOptions diskCacheEnabled(boolean)
+com.sfmap.api.maps.model.TileOverlayOptions: com.sfmap.api.maps.model.TileProvider getTileProvider()
+com.sfmap.api.maps.model.TileOverlayOptions: float getZIndex()
+com.sfmap.api.maps.model.TileOverlayOptions: boolean isVisible()
+com.sfmap.api.maps.model.TileOverlayOptions: int getMemCacheSize()
+com.sfmap.api.maps.model.TileOverlayOptions: int getDiskCacheSize()
+com.sfmap.api.maps.model.TileOverlayOptions: java.lang.String getDiskCacheDir()
+com.sfmap.api.maps.model.TileOverlayOptions: boolean getMemoryCacheEnabled()
+com.sfmap.api.maps.model.TileOverlayOptions: boolean getDiskCacheEnabled()
+com.sfmap.api.maps.model.TileOverlayOptionsCreator
+com.sfmap.api.maps.model.TileOverlayOptionsCreator: int CONTENT_DESCRIPTION
+com.sfmap.api.maps.model.TileOverlayOptionsCreator: TileOverlayOptionsCreator()
+com.sfmap.api.maps.model.TileOverlayOptionsCreator: com.sfmap.api.maps.model.TileOverlayOptions createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.TileOverlayOptionsCreator: com.sfmap.api.maps.model.TileOverlayOptions[] newArray(int)
+com.sfmap.api.maps.model.TileOverlayOptionsCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.TileOverlayOptionsCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.TileProjection
+com.sfmap.api.maps.model.TileProjection: com.sfmap.api.maps.model.TileProjection CREATOR
+com.sfmap.api.maps.model.TileProjection: int offsetX
+com.sfmap.api.maps.model.TileProjection: int offsetY
+com.sfmap.api.maps.model.TileProjection: int minX
+com.sfmap.api.maps.model.TileProjection: int maxX
+com.sfmap.api.maps.model.TileProjection: int minY
+com.sfmap.api.maps.model.TileProjection: int maxY
+com.sfmap.api.maps.model.TileProjection: TileProjection(int,int,int,int,int,int)
+com.sfmap.api.maps.model.TileProjection: int describeContents()
+com.sfmap.api.maps.model.TileProjection: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.TileProjectionCreator
+com.sfmap.api.maps.model.TileProjectionCreator: TileProjectionCreator()
+com.sfmap.api.maps.model.TileProjectionCreator: com.sfmap.api.maps.model.TileProjection createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.TileProjectionCreator: com.sfmap.api.maps.model.TileProjection[] newArray(int)
+com.sfmap.api.maps.model.TileProjectionCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.TileProjectionCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.TileProvider
+com.sfmap.api.maps.model.TileProvider: com.sfmap.api.maps.model.Tile NO_TILE
+com.sfmap.api.maps.model.TileProvider: com.sfmap.api.maps.model.Tile getTile(int,int,int)
+com.sfmap.api.maps.model.TileProvider: int getTileWidth()
+com.sfmap.api.maps.model.TileProvider: int getTileHeight()
+com.sfmap.api.maps.model.UrlTileProvider
+com.sfmap.api.maps.model.UrlTileProvider: UrlTileProvider(int,int)
+com.sfmap.api.maps.model.UrlTileProvider: java.net.URL getTileUrl(int,int,int)
+com.sfmap.api.maps.model.UrlTileProvider: com.sfmap.api.maps.model.Tile getTile(int,int,int)
+com.sfmap.api.maps.model.UrlTileProvider: int getTileWidth()
+com.sfmap.api.maps.model.UrlTileProvider: int getTileHeight()
+com.sfmap.api.maps.model.VisibleRegion
+com.sfmap.api.maps.model.VisibleRegion: com.sfmap.api.maps.model.VisibleRegionCreator CREATOR
+com.sfmap.api.maps.model.VisibleRegion: com.sfmap.api.maps.model.LatLng nearLeft
+com.sfmap.api.maps.model.VisibleRegion: com.sfmap.api.maps.model.LatLng nearRight
+com.sfmap.api.maps.model.VisibleRegion: com.sfmap.api.maps.model.LatLng farLeft
+com.sfmap.api.maps.model.VisibleRegion: com.sfmap.api.maps.model.LatLng farRight
+com.sfmap.api.maps.model.VisibleRegion: com.sfmap.api.maps.model.LatLngBounds latLngBounds
+com.sfmap.api.maps.model.VisibleRegion: VisibleRegion(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLngBounds)
+com.sfmap.api.maps.model.VisibleRegion: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.model.VisibleRegion: int describeContents()
+com.sfmap.api.maps.model.VisibleRegion: int hashCode()
+com.sfmap.api.maps.model.VisibleRegion: boolean equals(java.lang.Object)
+com.sfmap.api.maps.model.VisibleRegion: java.lang.String toString()
+com.sfmap.api.maps.model.VisibleRegionCreator
+com.sfmap.api.maps.model.VisibleRegionCreator: int CONTENT_DESCRIPTION
+com.sfmap.api.maps.model.VisibleRegionCreator: VisibleRegionCreator()
+com.sfmap.api.maps.model.VisibleRegionCreator: com.sfmap.api.maps.model.VisibleRegion createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.VisibleRegionCreator: com.sfmap.api.maps.model.VisibleRegion[] newArray(int)
+com.sfmap.api.maps.model.VisibleRegionCreator: java.lang.Object[] newArray(int)
+com.sfmap.api.maps.model.VisibleRegionCreator: java.lang.Object createFromParcel(android.os.Parcel)
+com.sfmap.api.maps.model.WeightedLatLng
+com.sfmap.api.maps.model.WeightedLatLng: double DEFAULT_INTENSITY
+com.sfmap.api.maps.model.WeightedLatLng: double intensity
+com.sfmap.api.maps.model.WeightedLatLng: com.sfmap.api.maps.model.LatLng latLng
+com.sfmap.api.maps.model.WeightedLatLng: WeightedLatLng(com.sfmap.api.maps.model.LatLng,double)
+com.sfmap.api.maps.model.WeightedLatLng: WeightedLatLng(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.model.WeightedLatLng: com.sfmap.mapcore.DPoint getPoint()
+com.sfmap.api.maps.offlinemap.City
+com.sfmap.api.maps.offlinemap.City: android.os.Parcelable$Creator CREATOR
+com.sfmap.api.maps.offlinemap.City: City()
+com.sfmap.api.maps.offlinemap.City: void setCity(java.lang.String)
+com.sfmap.api.maps.offlinemap.City: java.lang.String getCity()
+com.sfmap.api.maps.offlinemap.City: void setCode(java.lang.String)
+com.sfmap.api.maps.offlinemap.City: java.lang.String getCode()
+com.sfmap.api.maps.offlinemap.City: java.lang.String getJianpin()
+com.sfmap.api.maps.offlinemap.City: void setJianpin(java.lang.String)
+com.sfmap.api.maps.offlinemap.City: java.lang.String getPinyin()
+com.sfmap.api.maps.offlinemap.City: void setPinyin(java.lang.String)
+com.sfmap.api.maps.offlinemap.City: java.lang.String getAdcode()
+com.sfmap.api.maps.offlinemap.City: void setAdcode(java.lang.String)
+com.sfmap.api.maps.offlinemap.City: int describeContents()
+com.sfmap.api.maps.offlinemap.City: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.offlinemap.City: City(android.os.Parcel)
+com.sfmap.api.maps.offlinemap.OfflineMapCity
+com.sfmap.api.maps.offlinemap.OfflineMapCity: android.os.Parcelable$Creator CREATOR
+com.sfmap.api.maps.offlinemap.OfflineMapCity: OfflineMapCity()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: java.lang.String getUrl()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: void setUrl(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapCity: long getSize()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: void setSize(long)
+com.sfmap.api.maps.offlinemap.OfflineMapCity: int getState()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: void setState(int)
+com.sfmap.api.maps.offlinemap.OfflineMapCity: java.lang.String getVersion()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: void setVersion(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapCity: int getcompleteCode()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: java.lang.String getMd5()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: void setMd5(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapCity: void setCompleteCode(int)
+com.sfmap.api.maps.offlinemap.OfflineMapCity: int describeContents()
+com.sfmap.api.maps.offlinemap.OfflineMapCity: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.offlinemap.OfflineMapCity: OfflineMapCity(android.os.Parcel)
+com.sfmap.api.maps.offlinemap.OfflineMapManager
+com.sfmap.api.maps.offlinemap.OfflineMapManager: OfflineMapManager(android.content.Context,com.sfmap.api.maps.offlinemap.OfflineMapManager$OfflineMapDownloadListener)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: OfflineMapManager(android.content.Context,com.sfmap.api.maps.offlinemap.OfflineMapManager$OfflineMapDownloadListener,com.sfmap.api.maps.MapController)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void downloadByCityName(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void downloadByProvinceName(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void remove(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: java.util.ArrayList getOfflineMapProvinceList()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: com.sfmap.api.maps.offlinemap.OfflineMapCity getItemByCityName(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: com.sfmap.api.maps.offlinemap.OfflineMapProvince getItemByProvinceName(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: java.util.ArrayList getOfflineMapCityList()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: java.util.ArrayList getDownloadingCityList()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: java.util.ArrayList getDownloadingProvinceList()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: java.util.ArrayList getDownloadOfflineMapCityList()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: java.util.ArrayList getDownloadOfflineMapProvinceList()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void updateOfflineCityByName(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void updateOfflineMapProvinceByName(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void restart()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void stop()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void pause()
+com.sfmap.api.maps.offlinemap.OfflineMapManager: void destroy()
+com.sfmap.api.maps.offlinemap.OfflineMapManager$OfflineMapDownloadListener
+com.sfmap.api.maps.offlinemap.OfflineMapManager$OfflineMapDownloadListener: void onDownload(int,int,java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager$OfflineMapDownloadListener: void onCheckUpdate(boolean,java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager$OfflineMapDownloadListener: void onRemove(boolean,java.lang.String,java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapManager$OfflineMapDownloadListener: void reloadCityList()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: android.os.Parcelable$Creator CREATOR
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: OfflineMapProvince()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: java.lang.String getUrl()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: void setUrl(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: int getState()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: void setState(int)
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: long getSize()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: void setSize(long)
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: java.lang.String getVersion()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: void setVersion(java.lang.String)
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: int getcompleteCode()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: void setCompleteCode(int)
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: int describeContents()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: java.util.ArrayList getCityList()
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: void setCityList(java.util.ArrayList)
+com.sfmap.api.maps.offlinemap.OfflineMapProvince: OfflineMapProvince(android.os.Parcel)
+com.sfmap.api.maps.offlinemap.OfflineMapStatus
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int CHECKUPDATES
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int ERROR
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int STOP
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int LOADING
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int UNZIP
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int WAITING
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int PAUSE
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int SUCCESS
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int NEW_VERSION
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int EXCEPTION_NETWORK_LOADING
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int EXCEPTION_AUTH
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int EXCEPTION_SDCARD
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int EXCEPTION_MD5
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: int START_DOWNLOAD_FAILD
+com.sfmap.api.maps.offlinemap.OfflineMapStatus: OfflineMapStatus()
+com.sfmap.api.maps.offlinemap.Province
+com.sfmap.api.maps.offlinemap.Province: android.os.Parcelable$Creator CREATOR
+com.sfmap.api.maps.offlinemap.Province: Province()
+com.sfmap.api.maps.offlinemap.Province: java.lang.String getProvinceName()
+com.sfmap.api.maps.offlinemap.Province: java.lang.String getJianpin()
+com.sfmap.api.maps.offlinemap.Province: java.lang.String getPinyin()
+com.sfmap.api.maps.offlinemap.Province: void setProvinceName(java.lang.String)
+com.sfmap.api.maps.offlinemap.Province: void setJianpin(java.lang.String)
+com.sfmap.api.maps.offlinemap.Province: void setPinyin(java.lang.String)
+com.sfmap.api.maps.offlinemap.Province: void setProvinceCode(java.lang.String)
+com.sfmap.api.maps.offlinemap.Province: java.lang.String getProvinceCode()
+com.sfmap.api.maps.offlinemap.Province: int describeContents()
+com.sfmap.api.maps.offlinemap.Province: void writeToParcel(android.os.Parcel,int)
+com.sfmap.api.maps.offlinemap.Province: Province(android.os.Parcel)
+com.sfmap.api.maps.overlay.BusLineOverlay
+com.sfmap.api.maps.overlay.BusLineOverlay: BusLineOverlay(android.content.Context,com.sfmap.api.maps.MapController,com.sfmap.api.services.busline.BusLineItem)
+com.sfmap.api.maps.overlay.BusLineOverlay: void addToMap()
+com.sfmap.api.maps.overlay.BusLineOverlay: void removeFromMap()
+com.sfmap.api.maps.overlay.BusLineOverlay: void zoomToSpan()
+com.sfmap.api.maps.overlay.BusLineOverlay: com.sfmap.api.maps.model.BitmapDescriptor getStartBitmapDescriptor()
+com.sfmap.api.maps.overlay.BusLineOverlay: com.sfmap.api.maps.model.BitmapDescriptor getEndBitmapDescriptor()
+com.sfmap.api.maps.overlay.BusLineOverlay: com.sfmap.api.maps.model.BitmapDescriptor getBusBitmapDescriptor()
+com.sfmap.api.maps.overlay.BusLineOverlay: boolean isUserTexture()
+com.sfmap.api.maps.overlay.BusLineOverlay: com.sfmap.api.maps.model.BitmapDescriptor getRoadBitmapDescriptor()
+com.sfmap.api.maps.overlay.BusLineOverlay: java.lang.String getTitle(int)
+com.sfmap.api.maps.overlay.BusLineOverlay: java.lang.String getSnippet(int)
+com.sfmap.api.maps.overlay.BusLineOverlay: int getBusStationIndex(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.overlay.BusLineOverlay: com.sfmap.api.services.busline.BusStationItem getBusStationItem(int)
+com.sfmap.api.maps.overlay.BusLineOverlay: int getBusColor()
+com.sfmap.api.maps.overlay.BusLineOverlay: float getBuslineWidth()
+com.sfmap.api.maps.overlay.BusRouteOverlay
+com.sfmap.api.maps.overlay.BusRouteOverlay: BusRouteOverlay(android.content.Context,com.sfmap.api.maps.MapController,com.sfmap.api.services.route.BusPath,com.sfmap.api.services.core.LatLonPoint,com.sfmap.api.services.core.LatLonPoint)
+com.sfmap.api.maps.overlay.BusRouteOverlay: void addToMap()
+com.sfmap.api.maps.overlay.BusRouteOverlay: void drawLineArrow(com.sfmap.api.maps.model.LatLng,com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.maps.overlay.BusRouteOverlay: void setNodeIconVisibility(boolean)
+com.sfmap.api.maps.overlay.BusRouteOverlay: void zoomToSpan()
+com.sfmap.api.maps.overlay.BusRouteOverlay: void removeFromMap()
+com.sfmap.api.maps.overlay.DrivingRouteOverlay
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: DrivingRouteOverlay(android.content.Context,com.sfmap.api.maps.MapController,com.sfmap.api.services.route.DrivePath,com.sfmap.api.services.core.LatLonPoint,com.sfmap.api.services.core.LatLonPoint)
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: DrivingRouteOverlay(android.content.Context,com.sfmap.api.maps.MapController,com.sfmap.api.services.route.DrivePath,com.sfmap.api.services.core.LatLonPoint,com.sfmap.api.services.core.LatLonPoint,java.util.List)
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: void addToMap()
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: com.sfmap.api.maps.model.LatLngBounds getLatLngBounds()
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: void setThroughPointIconVisibility(boolean)
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: void removeFromMap()
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: void setNodeIconVisibility(boolean)
+com.sfmap.api.maps.overlay.DrivingRouteOverlay: void zoomToSpan()
+com.sfmap.api.maps.overlay.PoiOverlay
+com.sfmap.api.maps.overlay.PoiOverlay: PoiOverlay(com.sfmap.api.maps.MapController,java.util.List)
+com.sfmap.api.maps.overlay.PoiOverlay: void addToMap()
+com.sfmap.api.maps.overlay.PoiOverlay: void removeFromMap()
+com.sfmap.api.maps.overlay.PoiOverlay: void zoomToSpan()
+com.sfmap.api.maps.overlay.PoiOverlay: com.sfmap.api.maps.model.BitmapDescriptor getBitmapDescriptor(int)
+com.sfmap.api.maps.overlay.PoiOverlay: java.lang.String getTitle(int)
+com.sfmap.api.maps.overlay.PoiOverlay: java.lang.String getSnippet(int)
+com.sfmap.api.maps.overlay.PoiOverlay: int getPoiIndex(com.sfmap.api.maps.model.Marker)
+com.sfmap.api.maps.overlay.PoiOverlay: com.sfmap.api.services.poisearch.PoiItem getPoiItem(int)
+com.sfmap.api.maps.overlay.RouteOverlay: java.util.List stationMarkers
+com.sfmap.api.maps.overlay.RouteOverlay: java.util.List allPolyLines
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.Marker startMarker
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.Marker endMarker
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.LatLng startPoint
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.LatLng endPoint
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.MapController map
+com.sfmap.api.maps.overlay.RouteOverlay: boolean nodeIconVisible
+com.sfmap.api.maps.overlay.RouteOverlay: RouteOverlay(android.content.Context)
+com.sfmap.api.maps.overlay.RouteOverlay: void removeFromMap()
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.BitmapDescriptor getStartBitmapDescriptor()
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.BitmapDescriptor getEndBitmapDescriptor()
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.BitmapDescriptor getBusBitmapDescriptor()
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.BitmapDescriptor getWalkBitmapDescriptor()
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.BitmapDescriptor getDriveBitmapDescriptor()
+com.sfmap.api.maps.overlay.RouteOverlay: void addStartAndEndMarker()
+com.sfmap.api.maps.overlay.RouteOverlay: void zoomToSpan()
+com.sfmap.api.maps.overlay.RouteOverlay: com.sfmap.api.maps.model.LatLngBounds getLatLngBounds()
+com.sfmap.api.maps.overlay.RouteOverlay: void setNodeIconVisibility(boolean)
+com.sfmap.api.maps.overlay.RouteOverlay: void addStationMarker(com.sfmap.api.maps.model.MarkerOptions)
+com.sfmap.api.maps.overlay.RouteOverlay: void addPolyLine(com.sfmap.api.maps.model.PolylineOptions)
+com.sfmap.api.maps.overlay.RouteOverlay: float getRouteWidth()
+com.sfmap.api.maps.overlay.RouteOverlay: int getWalkColor()
+com.sfmap.api.maps.overlay.RouteOverlay: int getBusColor()
+com.sfmap.api.maps.overlay.RouteOverlay: int getDriveColor()
+com.sfmap.api.maps.overlay.WalkRouteOverlay
+com.sfmap.api.maps.overlay.WalkRouteOverlay: WalkRouteOverlay(android.content.Context,com.sfmap.api.maps.MapController,com.sfmap.api.services.route.WalkPath,com.sfmap.api.services.core.LatLonPoint,com.sfmap.api.services.core.LatLonPoint)
+com.sfmap.api.maps.overlay.WalkRouteOverlay: void addToMap()
+com.sfmap.api.maps.overlay.WalkRouteOverlay: void setNodeIconVisibility(boolean)
+com.sfmap.api.maps.overlay.WalkRouteOverlay: void zoomToSpan()
+com.sfmap.api.maps.overlay.WalkRouteOverlay: void removeFromMap()
+com.sfmap.map.api.R
+com.sfmap.mapcore.CoordUtil
+com.sfmap.mapcore.CoordUtil: int convertToGcj(double[],double[])
+com.sfmap.mapcore.DPoint
+com.sfmap.mapcore.DPoint: double x
+com.sfmap.mapcore.DPoint: double y
+com.sfmap.mapcore.DPoint: DPoint()
+com.sfmap.mapcore.DPoint: DPoint(double,double)
+com.sfmap.mapcore.FPoint
+com.sfmap.mapcore.FPoint: float x
+com.sfmap.mapcore.FPoint: float y
+com.sfmap.mapcore.FPoint: FPoint()
+com.sfmap.mapcore.FPoint: FPoint(float,float)
+com.sfmap.mapcore.FPoint: boolean equals(java.lang.Object)
+com.sfmap.mapcore.GLMapResManager$MapViewMode: com.sfmap.mapcore.GLMapResManager$MapViewMode[] values()
+com.sfmap.mapcore.GLMapResManager$MapViewMode: com.sfmap.mapcore.GLMapResManager$MapViewMode valueOf(java.lang.String)
+com.sfmap.mapcore.GLMapResManager$MapViewModeState: com.sfmap.mapcore.GLMapResManager$MapViewModeState[] values()
+com.sfmap.mapcore.GLMapResManager$MapViewModeState: com.sfmap.mapcore.GLMapResManager$MapViewModeState valueOf(java.lang.String)
+com.sfmap.mapcore.GLMapResManager$MapViewTime: com.sfmap.mapcore.GLMapResManager$MapViewTime[] values()
+com.sfmap.mapcore.GLMapResManager$MapViewTime: com.sfmap.mapcore.GLMapResManager$MapViewTime valueOf(java.lang.String)
+com.sfmap.mapcore.IPoint
+com.sfmap.mapcore.IPoint: int x
+com.sfmap.mapcore.IPoint: int y
+com.sfmap.mapcore.IPoint: IPoint()
+com.sfmap.mapcore.IPoint: IPoint(int,int)
+com.sfmap.mapcore.IPoint: java.lang.Object clone()
+com.sfmap.mapcore.MapCore
+com.sfmap.mapcore.MapCore: int TEXTURE_ICON
+com.sfmap.mapcore.MapCore: int TEXTURE_BACKGROUND
+com.sfmap.mapcore.MapCore: int TEXTURE_ROADARROW
+com.sfmap.mapcore.MapCore: int TEXTURE_ROADROUND
+com.sfmap.mapcore.MapCore: int TEXTURE_TMC_RED
+com.sfmap.mapcore.MapCore: int TEXTURE_TMC_YELLOW
+com.sfmap.mapcore.MapCore: int TEXTURE_TMC_GREEN
+com.sfmap.mapcore.MapCore: int TEXTURE_TMC_BLACK
+com.sfmap.mapcore.MapCore: int TEXTURE_RAILWAY
+com.sfmap.mapcore.MapCore: int ME_DATA_ROADMAP
+com.sfmap.mapcore.MapCore: int ME_DATA_GEO_BUILDING
+com.sfmap.mapcore.MapCore: int ME_DATA_BMP_BASEMAP
+com.sfmap.mapcore.MapCore: int ME_DATA_SATELLITE
+com.sfmap.mapcore.MapCore: int ME_DATA_VEC_TMC
+com.sfmap.mapcore.MapCore: int ME_DATA_SCREEN
+com.sfmap.mapcore.MapCore: int ME_DATA_MODEL
+com.sfmap.mapcore.MapCore: int ME_DATA_STANDARD
+com.sfmap.mapcore.MapCore: int ME_DATA_POI
+com.sfmap.mapcore.MapCore: int ME_DATA_VERSION
+com.sfmap.mapcore.MapCore: int ME_DATA_INDOOR
+com.sfmap.mapcore.MapCore: int ME_DATA_PANORAMA
+com.sfmap.mapcore.MapCore: int ME_DATA_GUIDE
+com.sfmap.mapcore.MapCore: int ME_DATA_TILE_SOURCE
+com.sfmap.mapcore.MapCore: int ME_DATA_SCENIC_WIDGET
+com.sfmap.mapcore.MapCore: int MAPRENDER_ENTER
+com.sfmap.mapcore.MapCore: int MAPRENDER_BASEMAPBEGIN
+com.sfmap.mapcore.MapCore: int MAPRENDER_BUILDINGBEGIN
+com.sfmap.mapcore.MapCore: int MAPRENDER_LABELSBEGIN
+com.sfmap.mapcore.MapCore: int MAPRENDER_RENDEROVER
+com.sfmap.mapcore.MapCore: int MAPRENDER_NOMORENEEDRENDER
+com.sfmap.mapcore.MapCore: com.sfmap.mapcore.IMapCallback mMapcallback
+com.sfmap.mapcore.MapCore: com.sfmap.mapcore.TextTextureGenerator textTextureGenerator
+com.sfmap.mapcore.MapCore: java.lang.String deviceID
+com.sfmap.mapcore.MapCore: int coodSystem
+com.sfmap.mapcore.MapCore: MapCore(android.content.Context)
+com.sfmap.mapcore.MapCore: void newMap()
+com.sfmap.mapcore.MapCore: android.content.Context getContext()
+com.sfmap.mapcore.MapCore: void setGL(javax.microedition.khronos.opengles.GL10)
+com.sfmap.mapcore.MapCore: void setMapCallback(com.sfmap.mapcore.IMapCallback)
+com.sfmap.mapcore.MapCore: boolean isMapEngineValid()
+com.sfmap.mapcore.MapCore: void surfaceCreate(javax.microedition.khronos.opengles.GL10)
+com.sfmap.mapcore.MapCore: void surfaceChange(javax.microedition.khronos.opengles.GL10,int,int)
+com.sfmap.mapcore.MapCore: void drawFrame(javax.microedition.khronos.opengles.GL10)
+com.sfmap.mapcore.MapCore: void setStyleData(byte[],int,int)
+com.sfmap.mapcore.MapCore: void setTexture(byte[],int)
+com.sfmap.mapcore.MapCore: long getInstanceHandle()
+com.sfmap.mapcore.MapCore: com.sfmap.mapcore.MapProjection getMapstate()
+com.sfmap.mapcore.MapCore: void setMapstate(com.sfmap.mapcore.MapProjection)
+com.sfmap.mapcore.MapCore: void setParameter(int,int,int,int,int)
+com.sfmap.mapcore.MapCore: boolean putMapData(byte[],int,int,int,int)
+com.sfmap.mapcore.MapCore: com.sfmap.mapcore.MapPoi GetSelectedMapPoi(int,int,int)
+com.sfmap.mapcore.MapCore: void putCharbitmap(int,byte[])
+com.sfmap.mapcore.MapCore: boolean canStopRenderMap()
+com.sfmap.mapcore.MapCore: void OnMapSurfaceCreate()
+com.sfmap.mapcore.MapCore: void OnMapSufaceChanged(int,int)
+com.sfmap.mapcore.MapCore: void OnMapSurfaceRenderer(int)
+com.sfmap.mapcore.MapCore: void OnMapProcessEvent()
+com.sfmap.mapcore.MapCore: void OnMapDestory()
+com.sfmap.mapcore.MapCore: void OnClearCache()
+com.sfmap.mapcore.MapCore: void OnMapDataRequired(int,java.lang.String[])
+com.sfmap.mapcore.MapCore: void OnMapLabelsRequired(int[],int)
+com.sfmap.mapcore.MapCore: byte[] OnMapCharsWidthsRequired(int[],int,int)
+com.sfmap.mapcore.MapCore: void OnMapReferencechanged(java.lang.String,java.lang.String)
+com.sfmap.mapcore.MapCore: void onIndoorBuildingActivity(byte[])
+com.sfmap.mapcore.MapCore: void onIndoorDataRequired(int,java.lang.String[],int[],int[])
+com.sfmap.mapcore.MapCore: boolean getAuthStatus()
+com.sfmap.mapcore.MapCore: void destroy()
+com.sfmap.mapcore.MapCore: void fillCurGridListWithDataType(java.util.ArrayList,int)
+com.sfmap.mapcore.MapCore: java.lang.String GetDeviceID()
+com.sfmap.mapcore.MapCore: void quadKey2Tile(java.lang.String,com.sfmap.mapcore.Tile)
+com.sfmap.mapcore.MapCore: long nativeNewInstance(java.lang.String,java.lang.String,int,byte[])
+com.sfmap.mapcore.MapCore: int nativeGetAuthStatus()
+com.sfmap.mapcore.MapCore: java.lang.String nativeGetVersion()
+com.sfmap.mapcore.MapCore: void nativeDestroy(long)
+com.sfmap.mapcore.MapCore: void nativeSurfaceCreate(long,com.sfmap.mapcore.MapCore)
+com.sfmap.mapcore.MapCore: void nativeSurfaceChange(long,com.sfmap.mapcore.MapCore,int,int)
+com.sfmap.mapcore.MapCore: void nativeSurfaceRender(long)
+com.sfmap.mapcore.MapCore: void nativeSetMapState(long,long)
+com.sfmap.mapcore.MapCore: long nativeGetMapState(long)
+com.sfmap.mapcore.MapCore: int nativeGetSelectedMapPoi(long,int,int,int,com.sfmap.mapcore.MapPoi)
+com.sfmap.mapcore.MapCore: int nativePutMapData(long,int,byte[])
+com.sfmap.mapcore.MapCore: void nativePutCharBitmap(long,int,byte[])
+com.sfmap.mapcore.MapCore: void nativeGetScreenGrids(long,byte[],int)
+com.sfmap.mapcore.MapCore: void nativeSetTextureData(long,byte[],int)
+com.sfmap.mapcore.MapCore: void nativeSetStyleData(long,byte[],int,int)
+com.sfmap.mapcore.MapCore: boolean nativeCanStopRenderMap(long)
+com.sfmap.mapcore.MapCore: void nativeSetParameter(long,int,int,int,int,int)
+com.sfmap.mapcore.MapCore: void nativeQuadKey2Tile(java.lang.String,com.sfmap.mapcore.Tile,int)
+com.sfmap.mapcore.MapCore: void nativeTile2QuadKey(com.sfmap.mapcore.Tile,java.lang.String,int)
+com.sfmap.mapcore.MapCore: int nativeAddLayer(long,int)
+com.sfmap.mapcore.MapCore: int nativeRemoveLayer(long,int)
+com.sfmap.mapcore.MapPoi
+com.sfmap.mapcore.MapPoi: int winx
+com.sfmap.mapcore.MapPoi: int winy
+com.sfmap.mapcore.MapPoi: int mapx
+com.sfmap.mapcore.MapPoi: int mapy
+com.sfmap.mapcore.MapPoi: int iconXmin
+com.sfmap.mapcore.MapPoi: int iconXmax
+com.sfmap.mapcore.MapPoi: int iconYmin
+com.sfmap.mapcore.MapPoi: int iconYmax
+com.sfmap.mapcore.MapPoi: java.lang.String name
+com.sfmap.mapcore.MapPoi: java.lang.String poiid
+com.sfmap.mapcore.MapPoi: MapPoi()
+com.sfmap.mapcore.MapProjection
+com.sfmap.mapcore.MapProjection: boolean m_bNewInstance
+com.sfmap.mapcore.MapProjection: int coodSystem
+com.sfmap.mapcore.MapProjection: MapProjection(com.sfmap.mapcore.MapCore)
+com.sfmap.mapcore.MapProjection: MapProjection(long,int)
+com.sfmap.mapcore.MapProjection: void recycle()
+com.sfmap.mapcore.MapProjection: long getInstanceHandle()
+com.sfmap.mapcore.MapProjection: void getBound(com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void setGeoCenter(int,int)
+com.sfmap.mapcore.MapProjection: void getGeoCenter(com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void setMapCenter(float,float)
+com.sfmap.mapcore.MapProjection: void getMapCenter(com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: void setMapZoomer(float)
+com.sfmap.mapcore.MapProjection: float getMapZoomer()
+com.sfmap.mapcore.MapProjection: void setMapAngle(float)
+com.sfmap.mapcore.MapProjection: float getMapAngle()
+com.sfmap.mapcore.MapProjection: void setCameraHeaderAngle(float)
+com.sfmap.mapcore.MapProjection: float getCameraHeaderAngle()
+com.sfmap.mapcore.MapProjection: void geo2Map(int,int,com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: void map2Win(float,float,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void win2Map(int,int,com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: float getMapLenWithWinbyY(int,int)
+com.sfmap.mapcore.MapProjection: float getMapLenWithWin(int)
+com.sfmap.mapcore.MapProjection: void map2Geo(float,float,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void setCenterWithMap(float,float)
+com.sfmap.mapcore.MapProjection: void getCenterMap(com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: void lonlat2Geo(double,double,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void geo2LonLat(int,int,com.sfmap.mapcore.DPoint)
+com.sfmap.mapcore.MapProjection: float getMapLenWithGeo(int)
+com.sfmap.mapcore.MapProjection: void recalculate()
+com.sfmap.mapcore.MapProjection: long nativeNewInstance(long)
+com.sfmap.mapcore.MapProjection: void nativeDestroy(long)
+com.sfmap.mapcore.MapProjection: void nativeGetBound(long,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void nativeSetGeoCenter(long,int,int)
+com.sfmap.mapcore.MapProjection: void nativeGetGeoCenter(long,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void nativeSetMapCenter(long,float,float)
+com.sfmap.mapcore.MapProjection: void nativeGetMapCenter(long,com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: void nativeSetMapZoomer(long,float)
+com.sfmap.mapcore.MapProjection: float nativeGetMapZoomer(long)
+com.sfmap.mapcore.MapProjection: void nativeSetMapAngle(long,float)
+com.sfmap.mapcore.MapProjection: float nativeGetMapAngle(long)
+com.sfmap.mapcore.MapProjection: void nativeSetCameraHeaderAngle(long,float)
+com.sfmap.mapcore.MapProjection: float nativeGetCameraHeaderAngle(long)
+com.sfmap.mapcore.MapProjection: void nativeGeo2Map(long,int,int,com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: void nativeMap2Win(long,float,float,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void nativeWin2Map(long,int,int,com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: float nativeGetMapLenWithWinbyY(long,int,int)
+com.sfmap.mapcore.MapProjection: float nativeGetMapLenWithWin(long,int)
+com.sfmap.mapcore.MapProjection: void nativeMap2Geo(long,float,float,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void nativeSetCenterWithMap(long,float,float)
+com.sfmap.mapcore.MapProjection: void nativeGetCenterMap(long,com.sfmap.mapcore.FPoint)
+com.sfmap.mapcore.MapProjection: void nativeLonLat2Geo(double,double,int,com.sfmap.mapcore.IPoint)
+com.sfmap.mapcore.MapProjection: void nativeGeo2LonLat(int,int,int,com.sfmap.mapcore.DPoint)
+com.sfmap.mapcore.MapProjection: float nativeGetMapLenWithGeo(long,int)
+com.sfmap.mapcore.MapProjection: void nativeRecalculate(long)
+com.sfmap.mapcore.NativeLineRenderer
+com.sfmap.mapcore.NativeLineRenderer: NativeLineRenderer()
+com.sfmap.mapcore.NativeLineRenderer: int nativeDrawLineByTextureID(int[],int,long,float,float,int,int,boolean,boolean)
+com.sfmap.mapcore.NativeLineRenderer: int nativeDrawArrowLine(int[],int,long,float,int,int)
+com.sfmap.mapcore.NativeLineRenderer: void nativeDrawLineByMultiTextureID(float[],int,float,int[],int,int[],int,float)
+com.sfmap.mapcore.NativeLineRenderer: void nativeDrawLineByMultiColor(float[],int,float,int,int[],int,int[],int)
+com.sfmap.mapcore.NativeLineRenderer: void nativeDrawGradientColorLine(float[],int,float,int[],int,int[],int,int)
+com.sfmap.mapcore.Tile
+com.sfmap.mapcore.Tile: int x
+com.sfmap.mapcore.Tile: int y
+com.sfmap.mapcore.Tile: int level
+com.sfmap.mapcore.Tile: Tile()
+com.sfmap.search.R
