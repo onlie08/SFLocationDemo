@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.controllor.ConnectionChangeReceiver;
 import com.sfmap.api.location.demo.utils.SPUtils;

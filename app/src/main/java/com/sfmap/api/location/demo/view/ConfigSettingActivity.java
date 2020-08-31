@@ -63,7 +63,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
         } else {
             urlSuffix= "/nloc/locationapi";
             //定位
-            netLocationUrl = AppInfo.getNetLocationUrl(context);
+            netLocationUrl = com.sfmap.api.location.client.util.AppInfo.getNetLocationUrl(context);
 
             sha1Et.setText(AppInfo.getSHA1(context));
             akEt.setText(AppInfo.getSystemAk(context));

@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -58,7 +59,7 @@ public class GPS_FGService extends Service {
     /**
      * 通过通知启动服务
      */
-    @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void setForegroundService() {
         //设定的通知渠道名称
         //设置通知的重要程度
@@ -66,7 +67,8 @@ public class GPS_FGService extends Service {
         //构建通知渠道
         NotificationChannel channel = new NotificationChannel(ConfConst.CHANNEL_ID, ConfConst.CHANNEL_NAME, importance);
         //在创建的通知渠道上发送通知
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, ConfConst.CHANNEL_ID);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                this.getApplicationContext(),ConfConst.CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_back) //设置通知图标
                 .setContentTitle(ConfConst.TITLE)//设置通知标题
                 .setContentText(ConfConst.CONTENT)//设置通知内容

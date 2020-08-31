@@ -22,7 +22,6 @@ import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.MapController;
 import com.sfmap.api.maps.MapView;
 import com.sfmap.api.maps.model.LatLng;
-import com.sfmap.api.services.poisearch.PoiSearch;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

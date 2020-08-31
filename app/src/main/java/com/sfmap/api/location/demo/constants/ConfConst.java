@@ -10,5 +10,5 @@ public class ConfConst {
     public static final int NOTIF_ID = 100;
     public static final int MIN_TIME_GPS = 1000;
     public static final String file_name_date = "/sf_gps_loc_info.txt";
-    public static final String CHANNEL_ID = "com.sfmap.notification.channel";
+    public static final String CHANNEL_ID = "111";
 }

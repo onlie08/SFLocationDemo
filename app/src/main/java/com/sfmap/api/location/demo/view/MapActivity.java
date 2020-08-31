@@ -169,8 +169,6 @@ public class MapActivity extends BaseFgActivity {
         String SP_LNG = (String) SPUtils.get(this, KeyConst.SP_LNG, "0.0");
         String SP_LAT = (String) SPUtils.get(this, KeyConst.SP_LAT, "0.0");
 
-        Log.d(TAG, "数据复制:" + SP_AK);
-        Log.d(TAG, "数据复制:" + SP_LNG);
         if (!TextUtils.isEmpty(SP_AK)) {
             AppInfo.setSpUrl(SP_URL);
             AppInfo.setAppMetaApikey(SP_AK);
