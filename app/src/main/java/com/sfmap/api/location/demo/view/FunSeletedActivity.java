@@ -36,7 +36,8 @@ public class FunSeletedActivity extends BaseFgActivity {
 
         fun_item_layout = ((LinearLayout) findViewById(R.id.fun_list_layout));
         fun_item_layout.removeAllViews();
-        for (int i = 0; i < funTitleArr.length; i++) {
+        //funTitleArr
+        for (int i = 0; i < 2; i++) {
             final String title = funTitleArr[i];
             View inflate = LayoutInflater.from(this).inflate(R.layout.layout_fun_item, null);
             TextView tv = inflate.findViewById(R.id.fun_item_tv);

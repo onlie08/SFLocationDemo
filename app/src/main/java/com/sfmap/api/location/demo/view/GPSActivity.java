@@ -45,7 +45,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class GPSActivity extends BaseFgActivity implements GPS_FGService.addLocationListener,
+public class GPSActivity extends BaseFgActivity implements GPS_FGService.
+        addLocationListener,
         GPS_FGService.addGPSListener {
     private MapView mMapView;
     private MapController mMap;
