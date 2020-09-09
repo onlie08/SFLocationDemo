@@ -32,6 +32,7 @@ public class MapActivity extends BaseFgActivity {
     private MapView mMapView;
     private MapController mMap;
     private MapActivity context;
+    private float ZOOM_LEVEL=16;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class MapActivity extends BaseFgActivity {
     }
 
     private void initMapSetting() {
+        ZOOM_LEVEL= ZOOM_LEVEL-1;
         mMap = mMapView.getMap();
         mMap.getUiSettings().setZoomControlsEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
@@ -70,7 +72,7 @@ public class MapActivity extends BaseFgActivity {
         double lng = AppInfo.getLng();
         double lat = AppInfo.getLat();
         mMap.setMapCenter(new LatLng(lat, lng));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(10));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(ZOOM_LEVEL));
     }
 
     @Override
