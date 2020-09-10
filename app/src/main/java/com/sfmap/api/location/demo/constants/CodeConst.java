@@ -6,9 +6,9 @@ package com.sfmap.api.location.demo.constants;
  *  @Date
  */
 public class CodeConst {
-    public static final int REQ_CODE_LOC = 100;
-    public static final int RES_CODE_LOC = 101;
+    public static final int loc_req_code = 100;
+    public static final int loc_res_code = 101;
 
-    public static final int REQ_CODE_MAP = 102;
-    public static final int RES_CODE_MAP = 103;
+    public static final int map_req_code = 102;
+    public static final int map_res_code = 103;
 }

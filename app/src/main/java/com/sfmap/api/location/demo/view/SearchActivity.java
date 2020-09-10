@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -56,8 +55,8 @@ public class SearchActivity extends BaseFgActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, ConfigSettingActivity.class);
-                i.putExtra(KeyConst.type, CodeConst.REQ_CODE_MAP);
-                context.startActivityForResult(i, CodeConst.REQ_CODE_LOC);
+                i.putExtra(KeyConst.type, CodeConst.map_req_code);
+                context.startActivityForResult(i, CodeConst.loc_req_code);
             }
         });
     }
@@ -96,7 +95,7 @@ public class SearchActivity extends BaseFgActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         initSPConfig();
         //todo
-        if (resultCode == CodeConst.RES_CODE_MAP) {
+        if (resultCode == CodeConst.map_res_code) {
             if (mMapView != null) {
             }
         }

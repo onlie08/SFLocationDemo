@@ -2,7 +2,6 @@ package com.sfmap.api.location.demo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +14,6 @@ import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.location.demo.utils.TextUtil;
 import com.sfmap.api.location.demo.utils.ToastUtil;
-import com.sfmap.api.mapcore.util.AppInfo;
 
 public class ConfigSettingActivity extends BaseFgActivity {
 
@@ -48,7 +46,8 @@ public class ConfigSettingActivity extends BaseFgActivity {
 
         lngEt = findViewById(R.id.et_lng);
         latEt = findViewById(R.id.et_lat);
-        if (TYPE == CodeConst.REQ_CODE_MAP) {
+        if (TYPE == CodeConst.map_req_code) {
+            SPUtils.setSPFileName(SPUtils.FILE_NAME_MAP);
             urlSuffix="/mms/ds";
             netLocationUrl = com.sfmap.api.mapcore.util.AppInfo.getSfMapURL(context);
             sha1Et.setText(com.sfmap.api.mapcore.util.AppInfo.getSHA1(context));
@@ -61,6 +60,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
             latEt.setText(com.sfmap.api.mapcore.util.AppInfo.getLat() + "");
             lngEt.setText(com.sfmap.api.mapcore.util.AppInfo.getLng() + "");
         } else {
+            SPUtils.setSPFileName(SPUtils.FILE_NAME_LOC);
             urlSuffix= "/nloc/locationapi";
             //定位
             netLocationUrl = com.sfmap.api.location.client.util.AppInfo.getNetLocationUrl(context);
@@ -101,7 +101,7 @@ public class ConfigSettingActivity extends BaseFgActivity {
             return;
         }
 
-        if (TYPE == CodeConst.REQ_CODE_MAP) {
+        if (TYPE == CodeConst.map_req_code) {
             if (!TextUtil.checkLngLat(lng)) {
                 ToastUtil.show(context, "经度数据格式不正确");
                 return;
@@ -132,7 +132,8 @@ public class ConfigSettingActivity extends BaseFgActivity {
         SPUtils.put(context, KeyConst.SP_PKG_NAME, pkgName);
         //这三个值传回去
         Intent intent = new Intent();
-        int RES_CODE = (TYPE == CodeConst.REQ_CODE_MAP ? CodeConst.RES_CODE_MAP : CodeConst.RES_CODE_LOC);
+        int RES_CODE = (TYPE == CodeConst.map_req_code ? CodeConst.map_res_code
+                : CodeConst.loc_res_code);
         setResult(RES_CODE, intent);
         finish();
 

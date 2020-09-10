@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -32,12 +31,13 @@ public class MapActivity extends BaseFgActivity {
     private MapView mMapView;
     private MapController mMap;
     private MapActivity context;
-    private float ZOOM_LEVEL=16;
+    private float ZOOM_LEVEL=15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
+        EventBus.getDefault().register(this);
         initSPConfig();
         setContentView(R.layout.activity_map);
         initStatusBar();
@@ -57,8 +57,8 @@ public class MapActivity extends BaseFgActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, ConfigSettingActivity.class);
-                i.putExtra(KeyConst.type, CodeConst.REQ_CODE_MAP);
-                context.startActivityForResult(i, CodeConst.REQ_CODE_LOC);
+                i.putExtra(KeyConst.type, CodeConst.map_req_code);
+                context.startActivityForResult(i, CodeConst.map_req_code);
             }
         });
     }
@@ -79,6 +79,7 @@ public class MapActivity extends BaseFgActivity {
     protected void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -97,7 +98,7 @@ public class MapActivity extends BaseFgActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         initSPConfig();
-        if (resultCode == CodeConst.RES_CODE_MAP) {
+        if (resultCode == CodeConst.map_res_code) {
             if (mMapView != null) {
                 initMapSetting();
             }
@@ -108,19 +109,6 @@ public class MapActivity extends BaseFgActivity {
     public void onInfoShowClick(View view) {
         initShowInfoDialog();
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
-
 
     private String msgTotal;
     private String msgTotalShow;

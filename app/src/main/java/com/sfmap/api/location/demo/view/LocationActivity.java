@@ -11,10 +11,8 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Process;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -40,7 +38,7 @@ import com.sfmap.api.location.demo.utils.LogcatFileManager;
 import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.location.demo.utils.TextUtil;
 import com.sfmap.api.location.demo.utils.ToastUtil;
-import  com.sfmap.api.location.client.util.AppInfo;
+import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -80,6 +78,7 @@ public class LocationActivity extends BaseFgActivity {
         context = this;
         initSPConfig();
         setContentView(R.layout.activity_location);
+        EventBus.getDefault().register(this);
         initStatusBar();
         initTitleBackBt(getIntent().getStringExtra(KeyConst.title));
 
@@ -114,7 +113,7 @@ public class LocationActivity extends BaseFgActivity {
             @Override
             public void onClick(View view) {
                 context.startActivityForResult(new Intent(context, ConfigSettingActivity.class),
-                        CodeConst.REQ_CODE_LOC);
+                        CodeConst.loc_req_code);
             }
         });
         initShowInfoDialog();
@@ -206,6 +205,7 @@ public class LocationActivity extends BaseFgActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         mMapView.onDestroy();
         mSfMapLocationClient.destroy();
         unregisterReceiver(locationRequestReceiver);
@@ -312,7 +312,7 @@ public class LocationActivity extends BaseFgActivity {
             for (int i = 0; i < permissions.length; i++) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                 } else {
-                    ToastUtil.show(context,R.string.open_loc_permission);
+                    ToastUtil.show(context, R.string.open_loc_permission);
                     return;
                 }
             }
@@ -322,37 +322,27 @@ public class LocationActivity extends BaseFgActivity {
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
-
     private String msgTotal;
-    private String msgTotalTag;
-
+    private String msgTotalShow;
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMsgEvent(String msgStr) {
         if (msgStr.contains("请求参数")) {
-            msgTotalTag = msgTotal;
+            msgTotalShow = msgTotal;
             msgTotal = msgStr;
         } else {
-            msgTotal = msgTotal + "\n" + msgStr;
+            if (!msgTotalShow.contains(msgStr)) {
+                msgTotal = msgTotal + "\n" + msgStr;
+                msgTotalShow=msgTotal;
+            }
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == CodeConst.REQ_CODE_LOC &&
-                resultCode == CodeConst.RES_CODE_LOC) {
-            initSPConfig();
+        initSPConfig();
+        if (requestCode == CodeConst.loc_req_code &&
+                resultCode == CodeConst.loc_res_code) {
             if (mSfMapLocationClient != null) {
                 mSfMapLocationClient.startLocation();
             }
@@ -380,7 +370,7 @@ public class LocationActivity extends BaseFgActivity {
 
     private void showInfoDialog() {
         if (infoShowDiloag != null) {
-            infoTv.setText(msgTotalTag);
+            infoTv.setText(msgTotalShow);
             infoShowDiloag.show();
         }
     }

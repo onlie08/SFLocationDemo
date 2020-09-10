@@ -490,6 +490,7 @@ public class NetLocatorSfImpl implements NetLocator {
     }
 
     public void postEventBusLocData(String info) {
+        Log.d("准备发送", ""+info);
         EventBus.getDefault().post(info);
     }
 }
