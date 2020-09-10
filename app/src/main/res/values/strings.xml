@@ -13,6 +13,7 @@
     <string name="lng">经度</string>
     <string name="lat">纬度</string>
     <string name="load_success">请求成功</string>
+    <string name="loading">请求中...</string>
     <string name="open_loc_permission">请开启定位相关权限</string>
     <string name="hinit_ip_et_input">IP地址:端口号(如:127.0.0.1:8081)</string>
 </resources>

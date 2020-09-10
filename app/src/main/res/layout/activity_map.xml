@@ -33,7 +33,7 @@
         android:id="@+id/info_show_bt"
         android:layout_width="@dimen/dm120"
         android:layout_height="@dimen/dm060"
-        android:layout_marginRight="@dimen/dm040"
+        android:layout_marginRight="@dimen/dm120"
         android:layout_marginBottom="@dimen/main_margin_left_x"
         android:background="@drawable/selector_bt_5px"
         android:onClick="onInfoShowClick"

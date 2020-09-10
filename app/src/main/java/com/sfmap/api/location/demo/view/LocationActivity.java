@@ -14,18 +14,22 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.util.DialogUtils;
 import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
@@ -50,6 +54,8 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LocationActivity extends BaseFgActivity {
     private final String TAG = "地图定位";
@@ -116,7 +122,6 @@ public class LocationActivity extends BaseFgActivity {
                         CodeConst.loc_req_code);
             }
         });
-        initShowInfoDialog();
     }
 
 
@@ -324,15 +329,15 @@ public class LocationActivity extends BaseFgActivity {
 
     private String msgTotal;
     private String msgTotalShow;
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMsgEvent(String msgStr) {
         if (msgStr.contains("请求参数")) {
             msgTotalShow = msgTotal;
             msgTotal = msgStr;
         } else {
-            if (!msgTotalShow.contains(msgStr)) {
+            if (!msgTotal.contains(msgStr)) {
                 msgTotal = msgTotal + "\n" + msgStr;
-                msgTotalShow=msgTotal;
             }
         }
     }
@@ -350,29 +355,35 @@ public class LocationActivity extends BaseFgActivity {
     }
 
 
-    public void onInfoShowClick(View view) {
-        showInfoDialog();
-    }
-
     private void initShowInfoDialog() {
         View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
         infoTv = layout.findViewById(R.id.info_tv);
         infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
         infoTv.setTextIsSelectable(true);
-        infoShowDiloag = new MaterialDialog.Builder(context)
-                .positiveText(R.string.sure)
+        infoTv.setText(R.string.loading);
+
+        new MaterialDialog.Builder(context)
+                .positiveText(R.string.close)
                 .positiveColorRes(R.color.mainColor)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        infoTv = null;
+                    }
+                })
                 .negativeColorRes(R.color.mainColor).title(getString(
-                        R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
-                .customView(layout, false);
+                R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
+                .customView(layout, false).show();
 
-    }
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                infoTv.setText(msgTotalShow);
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 2000);
 
-    private void showInfoDialog() {
-        if (infoShowDiloag != null) {
-            infoTv.setText(msgTotalShow);
-            infoShowDiloag.show();
-        }
     }
 
     protected void initSPConfig() {
@@ -392,6 +403,10 @@ public class LocationActivity extends BaseFgActivity {
             AppInfo.setLat(Double.valueOf(SP_LAT));
             AppInfo.setLng(Double.valueOf(SP_LNG));
         }
+    }
+
+    public void onInfoShowClick(View view) {
+        initShowInfoDialog();
     }
 
 /*    private void checkGPSIsOpen(){
