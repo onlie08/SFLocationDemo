@@ -459,9 +459,9 @@ com.sfmap.mapcore.BaseMapLoader:
     public static final int DATA_SOURCE_TYPE_DATA_BMP_USER_GIRDSMAP
     long m_reqestStartLen
     protected abstract java.lang.String getMapSvrPath()
-    117:122:protected java.lang.String getURL(java.lang.String,java.lang.String,java.lang.String)
-    126:127:protected void initTestTime()
-    484:484:public void onConnectionError(com.sfmap.mapcore.BaseMapLoader,int,java.lang.String)
+    118:123:protected java.lang.String getURL(java.lang.String,java.lang.String,java.lang.String)
+    127:128:protected void initTestTime()
+    486:486:public void onConnectionError(com.sfmap.mapcore.BaseMapLoader,int,java.lang.String)
 com.sfmap.mapcore.ConnectionManager:
     private static final int MAX_THREAD_COUNT
 com.sfmap.mapcore.Convert:

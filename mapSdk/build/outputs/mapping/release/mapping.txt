@@ -3356,19 +3356,20 @@ com.sfmap.api.mapcore.util.LogEntity -> com.sfmap.api.mapcore.util.be:
     83:92:java.lang.String a(int) -> a
     8:8:java.lang.Object select(android.database.Cursor) -> b
 com.sfmap.api.mapcore.util.LogInfo -> com.sfmap.api.mapcore.util.bf:
-    java.lang.String sdkType -> a
-    int b -> b
-    java.lang.String md5 -> c
-    int d -> d
+    java.lang.String sdkType -> b
+    java.lang.String msg -> a
+    int b -> c
+    java.lang.String md5 -> d
+    int d -> e
     3:8:void <init>() -> <init>
-    12:12:int a() -> a
-    17:18:void a(int) -> a
-    22:22:java.lang.String getMD5() -> b
-    27:28:void setMD5(java.lang.String) -> a
-    32:32:java.lang.String getSdkType() -> c
-    37:38:void setSdkType(java.lang.String) -> b
-    42:42:int d() -> d
-    47:48:void b(int) -> b
+    11:11:int a() -> a
+    15:16:void a(int) -> a
+    19:19:java.lang.String getMD5() -> b
+    23:24:void setMD5(java.lang.String) -> a
+    27:27:java.lang.String getSdkType() -> c
+    31:32:void setSdkType(java.lang.String) -> b
+    35:35:int d() -> d
+    39:40:void b(int) -> b
 com.sfmap.api.mapcore.util.LogManager -> com.sfmap.api.mapcore.util.bg:
     java.lang.String productInfo -> a
     13:13:void writeLog(java.lang.String,java.lang.String,int) -> a
@@ -6270,7 +6271,7 @@ com.sfmap.mapcore.BaseMapLoader -> com.sfmap.mapcore.b:
     boolean mCanceled -> o
     int datasource -> p
     java.net.HttpURLConnection httpURLConnection -> q
-    32:65:void <init>() -> <init>
+    33:66:void <init>() -> <init>
     java.lang.String getGridParma() -> a
     boolean isRequestValid() -> b
     java.lang.String getMapAddress() -> c
@@ -6279,26 +6280,26 @@ com.sfmap.mapcore.BaseMapLoader -> com.sfmap.mapcore.b:
     void processRecivedVersionOrScenicWidgetData() -> e
     void processRecivedDataByType() -> f
     java.lang.String getUserGridURL(java.lang.String) -> a
-    86:114:void processReceivedTileDataV4(byte[],int,int) -> a
-    130:130:void privteTestTime(java.lang.String,java.lang.String) -> a
-    133:142:boolean isAssic(java.lang.String) -> b
-    146:149:boolean containllegal(java.lang.String) -> c
-    153:171:void OnException(int) -> b
-    174:174:boolean hasFinished() -> g
-    178:193:void doCancel() -> h
-    197:208:void onConnectionOver() -> n
-    211:386:void doRequest() -> i
-    390:391:void postMapMsgEventBus(java.lang.String) -> d
-    394:398:void disConnectHttpConnection() -> o
-    401:481:void doGridRequest() -> j
-    487:491:void onConnectionOpened() -> k
-    494:495:void addReuqestTiles(com.sfmap.mapcore.MapSourceGridData) -> a
-    500:539:void onRecieveData(byte[],byte[],java.lang.String) -> a
-    542:587:void onConnectionRecieveData(byte[],int) -> a
-    590:626:void processRecivedData() -> l
-    629:644:void processReceivedDataV4() -> m
-    647:674:void processRecivedTileData(byte[],int,int) -> b
-    677:722:void processRecivedVersionData(byte[],int,int) -> c
+    87:115:void processReceivedTileDataV4(byte[],int,int) -> a
+    131:131:void privteTestTime(java.lang.String,java.lang.String) -> a
+    134:143:boolean isAssic(java.lang.String) -> b
+    147:150:boolean containllegal(java.lang.String) -> c
+    154:172:void OnException(int) -> b
+    175:175:boolean hasFinished() -> g
+    179:194:void doCancel() -> h
+    198:209:void onConnectionOver() -> n
+    212:387:void doRequest() -> i
+    390:393:void postMapMsgEventBus(java.lang.String) -> d
+    396:400:void disConnectHttpConnection() -> o
+    403:483:void doGridRequest() -> j
+    489:493:void onConnectionOpened() -> k
+    496:497:void addReuqestTiles(com.sfmap.mapcore.MapSourceGridData) -> a
+    502:541:void onRecieveData(byte[],byte[],java.lang.String) -> a
+    544:589:void onConnectionRecieveData(byte[],int) -> a
+    592:628:void processRecivedData() -> l
+    631:646:void processReceivedDataV4() -> m
+    649:676:void processRecivedTileData(byte[],int,int) -> b
+    679:724:void processRecivedVersionData(byte[],int,int) -> c
 com.sfmap.mapcore.CacheData -> com.sfmap.mapcore.c:
     byte[] mapData -> a
     java.lang.String b -> b

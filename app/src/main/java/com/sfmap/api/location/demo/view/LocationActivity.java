@@ -377,15 +377,24 @@ public class LocationActivity extends BaseFgActivity {
                 R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
                 .customView(layout, false).show();
 
+        showInfoDelay();
+    }
+
+    private void showInfoDelay() {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                infoTv.setText(msgTotalShow);
+                if (infoTv != null && msgTotalShow != null) {
+                    if (msgTotalShow.contains("请求成功") || msgTotalShow.contains("请求失败")) {
+                        infoTv.setText(msgTotalShow);
+                    } else {
+                        showInfoDelay();
+                    }
+                }
             }
         };
         Timer timer = new Timer();
         timer.schedule(task, TIME_DELAY);
-
     }
 
     protected void initSPConfig() {
