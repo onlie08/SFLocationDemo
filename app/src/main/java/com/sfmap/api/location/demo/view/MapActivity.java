@@ -17,6 +17,7 @@ import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.SPUtils;
+import com.sfmap.api.mapcore.util.LogInfo;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.MapController;
 import com.sfmap.api.maps.MapView;
@@ -31,7 +32,7 @@ public class MapActivity extends BaseFgActivity {
     private MapView mMapView;
     private MapController mMap;
     private MapActivity context;
-    private float ZOOM_LEVEL=14;
+    private float ZOOM_LEVEL = 14;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class MapActivity extends BaseFgActivity {
     }
 
     private void initMapSetting() {
-        ZOOM_LEVEL= ZOOM_LEVEL-1;
+        ZOOM_LEVEL = ZOOM_LEVEL - 1;
         mMap = mMapView.getMap();
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(false);
@@ -73,7 +74,7 @@ public class MapActivity extends BaseFgActivity {
         double lat = AppInfo.getLat();
         LatLng latLng = new LatLng(lat, lng);
         mMap.setMapCenter(latLng);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,ZOOM_LEVEL));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM_LEVEL));
     }
 
     @Override
@@ -115,7 +116,8 @@ public class MapActivity extends BaseFgActivity {
     private String msgTotalShow;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void postMapMsgEventBus(String msgStr) {
+    public void postMapMsgEventBus(LogInfo info) {
+        String msgStr = info.msg;
         if (msgStr.contains("请求参数")) {
             msgTotalShow = msgTotal;
             msgTotal = msgStr;

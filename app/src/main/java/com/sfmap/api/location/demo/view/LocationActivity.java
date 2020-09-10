@@ -76,6 +76,7 @@ public class LocationActivity extends BaseFgActivity {
     };
     private TextView infoTv;
     private MaterialDialog.Builder infoShowDiloag;
+    private int TIME_DELAY = 2000;//默认1秒
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -345,6 +346,7 @@ public class LocationActivity extends BaseFgActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
+        TIME_DELAY = 2000;
         initSPConfig();
         if (requestCode == CodeConst.loc_req_code &&
                 resultCode == CodeConst.loc_res_code) {
@@ -363,7 +365,7 @@ public class LocationActivity extends BaseFgActivity {
         infoTv.setText(R.string.loading);
 
         new MaterialDialog.Builder(context)
-                .positiveText(R.string.close)
+                .positiveText(R.string.sure)
                 .positiveColorRes(R.color.mainColor)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
@@ -382,7 +384,7 @@ public class LocationActivity extends BaseFgActivity {
             }
         };
         Timer timer = new Timer();
-        timer.schedule(task, 2000);
+        timer.schedule(task, TIME_DELAY);
 
     }
 
@@ -407,6 +409,7 @@ public class LocationActivity extends BaseFgActivity {
 
     public void onInfoShowClick(View view) {
         initShowInfoDialog();
+        TIME_DELAY = 0;
     }
 
 /*    private void checkGPSIsOpen(){

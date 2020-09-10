@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.sfmap.api.mapcore.util.AppInfo;
+import com.sfmap.api.mapcore.util.LogInfo;
 import com.sfmap.api.mapcore.util.LogManager;
 import com.sfmap.api.maps.DesUtil;
 import com.sfmap.api.maps.MapsInitializer;
@@ -386,8 +387,9 @@ public abstract class BaseMapLoader {
     }
 
     private void postMapMsgEventBus(String eventBusContent) {
-        //Log.d("MAP验证", "" + eventBusContent);
-        EventBus.getDefault().post("\n"+eventBusContent);
+        LogInfo info = new LogInfo();
+        info.msg="\n"+eventBusContent;
+        EventBus.getDefault().post(info);
     }
 
     private void disConnectHttpConnection() {
