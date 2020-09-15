@@ -370,7 +370,6 @@ public class LocationActivity extends BaseFgActivity {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        infoTv = null;
                     }
                 })
                 .negativeColorRes(R.color.mainColor).title(getString(
@@ -384,7 +383,7 @@ public class LocationActivity extends BaseFgActivity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                if (infoTv != null && msgTotalShow != null) {
+                if (context != null && infoTv != null && msgTotalShow != null) {
                     if (msgTotalShow.contains("请求成功") || msgTotalShow.contains("请求失败")) {
                         infoTv.setText(msgTotalShow);
                     } else {
@@ -393,8 +392,7 @@ public class LocationActivity extends BaseFgActivity {
                 }
             }
         };
-        Timer timer = new Timer();
-        timer.schedule(task, TIME_DELAY);
+        new Timer().schedule(task, TIME_DELAY);
     }
 
     protected void initSPConfig() {
@@ -416,7 +414,7 @@ public class LocationActivity extends BaseFgActivity {
         }
     }
 
-    public void onInfoShowClick(View view) {
+    public void onLocInfoShowClick(View view) {
         initShowInfoDialog();
         TIME_DELAY = 0;
     }
