@@ -1,1 +1,1 @@
-include ':app', ':loc', ':searchsdk', ':mapsdk'
+include ':app', ':locSdk', ':searchsdk', ':mapSdk'

@@ -1,0 +1,596 @@
+com.sfmap.api.mapcore.AutoTestConfig:
+    3:3:public AutoTestConfig()
+com.sfmap.api.mapcore.CameraAnimatorDecode:
+    private static final float INFLEXION
+    private static final float START_TENSION
+    private static final float END_TENSION
+    private static final float P1
+    private static final float P2
+    private static final int NB_SAMPLES
+    static final int FLING_MODE
+    static final int CHANGE_CAMERA_MODE
+com.sfmap.api.mapcore.CircleDelegateImp:
+    private static final int INCISION_PRECISION
+com.sfmap.api.mapcore.CompassViewDecode:
+    56:57:public CompassViewDecode(android.content.Context)
+com.sfmap.api.mapcore.ConfigableConstDecode:
+    6:6:public ConfigableConstDecode()
+com.sfmap.api.mapcore.GLESUtility:
+    7:7:public GLESUtility()
+    60:61:public static void a(javax.microedition.khronos.opengles.GL10,int,int,java.nio.FloatBuffer,float,int)
+com.sfmap.api.mapcore.GLTextureView:
+    26:972:public GLTextureView(android.content.Context)
+com.sfmap.api.mapcore.IMapDelegate:
+    public abstract android.graphics.Point I()
+com.sfmap.api.mapcore.IMarkerDelegate:
+    public abstract void setPerspective(boolean)
+    public abstract boolean isPerspective()
+com.sfmap.api.mapcore.IPolylineDelegateDecode:
+    public abstract boolean b(com.sfmap.api.maps.model.LatLng)
+com.sfmap.api.mapcore.LocationViewDecode:
+    67:115:public LocationViewDecode(android.content.Context)
+com.sfmap.api.mapcore.MapCallback:
+    532:532:public android.content.Context getContext()
+    543:544:public void OnMapLoaderError(int)
+com.sfmap.api.mapcore.MapDelegateImp:
+    private static final int RERCOUNT
+    private static final int AUTH_KEY_SUCCESS
+    private static final int AUTH_KEY_FAILURE
+    private static final int ON_CAMERA_CHANGE
+    private static final int ON_MAP_LOADED
+    static final int NEW_LATLNG_BOUNDS_WITH_SIZE
+    private static final int CAMERA_ANIMATION
+    private static final int COMPASS_UPDATE
+    private static final int SCALE_UPDATE
+    private static final int SCREEN_SHOT
+    static final int CAMERA_UPDATE_FINISH
+    private static final int UPDATE_MAP_BOUNDS
+    private static final int CREATEMAP
+    private static final int REFRESH_TILE_OVERLAY
+    static final int UPDATE_ZOOM_BITMAP
+    private static final int REFRASH_MAP
+    private static final int TRANSPARENTIME
+    private static final int WXM_PARAMETERNAME_TRAFFIC
+    private static final int WXM_PARAMETERNAME_SATELLITE
+    private static final int WXM_PARAMETERNAME_PANORAMA
+    private static final int WXM_PARAMETERNAME_TILE_MAP
+    private static final int WXM_PARAMETERNAME_HIDE_VECTOR_MAP
+    1962:1962:public boolean isExpressNumEnabled()
+    2209:2215:public void b(int,int,com.sfmap.mapcore.IPoint)
+com.sfmap.api.mapcore.MapFragmentDelegateImp:
+    public static final int SURFACE_VIEW
+    public static final int TEXTURE_VIEW
+com.sfmap.api.mapcore.MapMessageDecode:
+    public static final int MAPZOOMER
+    public static final int STISET
+    public static final int TRAFFICSET
+    public static final int SCREENCENTRESET
+    public static final int MAPANGLESET
+    public static final int MAPCAMANGLESET
+    public static final int MAPRESET
+    public static final int SCREENTOUCH
+    public static final int CELLZONESSET
+    public static final int EXPRESSNUM
+    public static final int SFAOI
+com.sfmap.api.mapcore.MapOverlayImageViewDecode:
+    33:178:public MapOverlayImageViewDecode(android.content.Context)
+com.sfmap.api.mapcore.MapOverlayViewGroupDecode:
+    18:19:public MapOverlayViewGroupDecode(android.content.Context)
+com.sfmap.api.mapcore.MapOverlayViewGroupDecode$LayoutParamsExt:
+    public static final int MODE_MAP
+    public static final int MODE_VIEW
+    public static final int LEFT
+    public static final int RIGHT
+    public static final int TOP
+    public static final int BOTTOM
+    public static final int CENTER_HORIZONTAL
+    public static final int CENTER_VERTICAL
+    public static final int CENTER
+    public static final int TOP_LEFT
+    public static final int BOTTOM_CENTER
+    43:60:public MapOverlayViewGroupDecode$LayoutParamsExt(android.content.Context,android.util.AttributeSet)
+com.sfmap.api.mapcore.MarkerDelegateImp:
+    802:803:public void setPerspective(boolean)
+    807:807:public boolean isPerspective()
+com.sfmap.api.mapcore.MyLocationOverlayDecode:
+    199:210:private void b(android.location.Location)
+com.sfmap.api.mapcore.NinePatchToolDecode:
+    19:19:NinePatchToolDecode()
+com.sfmap.api.mapcore.PolylineDelegateImpDecode:
+    506:516:private void o()
+    520:520:private boolean a(com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint)
+    640:680:private boolean p()
+    773:815:public boolean b(com.sfmap.api.maps.model.LatLng)
+    820:831:private java.util.ArrayList q()
+    836:836:private double a(com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint)
+    841:846:private com.sfmap.mapcore.FPoint c(com.sfmap.api.maps.model.LatLng)
+    851:862:private double a(double,double,double,double,double,double)
+com.sfmap.api.mapcore.PopupOverlayDecode:
+    437:437:public void setPerspective(boolean)
+    441:441:public boolean isPerspective()
+com.sfmap.api.mapcore.ScaleViewDecode:
+    13:35:public ScaleViewDecode(android.content.Context)
+com.sfmap.api.mapcore.TextDelegateImp:
+    429:429:public void setPerspective(boolean)
+    433:433:public boolean isPerspective()
+com.sfmap.api.mapcore.TileOverlayDelegateImp$TileCoordinate:
+    587:608:public TileOverlayDelegateImp$TileCoordinate(com.sfmap.api.mapcore.TileOverlayDelegateImp,com.sfmap.api.mapcore.TileOverlayDelegateImp$TileCoordinate)
+    612:625:public com.sfmap.api.mapcore.TileOverlayDelegateImp$TileCoordinate a()
+com.sfmap.api.mapcore.TileOverlayViewDecode:
+    22:58:public TileOverlayViewDecode(android.content.Context)
+com.sfmap.api.mapcore.UiSettingsDelegateImpDecode:
+    private static final int ZOOMCONTROLS
+    private static final int SCALE
+    private static final int COMPASS
+    private static final int MYLOCATION
+com.sfmap.api.mapcore.WaterMarkerViewDecode:
+    28:70:public WaterMarkerViewDecode(android.content.Context)
+com.sfmap.api.mapcore.ZoomControllerViewDecode:
+    95:96:public ZoomControllerViewDecode(android.content.Context)
+com.sfmap.api.mapcore.util.AnimationFactory
+com.sfmap.api.mapcore.util.AsyncTaskDecode:
+    private static final int MESSAGE_POST_RESULT
+    private static final int MESSAGE_POST_PROGRESS
+com.sfmap.api.mapcore.util.AuthManager:
+    private static com.sfmap.api.mapcore.util.SDKInfo sdkInfo
+    12:12:public AuthManager()
+    65:65:public static synchronized boolean a(android.content.Context,com.sfmap.api.mapcore.util.SDKInfo)
+    80:80:private static java.lang.String getURL(android.content.Context)
+    85:131:private static boolean parseResult(byte[])
+    136:155:private static java.util.Map gParamsMap(android.content.Context)
+com.sfmap.api.mapcore.util.AuthRequest
+com.sfmap.api.mapcore.util.BaseGestureDetectorDecode:
+    public static final int ACTION_POINTER_INDEX_MASK
+    public static final int ACTION_POINTER_INDEX_SHIFT
+com.sfmap.api.mapcore.util.BaseNetManager:
+    private static com.sfmap.api.mapcore.util.BaseNetManager Instance
+    11:14:public static com.sfmap.api.mapcore.util.BaseNetManager getInstance()
+    20:36:public byte[] a(com.sfmap.api.mapcore.util.Request)
+com.sfmap.api.mapcore.util.BasicLogHandler:
+    27:27:protected void normalLog(int,java.lang.String,int,java.lang.String,java.lang.String)
+com.sfmap.api.mapcore.util.ClientInfo:
+    public static final java.lang.String k
+    29:29:public ClientInfo()
+    190:210:public static java.lang.String encrypt(byte[],java.lang.String)
+    223:254:public static byte[] decrypt(byte[],java.lang.String)
+    262:282:public static java.lang.String AES(byte[])
+com.sfmap.api.mapcore.util.ConfigManager
+com.sfmap.api.mapcore.util.ConfigManager$a
+com.sfmap.api.mapcore.util.ConfigManager$a$b
+com.sfmap.api.mapcore.util.ConfigManager$a$c
+com.sfmap.api.mapcore.util.ConfigManager$a$d
+com.sfmap.api.mapcore.util.ConfigManager$b
+com.sfmap.api.mapcore.util.ConfigerHelper:
+    private static final java.lang.String CONFIGER_FILE
+    public static final java.lang.String SF_MAP_URL
+    public static final java.lang.String SF_MAP_URL_TC
+    public static final java.lang.String SF_TMC_URL
+    public static final java.lang.String SF_AUTH_URL
+    public static final java.lang.String SYSTEM_AK
+    public static final java.lang.String SF_ORKER_MAP_URL
+com.sfmap.api.mapcore.util.DES
+com.sfmap.api.mapcore.util.DTDownloadEntity:
+    6:6:public bridge synthetic void setLogInfo(java.lang.Object)
+com.sfmap.api.mapcore.util.DTEntity:
+    6:6:public bridge synthetic void setLogInfo(java.lang.Object)
+com.sfmap.api.mapcore.util.DTFileEntity:
+    6:6:public bridge synthetic void setLogInfo(java.lang.Object)
+com.sfmap.api.mapcore.util.DeviceInfo:
+    36:36:public DeviceInfo()
+    395:404:public static android.net.NetworkInfo n(android.content.Context)
+    409:422:static java.lang.String getNetworkExtraInfo(android.content.Context)
+com.sfmap.api.mapcore.util.DownloadManager:
+    12:13:public DownloadManager(com.sfmap.api.mapcore.util.Request)
+com.sfmap.api.mapcore.util.Encrypt:
+    15:15:public Encrypt()
+    117:128:static byte[] rsaEncrypt(byte[],java.security.Key)
+    135:144:public static java.lang.String bcd2Str(byte[])
+    150:166:public static java.lang.String[] splitString(java.lang.String,int)
+com.sfmap.api.mapcore.util.EncryptUtil:
+    5:5:EncryptUtil()
+com.sfmap.api.mapcore.util.FileUtils:
+    8:8:public FileUtils()
+com.sfmap.api.mapcore.util.Format:
+    6:6:public Format()
+com.sfmap.api.mapcore.util.ImageCacheDecode:
+    private static final int DEFAULT_MEM_CACHE_SIZE
+    private static final int DEFAULT_DISK_CACHE_SIZE
+    private static final int DEFAULT_COMPRESS_QUALITY
+    private static final int DISK_CACHE_INDEX
+    private static final boolean DEFAULT_MEM_CACHE_ENABLED
+    private static final boolean DEFAULT_DISK_CACHE_ENABLED
+    private static final boolean DEFAULT_INIT_DISK_CACHE_ON_CREATE
+com.sfmap.api.mapcore.util.ImageWorkerDecode:
+    private static final int MESSAGE_CLEAR
+    private static final int MESSAGE_INIT_DISK_CACHE
+    private static final int MESSAGE_FLUSH
+    private static final int MESSAGE_CLOSE
+com.sfmap.api.mapcore.util.Log:
+    static final java.lang.String a
+    static final java.lang.String exceptionlogdir
+    static final java.lang.String crashlogdir
+    static final java.lang.String anrlogdir
+    static final java.lang.String normallogdir
+    7:7:public Log()
+    45:67:static void toLog(android.content.Context,int,java.lang.String,int,java.lang.String,java.lang.String)
+com.sfmap.api.mapcore.util.Log$2
+com.sfmap.api.mapcore.util.LogDBCreator:
+    static final java.lang.String a
+    static final java.lang.String CrashLogTable
+    static final java.lang.String ExceptionLogTable
+    static final java.lang.String AnrLogTable
+    static final java.lang.String NormalLogTable
+    static final java.lang.String e
+    static final java.lang.String f
+    static final java.lang.String g
+    static final java.lang.String h
+    static final java.lang.String i
+    static final java.lang.String j
+    static final java.lang.String k
+    static final java.lang.String l
+    static final java.lang.String m
+    static final java.lang.String n
+    static final java.lang.String o
+    static final java.lang.String p
+    static final java.lang.String q
+    private static final java.lang.String r
+    private static final java.lang.String s
+    private static final java.lang.String t
+com.sfmap.api.mapcore.util.LogEntity:
+    private static final java.lang.String a
+    private static final java.lang.String b
+    private static final java.lang.String c
+    private static final java.lang.String d
+    8:8:public bridge synthetic void setLogInfo(java.lang.Object)
+com.sfmap.api.mapcore.util.LogManager:
+    6:6:public LogManager()
+com.sfmap.api.mapcore.util.LogWriter:
+    95:128:void writerLog(android.content.Context,int,java.lang.String,java.lang.String,java.lang.String)
+com.sfmap.api.mapcore.util.MD5:
+    11:11:public MD5()
+    61:65:public static java.lang.String MD5AndHex(java.lang.String)
+    70:71:public static java.lang.String a(byte[])
+    82:98:public static byte[] a(byte[],java.lang.String)
+    103:103:private static byte[] b(byte[])
+    110:124:public static byte[] md5(java.lang.String)
+com.sfmap.api.mapcore.util.MapThrowException:
+    44:45:private MapThrowException()
+com.sfmap.api.mapcore.util.MultiTouchSupportDecode:
+    public static final int ACTION_MASK
+    public static final int ACTION_POINTER_ID_SHIFT
+    public static final int ACTION_POINTER_DOWN
+    public static final int ACTION_POINTER_UP
+com.sfmap.api.mapcore.util.NetFileFetch:
+    175:200:public long getDownloadFileLength()
+    246:247:private void a(int)
+com.sfmap.api.mapcore.util.NetManger:
+    135:142:private void a(com.sfmap.api.mapcore.util.IMMapCoreException,com.sfmap.api.mapcore.util.Response)
+    146:153:private void a(com.sfmap.api.mapcore.util.ResponseEntity,com.sfmap.api.mapcore.util.Response)
+com.sfmap.api.mapcore.util.OfflineDBCreator:
+    static final java.lang.String UPDATE_ITEM
+    static final java.lang.String UPDATE_ITEM_FILE
+    static final java.lang.String UPDATE_ITEM_DOWNLOAD_INFO
+    static final java.lang.String TITLE
+    static final java.lang.String URL
+    static final java.lang.String ADCODE
+    static final java.lang.String FILE_NAME
+    static final java.lang.String VERSION
+    static final java.lang.String LOCAL_LENGTH
+    static final java.lang.String REMOTE_LENGTH
+    static final java.lang.String LOCAL_PATH
+    static final java.lang.String M_INDEX
+    static final java.lang.String IS_PROVINCE
+    static final java.lang.String M_COMPLETE_CODE
+    static final java.lang.String M_CITY_CODE
+    static final java.lang.String M_STATE
+    static final java.lang.String M_ADCODE
+    static final java.lang.String FILE
+    static final java.lang.String M_ADCODE1
+    static final java.lang.String FILE_LENGTH
+    static final java.lang.String SPLITTER
+    static final java.lang.String START_POS
+    static final java.lang.String END_POS
+    private static final java.lang.String TABLE_UPDATE_ITEM
+    private static final java.lang.String TALBE_UPDATE_ITEM_FILE
+    private static final java.lang.String TABLE_UPDATE_ITEM_DOWNLOAD_INFO
+com.sfmap.api.mapcore.util.OfflineDownloadManager:
+    379:384:private com.sfmap.api.mapcore.util.CityObject getCityByCitycode(java.lang.String)
+    399:405:public void e(java.lang.String)
+com.sfmap.api.mapcore.util.OfflineMapDownloadList:
+    71:81:public com.sfmap.api.maps.offlinemap.OfflineMapCity a(java.lang.String)
+    160:162:private void updateCityInfo(com.sfmap.api.maps.offlinemap.OfflineMapCity,com.sfmap.api.maps.offlinemap.OfflineMapCity)
+    165:167:private void updateProvinceInfo(com.sfmap.api.maps.offlinemap.OfflineMapProvince,com.sfmap.api.maps.offlinemap.OfflineMapProvince)
+com.sfmap.api.mapcore.util.OffsetUtil
+com.sfmap.api.mapcore.util.ProxyUtil
+com.sfmap.api.mapcore.util.RSAUtils:
+    24:24:public RSAUtils()
+    32:40:public static java.util.HashMap getKeys()
+    55:62:public static java.security.interfaces.RSAPublicKey getPublicKey(java.lang.String,java.lang.String)
+    79:86:public static java.security.interfaces.RSAPrivateKey getPrivateKey(java.lang.String,java.lang.String)
+    100:111:public static java.lang.String encryptByPublicKey(java.lang.String,java.security.interfaces.RSAPublicKey)
+    155:167:public static java.lang.String decryptByPrivateKey(java.lang.String,java.security.interfaces.RSAPrivateKey)
+    178:196:public static byte[] decryptByPrivateKey(byte[],java.security.interfaces.RSAPrivateKey)
+    204:210:public static byte[] ASCII_To_BCD(byte[],int)
+    215:223:public static byte asc_to_bcd(byte)
+    229:238:public static java.lang.String bcd2Str(byte[])
+    242:251:public static byte[] bcd2byte(byte[])
+    258:274:public static java.lang.String[] splitString(java.lang.String,int)
+    278:295:public static java.util.List splitBytes(byte[],int)
+    342:354:public static java.security.PrivateKey getPrivateKey(java.lang.String)
+com.sfmap.api.mapcore.util.RegionUtil:
+    3:3:public RegionUtil()
+com.sfmap.api.mapcore.util.Request:
+    77:78:public final void setProxy(java.net.Proxy)
+com.sfmap.api.mapcore.util.ResourcesUtilDecode:
+    8:8:public ResourcesUtilDecode()
+com.sfmap.api.mapcore.util.Response:
+    public abstract void a(java.util.Map,byte[])
+com.sfmap.api.mapcore.util.SDKCoordinatorDownload
+com.sfmap.api.mapcore.util.SDKCoordinatorDownload$a
+com.sfmap.api.mapcore.util.SDKEntity:
+    8:8:public bridge synthetic void setLogInfo(java.lang.Object)
+com.sfmap.api.mapcore.util.SDKInfo:
+    73:74:public void a(boolean)
+com.sfmap.api.mapcore.util.SDKLogHandler:
+    65:68:public static void normalLog(int,java.lang.String,java.lang.String,java.lang.String)
+    171:172:protected void normalLog(int,java.lang.String,int,java.lang.String,java.lang.String)
+com.sfmap.api.mapcore.util.SQlEntity:
+    public abstract void setLogInfo(java.lang.Object)
+com.sfmap.api.mapcore.util.SfScaleGestureDetector:
+    private static final java.lang.String TAG
+    private static final long TOUCH_STABILIZE_TIME
+    private static final float SCALE_FACTOR
+    private static final int ANCHORED_SCALE_MODE_NONE
+    private static final int ANCHORED_SCALE_MODE_DOUBLE_TAP
+    private static final int ANCHORED_SCALE_MODE_STYLUS
+    407:407:public boolean isQuickScaleEnabled()
+    426:426:public boolean isStylusScaleEnabled()
+    433:433:public boolean isInProgress()
+    447:447:public float getFocusX()
+    461:461:public float getFocusY()
+    471:471:public float getCurrentSpan()
+    481:481:public float getCurrentSpanX()
+    491:491:public float getCurrentSpanY()
+    501:501:public float getPreviousSpan()
+    511:511:public float getPreviousSpanX()
+    521:521:public float getPreviousSpanY()
+    552:552:public long getTimeDelta()
+    561:561:public long getEventTime()
+com.sfmap.api.mapcore.util.SfScaleGestureDetector$SimpleOnScaleGestureListener
+com.sfmap.api.mapcore.util.SiteInfoBean:
+    25:25:public java.lang.String getUrl()
+com.sfmap.api.mapcore.util.StylesIconsUpdate:
+    52:53:public void cancel()
+com.sfmap.api.mapcore.util.UpdateLogEntity:
+    private static final java.lang.String b
+    private static final java.lang.String c
+    private static final java.lang.String d
+    6:6:public bridge synthetic void setLogInfo(java.lang.Object)
+com.sfmap.api.mapcore.util.Util:
+    public static final java.lang.String MAP_DATA_PATH
+    public static final java.lang.String MAP_DATA_OFFLINE_PATH_NAME
+    public static final java.lang.String MAP_DATA_OFFLINE_TEMP_PATH_NAME
+    public static final java.lang.String MAP_CACHE_PATH_NAME
+    public static final java.lang.String MAP_TILES_PATH_NAME
+    public static final java.lang.String MAP_RES_EXT_PATH_NAME
+    public static final java.lang.String MAP_MAP_ASSETS_NAME
+    public static final java.lang.String MAP_CRASH_PATH
+    public static final java.lang.String TMC_PARAMETER
+    60:60:public Util()
+    592:621:public static java.util.List a(com.sfmap.api.mapcore.IMapDelegate,java.util.List)
+    626:639:private static com.sfmap.mapcore.FPoint[] a(com.sfmap.api.mapcore.IMapDelegate)
+    644:652:private static com.sfmap.mapcore.FPoint a(com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint)
+    657:661:private static boolean a(com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint,com.sfmap.mapcore.FPoint)
+com.sfmap.api.mapcore.util.Utility:
+    21:21:public Utility()
+com.sfmap.api.mapcore.util.Utils:
+    26:26:public Utils()
+    30:30:public static boolean hasKey(org.json.JSONObject,java.lang.String)
+    67:81:static java.lang.String mapToString(java.util.Map)
+    134:135:public static java.lang.String appendParams(java.util.Map)
+    142:162:public static java.lang.String sortParams(java.lang.String)
+    184:229:public static byte[] zipLog(byte[])
+    245:258:static java.security.PublicKey getPublicKey(android.content.Context)
+    265:271:static java.lang.String c(byte[])
+    278:284:static java.lang.String d(byte[])
+com.sfmap.api.mapcore.util.WrapperClientInfo:
+    15:15:public WrapperClientInfo()
+    35:73:public static java.lang.String aesEncrypt(android.content.Context,byte[])
+com.sfmap.api.mapcore.util.WrapperConstConfig:
+    3:3:public WrapperConstConfig()
+com.sfmap.api.mapcore.util.dx:
+    3:3:public dx()
+com.sfmap.api.maps.CoordinateConverter
+com.sfmap.api.maps.CoordinateConverter$CoordType
+com.sfmap.api.maps.ExtralDrawCircle:
+    private static final int INCISION_PRECISION
+com.sfmap.api.maps.MapsInitializer:
+    private static final java.lang.String MAPSDK_VERSION
+com.sfmap.api.maps.cluster.ClusterOverlay$MarkerHandler:
+    static final int ADD_CLUSTER_LIST
+    static final int ADD_SINGLE_CLUSTER
+    static final int UPDATE_SINGLE_CLUSTER
+    static final int CLEAR_AND_QUIT
+com.sfmap.api.maps.cluster.ClusterOverlay$SignClusterHandler:
+    static final int CALCULATE_CLUSTER
+    static final int ADD_SINGLE_CLUSTER_ITEM
+    static final int UPDATE_ALL_CLUSTERS
+com.sfmap.api.maps.model.MobileBean:
+    private static final long serialVersionUID
+    private java.lang.String ent
+    64:64:public java.lang.String getAppCerSha1()
+    72:72:public java.lang.String getAppPackageName()
+    80:80:public java.lang.String getEnt()
+    84:85:public void setEnt(java.lang.String)
+    88:88:public java.lang.String getT()
+    96:96:public java.lang.String getCv()
+    104:104:public java.lang.String getSv()
+    112:112:public java.lang.String getName()
+    120:120:public java.lang.String getMesh()
+    128:128:public java.lang.String getType()
+com.sfmap.api.maps.model.PoiPara
+com.sfmap.api.maps.model.RoutePara
+com.sfmap.api.maps.model.TmcBean:
+    private static final long serialVersionUID
+    14:14:public java.lang.String getMesh()
+    26:26:public java.lang.String getAppPackageName()
+    34:34:public java.lang.String getAppCerSha1()
+com.sfmap.api.maps.model.a
+com.sfmap.api.maps.model.b
+com.sfmap.api.maps.offlinemap.OfflineMapManager:
+    221:221:private com.sfmap.api.maps.offlinemap.OfflineMapCity getItemByCityCode(java.lang.String)
+com.sfmap.api.maps.overlay.MapServicesUtil:
+    8:8:MapServicesUtil()
+com.sfmap.api.maps.utils.SpatialRelationUtil
+com.sfmap.map.api.BuildConfig
+com.sfmap.mapcore.BaseMapLoader:
+    public static final int DATA_SOURCE_TYPE_DATA_ROAD
+    public static final int DATA_SOURCE_TYPE_DATA_GEO_BUILDING
+    public static final int DATA_SOURCE_TYPE_DATA_BMP_BASEMAP
+    public static final int DATA_SOURCE_TYPE_DATA_SATELLITE
+    public static final int DATA_SOURCE_TYPE_DATA_VEC_TMC
+    public static final int DATA_SOURCE_TYPE_DATA_SCREEN
+    public static final int DATA_SOURCE_TYPE_DATA_3DOBJECT
+    public static final int DATA_SOURCE_TYPE_DATA_STANDARD
+    public static final int DATA_SOURCE_TYPE_DATA_POI
+    public static final int DATA_SOURCE_TYPE_DATA_VERSION
+    public static final int DATA_SOURCE_TYPE_DATA_INDOOR
+    public static final int DATA_SOURCE_TYPE_DATA_STREETVIEW
+    public static final int DATA_SOURCE_TYPE_DATA_BMP_USER_GIRDSMAP
+    long m_reqestStartLen
+    protected abstract java.lang.String getMapSvrPath()
+    118:123:protected java.lang.String getURL(java.lang.String,java.lang.String,java.lang.String)
+    127:128:protected void initTestTime()
+    486:486:public void onConnectionError(com.sfmap.mapcore.BaseMapLoader,int,java.lang.String)
+com.sfmap.mapcore.ConnectionManager:
+    private static final int MAX_THREAD_COUNT
+com.sfmap.mapcore.Convert:
+    public int a
+    public java.lang.String b
+    5:5:public Convert()
+    29:32:public static int getUShort(byte[],int)
+    37:44:public static boolean getBit(byte,int)
+    49:51:public static byte[] copyString(byte[],int,int)
+    56:58:public static byte[] covertBytes(byte)
+    73:78:public static int getNum(byte,int,int)
+    83:87:public static int getNum(short,int,int)
+    92:95:public static byte[] convertShort(int)
+    106:108:public static void writeShort(byte[],int,short)
+    121:124:public static java.lang.String getString(byte[],int,int)
+    129:131:public static byte[] getSubBytes(byte[],int,int)
+    138:151:public static byte[] get1BString(java.lang.String)
+    158:169:public static byte[] get2BString(java.lang.String)
+    174:178:public static double convertDouble(byte[],int)
+    183:191:public static byte[] getDouble(double)
+    198:207:public static void convert1bString(byte[],int,com.sfmap.mapcore.Convert)
+    213:222:public static void convert2bString(byte[],int,com.sfmap.mapcore.Convert)
+    226:235:public static final java.lang.String bytesToHexString(byte[])
+com.sfmap.mapcore.CoordUtil
+com.sfmap.mapcore.DeviceIdManager:
+    24:24:private DeviceIdManager()
+com.sfmap.mapcore.ExceptionUtil:
+    7:7:public ExceptionUtil()
+com.sfmap.mapcore.FileUtil:
+    private static final java.lang.String TAG
+    20:20:public FileUtil()
+    26:34:public static void copy(android.content.Context,java.lang.String,java.io.File)
+    54:118:public static java.lang.String getMapBaseStorage(android.content.Context)
+    124:209:public static java.lang.String getExternalStroragePath(android.content.Context)
+    271:289:public static byte[] readFileContents(java.io.File)
+    291:291:public static void createNoMediaFileIfNotExist(java.lang.String)
+com.sfmap.mapcore.GLMapResManager:
+    public static final int TEXTURE_ICON
+    public static final int TEXTURE_BACKGROUND
+    public static final int TEXTURE_TOP_COVER
+    public static final int TEXTURE_BIG_ICON
+    public static final int TEXTURE_ROAD_BOARD
+    public static final int TEXTURE_TMC
+    public static final int TEXTURE_ROAD
+    private static final java.lang.String texture_background_day
+    private static final java.lang.String texture_abckground_night
+    private static final java.lang.String texture_roadboard_day
+    private static final java.lang.String texture_roadboard_night
+    private static final java.lang.String texture_tmc_day
+    private static final java.lang.String texture_tmc_night
+    private static final java.lang.String texture_road
+    private static final java.lang.String texture_top_cover_day
+    private static final java.lang.String texture_top_cover_night
+    private static final java.lang.String style_day_personal
+    private static final java.lang.String style_day_default
+    private static final java.lang.String style_night_default
+    private static final java.lang.String style_satelite_day_night
+    private static final java.lang.String style_navi_car_day
+    private static final java.lang.String style_navi_car_night
+    private static final java.lang.String texture_icon_day
+    private static final java.lang.String texture_icon_night
+com.sfmap.mapcore.IBaseMapCallback:
+    public abstract android.content.Context getContext()
+    public abstract void OnMapLoaderError(int)
+com.sfmap.mapcore.MapCoreManager
+com.sfmap.mapcore.MapSourceGridData:
+    35:35:public int getSourceType()
+com.sfmap.mapcore.MapTilsCacheAndResManager:
+    public static final int STYLE_DATA
+    public static final int ICONS_DATA
+    public abstract void clearOnlineMapTilsCache()
+    public abstract java.lang.String getMapCachePath()
+    public abstract java.lang.String getMapOnlineDataPath()
+    public abstract java.lang.String getMapExtResPath()
+    public abstract java.lang.String getMapOfflineDataPath()
+    public abstract boolean canUpate(java.lang.String)
+com.sfmap.mapcore.MapTilsCacheAndResManager$RetStyleIconsFile:
+    public int type
+com.sfmap.mapcore.MapTilsCacheAndResManagerImpl:
+    private static final long Style_Update_Internal_Time
+    private static final int CREATE_DIR_COUNT
+    40:41:public synchronized void reset()
+    50:50:public java.lang.String getMapCachePath()
+    55:55:public java.lang.String getMapOnlineDataPath()
+    60:60:public java.lang.String getMapOfflineDataPath()
+    65:65:public java.lang.String getMapExtResPath()
+    147:147:void initDebug()
+    261:278:static void copyAssertToTmp(android.content.Context,java.lang.String,java.io.File)
+    287:293:public void clearOnlineMapTilsCache()
+    297:302:private void addUdateRecorder(java.lang.String)
+    306:317:public synchronized boolean canUpate(java.lang.String)
+com.sfmap.mapcore.Md5Utility:
+    7:7:public Md5Utility()
+    11:29:public static java.lang.String hexdigest(java.lang.String)
+    36:60:public static java.lang.String getFileMD5(java.lang.String)
+    67:91:public static java.lang.String getFileMD5(java.io.File)
+    96:98:public static java.lang.String getStringMD5(java.lang.String)
+    103:107:public static java.lang.String getCharArrayMD5(char[])
+com.sfmap.mapcore.NativeLineRenderer:
+    26:26:static void <clinit>()
+com.sfmap.mapcore.NormalMapLoader:
+    116:116:protected java.lang.String getMapSvrPath()
+com.sfmap.mapcore.ResUtil:
+    15:15:public ResUtil()
+    19:37:public static android.graphics.Bitmap decodeBitmapWithAdaptiveSize(android.content.Context,int)
+    42:55:public static android.graphics.Bitmap decodeAssetBitmap(android.content.Context,java.lang.String)
+    60:87:public static android.graphics.Bitmap decodeAssetBitmapWithSize(android.content.Context,java.lang.String,int,int)
+    122:136:public static int dipToPixel(android.content.Context,int)
+    141:144:public static int spToPixel(android.content.Context,int)
+    149:149:public static java.lang.String getString(android.content.Context,int)
+com.sfmap.mapcore.TextTextureGenerator:
+    static final int TEXT_FONTSIZE
+    static final int TEXT_FONTSIZE_TRUE
+    static final int AN_LABEL_MAXCHARINLINE
+    static final int AN_LABEL_MULITYLINE_SPAN
+    private static final int ALIGNCENTER
+    private static final int ALIGNLEFT
+    private static final int ALIGNRIGHT
+    28:34:public static int GetNearstSize2N(int)
+    134:134:public static float getFontlength(android.graphics.Paint,java.lang.String)
+    139:140:public static float getFontHeight(android.graphics.Paint)
+    146:172:public static void generaAsccIITexturePng()
+com.sfmap.mapcore.VMapDataCache:
+    private static final int MAXSIZE
+    36:36:public int getSize()
+    56:63:public synchronized com.sfmap.mapcore.e getCancelRecoder(java.lang.String,int)
+    87:102:public synchronized com.sfmap.mapcore.e putCancelRecoder(byte[],java.lang.String,int)
+com.sfmap.mapcore.VTMCDataCache:
+    public static final int MAXSIZE
+    public static final int MAX_EXPIREDTIME
+    25:27:public void reset()
+    31:31:public int getSize()

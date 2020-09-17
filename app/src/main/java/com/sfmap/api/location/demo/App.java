@@ -9,10 +9,6 @@ import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 
-import com.sfmap.api.location.client.util.AppInfo;
-import com.sfmap.api.location.demo.constants.KeyConst;
-import com.sfmap.api.location.demo.utils.SPUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 

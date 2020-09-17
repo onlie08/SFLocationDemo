@@ -18,4 +18,8 @@ public class KeyConst {
     public static final String type="type";
     public static final String SP_LNG ="SP_LNG" ;
     public static final String SP_LAT ="SP_LAT" ;
+    public static final String LAT ="LAT" ;
+    public static final String LNG ="LNG" ;
+    public static final String TIME ="TIME" ;
+    public static final String GPS_GET_SERVICE_RESTART = "GPS_GET_SERVICE_RESTART";
 }

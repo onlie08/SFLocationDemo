@@ -11,22 +11,25 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Process;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.util.DialogUtils;
 import com.sfmap.api.location.SfMapLocation;
 import com.sfmap.api.location.SfMapLocationClient;
 import com.sfmap.api.location.SfMapLocationClientOption;
@@ -36,6 +39,10 @@ import com.sfmap.api.location.demo.R;
 import com.sfmap.api.location.demo.constants.CodeConst;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.utils.LogcatFileManager;
+import com.sfmap.api.location.demo.utils.SPUtils;
+import com.sfmap.api.location.demo.utils.TextUtil;
+import com.sfmap.api.location.demo.utils.ToastUtil;
+import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.maps.CameraUpdateFactory;
 import com.sfmap.api.maps.LocationSource;
 import com.sfmap.api.maps.MapController;
@@ -46,12 +53,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LocationActivity extends BaseFgActivity {
-    private final String TAG = LocationActivity.class.getSimpleName();
+    private final String TAG = "地图定位";
     private MapView mMapView;
     private MapController mMap;
     private SfMapLocationClient mSfMapLocationClient;
@@ -69,14 +76,16 @@ public class LocationActivity extends BaseFgActivity {
     };
     private TextView infoTv;
     private MaterialDialog.Builder infoShowDiloag;
+    private int TIME_DELAY = 2000;//默认1秒
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         context = this;
-        requestPermission();
+        initSPConfig();
         setContentView(R.layout.activity_location);
+        EventBus.getDefault().register(this);
         initStatusBar();
         initTitleBackBt(getIntent().getStringExtra(KeyConst.title));
 
@@ -111,24 +120,11 @@ public class LocationActivity extends BaseFgActivity {
             @Override
             public void onClick(View view) {
                 context.startActivityForResult(new Intent(context, ConfigSettingActivity.class),
-                        CodeConst.REQ_CODE_LOC);
+                        CodeConst.loc_req_code);
             }
         });
-        initShowInfoDialog();
     }
 
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (this.checkPermission(Manifest.permission.READ_PHONE_STATE, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED ||
-                    this.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid())
-                            != PackageManager.PERMISSION_GRANTED ||
-                    this.checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Process.myPid(), Process.myUid())
-                            != PackageManager.PERMISSION_GRANTED) {
-                this.requestPermissions(PERMISSIONS_REQUEST, 1);
-            }
-        }
-    }
 
     private void initMapSetting() {
         mMap = mMapView.getMap();
@@ -169,8 +165,6 @@ public class LocationActivity extends BaseFgActivity {
                             if (mLocationChangedListener != null && location != null) {
                                 if (location.isSuccessful() && location.getLatitude() > 0) {
 
-                                    String loca = "Provider:" + location.getProvider() + " Longitude:" + location.getLongitude() + " Latitude:" + location.getLatitude() +
-                                            " Time:" + getGpsLocalTime(location.getTime()) + " Altitude:" + location.getAltitude() + " adcode:" + location.getmAdcode() + " Satellites:" + location.getmSatellites() + "\n";
 
                                     mLocationChangedListener.onLocationChanged(location);
                                     LatLng position = new LatLng(location.getLatitude(), location.getLongitude());
@@ -184,7 +178,7 @@ public class LocationActivity extends BaseFgActivity {
                                         }
                                         isFirstFocus = true;
                                     }
-                                    tv_time.setText(getGpsLocalTime(location.getTime()) + " (" + location.getProvider() + ")");
+                                    tv_time.setText(TextUtil.getFormatTime(location.getTime()) + " (" + location.getProvider() + ")");
                                     tv_lat.setText(location.getLatitude() + "");
                                     tv_lon.setText(location.getLongitude() + "");
                                     tv_address.setText(location.getAddress());
@@ -217,6 +211,7 @@ public class LocationActivity extends BaseFgActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         mMapView.onDestroy();
         mSfMapLocationClient.destroy();
         unregisterReceiver(locationRequestReceiver);
@@ -236,12 +231,12 @@ public class LocationActivity extends BaseFgActivity {
 
 
     //位置管理器
-    private LocationManager locationManager;
+    private LocationManager locManager;
 
     private void initLocation() {
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //判断GPS是否正常启动
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             Toast.makeText(this, "请开启GPS导航", Toast.LENGTH_SHORT).show();
             //返回开启GPS导航设置界面
 
@@ -251,36 +246,30 @@ public class LocationActivity extends BaseFgActivity {
         }
         //添加卫星状态改变监听
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO:是否需要   ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        locationManager.addGpsStatusListener(statusListener);
+        locManager.addGpsStatusListener(statusListener);
         //1000位最小的时间间隔，1为最小位移变化；也就是说每隔1000ms会回调一次位置信息
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
                 new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
-
+                        Log.d(TAG, "获取定位" + location.getLatitude());
                     }
 
                     @Override
                     public void onStatusChanged(String provider, int status, Bundle extras) {
-
+                        Log.d(TAG, "获取定位1" + provider);
                     }
 
                     @Override
                     public void onProviderEnabled(String provider) {
-
+                        Log.d(TAG, "获取定位2" + provider);
                     }
 
                     @Override
                     public void onProviderDisabled(String provider) {
-
+                        Log.d(TAG, "获取定位3" + provider);
                     }
                 });
     }
@@ -291,20 +280,13 @@ public class LocationActivity extends BaseFgActivity {
     private GpsStatus mGpsStatus;
 
     private final GpsStatus.Listener statusListener = new GpsStatus.Listener() {
-        public void onGpsStatusChanged(int event) { // GPS状态变化时的回调，如卫星数
+        public void onGpsStatusChanged(int event) {
             if (ActivityCompat.checkSelfPermission(getApplicationContext(),
                     Manifest.permission.ACCESS_FINE_LOCATION) !=
                     PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            mGpsStatus = locationManager.getGpsStatus(mGpsStatus);
+            mGpsStatus = locManager.getGpsStatus(mGpsStatus);
             Iterable<GpsSatellite> satellites = mGpsStatus.getSatellites();
             int availableCount = 0;
             for (GpsSatellite satellite : satellites) {
@@ -332,60 +314,42 @@ public class LocationActivity extends BaseFgActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
         if (requestCode == 1) {
             for (int i = 0; i < permissions.length; i++) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                 } else {
-                    Toast.makeText(this, "软件退出，运行权限被禁止", Toast.LENGTH_SHORT).show();
-                    System.exit(0);
+                    ToastUtil.show(context, R.string.open_loc_permission);
+                    return;
                 }
             }
-            if (mSfMapLocationClient != null) {
-                mSfMapLocationClient.startLocation();
-            }
+        }
+        if (mSfMapLocationClient != null) {
+            mSfMapLocationClient.startLocation();
         }
     }
 
-    private String getGpsLocalTime(long gpsTime) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(gpsTime);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String datestring = df.format(calendar.getTime());
-        return datestring;
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
-
     private String msgTotal;
-    private String msgTotalTag;
+    private String msgTotalShow;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMsgEvent(String msgStr) {
         if (msgStr.contains("请求参数")) {
-            msgTotalTag = msgTotal;
-
+            msgTotalShow = msgTotal;
             msgTotal = msgStr;
         } else {
-            msgTotal = msgTotal + "\n" + msgStr;
+            if (!msgTotal.contains(msgStr)) {
+                msgTotal = msgTotal + "\n" + msgStr;
+            }
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == CodeConst.REQ_CODE_LOC &&
-                resultCode == CodeConst.RES_CODE_LOC) {
+        TIME_DELAY = 2000;
+        initSPConfig();
+        if (requestCode == CodeConst.loc_req_code &&
+                resultCode == CodeConst.loc_res_code) {
             if (mSfMapLocationClient != null) {
                 mSfMapLocationClient.startLocation();
             }
@@ -393,30 +357,81 @@ public class LocationActivity extends BaseFgActivity {
     }
 
 
-    public void onInfoShowClick(View view) {
-        showInfoDialog();
-    }
-
     private void initShowInfoDialog() {
         View layout = LayoutInflater.from(context).inflate(R.layout.layout_dialog_show_info, null);
         infoTv = layout.findViewById(R.id.info_tv);
         infoTv.setMovementMethod(ScrollingMovementMethod.getInstance());
         infoTv.setTextIsSelectable(true);
-        infoShowDiloag = new MaterialDialog.Builder(context)
+        infoTv.setText(R.string.loading);
+
+        new MaterialDialog.Builder(context)
                 .positiveText(R.string.sure)
                 .positiveColorRes(R.color.mainColor)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                    }
+                })
                 .negativeColorRes(R.color.mainColor).title(getString(
-                        R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
-                .customView(layout, false);
+                R.string.info_show_dialog_title)).titleGravity(GravityEnum.CENTER)
+                .customView(layout, false).show();
 
+        showInfoDelay();
     }
 
-    private void showInfoDialog() {
-        if (infoShowDiloag != null) {
-            infoTv.setText(msgTotalTag);
-            infoShowDiloag.show();
+    private void showInfoDelay() {
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (context != null && infoTv != null && msgTotalShow != null) {
+                    if (msgTotalShow.contains("请求成功") || msgTotalShow.contains("请求失败")) {
+                        infoTv.setText(msgTotalShow);
+                    } else {
+                        showInfoDelay();
+                    }
+                }
+            }
+        };
+        new Timer().schedule(task, TIME_DELAY);
+    }
+
+    protected void initSPConfig() {
+        SPUtils.setSPFileName(SPUtils.FILE_NAME_LOC);
+        String SP_URL = (String) SPUtils.get(this, KeyConst.SP_URL, "");
+        String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");
+        String SP_SHA1 = (String) SPUtils.get(this, KeyConst.SP_SHA1, "");
+        String SP_PKG_NAME = (String) SPUtils.get(this, KeyConst.SP_PKG_NAME, "");
+        String SP_LNG = (String) SPUtils.get(this, KeyConst.SP_LNG, "0.0");
+        String SP_LAT = (String) SPUtils.get(this, KeyConst.SP_LAT, "0.0");
+
+        if (!TextUtils.isEmpty(SP_AK)) {
+            AppInfo.setSpUrl(SP_URL);
+            AppInfo.setApiKey(SP_AK);
+            AppInfo.setSha1(SP_SHA1);
+            AppInfo.setPackageName(SP_PKG_NAME);
+            AppInfo.setLat(Double.valueOf(SP_LAT));
+            AppInfo.setLng(Double.valueOf(SP_LNG));
         }
-
     }
+
+    public void onLocInfoShowClick(View view) {
+        initShowInfoDialog();
+        TIME_DELAY = 0;
+    }
+
+/*    private void checkGPSIsOpen(){
+        //获取当前的LocationManager对象
+        locManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        boolean isOpen = locManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (!isOpen){
+            //进入GPS的设置页面
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivityForResult(intent,0);
+        }
+        //开始定位
+        startLocation();
+    }*/
 
 }

@@ -118,7 +118,7 @@ private LogcatFileManager()
 
 
             /**
-             * * * log level：*:v , *:d , *:w , *:e , *:f , *:s * * Show the
+             * * * log level：*:v , *:OnAddGPSListener , *:w , *:e , *:f , *:s * * Show the
              * current mPID process level of E and W log. * *
              */
             // cmds = "logcat *:e *:w | grep \"(" + mPID + ")\"";

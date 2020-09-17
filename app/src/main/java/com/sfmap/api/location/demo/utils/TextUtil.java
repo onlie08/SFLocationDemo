@@ -5,6 +5,8 @@ import android.os.Build;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * 时间类型的转换
@@ -24,5 +26,13 @@ public class TextUtil {
             return false;
         }
         return true;
+    }
+
+    public static String getFormatTime(long time) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(time);
+            SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            String datestring = df.format(calendar.getTime());
+            return datestring;
     }
 }

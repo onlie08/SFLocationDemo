@@ -1,43 +1,47 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:1-39:12
 	package
-		ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:3:5-31
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:3:5-31
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:5:5-30
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:4:5-28
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-uses-sdk
-ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:7:5-47
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:7:5-47
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:7:5-47
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:7:5-47
-INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:7:5-47
-	android:targetSdkVersion
-		ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:7:15-44
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-	android:minSdkVersion
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-		ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:7:5-47
-		INJECTED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml
-application
-ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:37:5-39:19
-uses-library#android.test.runner
-ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:38:9-60
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:34:5-79
 	android:name
-		ADDED from F:\02Code\03GIT_Code\01377555-git-topic\sfmap\searchsdk\src\main\AndroidManifest.xml:38:23-57
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:34:22-76
+application
+ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:35:5-37:19
+uses-library#android.test.runner
+ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:36:9-60
+	android:name
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml:36:23-57
+uses-sdk
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+		ADDED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml
+		INJECTED from D:\Proj_sf\SFLocationDemo\searchsdk\src\main\AndroidManifest.xml

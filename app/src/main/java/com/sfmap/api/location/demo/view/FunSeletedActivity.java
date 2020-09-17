@@ -29,14 +29,15 @@ public class FunSeletedActivity extends BaseFgActivity {
         initView();
     }
 
-    Class classArr[] = {LocationActivity.class, MapActivity.class, LocationActivity.class};
+    Class classArr[] = {LocationActivity.class, MapActivity.class, SearchActivity.class, GPSActivity.class};
 
     private void initView() {
         String[] funTitleArr = getResources().getStringArray(R.array.fun_title_arr);
 
         fun_item_layout = ((LinearLayout) findViewById(R.id.fun_list_layout));
         fun_item_layout.removeAllViews();
-        for (int i = 0; i < funTitleArr.length; i++) {
+        //funTitleArr
+        for (int i = 0; i < 2; i++) {
             final String title = funTitleArr[i];
             View inflate = LayoutInflater.from(this).inflate(R.layout.layout_fun_item, null);
             TextView tv = inflate.findViewById(R.id.fun_item_tv);

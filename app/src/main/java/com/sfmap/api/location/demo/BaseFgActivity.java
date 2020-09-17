@@ -20,11 +20,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sfmap.api.location.client.util.AppInfo;
 import com.sfmap.api.location.demo.constants.KeyConst;
 import com.sfmap.api.location.demo.controllor.ConnectionChangeReceiver;
 import com.sfmap.api.location.demo.utils.SPUtils;
 import com.sfmap.api.location.demo.utils.StatusBarUtil;
+import com.sfmap.api.location.demo.utils.TextUtil;
+import com.sfmap.api.location.demo.utils.ToastUtil;
 
 /**
  * @author Dylan
@@ -34,7 +35,7 @@ import com.sfmap.api.location.demo.utils.StatusBarUtil;
 public class BaseFgActivity extends FragmentActivity {
 
     public ConnectionChangeReceiver myReceiver;
-    protected final String TAG = "777";
+    protected final String TAG = "SF_MAP";
     protected TextView emptyTv;
 
     @Override
@@ -46,26 +47,8 @@ public class BaseFgActivity extends FragmentActivity {
 
         //Android 6.0 之后版本需要动态申请定位权限和存储权限
         requestPermission();
-        initSPConfig();
     }
 
-    protected void initSPConfig() {
-        String SP_URL = (String) SPUtils.get(this, KeyConst.SP_URL, "");
-        String SP_AK = (String) SPUtils.get(this, KeyConst.SP_AK, "");
-        String SP_SHA1 = (String) SPUtils.get(this, KeyConst.SP_SHA1, "");
-        String SP_PKG_NAME = (String) SPUtils.get(this, KeyConst.SP_PKG_NAME, "");
-        String SP_LNG = (String )SPUtils.get(this, KeyConst.SP_LNG, "0.0");
-        String SP_LAT = (String) SPUtils.get(this, KeyConst.SP_LAT, "0.0");
-
-        if (!TextUtils.isEmpty(SP_AK)) {
-            AppInfo.setSpUrl(SP_URL);
-            AppInfo.setApiKey(SP_AK);
-            AppInfo.setSha1(SP_SHA1);
-            AppInfo.setPackageName(SP_PKG_NAME);
-            AppInfo.setLat(Double.valueOf(SP_LAT));
-            AppInfo.setLng(Double.valueOf(SP_LNG));
-        }
-    }
 
     protected void initTitleBackBt(String title) {
         TextView titleTv = (TextView) findViewById(R.id.center_tv);
@@ -150,9 +133,10 @@ public class BaseFgActivity extends FragmentActivity {
 
     private void requestPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (this.checkPermission(Manifest.permission.READ_PHONE_STATE, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED || this.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid())
-                    != PackageManager.PERMISSION_GRANTED || this.checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Process.myPid(), Process.myUid())
+            if (this.checkPermission(Manifest.permission.READ_PHONE_STATE, Process.myPid(), Process.myUid()) != PackageManager.PERMISSION_GRANTED
+                    || this.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid()) != PackageManager.PERMISSION_GRANTED
+                    || this.checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, Process.myPid(), Process.myUid()) != PackageManager.PERMISSION_GRANTED
+                    || this.checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Process.myPid(), Process.myUid())
                     != PackageManager.PERMISSION_GRANTED) {
                 this.requestPermissions(PERMISSIONS_REQUEST, 1);
             }
@@ -167,8 +151,9 @@ public class BaseFgActivity extends FragmentActivity {
             for (int i = 0; i < permissions.length; i++) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                 } else {
-                    Toast.makeText(this, "软件退出，运行权限被禁止", Toast.LENGTH_SHORT).show();
-                    System.exit(0);
+                    ToastUtil.show(this,R.string.open_loc_permission);
+                    return;
+                    //System.exit(0);
                 }
             }
         }
